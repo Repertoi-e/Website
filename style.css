@@ -1,5 +1,5 @@
 body {
-    background: url(bg.png) no-repeat center center fixed; 
+    background: url(bg.png) no-repeat 0px 0px fixed; 
     background-color: #010101;
 
     font-family: "Poppins", sans-serif;
@@ -59,6 +59,7 @@ body {
     left: 68px;
     width: 40%;
     line-height: 25px;
+    letter-spacing: 1px;
 }
 
 .about strong {
