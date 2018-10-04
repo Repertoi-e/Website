@@ -11,25 +11,9 @@ body {
     z-index: -1;
 }
 
-/*В зависимост от ширината на екрана, уголемяваме шрифта, 
-  така че да се чете по-лесно на големи екрани*/
-@media screen and (min-width: 1200px) {
-    body { font-size: 55px; }
-}
-@media screen and (min-width: 1400px) {
-    body { font-size: 60px; }
-}
-@media screen and (min-width: 1600px) {
-    body { font-size: 65px; }
-}
-@media screen and (min-width: 1800px) {
-    body { font-size: 70px; }
-}
-
 .header {
     position: absolute;
     top: 55px;
-    left: 60px;
     z-index: 3;
 }
 
@@ -58,7 +42,7 @@ body {
 }
 
 .about {
-    position: fixed;
+    position: relative;
     top: 220px;
     left: 0;
     width: 100%;
@@ -81,7 +65,6 @@ body {
 .about .text {
     position: relative;
     top: 0px;
-    left: 68px;
     width: 60vw;
     float: left;
 
@@ -112,6 +95,44 @@ body {
     left: -54px;
     top: 16px;
     background-color: #575757;
+}
+
+/*Слагаме размер на шрифта в зависимост от ширината на екрана, 
+  така че да се чете по-лесно на разлините видове екрани*/
+@media screen and (min-width: 200px) {
+    body { font-size: 32px; margin-left: 20px }
+    .about { margin-left: 20px }
+    .about .links { left: 20px; }
+}
+@media screen and (min-width: 300px) {
+    body { font-size: 40px; margin-left: 30px }
+    .about { margin-left: 30px }
+    .about .links { left: 30px; }
+}
+@media screen and (min-width: 600px) {
+    body { font-size: 45px; margin-left: 40px  }
+    .about { margin-left: 40px }
+    .about .links { left: 40px; }
+}
+@media screen and (min-width: 1000px) {
+    body { font-size: 55px; margin-left: 50px  }
+    .about { margin-left: 50px }
+    .about .links { left: 50px; }
+}
+@media screen and (min-width: 1400px) {
+    body { font-size: 60px; margin-left: 60px  }
+    .about { margin-left: 60px }
+    .about .links { left: 60px; }
+}
+@media screen and (min-width: 1600px) {
+    body { font-size: 65px; margin-left: 70px  }
+    .about { margin-left: 70px }
+    .about .links { left: 70px; }
+}
+@media screen and (min-width: 1800px) {
+    body { font-size: 70px; margin-left: 80px  }
+    .about { margin-left: 80px }
+    .about .links { left: 80px; }
 }
 
 @media only screen and (max-width: 720px) {
