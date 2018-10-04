@@ -5,11 +5,10 @@ body {
     font-family: "Poppins", sans-serif;
     font-size: 50px;
 
-    overflow: scroll;
+    overflow: auto;
 
     width: 100%;
     height: 100%;
-    position: fixed;
     z-index: -1;
 }
 
@@ -30,17 +29,19 @@ body {
 }
 
 .about_container {
+    opacity: 0;
+    transition: opacity 0.45s ease-in-out;
+    z-index: 1;
+}
+
+.about_container .background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-
-    background-color: #141414;
-    z-index: 1;
+    height: 100%; 
     
-    opacity: 0;
-    transition: opacity 0.45s ease-in-out;
+    background-color: #141414;
 }
 
 .about {
@@ -75,6 +76,7 @@ body {
 
 .about .links {
     margin-left: 80px;
+    padding-bottom: 60px;
     float: left;
     position: relative;
     left: 120px;
@@ -102,37 +104,30 @@ body {
   така че да се чете по-лесно на разлините видове екрани*/
 @media screen and (min-width: 200px) {
     body { font-size: 32px; margin-left: 20px }
-    .about { margin-left: 20px }
     .about .links { left: 20px; }
 }
 @media screen and (min-width: 300px) {
     body { font-size: 40px; margin-left: 30px }
-    .about { margin-left: 30px }
     .about .links { left: 30px; }
 }
 @media screen and (min-width: 600px) {
     body { font-size: 45px; margin-left: 40px  }
-    .about { margin-left: 40px }
     .about .links { left: 40px; }
 }
 @media screen and (min-width: 1000px) {
     body { font-size: 55px; margin-left: 50px  }
-    .about { margin-left: 50px }
     .about .links { left: 50px; }
 }
 @media screen and (min-width: 1400px) {
     body { font-size: 60px; margin-left: 60px  }
-    .about { margin-left: 60px }
     .about .links { left: 60px; }
 }
 @media screen and (min-width: 1600px) {
     body { font-size: 65px; margin-left: 70px  }
-    .about { margin-left: 70px }
     .about .links { left: 70px; }
 }
 @media screen and (min-width: 1800px) {
     body { font-size: 70px; margin-left: 80px  }
-    .about { margin-left: 80px }
     .about .links { left: 80px; }
 }
 
