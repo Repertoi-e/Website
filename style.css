@@ -11,17 +11,19 @@ body {
     z-index: -1;
 }
 
-@media screen and (min-width:1200px) {
-    body { font-size: 55px; } /* Increase the font size */
+/*В зависимост от ширината на екрана, уголемяваме шрифта, 
+  така че да се чете по-лесно на големи екрани*/
+@media screen and (min-width: 1200px) {
+    body { font-size: 55px; }
 }
-@media screen and (min-width:1400px) {
-    body { font-size: 60px; } /* Increase the font size */
+@media screen and (min-width: 1400px) {
+    body { font-size: 60px; }
 }
-@media screen and (min-width:1600px) {
-    body { font-size: 65px; } /* Increase the font size */
+@media screen and (min-width: 1600px) {
+    body { font-size: 65px; }
 }
-@media screen and (min-width:1800px) {
-    body { font-size: 70px; } /* Increase the font size */
+@media screen and (min-width: 1800px) {
+    body { font-size: 70px; }
 }
 
 .header {
@@ -88,6 +90,7 @@ body {
 }
 
 .about .links {
+    margin-left: 80px;
     float: left;
     position: relative;
     left: 120px;
