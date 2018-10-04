@@ -6,9 +6,46 @@
         <title>Димитър Сотиров</title>
     </head>
     <body>
+        <div id="body_bg_color"></div>
+        
         <h5 style="margin: 55px 0px 0px 60px; color: #d3d3d3">ДИМИТЪР СОТИРОВ</h5>
         <h6 style="margin: -10px 0px 0px 60px; color: rgb(104, 104, 104)">портфолио</h6>
-        <a style="margin: 20px 0px 0px 60px" class="link" href="https://www.google.com">повече за мен</a>
+        <a id="more_info_link" style="margin: 20px 0px 0px 60px" class="link" onclick="openMoreInfo()">повече за мен</a>
+    
+        <div id="about" class="more_info">
+            <p style="margin: 20px 0px 0px 60px; color: white; font-family: 'Poppins', sans-serif">
+                ...<br>
+                Тук ще има текст <strong>за мен</strong>! И т.н, и т.н...<br>
+                (И това ще изглежда по-добре отколкото сега..)
+                ...
+            </p>
+        </div>
+
+        <script>
+            function openMoreInfo() {
+                var about = document.getElementById('about');
+                about.style.width = "100%";
+                about.style.opacity = "1.0";
+
+                var button = document.getElementById('more_info_link');
+                button.onclick = closeMoreInfo;
+                button.innerHTML = 'по-малко за мен';
+
+                document.getElementById('body_bg_color').style.opacity = "1.0";
+            }
+
+            function closeMoreInfo() {
+                var about = document.getElementById('about');
+                about.style.width = "0";
+                about.style.opacity = "0.0";
+
+                var button = document.getElementById('more_info_link');
+                button.onclick = openMoreInfo;
+                button.innerHTML = 'повече за мен';
+
+                document.getElementById('body_bg_color').style.opacity = "0";
+            }
+        </script>
     </body>
     <footer>
 
