@@ -28,6 +28,28 @@ body {
     font-size: 30%;
 }
 
+.gallery {
+    position: absolute;
+    top: 220px;
+    left: 52px;
+    z-index: -1;
+}
+
+.gallery > img {
+    padding: 0 12px;
+}
+
+.gallery:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.gallery img {
+    float: left;
+    width: 25%;
+}
+
 .about_container {
     opacity: 0;
     transition: opacity 0.45s ease-in-out;
@@ -80,7 +102,7 @@ body {
     float: left;
     position: relative;
     left: 120px;
-    width: 250px;
+    width: 50px;
 }
 
 .about .links h5 {
