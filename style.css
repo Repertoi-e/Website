@@ -31,8 +31,8 @@
 }
 
 .parallax__layer--deep {
-    -webkit-transform: translateZ(-5px) scale(6);
-    transform: translateZ(-5px) scale(6);
+    -webkit-transform: translateZ(-25px) scale(26);
+    transform: translateZ(-25px) scale(26);
 }
 
 .parallax__layer--deepest {
@@ -72,23 +72,25 @@ body {
 
 .introduction {
     position: fixed;
-    top: 200px;
-    right: 100px;
-
-    width: 12em;
-
-    text-align: left;
-    font-size: 4.5em;
-    color: #ffffff; 
+    color: #ffffff;     
 }
 
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
+.introduction_line {
+    position: absolute;
+    left: -20px;
+    top: 0.26em;
+
+    width: 0.1em;
+    height: 3.945em;
+    background-color: #ffffff;
+}
+
+@media only screen and (max-width: 420px) {
     .header {
         top: 420px;
 
         text-align: center;
-        font-size: 1.9em;
+        font-size: 1.4em;
         letter-spacing: 0.3em;
     }
 
@@ -103,10 +105,25 @@ body {
         margin-right: auto;
         margin-bottom: 450px;
     }
+
+    .bg__me {
+        height: 100vh;
+    }
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
+/* Extra small devices (phones, 420px and down) */
+@media only screen and (min-width: 420px) {
+    .header {
+        font-size: 1.9em;
+    }
+
+    .bg__me {
+        height: 110vh;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 420px and up) */
+@media only screen and (min-width: 420px) {
     .header {
         top: 410px;
 
@@ -126,6 +143,10 @@ body {
         margin-right: auto;
 
         margin-bottom: 450px;
+    }
+
+    .bg__me {
+        height: 120vh;
     }
 }
 
@@ -153,6 +174,10 @@ body {
 
         width: initial;
         margin: 0;
+    }
+
+    .bg__me {
+        height: 140vh;
     }
 }
 
