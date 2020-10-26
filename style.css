@@ -10,6 +10,10 @@
 
     -webkit-perspective: 1px;
     perspective: 1px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 .parallax__layer {
@@ -64,7 +68,10 @@ body {
     top: 50px;
 
     text-align: center;
-    letter-spacing: 0.5em;
+    width: 100vw;
+    height: 100vh;
+
+    /*letter-spacing: 0.5em;*/
     font-size: 1em;
     color: #ffffff; 
     line-height: 1.3em;
@@ -72,16 +79,31 @@ body {
 
 .introduction {
     position: fixed;
-    color: #ffffff;     
+    color: #ffffff;
+
+    display: flex;  
+
+    top: 190px;
+    width: 100vw;
+}
+
+.introduction__content {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    width: 50%;
+    margin-left: 50%;
+
+    font-size: 4em;
 }
 
 .introduction_line {
-    position: absolute;
-    left: -20px;
-    top: 0.26em;
+    position: relative;
+    left: -10px;
 
     width: 0.1em;
-    height: 3.945em;
+    height: 3.4em;
     background-color: #ffffff;
 }
 
@@ -92,18 +114,6 @@ body {
         text-align: center;
         font-size: 1.4em;
         letter-spacing: 0.3em;
-    }
-
-    .introduction {
-        top: 1500px;
-        left: 30px;
-
-        font-size: 7.4vw;
-        width: 100vw;
-
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 450px;
     }
 
     .bg__me {
@@ -132,19 +142,6 @@ body {
         letter-spacing: 0.45em;
     }
 
-    .introduction {
-        top: 1500px;
-        left: 30px;
-
-        font-size: 7.4vw;
-        width: 100vw;
-
-        margin-left: auto;
-        margin-right: auto;
-
-        margin-bottom: 450px;
-    }
-
     .bg__me {
         height: 120vh;
     }
@@ -165,17 +162,6 @@ body {
         letter-spacing: 0.5em;
     }
 
-    .introduction {
-        left: initial;
-        right: 50px;
-        top: 300px;
-
-        font-size: 2.8em;
-
-        width: initial;
-        margin: 0;
-    }
-
     .bg__me {
         height: 140vh;
     }
@@ -185,12 +171,7 @@ body {
 @media only screen and (min-width: 1200px) {
     .header {
         text-align: center;
-    }
-
-    .introduction {
-        font-size: 4.4em;
-        top: 200px;
-        right: 80px;
+        right: 0px;
     }
 }
 
@@ -199,11 +180,88 @@ body {
     .header {
         font-size: 1.7em;
     }
-    
-    .introduction {
-        font-size: 5em;
-        right: 300px;
-    }
 }
 
 
+.hand_gif {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 300px;
+    height: 300px;
+}
+
+.hand_gif__border__gradient {
+    width: 240px;
+    height: 240px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(#fff 20%, #fff 40%, #ECD08C 50%, #ECD08C 55%);
+    background-size: 200% auto;
+    
+    animation: shine 2s linear infinite;
+
+    clip-path: ellipse(110px 110px at 50% 50%);
+}
+
+.hand_gif__border__gradient:hover {
+    clip-path: ellipse(115px 115px at 50% 50%);
+}
+
+@keyframes shine {
+    to {
+      background-position: 200% center;
+    }
+}
+
+.hand_gif__border {
+    position: absolute;
+
+    width: 207px;
+    height: 207px;
+
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+.hand_gif img {
+    position: absolute;
+
+    width: 90%;
+    clip-path: ellipse(100px 100px at 50% 50%);
+}
+
+.retro {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    overflow: hidden;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+.retrowave_bg {
+    height: 120vh;
+}
+
+.retrowave_bg img {
+    height: 100vh;
+    object-fit: contain;
+}
+
+.retrowave_bg__dim {
+    position: absolute;
+    top: 0;
+    opacity: 50%;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+}
