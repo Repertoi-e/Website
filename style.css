@@ -92,90 +92,9 @@ body {
     justify-content: left;
     align-items: center;
 
-    width: 50%;
-    margin-left: 49.3vw;
-
-    font-size: 4em;
-
-    /* Vertical line */
-    border-left: 0.1em dashed #ffffff;
-    padding-left: 0.15em;   
+    font-size: 4em; 
 }
 
-@media only screen and (max-width: 420px) {
-    .header {
-        top: 420px;
-
-        text-align: center;
-        font-size: 1.4em;
-        letter-spacing: 0.3em;
-    }
-
-    .bg__me {
-        height: 100vh;
-    }
-}
-
-/* Extra small devices (phones, 420px and down) */
-@media only screen and (min-width: 420px) {
-    .header {
-        font-size: 1.9em;
-    }
-
-    .bg__me {
-        height: 110vh;
-    }
-}
-
-/* Small devices (portrait tablets and large phones, 420px and up) */
-@media only screen and (min-width: 420px) {
-    .header {
-        top: 410px;
-
-        text-align: center;
-        font-size: 1.7em;
-        letter-spacing: 0.45em;
-    }
-
-    .bg__me {
-        height: 120vh;
-    }
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-    .header {
-        right: 40px;
-        top: 50px;
-
-        text-align: right;
-        font-size: 1em;
-        letter-spacing: 0.5em;
-    }
-
-    .bg__me {
-        height: 140vh;
-    }
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-    .header {
-        text-align: center;
-        right: 0px;
-    }
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1900px) {
-    .header {
-        font-size: 1.7em;
-    }
-}
 
 .retro_button {
     position: relative;
@@ -250,20 +169,25 @@ body {
     display: inline-block;
 }
 
+.social_media__instagram, .social_media__linkedin {
+    cursor: pointer;
+}
+.social_media__instagram img, .social_media__linkedin img {
+width: 3em;
+}
+
 .social_media__instagram {
     margin-left: 10px;
     margin-right: 5px;
-    cursor: pointer;
 }
 
 .social_media__linkedin {
     margin-left: 5px;
     margin-right: 10px;
-    cursor: pointer;
 }
 
 .social_media__border {
-    border-top: 7px dotted white;
+    border-top: 0.25em dotted white;
     width: 50vw;
     height: 10px;
 }
@@ -301,12 +225,129 @@ body {
 
 .footer__credit {
     font-family: 'Roboto Slab', serif;
-    font-size: 0.11em;
+    font-size: 0.12em;
     margin-top: -1.5em;
     position: relative;
 }
 
 .footer__credit a {
-    color: #507ca5;
+    color: #17e3f1;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 420px) {
+    .header {
+        top: 420px;
+
+        text-align: center;
+        font-size: 1.4em;
+        letter-spacing: 0.3em;
+    }
+
+    .bg__me {
+        height: 100vh;
+    }
+}
+
+/* Extra small devices (phones, 420px and down) */
+@media only screen and (min-width: 420px) {
+    .header {
+        font-size: 1.9em;
+    }
+
+    .bg__me {
+        height: 110vh;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 420px and up) */
+@media only screen and (min-width: 420px) {
+    .header {
+        top: 410px;
+
+        text-align: center;
+        font-size: 1.7em;
+        letter-spacing: 0.45em;
+    }
+
+    .social_media, .footer { font-size: 0.3em; }
+
+    .bg__me {
+        height: 120vh;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .social_media, .footer { font-size: 0.5em; }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .header {
+        right: 40px;
+        top: 50px;
+
+        text-align: right;
+        font-size: 1em;
+        letter-spacing: 0.5em;
+    }
+
+    .bg__me {
+        height: 140vh;
+    }
+}
+
+@media only screen and (min-width: 1060px) {
+    .introduction { font-size: 0.55em; }
+    .social_media, .footer { font-size: 0.6em; }
+}
+
+@media only screen and (min-width: 1100px) {
+    .introduction { font-size: 0.6em; }
+    .social_media, .footer { font-size: 0.7em; }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .header {
+        text-align: center;
+        right: 0px;
+    }
+
+    .introduction { 
+        position: fixed;
+        right: initial;
+
+        width: 50%;
+        margin-left: 50vw;
+        text-align: left;
+        font-size: 0.75em; 
+
+        /* Vertical line */
+        border-left: 0.4em dashed #ffffff;
+        padding-left: 0.7em;  
+    }
+
+    .social_media, .footer { font-size: 0.8em; }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1400px) {
+    .introduction { font-size: 0.9em; }
+    .social_media, .footer { font-size: 0.9em; }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1600px) {
+    .introduction { font-size: 1em; }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1900px) {
+    .header {
+        font-size: 1.7em;
+    }
+    
+    .introduction { font-size: 1.22em; }
 }
