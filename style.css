@@ -10,7 +10,7 @@ html, body {
     background-color: #ece35a;
 
     font-family: 'Roboto Slab', serif;
-    font-size: 40px;
+    font-size: calc(10px + 2vmax);
 }
 
 .content_container {
@@ -34,17 +34,12 @@ html, body {
     height: 100vh;
 
     display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-areas: 
-        "header header"
-        "introduction introduction"
-        "retro_button retro_button";
+
+    /*Layout is defined near the bottom of this file depending on screen size - mobile first! :)*/
 
     justify-items: center;
     justify-content: center;
-    align-content: space-around;
-
-    padding: 20px;
+    align-content: stretch;
 }
 /*
 .content_container * {
@@ -54,6 +49,8 @@ html, body {
 
 .header {
     grid-area: header;
+
+    align-self: center;
 
     text-align: center;
 
@@ -65,21 +62,27 @@ html, body {
     letter-spacing: 0.4em;
 
     text-shadow: 1px 1px 1px #8FA9C0;
+
+    padding-top: 20px;
 }
 
 .introduction {
     grid-area: introduction;
 
-    border-left: 6px dotted #ffffff;
+    align-self: center;
+
+    /*Has border-left or border-bottom depending on the layout. 
+      Take a look near the bottom of the page!*/
     
     color: #ffffff;
-    padding-left: 10px;
     margin-top: 8vh;
     margin-bottom: 10vh;
 
     text-shadow: 0px 0px 5px #8FA9C0;
+}
 
-    transform: translateX(50%);
+:root {
+    --retro_button_size: calc(100px + 20vmin);
 }
 
 .retro_button {
@@ -93,8 +96,10 @@ html, body {
     justify-content: center;
     align-items: center;
 
-    height: 215px;
+    height: var(--retro_button_size);
     cursor: pointer;
+
+    border: 1px solid red;
 }
 
 .retro_button__border {
@@ -106,8 +111,8 @@ html, body {
 .retro_button__border span {
     position: absolute;
 
-    width: 210px;
-    height: 210px;
+    width: var(--retro_button_size);
+    height: var(--retro_button_size);
 
     border-radius: 100%;
 }
@@ -136,8 +141,10 @@ html, body {
 .retro_button img {
     position: absolute;
 
-    width: 210px;
-    clip-path: ellipse(105px 105px at 50% 50%);
+    width: var(--retro_button_size);
+    height: var(--retro_button_size);
+
+    clip-path: ellipse(calc(var(--retro_button_size) / 2) calc(var(--retro_button_size) / 2) at 50% 50%);
 }
 
 .social_media {
@@ -154,7 +161,7 @@ html, body {
 .social_media span { margin: 5px; }
 
 .social_media__dots {
-    border-top: 6px dotted #ffffff;
+    border-top: 3px dashed #ffffff;
     width: 50%;
     height: 10px;
 }
@@ -193,11 +200,27 @@ html, body {
     text-shadow: 0px 0px 2px #6c98b6;
 }
 
-.goodbye__line1, .goodbye__line2  {
+.goodbye__line1, .goodbye__line2, .goodbye__lines_combined {
     font-family: 'Open Sans', sans-serif;
     font-size: 3.5rem;
     color: #ffffff;
     text-shadow: 3px 3px 2px #92ffff, -3px -3px 2px #ff4bff;
+}
+
+/*Only visible on smaller screens, take a look near the bottom of this file!*/
+.goodbye__lines_combined {
+    grid-area: lines;
+
+    align-self: center;
+
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+
+    font-size: calc(3rem - 3vmax);
+    text-align: center;
+    
+    line-height: 3rem;
+    letter-spacing: -0.5rem;
 }
 
 .goodbye__line1 {
@@ -224,4 +247,92 @@ html, body {
 .goodbye__credit a {
     color: #027780;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 850px) {
+    .main {
+        height: 200vh;
+
+        grid-template-columns: 100%;
+        grid-template-rows: 40vh auto 50vh;
+        grid-template-areas:
+            "." 
+            "header"
+            "."
+            "introduction"
+            "retro_button";
+    }
+
+    .header {
+        font-size: 0.6em;
+    }
+
+    .introduction {
+        font-size: 0.8rem;
+
+        border: 3px dashed #ffffff;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .goodbye__line1 {
+        display: none;
+    }
+
+    .goodbye__line2 {
+        display: none;
+    }
+
+    .goodbye {
+        display: grid;
+
+        grid-template-rows: 2.8rem 12rem 1.5em;
+        grid-template-areas: 
+            ". lines lines lines"
+            "copyright lines lines lines"
+            "copyright credit credit credit";
+    }
+}
+
+@media only screen and (min-width: 851px) {
+    .main {
+        height: 100vh;
+
+        grid-template-columns: 100%;
+        grid-template-areas: 
+            "header"
+            "introduction"
+            "retro_button";
+    }
+
+    .introduction {
+        border: 3px dashed #ffffff;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .goodbye__lines_combined {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 901px) {
+    .main {
+        grid-template-columns: 50% 50%;
+        grid-template-areas: 
+            "header header"
+            ". introduction"
+            "retro_button retro_button";
+    }
+    
+    .introduction {
+        border: 0;
+        
+        text-align: left;
+        
+        padding: 0;
+        padding-left: 10px;
+        
+        border-left: 3px dashed #ffffff;
+    }
 }
