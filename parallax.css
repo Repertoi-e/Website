@@ -28,7 +28,7 @@
 }
 
 .parallax__clouds {
-    transform: translateZ(-50px) scale(50);
+    transform: translateZ(-50px) scale(51);
 }
 
 .parallax__me {

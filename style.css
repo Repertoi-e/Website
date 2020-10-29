@@ -15,12 +15,34 @@ html, body {
 
 .content_container {
     width: 100vw;
+
+    display: grid;
+    grid-template-areas: 
+        "main"
+        "social_media"
+        "goodbye";
+
+    justify-items: center;
+    justify-content: center;
+    align-content: space-around;
+}
+
+.main {
+    grid-area: main;
+
+    width: 100vw;
     height: 100vh;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: 
+        "header header"
+        "introduction introduction"
+        "retro_button retro_button";
+
+    justify-items: center;
+    justify-content: center;
+    align-content: space-around;
 
     padding: 20px;
 }
@@ -30,20 +52,9 @@ html, body {
 }
 */
 
-.introduction {
-    border-left: 6px dotted #ffffff;
-    
-    color: #ffffff;
-    padding-left: 10px;
-    margin-top: 8vh;
-    margin-bottom: 10vh;
-
-    text-shadow: 0px 0px 5px #8FA9C0;
-
-    transform: translateX(50%);
-}
-
 .header {
+    grid-area: header;
+
     text-align: center;
 
     font-size: 0.28rem;
@@ -56,7 +67,24 @@ html, body {
     text-shadow: 1px 1px 1px #8FA9C0;
 }
 
+.introduction {
+    grid-area: introduction;
+
+    border-left: 6px dotted #ffffff;
+    
+    color: #ffffff;
+    padding-left: 10px;
+    margin-top: 8vh;
+    margin-bottom: 10vh;
+
+    text-shadow: 0px 0px 5px #8FA9C0;
+
+    transform: translateX(50%);
+}
+
 .retro_button {
+    grid-area: retro_button;
+
     position: relative;
 
     margin-top: 40px;
@@ -78,8 +106,8 @@ html, body {
 .retro_button__border span {
     position: absolute;
 
-    width: 215px;
-    height: 215px;
+    width: 210px;
+    height: 210px;
 
     border-radius: 100%;
 }
@@ -96,8 +124,7 @@ html, body {
 
 .retro_button__border span:nth-child(3) {
     box-shadow: 0 1px 0 0 rgba(192, 63, 153, 0.25), 0 -1px 0 0 rgba(214, 69, 99, 0.25), 1px 0 0 0 rgba(192, 63, 153, 0.25), -1px 0 0 0 rgba(214, 69, 99, 0.25), 1px -1px 0 0 rgba(203, 66, 126, 0.5), -1px 1px 0 0 rgba(203, 66, 126, 0.5), 1px 1px 0 0 rgba(181, 59, 180, 0.75), -1px -1px 0 0 rgba(225, 72, 71, 0.75);
-    animation: psycho_circle 4s linear .5s infinite; 
-}
+ }
 
 @keyframes psycho_circle {
     0% { transform: rotate(0deg) scale(1) translate(0, 0); }
@@ -114,6 +141,8 @@ html, body {
 }
 
 .social_media {
+    grid-area: social_media;
+
     width: 90vw;
 
     margin-top: 100px;
@@ -125,7 +154,7 @@ html, body {
 .social_media span { margin: 5px; }
 
 .social_media__dots {
-    border-top: 0.15em dotted white;
+    border-top: 6px dotted #ffffff;
     width: 50%;
     height: 10px;
 }
@@ -136,7 +165,7 @@ html, body {
 .social_media__instagram, .social_media__linkedin { cursor: pointer; }
 
 .goodbye {
-    width: 90vw;
+    grid-area: goodbye;
 
     display: grid;
     grid-template-columns: 10px 110px 30vw;
@@ -160,6 +189,8 @@ html, body {
     letter-spacing: 0.07rem;
 
     color: #ffffff;
+
+    text-shadow: 0px 0px 2px #6c98b6;
 }
 
 .goodbye__line1, .goodbye__line2  {
@@ -180,12 +211,14 @@ html, body {
 .goodbye__credit {
     grid-area: credit;
     
-    font-size: 0.3rem;
+    font-size: 0.25rem;
     font-weight: 700;
 
     color: #ffffff;
 
     letter-spacing: 0.07rem;
+
+    text-shadow: 0px 0px 2px #6c98b6;
 }
 
 .goodbye__credit a {
