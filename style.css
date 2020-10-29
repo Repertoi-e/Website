@@ -10,7 +10,7 @@ html, body {
     background-color: #ece35a;
 
     font-family: 'Roboto Slab', serif;
-    font-size: calc(10px + 2vmax);
+    font-size: calc(7px + 1.5vmax);
 }
 
 .content_container {
@@ -286,11 +286,14 @@ html, body {
     .goodbye {
         display: grid;
 
+        grid-template-columns: 10px 70px 10px;
         grid-template-rows: 2.8rem 12rem 1.5em;
         grid-template-areas: 
             ". lines lines lines"
             "copyright lines lines lines"
             "copyright credit credit credit";
+
+        justify-content: center;
     }
 }
 
@@ -306,6 +309,8 @@ html, body {
     }
 
     .introduction {
+        font-size: 1.5rem;
+        
         border: 3px dashed #ffffff;
         padding: 20px;
         text-align: center;
