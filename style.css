@@ -41,17 +41,17 @@ html, body {
     text-shadow: 0px 0px 5px #8FA9C0;
 
     transform: translateX(50%);
-
 }
 
 .header {
     text-align: center;
 
-    letter-spacing: 0.4em;
-
-    font-weight: 700;
     font-size: 0.28rem;
+    font-weight: 700;
+
     color: #ececec;
+
+    letter-spacing: 0.4em;
 
     text-shadow: 1px 1px 1px #8FA9C0;
 }
@@ -69,13 +69,13 @@ html, body {
     cursor: pointer;
 }
 
-.retro_button__border__psycho {
+.retro_button__border {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.retro_button__border__psycho div {
+.retro_button__border span {
     position: absolute;
 
     width: 215px;
@@ -84,17 +84,17 @@ html, body {
     border-radius: 100%;
 }
 
-.retro_button__border__psycho__circle1 { 
+.retro_button__border span:nth-child(1) { 
     box-shadow: 0 1px 0 0 rgba(255, 192, 0, 0.25), 0 -1px 0 0 rgba(255, 64, 0, 0.25), 1px 0 0 0 rgba(255, 192, 0, 0.25), -1px 0 0 0 rgba(255, 64, 0, 0.25), 1px -1px 0 0 rgba(255, 128, 0, 0.5), -1px 1px 0 0 rgba(255, 128, 0, 0.5), 1px 1px 0 0 rgba(255, 255, 0, 0.75), -1px -1px 0 0 rgba(255, 0, 0, 0.75);
     animation: psycho_circle 4s linear infinite; 
 }
 
-.retro_button__border__psycho__circle2 {
+.retro_button__border span:nth-child(2) {
     box-shadow: 0 1px 0 0 rgba(225, 131, 194, 0.25), 0 -1px 0 0 rgba(165, 181, 222, 0.25), 1px 0 0 0 rgba(225, 131, 194, 0.25), -1px 0 0 0 rgba(165, 181, 222, 0.25), 1px -1px 0 0 rgba(195, 156, 208, 0.5), -1px 1px 0 0 rgba(195, 156, 208, 0.5), 1px 1px 0 0 rgba(255, 105, 180, 0.75), -1px -1px 0 0 rgba(135, 206, 235, 0.75);
     animation: psycho_circle 4s linear .3s infinite; 
 }
 
-.retro_button__border__psycho__circle3 {
+.retro_button__border span:nth-child(3) {
     box-shadow: 0 1px 0 0 rgba(192, 63, 153, 0.25), 0 -1px 0 0 rgba(214, 69, 99, 0.25), 1px 0 0 0 rgba(192, 63, 153, 0.25), -1px 0 0 0 rgba(214, 69, 99, 0.25), 1px -1px 0 0 rgba(203, 66, 126, 0.5), -1px 1px 0 0 rgba(203, 66, 126, 0.5), 1px 1px 0 0 rgba(181, 59, 180, 0.75), -1px -1px 0 0 rgba(225, 72, 71, 0.75);
     animation: psycho_circle 4s linear .5s infinite; 
 }
@@ -113,6 +113,82 @@ html, body {
     clip-path: ellipse(105px 105px at 50% 50%);
 }
 
-footer {
-    display: none;
+.social_media {
+    width: 90vw;
+
+    margin-top: 100px;
+
+    display: flex;
+    align-items: center;
+}
+
+.social_media span { margin: 5px; }
+
+.social_media__dots {
+    border-top: 0.15em dotted white;
+    width: 50%;
+    height: 10px;
+}
+
+.social_media__instagram img { width: 0.8em; }
+.social_media__linkedin img { width: 0.8em; }
+
+.social_media__instagram, .social_media__linkedin { cursor: pointer; }
+
+.goodbye {
+    width: 90vw;
+
+    display: grid;
+    grid-template-columns: 10px 110px 30vw;
+    grid-template-rows: 2.8rem 3.75rem 1.5em;
+    grid-template-areas: 
+        "copyright line1 line1 line1"
+        "copyright . line2 line2"
+        ". . credit credit";
+}
+
+.goodbye__sideways {
+    grid-area: copyright;
+
+    padding-top: 25px;
+
+    writing-mode: vertical-rl;
+
+    font-size: 0.2rem;
+    font-weight: 700;
+
+    letter-spacing: 0.07rem;
+
+    color: #ffffff;
+}
+
+.goodbye__line1, .goodbye__line2  {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 3.5rem;
+    color: #ffffff;
+    text-shadow: 3px 3px 2px #92ffff, -3px -3px 2px #ff4bff;
+}
+
+.goodbye__line1 {
+    grid-area: line1;
+}
+
+.goodbye__line2 {
+    grid-area: line2;
+}
+
+.goodbye__credit {
+    grid-area: credit;
+    
+    font-size: 0.3rem;
+    font-weight: 700;
+
+    color: #ffffff;
+
+    letter-spacing: 0.07rem;
+}
+
+.goodbye__credit a {
+    color: #027780;
+    cursor: pointer;
 }
