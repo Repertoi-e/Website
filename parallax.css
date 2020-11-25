@@ -1,3 +1,9 @@
+/*
+    We no longer use this file for parallax (instead we use javascript),
+    because of some strange image sizing which included unacceptable lines around the page.
+*/
+
+
 .parallax {
     position: relative;
 

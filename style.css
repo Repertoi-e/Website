@@ -1,20 +1,108 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
 * {
+    box-sizing: border-box;
+
     margin: 0;
     padding: 0;
+}
 
-    box-sizing: border-box;
+:root {
+    /* Fluid typography variables */
+
+    --min-font-size: 20;
+    --min-font-size-px: 20px;
+    --max-font-size: 30;
+    --max-font-size-px: 30px;
+    
+    --font-scale-min-width: 400;
+    --font-scale-min-width-px: 400px;
+
+    --font-scale-max-width: 1400;
 }
 
 html, body {
-    background-color: #ece35a;
+    background-color: #B1C3CD;
 
     font-family: 'Roboto Slab', serif;
-    font-size: calc(7px + 1.5vmax);
+
+    /* Fluid typography */
+    font-size: calc(var(--min-font-size-px) + (var(--max-font-size) - var(--min-font-size)) * 
+                    (100vw - var(--font-scale-min-width-px)) / 
+                    (var(--font-scale-max-width) - var(--font-scale-min-width)));
+
+    overflow-x: hidden;
+}
+
+.parallax_container {
+    position: relative;
+    
+    width: 100vw;
+    height: 150vh; /*This makes sure the background extends behind the footer, side-effect: messes up image scale*/
+
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.parallax__sky {
+    min-width: 100%;
+    min-height: 100%;
+
+    position: relative;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+
+    z-index: 18;
+}
+
+.parallax__clouds_left {
+    position: absolute;
+    top: 0px;
+
+    min-width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+
+    z-index: 19;
+}
+
+.parallax__clouds_right {
+    position: absolute;
+    top: 0px;
+
+    min-width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+
+    z-index: 19;
+}
+
+.parallax__me {
+    position: absolute;
+    top: 0px;
+
+    min-width: 75%;
+    min-height: 75%;
+    overflow: hidden;
+    
+    z-index: 20;
 }
 
 .content_container {
-    width: 100vw;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+    z-index: 21;
 
     display: grid;
     grid-template-areas: 
@@ -29,7 +117,7 @@ html, body {
 
 .main {
     grid-area: main;
-
+    
     width: 100vw;
     height: 100vh;
 
@@ -41,7 +129,9 @@ html, body {
     justify-content: center;
     align-content: stretch;
 }
-/*
+
+/* For debugging.
+
 .content_container * {
     border: 1px solid yellow;
 }
@@ -54,7 +144,7 @@ html, body {
 
     text-align: center;
 
-    font-size: 0.28rem;
+    font-size: 1rem;
     font-weight: 700;
 
     color: #ececec;
@@ -71,7 +161,7 @@ html, body {
 
     align-self: center;
 
-    /*Has border-left or border-bottom depending on the layout. 
+    /*Has border-left or entire border depending on the layout. 
       Take a look near the bottom of the page!*/
     
     color: #ffffff;
@@ -251,8 +341,6 @@ html, body {
 
 @media only screen and (max-width: 850px) {
     .main {
-        height: 200vh;
-
         grid-template-columns: 100%;
         grid-template-rows: 40vh auto 50vh;
         grid-template-areas:
@@ -299,8 +387,6 @@ html, body {
 
 @media only screen and (min-width: 851px) {
     .main {
-        height: 100vh;
-
         grid-template-columns: 100%;
         grid-template-areas: 
             "header"
@@ -310,7 +396,7 @@ html, body {
 
     .introduction {
         font-size: 1.5rem;
-        
+
         border: 3px dashed #ffffff;
         padding: 20px;
         text-align: center;

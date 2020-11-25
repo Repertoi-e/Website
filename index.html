@@ -4,78 +4,73 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500|Roboto:300,400" rel="stylesheet">
-    <link rel="stylesheet" href="parallax.css">
     <link rel="stylesheet" href="style.css">
     <title>Dimitar Sotirov</title>
 </head>
 
 <body>
-    <div class="parallax">
-        <section class="parallax__layer parallax__sky">
-            <img src="data/main-bg.jpg">
-        </section>
-        <section class="parallax__layer parallax__clouds">
-            <img src="data/main-clouds.png">
-        </section>
-        <section class="parallax__layer parallax__me">
-            <img src="data/main-me.png">
-        </section>
-
-        <section class="content_container parallax__layer parallax__static">
-            <section class="main">
-                <div class="header">
-                    <span>Dimitar Sotirov<br></span>
-                    <span>A portfolio</span>
-                </div>
-    
-                <div class="introduction">
-                    <span>
-                        Hi. I'm Dimitar, a Bulgarian<br>
-                        software developer by passion,<br>
-                        an aspiring movie director,<br>
-                        and a hobbyist musician.
-                    </span>
-                </div>
-        
-                <div class="retro_button">
-                    <div class="retro_button__border">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <img src="data/sky_unfold.gif" alt="">
-                </div>
-            </section>
-
-            <div class="social_media">
-                <span class="social_media__dots"></span>
-                <span class="social_media__instagram">
-                    <a href="https://www.instagram.com/sir.sotiro/" target="_blank">
-                        <img src="data/instagram.svg" alt="">
-                    </a>
-                </span>
-                <span class="social_media__linkedin">
-                    <img src="data/linkedin.svg" alt="">
-                </span>
-                <span class="social_media__dots"></span>
-            </div>
-    
-            <div class="goodbye">
-                <span class="goodbye__sideways">© 2020 – Dimitar Sotirov</span>
-                <span class="goodbye__line1">NOW I WISH YOU</span>
-                <span class="goodbye__line2">ALL THE BEST</span>
-                <span class="goodbye__lines_combined">
-                    NOW I WISH YOU ALL THE BEST
-                </span>
-                <span class="goodbye__credit">
-                    Social media icons made by <a href="https://www.flaticon.com/authors/freepik" target="_blank"
-                        title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" target="_blank"
-                        title="Flaticon">www.flaticon.com</a>
-                </span>
-            </div>
-        </section>
+    <div class="parallax_container">
+        <img src="data/main-bg.jpg" class="parallax__sky parallax" data-speed="1">
+        <img src="data/main-clouds-left.png" class="parallax__clouds_left parallax" data-speed="0.5">
+        <img src="data/main-clouds-right.png" class="parallax__clouds_right parallax" data-speed="0.5">
+        <img src="data/main-me.png" class="parallax__me parallax parallax_special" data-speed="0.2">
     </div>
 
+    <div class="content_container">
+        <div class="main">
+            <div class="header">
+                <span>Dimitar Sotirov<br></span>
+                <span>A portfolio</span>
+            </div>
+
+            <div class="introduction">
+                <span>
+                    Hi. I'm Dimitar, a Bulgarian<br>
+                    software developer by passion,<br>
+                    an aspiring movie director,<br>
+                    and a hobbyist musician.
+                </span>
+            </div>
+
+            <div class="retro_button">
+                <div class="retro_button__border">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <img src="data/sky_unfold.gif" alt="">
+            </div>
+        </div>
+
+        <div class="social_media">
+            <span class="social_media__dots"></span>
+            <span class="social_media__instagram">
+                <a href="https://www.instagram.com/sir.sotiro/" target="_blank">
+                    <img src="data/instagram.svg" alt="">
+                </a>
+            </span>
+            <span class="social_media__linkedin">
+                <img src="data/linkedin.svg" alt="">
+            </span>
+            <span class="social_media__dots"></span>
+        </div>
+
+        <div class="goodbye">
+            <span class="goodbye__sideways">© 2020 – Dimitar Sotirov</span>
+            <span class="goodbye__line1">NOW I WISH YOU</span>
+            <span class="goodbye__line2">ALL THE BEST</span>
+            <span class="goodbye__lines_combined">
+                NOW I WISH YOU ALL THE BEST
+            </span>
+            <span class="goodbye__credit">
+                Social media icons made by <a href="https://www.flaticon.com/authors/freepik" target="_blank"
+                    title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" target="_blank"
+                    title="Flaticon">www.flaticon.com</a>
+            </span>
+        </div>
+    </div>
+
+    <script src="parallax.js"></script>
     <!--div class="retro">
         <div class="retrowave_bg">
             <img src="data/retrowave_bg.gif" alt="">
@@ -148,7 +143,5 @@
         }
     </script-->
 </body>
-<footer>
-</footer>
 
 </html>
