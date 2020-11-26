@@ -14,20 +14,21 @@
   --font-scale-max-width: 1400;
 }
 
-html, body {
-  background-color: #B1C3CD;
-  font-family: 'Roboto Slab', serif;
+html,
+body {
+  background-color: #b1c3cd;
+  font-family: "Roboto Slab", serif;
   /*  Fluid typography 
         This is simply a mapping function: 
             font-size = min + (max - min) * (100vw - min_width) / (max_width - min_width)
 
         "* 1px" because we need to convert the variables to be in pixel units
     */
-  font-size: calc(var(--min-font-size) * 1px + (var(--max-font-size) - var(--min-font-size)) *  (100vw - var(--font-scale-min-width) * 1px) /  (var(--font-scale-max-width) - var(--font-scale-min-width)));
+  font-size: calc( var(--min-font-size) * 1px + (var(--max-font-size) - var(--min-font-size)) * (100vw - var(--font-scale-min-width) * 1px) / (var(--font-scale-max-width) - var(--font-scale-min-width)));
   overflow-x: hidden;
 }
 
-.content_container {
+.content {
   display: -ms-grid;
   display: grid;
       grid-template-areas: "main" "social_media" "goodbye";
@@ -61,7 +62,7 @@ html, body {
 
 /* For debugging.
 
-.content_container * {
+.content * {
     border: 1px solid yellow;
 }
 */
@@ -75,7 +76,7 @@ html, body {
   font-weight: 700;
   color: #ececec;
   letter-spacing: 0.4em;
-  text-shadow: 1px 1px 1px #8FA9C0;
+  text-shadow: 1px 1px 1px #8fa9c0;
   padding-top: 20px;
 }
 
@@ -91,7 +92,12 @@ html, body {
   /*  Has border-left or entire border depending on the layout. 
         Take a look near the bottom of the page!*/
   color: #ffffff;
-  text-shadow: 0px 0px 5px #8FA9C0;
+  text-shadow: 0px 0px 5px #8fa9c0;
+}
+
+:root {
+  --introduction-border-width: 0.4rem;
+  --introduction-border-halfw: calc(var(--introduction-border-width) / 2);
 }
 
 .arrow {
@@ -112,12 +118,7 @@ html, body {
   padding-bottom: 50px;
 }
 
-:root {
-  --introduction-border-width: 0.4rem;
-  --introduction-border-halfw: calc(var(--introduction-border-width) / 2);
-}
-
-.arrow__vertical_line {
+.arrow .vertical_line {
   -ms-grid-row: 1;
   -ms-grid-row-span: 3;
   grid-row: 1 / span 3;
@@ -136,18 +137,18 @@ html, body {
   margin-top: var(--introduction-border-width);
 }
 
-.arrow__vertical_line__inner {
+.arrow .vertical_line .inner {
   height: 100%;
   border-left: var(--introduction-border-width) dashed #ffffff;
 }
 
-.arrow__end {
-  width: calc(var(--introduction-border-width) * 5);
+.arrow .end {
   height: calc(var(--introduction-border-width) * 5);
+  width: calc(var(--introduction-border-width) * 5);
   border-bottom: var(--introduction-border-width) dashed #ffffff;
 }
 
-.arrow__end_left {
+.arrow .end_left {
   -ms-grid-row: 3;
   grid-row: 3;
   -ms-grid-column: 1;
@@ -156,12 +157,12 @@ html, body {
   -ms-flex-item-align: end;
       align-self: flex-end;
   -webkit-transform-origin: bottom right;
-          transform-origin: bottom right;
+  transform-origin: bottom right;
   -webkit-transform: translate(var(--introduction-border-halfw), var(--introduction-border-halfw)) rotate(45deg);
-          transform: translate(var(--introduction-border-halfw), var(--introduction-border-halfw)) rotate(45deg);
+  transform: translate(var(--introduction-border-halfw), var(--introduction-border-halfw)) rotate(45deg);
 }
 
-.arrow__end_right {
+.arrow .end_right {
   -ms-grid-row: 3;
   grid-row: 3;
   -ms-grid-column: 2;
@@ -170,9 +171,9 @@ html, body {
   -ms-flex-item-align: end;
       align-self: flex-end;
   -webkit-transform-origin: bottom left;
-          transform-origin: bottom left;
+  transform-origin: bottom left;
   -webkit-transform: translate(var(--introduction-border-halfw), var(--introduction-border-halfw)) rotate(-45deg);
-          transform: translate(var(--introduction-border-halfw), var(--introduction-border-halfw)) rotate(-45deg);
+  transform: translate(var(--introduction-border-halfw), var(--introduction-border-halfw)) rotate(-45deg);
 }
 
 :root {
@@ -199,7 +200,7 @@ html, body {
   cursor: pointer;
 }
 
-.retro_button__border {
+.retro_button .border {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -211,76 +212,83 @@ html, body {
           align-items: center;
 }
 
-.retro_button__border span {
+.retro_button .border img {
   position: absolute;
-  width: var(--retro_button_size);
   height: var(--retro_button_size);
-  border-radius: 100%;
+  width: var(--retro_button_size);
+  -webkit-clip-path: ellipse(calc(var(--retro_button_size) / 2) calc(var(--retro_button_size) / 2) at 50% 50%);
+          clip-path: ellipse(calc(var(--retro_button_size) / 2) calc(var(--retro_button_size) / 2) at 50% 50%);
 }
 
-.retro_button__border span:nth-child(1) {
-  -webkit-box-shadow: 0 1px 0 0 rgba(255, 192, 0, 0.25), 0 -1px 0 0 rgba(255, 64, 0, 0.25), 1px 0 0 0 rgba(255, 192, 0, 0.25), -1px 0 0 0 rgba(255, 64, 0, 0.25), 1px -1px 0 0 rgba(255, 128, 0, 0.5), -1px 1px 0 0 rgba(255, 128, 0, 0.5), 1px 1px 0 0 rgba(255, 255, 0, 0.75), -1px -1px 0 0 rgba(255, 0, 0, 0.75);
-          box-shadow: 0 1px 0 0 rgba(255, 192, 0, 0.25), 0 -1px 0 0 rgba(255, 64, 0, 0.25), 1px 0 0 0 rgba(255, 192, 0, 0.25), -1px 0 0 0 rgba(255, 64, 0, 0.25), 1px -1px 0 0 rgba(255, 128, 0, 0.5), -1px 1px 0 0 rgba(255, 128, 0, 0.5), 1px 1px 0 0 rgba(255, 255, 0, 0.75), -1px -1px 0 0 rgba(255, 0, 0, 0.75);
+.retro_button .border .circle {
+  position: absolute;
+  border-radius: 100%;
+  height: var(--retro_button_size);
+  width: var(--retro_button_size);
+}
+
+.retro_button .border .circle:nth-of-type(1) {
+  -webkit-box-shadow: 0 5px 0 0 rgba(181, 0, 255, 0.25), -5px 0 0 rgba(177, 0, 255, 0.25), 5px 0 0 0 rgba(181, 0, 255, 0.25), -5px 0 0 0 rgba(177, 0, 255, 0.25), 0px 0 0 rgba(179, 0, 255, 0.5), -5px 5px 0 0 rgba(179, 0, 255, 0.5), 5px 5px 0 0 rgba(183, 0, 255, 0.75), -10px 0 0 rgba(174, 0, 255, 0.75);
+          box-shadow: 0 5px 0 0 rgba(181, 0, 255, 0.25), -5px 0 0 rgba(177, 0, 255, 0.25), 5px 0 0 0 rgba(181, 0, 255, 0.25), -5px 0 0 0 rgba(177, 0, 255, 0.25), 0px 0 0 rgba(179, 0, 255, 0.5), -5px 5px 0 0 rgba(179, 0, 255, 0.5), 5px 5px 0 0 rgba(183, 0, 255, 0.75), -10px 0 0 rgba(174, 0, 255, 0.75);
+}
+
+.retro_button .border .circle:nth-of-type(2) {
+  -webkit-box-shadow: 0 3px 0 0 rgba(255, 192, 0, 0.25), -3px 0 0 rgba(255, 64, 0, 0.25), 3px 0 0 0 rgba(255, 192, 0, 0.25), -3px 0 0 0 rgba(255, 64, 0, 0.25), 0px 0 0 rgba(255, 128, 0, 0.5), -3px 3px 0 0 rgba(255, 128, 0, 0.5), 3px 3px 0 0 rgba(255, 255, 0, 0.75), -6px 0 0 rgba(255, 0, 0, 0.75);
+          box-shadow: 0 3px 0 0 rgba(255, 192, 0, 0.25), -3px 0 0 rgba(255, 64, 0, 0.25), 3px 0 0 0 rgba(255, 192, 0, 0.25), -3px 0 0 0 rgba(255, 64, 0, 0.25), 0px 0 0 rgba(255, 128, 0, 0.5), -3px 3px 0 0 rgba(255, 128, 0, 0.5), 3px 3px 0 0 rgba(255, 255, 0, 0.75), -6px 0 0 rgba(255, 0, 0, 0.75);
   -webkit-animation: psycho_circle 4s linear infinite;
           animation: psycho_circle 4s linear infinite;
 }
 
-.retro_button__border span:nth-child(2) {
-  -webkit-box-shadow: 0 1px 0 0 rgba(225, 131, 194, 0.25), 0 -1px 0 0 rgba(165, 181, 222, 0.25), 1px 0 0 0 rgba(225, 131, 194, 0.25), -1px 0 0 0 rgba(165, 181, 222, 0.25), 1px -1px 0 0 rgba(195, 156, 208, 0.5), -1px 1px 0 0 rgba(195, 156, 208, 0.5), 1px 1px 0 0 rgba(255, 105, 180, 0.75), -1px -1px 0 0 rgba(135, 206, 235, 0.75);
-          box-shadow: 0 1px 0 0 rgba(225, 131, 194, 0.25), 0 -1px 0 0 rgba(165, 181, 222, 0.25), 1px 0 0 0 rgba(225, 131, 194, 0.25), -1px 0 0 0 rgba(165, 181, 222, 0.25), 1px -1px 0 0 rgba(195, 156, 208, 0.5), -1px 1px 0 0 rgba(195, 156, 208, 0.5), 1px 1px 0 0 rgba(255, 105, 180, 0.75), -1px -1px 0 0 rgba(135, 206, 235, 0.75);
-  -webkit-animation: psycho_circle 4s linear .3s infinite;
-          animation: psycho_circle 4s linear .3s infinite;
+.retro_button .border .circle:nth-of-type(3) {
+  -webkit-box-shadow: 0 3px 0 0 rgba(225, 131, 194, 0.25), -3px 0 0 rgba(165, 181, 222, 0.25), 3px 0 0 0 rgba(225, 131, 194, 0.25), -3px 0 0 0 rgba(165, 181, 222, 0.25), 0px 0 0 rgba(195, 156, 208, 0.5), -3px 3px 0 0 rgba(195, 156, 208, 0.5), 3px 3px 0 0 rgba(255, 105, 180, 0.75), -6px 0 0 rgba(135, 206, 235, 0.75);
+          box-shadow: 0 3px 0 0 rgba(225, 131, 194, 0.25), -3px 0 0 rgba(165, 181, 222, 0.25), 3px 0 0 0 rgba(225, 131, 194, 0.25), -3px 0 0 0 rgba(165, 181, 222, 0.25), 0px 0 0 rgba(195, 156, 208, 0.5), -3px 3px 0 0 rgba(195, 156, 208, 0.5), 3px 3px 0 0 rgba(255, 105, 180, 0.75), -6px 0 0 rgba(135, 206, 235, 0.75);
+  -webkit-animation: psycho_circle 4s linear 0.3s infinite;
+          animation: psycho_circle 4s linear 0.3s infinite;
 }
 
-.retro_button__border span:nth-child(3) {
-  -webkit-box-shadow: 0 1px 0 0 rgba(192, 63, 153, 0.25), 0 -1px 0 0 rgba(214, 69, 99, 0.25), 1px 0 0 0 rgba(192, 63, 153, 0.25), -1px 0 0 0 rgba(214, 69, 99, 0.25), 1px -1px 0 0 rgba(203, 66, 126, 0.5), -1px 1px 0 0 rgba(203, 66, 126, 0.5), 1px 1px 0 0 rgba(181, 59, 180, 0.75), -1px -1px 0 0 rgba(225, 72, 71, 0.75);
-          box-shadow: 0 1px 0 0 rgba(192, 63, 153, 0.25), 0 -1px 0 0 rgba(214, 69, 99, 0.25), 1px 0 0 0 rgba(192, 63, 153, 0.25), -1px 0 0 0 rgba(214, 69, 99, 0.25), 1px -1px 0 0 rgba(203, 66, 126, 0.5), -1px 1px 0 0 rgba(203, 66, 126, 0.5), 1px 1px 0 0 rgba(181, 59, 180, 0.75), -1px -1px 0 0 rgba(225, 72, 71, 0.75);
+.retro_button .border .circle:nth-of-type(4) {
+  -webkit-box-shadow: 0 3px 0 0 rgba(192, 63, 153, 0.25), -3px 0 0 rgba(214, 69, 99, 0.25), 3px 0 0 0 rgba(192, 63, 153, 0.25), -3px 0 0 0 rgba(214, 69, 99, 0.25), 0px 0 0 rgba(203, 66, 126, 0.5), -3px 3px 0 0 rgba(203, 66, 126, 0.5), 3px 3px 0 0 rgba(181, 59, 180, 0.75), -6px 0 0 rgba(225, 72, 71, 0.75);
+          box-shadow: 0 3px 0 0 rgba(192, 63, 153, 0.25), -3px 0 0 rgba(214, 69, 99, 0.25), 3px 0 0 0 rgba(192, 63, 153, 0.25), -3px 0 0 0 rgba(214, 69, 99, 0.25), 0px 0 0 rgba(203, 66, 126, 0.5), -3px 3px 0 0 rgba(203, 66, 126, 0.5), 3px 3px 0 0 rgba(181, 59, 180, 0.75), -6px 0 0 rgba(225, 72, 71, 0.75);
+  -webkit-animation: psycho_circle 4s linear 0.6s infinite;
+          animation: psycho_circle 4s linear 0.6s infinite;
 }
 
 @-webkit-keyframes psycho_circle {
   0% {
     -webkit-transform: rotate(0deg) scale(1) translate(0, 0);
-            transform: rotate(0deg) scale(1) translate(0, 0);
+    transform: rotate(0deg) scale(1) translate(0, 0);
   }
   33% {
-    -webkit-transform: rotate(360deg) scale(1) translate(5px, 5px);
-            transform: rotate(360deg) scale(1) translate(5px, 5px);
+    -webkit-transform: rotate(360deg) scale(1) translate(15px, 15px);
+    transform: rotate(360deg) scale(1) translate(15px, 15px);
   }
   66% {
-    -webkit-transform: rotate(720deg) scale(1) translate(-5px, -5px);
-            transform: rotate(720deg) scale(1) translate(-5px, -5px);
+    -webkit-transform: rotate(720deg) scale(1) translate(-15px, -15px);
+    transform: rotate(720deg) scale(1) translate(-15px, -15px);
   }
   100% {
     -webkit-transform: rotate(1080deg) scale(1) translate(0, 0);
-            transform: rotate(1080deg) scale(1) translate(0, 0);
+    transform: rotate(1080deg) scale(1) translate(0, 0);
   }
 }
 
 @keyframes psycho_circle {
   0% {
     -webkit-transform: rotate(0deg) scale(1) translate(0, 0);
-            transform: rotate(0deg) scale(1) translate(0, 0);
+    transform: rotate(0deg) scale(1) translate(0, 0);
   }
   33% {
-    -webkit-transform: rotate(360deg) scale(1) translate(5px, 5px);
-            transform: rotate(360deg) scale(1) translate(5px, 5px);
+    -webkit-transform: rotate(360deg) scale(1) translate(15px, 15px);
+    transform: rotate(360deg) scale(1) translate(15px, 15px);
   }
   66% {
-    -webkit-transform: rotate(720deg) scale(1) translate(-5px, -5px);
-            transform: rotate(720deg) scale(1) translate(-5px, -5px);
+    -webkit-transform: rotate(720deg) scale(1) translate(-15px, -15px);
+    transform: rotate(720deg) scale(1) translate(-15px, -15px);
   }
   100% {
     -webkit-transform: rotate(1080deg) scale(1) translate(0, 0);
-            transform: rotate(1080deg) scale(1) translate(0, 0);
+    transform: rotate(1080deg) scale(1) translate(0, 0);
   }
-}
-
-.retro_button img {
-  position: absolute;
-  width: var(--retro_button_size);
-  height: var(--retro_button_size);
-  -webkit-clip-path: ellipse(calc(var(--retro_button_size) / 2) calc(var(--retro_button_size) / 2) at 50% 50%);
-          clip-path: ellipse(calc(var(--retro_button_size) / 2) calc(var(--retro_button_size) / 2) at 50% 50%);
 }
 
 .social_media {
@@ -302,9 +310,9 @@ html, body {
 }
 
 .social_media__dots {
-  border-top: 3px dashed #ffffff;
-  width: 50%;
   height: 10px;
+  width: 50%;
+  border-top: 3px dashed #ffffff;
 }
 
 .social_media__instagram img {
@@ -315,7 +323,8 @@ html, body {
   width: 0.8em;
 }
 
-.social_media__instagram, .social_media__linkedin {
+.social_media__instagram,
+.social_media__linkedin {
   cursor: pointer;
 }
 
@@ -348,8 +357,10 @@ html, body {
   text-shadow: 0px 0px 2px #6c98b6;
 }
 
-.goodbye__line1, .goodbye__line2, .goodbye__lines_combined {
-  font-family: 'Open Sans', sans-serif;
+.goodbye__line1,
+.goodbye__line2,
+.goodbye__lines_combined {
+  font-family: "Open Sans", sans-serif;
   font-size: 3.5rem;
   color: #ffffff;
   text-shadow: 3px 3px 2px #92ffff, -3px -3px 2px #ff4bff;
@@ -408,7 +419,7 @@ html, body {
         grid-template-columns: 100%;
     -ms-grid-rows: 40vh auto 50vh;
         grid-template-rows: 40vh auto 50vh;
-        grid-template-areas: "."  "header" "." "introduction" "retro_button";
+        grid-template-areas: "." "header" "." "introduction" "retro_button";
   }
   .introduction {
     border: 3px dashed #ffffff;
@@ -460,8 +471,7 @@ html, body {
   .introduction {
     border: 0;
     text-align: left;
-    padding: 0;
-    padding-left: 0.5rem;
+    padding: 0 0 0 0.5rem;
     border-left: var(--introduction-border-width) dashed #ffffff;
   }
 }
