@@ -8,16 +8,11 @@
 }
 
 :root {
-    /* Fluid typography variables */
-
-    --min-font-size: 20;
-    --min-font-size-px: 20px;
+    /* Fluid typography variables, (all of these are in pixels !) */
+    --min-font-size: 22;
     --max-font-size: 30;
-    --max-font-size-px: 30px;
     
     --font-scale-min-width: 400;
-    --font-scale-min-width-px: 400px;
-
     --font-scale-max-width: 1400;
 }
 
@@ -26,86 +21,22 @@ html, body {
 
     font-family: 'Roboto Slab', serif;
 
-    /* Fluid typography */
-    font-size: calc(var(--min-font-size-px) + (var(--max-font-size) - var(--min-font-size)) * 
-                    (100vw - var(--font-scale-min-width-px)) / 
+    /*  Fluid typography 
+        This is simply a mapping function: 
+            font-size = min + (max - min) * (100vw - min_width) / (max_width - min_width)
+
+        "* 1px" because we need to convert the variables to be in pixel units
+    */
+    font-size: calc(var(--min-font-size) * 1px + (var(--max-font-size) - var(--min-font-size)) * 
+                    (100vw - var(--font-scale-min-width) * 1px) / 
                     (var(--font-scale-max-width) - var(--font-scale-min-width)));
 
     overflow-x: hidden;
 }
 
-.parallax_container {
-    position: relative;
-    
-    width: 100vw;
-    height: 150vh; /*This makes sure the background extends behind the footer, side-effect: messes up image scale*/
-
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-.parallax__sky {
-    min-width: 100%;
-    min-height: 100%;
-
-    position: relative;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
-
-    z-index: 18;
-}
-
-.parallax__clouds_left {
-    position: absolute;
-    top: 0px;
-
-    min-width: 100%;
-    min-height: 100%;
-    overflow: hidden;
-
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
-
-    z-index: 19;
-}
-
-.parallax__clouds_right {
-    position: absolute;
-    top: 0px;
-
-    min-width: 100%;
-    min-height: 100%;
-    overflow: hidden;
-
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
-
-    z-index: 19;
-}
-
-.parallax__me {
-    position: absolute;
-    top: 0px;
-
-    min-width: 75%;
-    min-height: 75%;
-    overflow: hidden;
-    
-    z-index: 20;
-}
-
 .content_container {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-
-    z-index: 21;
-
     display: grid;
-    grid-template-areas: 
+    grid-template-areas:
         "main"
         "social_media"
         "goodbye";
@@ -113,29 +44,40 @@ html, body {
     justify-items: center;
     justify-content: center;
     align-content: space-around;
+
+
+    background-image: url("data/main-me.png"), url("data/main-clouds-left.png"), url("data/main-clouds-right.png"), url("data/main-bg.jpg");
+    background-size: contain, cover, cover, cover;
+    background-repeat: no-repeat;
+    background-position: 0px 700px, -300px 0px, 50% 0px, 0px 0px;
 }
 
 .main {
     grid-area: main;
     
-    width: 100vw;
     height: 100vh;
 
     display: grid;
 
-    /*Layout is defined near the bottom of this file depending on screen size - mobile first! :)*/
+    /* Layout is defined near the bottom of this file depending on screen size - mobile first! :) */
 
     justify-items: center;
     justify-content: center;
     align-content: stretch;
+
+    grid-template-columns: 50% 50%;
+    grid-template-areas: 
+        "header header"
+        ". introduction"
+        "retro_button retro_button";
 }
 
 /* For debugging.
+*/
 
 .content_container * {
     border: 1px solid yellow;
 }
-*/
 
 .header {
     grid-area: header;
@@ -161,8 +103,8 @@ html, body {
 
     align-self: center;
 
-    /*Has border-left or entire border depending on the layout. 
-      Take a look near the bottom of the page!*/
+    /*  Has border-left or entire border depending on the layout. 
+        Take a look near the bottom of the page!*/
     
     color: #ffffff;
     margin-top: 8vh;
@@ -177,8 +119,6 @@ html, body {
 
 .retro_button {
     grid-area: retro_button;
-
-    position: relative;
 
     margin-top: 40px;
 
@@ -297,7 +237,7 @@ html, body {
     text-shadow: 3px 3px 2px #92ffff, -3px -3px 2px #ff4bff;
 }
 
-/*Only visible on smaller screens, take a look near the bottom of this file!*/
+/* Only visible on smaller screens, take a look near the bottom of this file! */
 .goodbye__lines_combined {
     grid-area: lines;
 
@@ -338,7 +278,7 @@ html, body {
     color: #027780;
     cursor: pointer;
 }
-
+/*
 @media only screen and (max-width: 850px) {
     .main {
         grid-template-columns: 100%;
@@ -427,3 +367,4 @@ html, body {
         border-left: 3px dashed #ffffff;
     }
 }
+*/
