@@ -48,7 +48,7 @@ html, body {
     background-image: url("data/main-me.png"), url("data/main-clouds-left.png"), url("data/main-clouds-right.png"), url("data/main-bg.jpg");
     background-size: contain, cover, cover, cover;
     background-repeat: no-repeat;
-    background-position: 0px 700px, -300px 0px, -500px 0px, 0px 0px;
+    background-position: 0px 700px, -500px 0px, -500px 0px, 0px 0px;
 }
 
 .main {
@@ -66,10 +66,11 @@ html, body {
 }
 
 /* For debugging.
-*/
+
 .content_container * {
     border: 1px solid yellow;
 }
+*/
 
 .header {
     grid-area: header;
@@ -113,6 +114,66 @@ html, body {
 
     align-self: stretch;
     justify-self: stretch;
+
+    justify-content: center;
+
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(3, auto);
+
+    padding-bottom: 50px;
+}
+
+:root {
+    --introduction-border-width: 0.4rem;
+    --introduction-border-halfw: calc(var(--introduction-border-width) / 2);
+}
+
+.arrow__vertical_line {
+    grid-row: 1 / span 3;
+    grid-column: 2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: var(--introduction-border-width);
+    margin-top: var(--introduction-border-width);
+}
+
+.arrow__vertical_line__inner {
+    height: 100%;
+
+    border-left: var(--introduction-border-width) dashed #ffffff;
+}
+
+.arrow__end {
+    width: calc(var(--introduction-border-width) * 5);
+    height: calc(var(--introduction-border-width) * 5);
+
+    border-bottom: var(--introduction-border-width) dashed #ffffff;
+}
+
+.arrow__end_left {
+    grid-row: 3;
+    grid-column: 1;
+
+    justify-self: flex-end;
+    align-self: flex-end;
+
+    transform-origin: bottom right;
+    transform: translate(var( --introduction-border-halfw), var( --introduction-border-halfw)) rotate(45deg);
+}
+
+.arrow__end_right {
+    grid-row: 3;
+    grid-column: 2;
+    
+    justify-self: flex-start;
+    align-self: flex-end;
+
+    transform-origin: bottom left;
+    transform: translate(var( --introduction-border-halfw), var( --introduction-border-halfw)) rotate(-45deg);
 }
 
 :root {
@@ -133,8 +194,6 @@ html, body {
 
     height: var(--retro_button_size);
     cursor: pointer;
-
-    border: 1px solid red;
 }
 
 .retro_button__border {
@@ -296,11 +355,6 @@ html, body {
             "retro_button";
     }
 
-    /*
-    .header {
-        font-size: 0.6em;
-    }*/
-
     .introduction {
         border: 3px dashed #ffffff;
         padding: 20px;
@@ -367,6 +421,6 @@ html, body {
         padding: 0;
         padding-left: 0.5rem;
         
-        border-left: 0.4rem dashed #ffffff;
+        border-left: var(--introduction-border-width) dashed #ffffff;
     }
 }
