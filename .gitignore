@@ -1,1 +1,7 @@
 Assignment.txt
+
+node_modules
+gulpfile.js
+package-lock.json
+
+.vscode/*
