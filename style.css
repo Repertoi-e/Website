@@ -6,26 +6,147 @@
   padding: 0;
 }
 
-:root {
-  /* Fluid typography variables, (all of these are in pixels !) */
-  --min-font-size: 22;
-  --max-font-size: 30;
-  --font-scale-min-width: 400;
-  --font-scale-max-width: 1400;
-}
-
+/*  Fluid typography 
+    This is simply a mapping function: 
+        size = min + (max - min) * (100vw - min_width) / (max_width - min_width)
+*/
 html,
 body {
   background-color: #b1c3cd;
   font-family: "Roboto Slab", serif;
-  /*  Fluid typography 
-        This is simply a mapping function: 
-            font-size = min + (max - min) * (100vw - min_width) / (max_width - min_width)
-
-        "* 1px" because we need to convert the variables to be in pixel units
-    */
-  font-size: calc( var(--min-font-size) * 1px + (var(--max-font-size) - var(--min-font-size)) * (100vw - var(--font-scale-min-width) * 1px) / (var(--font-scale-max-width) - var(--font-scale-min-width)));
   overflow-x: hidden;
+}
+
+html,
+body {
+  font-size: 10px;
+}
+
+@media only screen and (min-width: 400px) {
+  html,
+  body {
+    font-size: calc( 10px + 6 * ((100vw - 400px) / 600));
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  html,
+  body {
+    font-size: 16px;
+  }
+}
+
+h1 {
+  font-size: 1.29616rem;
+}
+
+@media only screen and (min-width: 37.5rem) {
+  h1 {
+    font-size: calc( 1.29616rem + 1.86118 * ((100vw - 37.5rem) / 42.5));
+  }
+}
+
+@media only screen and (min-width: 80rem) {
+  h1 {
+    font-size: 3.15733rem;
+  }
+}
+
+h2 {
+  font-size: 1.21477rem;
+}
+
+@media only screen and (min-width: 37.5rem) {
+  h2 {
+    font-size: calc( 1.21477rem + 1.15383 * ((100vw - 37.5rem) / 42.5));
+  }
+}
+
+@media only screen and (min-width: 80rem) {
+  h2 {
+    font-size: 2.36859rem;
+  }
+}
+
+h3 {
+  font-size: 1.13849rem;
+}
+
+@media only screen and (min-width: 37.5rem) {
+  h3 {
+    font-size: calc( 1.13849rem + 0.6384 * ((100vw - 37.5rem) / 42.5));
+  }
+}
+
+@media only screen and (min-width: 80rem) {
+  h3 {
+    font-size: 1.77689rem;
+  }
+}
+
+h4 {
+  font-size: 1.067rem;
+}
+
+@media only screen and (min-width: 37.5rem) {
+  h4 {
+    font-size: calc( 1.067rem + 0.266 * ((100vw - 37.5rem) / 42.5));
+  }
+}
+
+@media only screen and (min-width: 80rem) {
+  h4 {
+    font-size: 1.333rem;
+  }
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+@media only screen and (min-width: 37.5rem) {
+  h5 {
+    font-size: calc( 1rem + 0 * ((100vw - 37.5rem) / 42.5));
+  }
+}
+
+@media only screen and (min-width: 80rem) {
+  h5 {
+    font-size: 1rem;
+  }
+}
+
+h6 {
+  font-size: 0.93721rem;
+}
+
+@media only screen and (min-width: 37.5rem) {
+  h6 {
+    font-size: calc( 0.93721rem + -0.18702 * ((100vw - 37.5rem) / 42.5));
+  }
+}
+
+@media only screen and (min-width: 80rem) {
+  h6 {
+    font-size: 0.75019rem;
+  }
+}
+
+/* Paragraphs by default have == font size with h4 */
+p {
+  font-size: 1.067rem;
+}
+
+@media only screen and (min-width: 37.5rem) {
+  p {
+    font-size: calc( 1.067rem + 0.266 * ((100vw - 37.5rem) / 42.5));
+  }
+}
+
+@media only screen and (min-width: 80rem) {
+  p {
+    font-size: 1.333rem;
+  }
 }
 
 .content {
@@ -41,7 +162,7 @@ body {
   background-image: url("data/main-me.png"), url("data/main-clouds-left.png"), url("data/main-clouds-right.png"), url("data/main-bg.jpg");
   background-size: contain, cover, cover, cover;
   background-repeat: no-repeat;
-  background-position: 0px 700px, -500px 0px, -500px 0px, 0px 0px;
+  background-position: 0px 200px, -100px 0px, -500px 0px, 0px 0px;
 }
 
 .main {
@@ -72,7 +193,6 @@ body {
       -ms-grid-row-align: center;
       align-self: center;
   text-align: center;
-  font-size: 0.75rem;
   font-weight: 700;
   color: #ececec;
   letter-spacing: 0.4em;
@@ -83,8 +203,6 @@ body {
 .introduction {
   grid-area: introduction;
   width: calc(2.6rem * 15);
-  font-size: 2.6rem;
-  font-weight: 600;
   -ms-grid-column-align: left;
       justify-self: left;
   -ms-flex-item-align: end;
@@ -93,6 +211,10 @@ body {
         Take a look near the bottom of the page!*/
   color: #ffffff;
   text-shadow: 0px 0px 5px #8fa9c0;
+}
+
+.introduction p {
+  font-size: 2em;
 }
 
 :root {
@@ -176,10 +298,6 @@ body {
   transform: translate(var(--introduction-border-halfw), var(--introduction-border-halfw)) rotate(-45deg);
 }
 
-:root {
-  --retro_button_size: calc(100px + 20vmin);
-}
-
 .retro_button {
   grid-area: retro_button;
   -ms-flex-item-align: end;
@@ -196,7 +314,7 @@ body {
   -ms-flex-item-align: start;
       align-self: flex-start;
   justify-self: stretch;
-  height: var(--retro_button_size);
+  height: calc(100px + 20vmin);
   cursor: pointer;
 }
 
@@ -214,17 +332,17 @@ body {
 
 .retro_button .border img {
   position: absolute;
-  height: var(--retro_button_size);
-  width: var(--retro_button_size);
-  -webkit-clip-path: ellipse(calc(var(--retro_button_size) / 2) calc(var(--retro_button_size) / 2) at 50% 50%);
-          clip-path: ellipse(calc(var(--retro_button_size) / 2) calc(var(--retro_button_size) / 2) at 50% 50%);
+  height: calc(100px + 20vmin);
+  width: calc(100px + 20vmin);
+  -webkit-clip-path: ellipse(calc(100px + 20vmin)/2 calc(100px + 20vmin)/2 at 50% 50%);
+          clip-path: ellipse(calc(100px + 20vmin)/2 calc(100px + 20vmin)/2 at 50% 50%);
 }
 
 .retro_button .border .circle {
   position: absolute;
   border-radius: 100%;
-  height: var(--retro_button_size);
-  width: var(--retro_button_size);
+  height: calc(100px + 20vmin);
+  width: calc(100px + 20vmin);
 }
 
 .retro_button .border .circle:nth-of-type(1) {
@@ -350,20 +468,20 @@ body {
   -webkit-writing-mode: vertical-rl;
       -ms-writing-mode: tb-rl;
           writing-mode: vertical-rl;
-  font-size: 0.2rem;
   font-weight: 700;
   letter-spacing: 0.07rem;
   color: #ffffff;
   text-shadow: 0px 0px 2px #6c98b6;
+  font-size: 0.5em;
 }
 
 .goodbye__line1,
 .goodbye__line2,
 .goodbye__lines_combined {
   font-family: "Open Sans", sans-serif;
-  font-size: 3.5rem;
   color: #ffffff;
   text-shadow: 3px 3px 2px #92ffff, -3px -3px 2px #ff4bff;
+  font-size: 4rem;
 }
 
 /* Only visible on smaller screens, take a look near the bottom of this file! */
@@ -376,7 +494,6 @@ body {
       -ms-writing-mode: tb-lr;
           writing-mode: vertical-lr;
   text-orientation: upright;
-  font-size: calc(3rem - 3vmax);
   text-align: center;
   line-height: 3rem;
   letter-spacing: -0.5rem;
@@ -401,7 +518,7 @@ body {
   -ms-grid-column: 3;
   -ms-grid-column-span: 2;
   grid-area: credit;
-  font-size: 0.25rem;
+  font-size: 0.6rem;
   font-weight: 700;
   color: #ffffff;
   letter-spacing: 0.07rem;

@@ -21,13 +21,23 @@
     }
 }
 
-:root {
-    /* Fluid typography variables, (all of these are in pixels !) */
-    --min-font-size: 22;
-    --max-font-size: 30;
+/*  Fluid typography 
+    This is simply a mapping function: 
+        size = min + (max - min) * (100vw - min_width) / (max_width - min_width)
+*/
+@mixin fluid-type($min-vw, $max-vw, $min-size, $max-size, $unit) {
+    & {
+        font-size: $min-size;
 
-    --font-scale-min-width: 400;
-    --font-scale-max-width: 1400;
+        @media only screen and (min-width: $min-vw) {
+            font-size: calc(
+                #{$min-size} + #{($max-size - $min-size) / $unit} * ((100vw - #{$min-vw}) / #{($max-vw - $min-vw) / $unit})
+            );
+        }
+        @media only screen and (min-width: $max-vw) {
+            font-size: $max-size;
+        }
+    }
 }
 
 html,
@@ -35,19 +45,59 @@ body {
     background-color: #b1c3cd;
 
     font-family: "Roboto Slab", serif;
-
-    /*  Fluid typography 
-        This is simply a mapping function: 
-            font-size = min + (max - min) * (100vw - min_width) / (max_width - min_width)
-
-        "* 1px" because we need to convert the variables to be in pixel units
-    */
-    font-size: calc(
-        var(--min-font-size) * 1px + (var(--max-font-size) - var(--min-font-size)) *
-            (100vw - var(--font-scale-min-width) * 1px) / (var(--font-scale-max-width) - var(--font-scale-min-width))
-    );
+    @include fluid-type(400px, 1000px, 10px, 16px, 1px);
 
     overflow-x: hidden;
+}
+
+$mod_1: 1.067;
+$mod_2: 1.333;
+
+$h1-min: $mod_1 * $mod_1 * $mod_1 * $mod_1 * 1rem;
+$h1-max: $mod_2 * $mod_2 * $mod_2 * $mod_2 * 1rem;
+
+$h2-min: $mod_1 * $mod_1 * $mod_1 * 1rem;
+$h2-max: $mod_2 * $mod_2 * $mod_2 * 1rem;
+
+$h3-min: $mod_1 * $mod_1 * 1rem;
+$h3-max: $mod_2 * $mod_2 * 1rem;
+
+$h4-min: $mod_1 * 1rem;
+$h4-max: $mod_2 * 1rem;
+
+$h5-min: 1rem;
+$h5-max: 1rem;
+
+$h6-min: (1rem / $mod_1);
+$h6-max: (1rem / $mod_2);
+
+h1 {
+    @include fluid-type(37.5rem, 80rem, $h1-min, $h1-max, 1rem);
+}
+
+h2 {
+    @include fluid-type(37.5rem, 80rem, $h2-min, $h2-max, 1rem);
+}
+
+h3 {
+    @include fluid-type(37.5rem, 80rem, $h3-min, $h3-max, 1rem);
+}
+
+h4 {
+    @include fluid-type(37.5rem, 80rem, $h4-min, $h4-max, 1rem);
+}
+
+h5 {
+    @include fluid-type(37.5rem, 80rem, $h5-min, $h5-max, 1rem);
+}
+
+h6 {
+    @include fluid-type(37.5rem, 80rem, $h6-min, $h6-max, 1rem);
+}
+
+/* Paragraphs by default have == font size with h4 */
+p {
+    @include fluid-type(37.5rem, 80rem, $h4-min, $h4-max, 1rem);
 }
 
 .content {
@@ -65,7 +115,7 @@ body {
         url("data/main-bg.jpg");
     background-size: contain, cover, cover, cover;
     background-repeat: no-repeat;
-    background-position: 0px 700px, -500px 0px, -500px 0px, 0px 0px;
+    background-position: 0px 200px, -100px 0px, -500px 0px, 0px 0px;
 }
 
 .main {
@@ -95,7 +145,6 @@ body {
     align-self: center;
     text-align: center;
 
-    font-size: 0.75rem;
     font-weight: 700;
 
     color: #ececec;
@@ -112,9 +161,6 @@ body {
 
     width: calc(2.6rem * 15);
 
-    font-size: 2.6rem;
-    font-weight: 600;
-
     justify-self: left;
     align-self: flex-end;
 
@@ -124,6 +170,10 @@ body {
     color: #ffffff;
 
     text-shadow: 0px 0px 5px #8fa9c0;
+
+    p {
+        font-size: 2em;
+    }
 }
 
 :root {
@@ -204,7 +254,7 @@ body {
         $thickness $thickness 0 $weight rgba($to, 0.75), -$thickness -$thickness 0 $weight rgba($from, 0.75);
 }
 
-$retro-button-size: 100px + 20vmin;
+$retro-button-size: calc(100px + 20vmin);
 
 .retro_button {
     grid-area: retro_button;
@@ -329,7 +379,6 @@ $retro-button-size: 100px + 20vmin;
 
     writing-mode: vertical-rl;
 
-    font-size: 0.2rem;
     font-weight: 700;
 
     letter-spacing: 0.07rem;
@@ -337,15 +386,18 @@ $retro-button-size: 100px + 20vmin;
     color: #ffffff;
 
     text-shadow: 0px 0px 2px #6c98b6;
+
+    font-size: 0.5em;
 }
 
 .goodbye__line1,
 .goodbye__line2,
 .goodbye__lines_combined {
     font-family: "Open Sans", sans-serif;
-    font-size: 3.5rem;
     color: #ffffff;
     text-shadow: 3px 3px 2px #92ffff, -3px -3px 2px #ff4bff;
+
+    font-size: 4rem;
 }
 
 /* Only visible on smaller screens, take a look near the bottom of this file! */
@@ -357,7 +409,6 @@ $retro-button-size: 100px + 20vmin;
     writing-mode: vertical-lr;
     text-orientation: upright;
 
-    font-size: calc(3rem - 3vmax);
     text-align: center;
 
     line-height: 3rem;
@@ -375,7 +426,7 @@ $retro-button-size: 100px + 20vmin;
 .goodbye__credit {
     grid-area: credit;
 
-    font-size: 0.25rem;
+    font-size: 0.6rem;
     font-weight: 700;
 
     color: #ffffff;

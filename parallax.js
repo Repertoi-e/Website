@@ -1,4 +1,4 @@
-const contentContainer = document.querySelector(".content_container");
+const contentContainer = document.querySelector(".content");
 
 const backgrounds = getComputedStyle(contentContainer).backgroundPosition.replace(/^\s+|\s+$/g,"").split(/\s*,\s*/);
 
@@ -21,9 +21,5 @@ window.addEventListener("scroll", () => {
             result += ", "; 
         }
     });
-
-    console.log(result);
-// background-position: 0px 700px, -300px 0px, 50% 0px, 0px 0px;
-
     contentContainer.style.backgroundPosition = result;
 });
