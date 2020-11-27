@@ -26,3 +26,4 @@ function update_scroll() {
 /* Update it the first time the page loads */
 update_scroll();
 window.addEventListener("scroll", update_scroll);
+window.addEventListener('resize', update_scroll);

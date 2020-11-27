@@ -25,9 +25,10 @@
 
     background-image: url("data/main-me.png"), url("data/main-clouds-left.png"), url("data/main-clouds-right.png"),
         url("data/main-bg.jpg");
-    background-size: 110%, 150%, cover, cover;
     background-repeat: no-repeat;
-    background-position: 0px 50px, -50px -100px, 0px 0px, 0px 0px;
+
+    /* Background images layout defined near the bottom of this file depending on screen size
+         - mobile first! :) */
 }
 
 .main {
@@ -248,7 +249,8 @@ $retro-button-size: 13rem;
         border-top: $dash-width dashed #ffffff;
     }
 
-    .instagram, .linkedin {
+    .instagram,
+    .linkedin {
         cursor: pointer;
     }
 
@@ -309,7 +311,8 @@ $retro-button-size: 13rem;
         letter-spacing: -0.5rem;
     }
 
-    .lines_combined, .line1 {
+    .lines_combined,
+    .line1 {
         grid-area: line1;
     }
 
@@ -344,9 +347,14 @@ $retro-button-size: 13rem;
 }
 
 @media only screen and (max-width: 850px) {
+    .content {
+        background-size: 210%, 350%, cover, cover;
+        background-position: 0px 50px, -50px -100px, 0px 0px, 0px 0px;
+    }
+
     .main {
         height: 150vh;
-        
+
         grid-template-columns: 100%;
         grid-template-rows: 30vh auto 30vh;
         grid-template-areas:
@@ -368,7 +376,7 @@ $retro-button-size: 13rem;
         display: grid;
 
         grid-template-columns: 1.5rem 1.5rem auto;
-        grid-template-rows: 4rem 15rem 3rem;
+        grid-template-rows: 4rem 15rem 5rem;
 
         //grid-template-columns: 10px 70px 10px;
         //grid-template-rows: 2.8rem 12rem 1.5em;
@@ -400,6 +408,11 @@ $retro-button-size: 13rem;
 }
 
 @media only screen and (min-width: 851px) {
+    .content {
+        background-size: 110%, 150%, cover, cover;
+        background-position: 0px 50px, -50px -100px, 0px 0px, 0px 0px;
+    }
+
     .main {
         height: 100vh;
 
