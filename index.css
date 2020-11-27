@@ -18,7 +18,6 @@
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: main;
-  height: 100vh;
   display: -ms-grid;
   display: grid;
   /* Layout is defined near the bottom of this file depending on screen size - mobile first! :) */
@@ -319,15 +318,14 @@
 }
 
 .goodbye .lines_combined {
-  grid-area: lines;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+  text-align: center;
+  text-orientation: upright;
   -webkit-writing-mode: vertical-lr;
       -ms-writing-mode: tb-lr;
           writing-mode: vertical-lr;
-  text-orientation: upright;
-  text-align: center;
   line-height: 3rem;
   letter-spacing: -0.5rem;
 }
@@ -363,28 +361,40 @@
 
 @media only screen and (max-width: 850px) {
   .main {
+    height: 150vh;
     -ms-grid-columns: 100%;
         grid-template-columns: 100%;
-    -ms-grid-rows: 40vh auto 50vh;
-        grid-template-rows: 40vh auto 50vh;
-        grid-template-areas: "." "header" "." "introduction" "retro_button";
+    -ms-grid-rows: 30vh auto 30vh;
+        grid-template-rows: 30vh auto 30vh;
+        grid-template-areas: "." "header" "." "introduction" "arrow" "retro_button";
   }
   .introduction {
-    border: 3px dashed #ffffff;
-    padding: 20px;
+    border: 0.4rem dashed #ffffff;
+    padding: 0.8rem;
     text-align: center;
   }
   .goodbye {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: 10px 70px 10px;
-        grid-template-columns: 10px 70px 10px;
-    -ms-grid-rows: 2.8rem 12rem 1.5em;
-        grid-template-rows: 2.8rem 12rem 1.5em;
-        grid-template-areas: ". lines lines lines" "copyright lines lines lines" "copyright credit credit credit";
+    -ms-grid-columns: 1.5rem 1.5rem auto;
+        grid-template-columns: 1.5rem 1.5rem auto;
+    -ms-grid-rows: 4rem 15rem 3rem;
+        grid-template-rows: 4rem 15rem 3rem;
+        grid-template-areas: ". lines lines" "copyright lines lines" "copyright credit credit";
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+  }
+  .goodbye .lines_combined {
+    display: initial;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 2;
+    grid-area: lines;
+  }
+  .goodbye .copyright {
+    padding-right: 1rem;
   }
   .goodbye .line1 {
     display: none;
@@ -396,13 +406,14 @@
 
 @media only screen and (min-width: 851px) {
   .main {
+    height: 100vh;
     -ms-grid-columns: 100%;
         grid-template-columns: 100%;
-        grid-template-areas: "header" "introduction" "retro_button";
+        grid-template-areas: "header" "introduction" "arrow" "retro_button";
   }
   .introduction {
-    border: 3px dashed #ffffff;
-    padding: 20px;
+    border: 0.4rem dashed #ffffff;
+    padding: 0.8rem;
     text-align: center;
   }
   .goodbye {
@@ -411,6 +422,9 @@
     -ms-grid-rows: 4rem 5rem 3rem;
         grid-template-rows: 4rem 5rem 3rem;
         grid-template-areas: "copyright line1 line1" "copyright . line2" "copyright . credit";
+  }
+  .goodbye .copyright {
+    padding-right: 0.5rem;
   }
   .goodbye .lines_combined {
     display: none;

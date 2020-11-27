@@ -33,8 +33,6 @@
 .main {
     grid-area: main;
 
-    height: 100vh;
-
     display: grid;
 
     /* Layout is defined near the bottom of this file depending on screen size - mobile first! :) */
@@ -300,14 +298,12 @@ $retro-button-size: 13rem;
 
     /* Only visible on smaller screens, take a look near the bottom of this file! */
     .lines_combined {
-        grid-area: lines;
-
         align-self: center;
 
-        writing-mode: vertical-lr;
+        text-align: center;
         text-orientation: upright;
 
-        text-align: center;
+        writing-mode: vertical-lr;
 
         line-height: 3rem;
         letter-spacing: -0.5rem;
@@ -349,33 +345,49 @@ $retro-button-size: 13rem;
 
 @media only screen and (max-width: 850px) {
     .main {
+        height: 150vh;
+        
         grid-template-columns: 100%;
-        grid-template-rows: 40vh auto 50vh;
+        grid-template-rows: 30vh auto 30vh;
         grid-template-areas:
             "."
             "header"
             "."
             "introduction"
+            "arrow"
             "retro_button";
     }
 
     .introduction {
-        border: 3px dashed #ffffff;
-        padding: 20px;
+        border: $dash-width dashed #ffffff;
+        padding: $dash-width * 2;
         text-align: center;
     }
 
     .goodbye {
         display: grid;
 
-        grid-template-columns: 10px 70px 10px;
-        grid-template-rows: 2.8rem 12rem 1.5em;
+        grid-template-columns: 1.5rem 1.5rem auto;
+        grid-template-rows: 4rem 15rem 3rem;
+
+        //grid-template-columns: 10px 70px 10px;
+        //grid-template-rows: 2.8rem 12rem 1.5em;
         grid-template-areas:
-            ". lines lines lines"
-            "copyright lines lines lines"
-            "copyright credit credit credit";
+            ". lines lines"
+            "copyright lines lines"
+            "copyright credit credit";
 
         justify-content: center;
+
+        .lines_combined {
+            display: initial;
+
+            grid-area: lines;
+        }
+
+        .copyright {
+            padding-right: 1rem;
+        }
 
         .line1 {
             display: none;
@@ -389,16 +401,19 @@ $retro-button-size: 13rem;
 
 @media only screen and (min-width: 851px) {
     .main {
+        height: 100vh;
+
         grid-template-columns: 100%;
         grid-template-areas:
             "header"
             "introduction"
+            "arrow"
             "retro_button";
     }
 
     .introduction {
-        border: 3px dashed #ffffff;
-        padding: 20px;
+        border: $dash-width dashed #ffffff;
+        padding: $dash-width * 2;
         text-align: center;
     }
 
@@ -409,6 +424,10 @@ $retro-button-size: 13rem;
             "copyright line1 line1"
             "copyright . line2"
             "copyright . credit";
+
+        .copyright {
+            padding-right: 0.5rem;
+        }
 
         .lines_combined {
             display: none;
