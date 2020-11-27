@@ -1,0 +1,438 @@
+@import "node_modules/bourbon/core/bourbon";
+
+@mixin transform($values...) {
+    @each $var in $values {
+        @include prefixer(transform, #{$var}, ("webkit", "moz", "ms", "o"));
+    }
+}
+
+@mixin transform-origin($values...) {
+    @each $var in $values {
+        @include prefixer(transform-origin, #{$var}, ("webkit", "moz", "ms", "o"));
+    }
+}
+
+.content {
+    display: grid;
+    grid-template-areas:
+        "main"
+        "social_media"
+        "goodbye";
+
+    justify-items: center;
+    justify-content: center;
+    align-content: space-around;
+
+    background-image: url("data/main-me.png"), url("data/main-clouds-left.png"), url("data/main-clouds-right.png"),
+        url("data/main-bg.jpg");
+    background-size: 110%, 150%, cover, cover;
+    background-repeat: no-repeat;
+    background-position: 0px 50px, -50px -100px, 0px 0px, 0px 0px;
+}
+
+.main {
+    grid-area: main;
+
+    height: 100vh;
+
+    display: grid;
+
+    /* Layout is defined near the bottom of this file depending on screen size - mobile first! :) */
+
+    justify-items: center;
+    justify-content: center;
+    align-content: stretch;
+}
+
+/* For debugging.
+.content * {
+    border: 1px solid yellow;
+}
+*/
+
+.header {
+    grid-area: header;
+
+    align-self: center;
+    text-align: center;
+
+    font-weight: 700;
+
+    color: #ececec;
+
+    letter-spacing: 0.4em;
+
+    text-shadow: 1px 1px 1px #8fa9c0;
+
+    padding-top: 20px;
+}
+
+.introduction {
+    grid-area: introduction;
+
+    width: calc(2.6rem * 15);
+
+    justify-self: left;
+    align-self: flex-end;
+
+    /*  Has border-left or entire border depending on the layout. 
+        Take a look near the bottom of the page!*/
+
+    color: #ffffff;
+
+    text-shadow: 0px 0px 5px #8fa9c0;
+
+    p {
+        font-size: 2em;
+    }
+}
+
+$dash-width: 0.4rem;
+
+.arrow {
+    grid-area: arrow;
+
+    align-self: stretch;
+    justify-self: stretch;
+
+    justify-content: center;
+
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(3, auto);
+
+    padding-bottom: 50px;
+
+    .vertical_line {
+        grid-row: 1 / span 3;
+        grid-column: 2;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: $dash-width;
+        margin-top: $dash-width;
+
+        .inner {
+            height: 100%;
+            border-left: $dash-width dashed #ffffff;
+        }
+    }
+
+    .end {
+        @include size($dash-width * 5);
+
+        border-bottom: $dash-width dashed #ffffff;
+    }
+
+    .end_left {
+        grid-row: 3;
+        grid-column: 1;
+
+        justify-self: flex-end;
+        align-self: flex-end;
+
+        @include transform-origin(bottom right);
+        @include transform(translate($dash-width / 2, $dash-width / 2) rotate(45deg));
+    }
+
+    .end_right {
+        grid-row: 3;
+        grid-column: 2;
+
+        justify-self: flex-start;
+        align-self: flex-end;
+
+        @include transform-origin(bottom left);
+        @include transform(translate($dash-width / 2, $dash-width / 2) rotate(-45deg));
+    }
+}
+
+@mixin border-gradient($thickness, $from, $to, $weight: 0) {
+    $mix-main: mix($from, $to);
+    $mix-sub-from: mix($mix-main, $from);
+    $mix-sub-to: mix($mix-main, $to);
+
+    box-shadow: 0 $thickness 0 $weight rgba($mix-sub-to, 0.25), 0 -$thickness 0 $weight rgba($mix-sub-from, 0.25),
+        $thickness 0 0 $weight rgba($mix-sub-to, 0.25), -$thickness 0 0 $weight rgba($mix-sub-from, 0.25),
+        $thickness -$thickness 0 $weight rgba($mix-main, 0.5), -$thickness $thickness 0 $weight rgba($mix-main, 0.5),
+        $thickness $thickness 0 $weight rgba($to, 0.75), -$thickness -$thickness 0 $weight rgba($from, 0.75);
+}
+
+$retro-button-size: 13rem;
+
+.retro_button {
+    grid-area: retro_button;
+
+    cursor: pointer;
+
+    height: $retro-button-size;
+
+    align-self: flex-start;
+    justify-self: stretch;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .border {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            position: absolute;
+            @include size($retro-button-size);
+
+            clip-path: ellipse($retro-button-size/2 $retro-button-size/2 at 50% 50%);
+        }
+
+        .circle {
+            position: absolute;
+
+            border-radius: 100%;
+
+            @include size($retro-button-size);
+
+            &:nth-of-type(1) {
+                @include border-gradient(0.15em, rgb(61, 162, 230), rgb(17, 41, 255));
+            }
+
+            &:nth-of-type(2) {
+                @include border-gradient(0.1em, red, blue);
+                animation: psycho_circle 3s linear infinite;
+            }
+
+            &:nth-of-type(3) {
+                @include border-gradient(0.1em, rgb(255, 255, 0), rgb(0, 255, 255));
+                animation: psycho_circle 3s linear 0.1s infinite;
+            }
+
+            &:nth-of-type(4) {
+                @include border-gradient(0.1em, rgb(255, 0, 255), rgb(0, 255, 0));
+                animation: psycho_circle 3s linear 0.2s infinite;
+            }
+        }
+    }
+}
+
+@keyframes psycho_circle {
+    0% {
+        @include transform(rotate(0deg) scale(1) translate(0, 0));
+    }
+    33% {
+        @include transform(rotate(360deg) scale(1) translate(3px, 3px));
+    }
+    66% {
+        @include transform(rotate(720deg) scale(1) translate(-3px, -3px));
+    }
+    100% {
+        @include transform(rotate(1080deg) scale(1) translate(0, 0));
+    }
+}
+
+.social_media {
+    grid-area: social_media;
+
+    width: 90vw;
+
+    display: flex;
+    align-items: center;
+
+    span {
+        margin: 5px;
+    }
+
+    .dashed {
+        @include size(50%, $dash-width / 2);
+
+        border-top: $dash-width dashed #ffffff;
+    }
+
+    .instagram, .linkedin {
+        cursor: pointer;
+    }
+
+    .instagram img {
+        width: 2rem;
+    }
+
+    .linkedin img {
+        width: 2rem;
+    }
+}
+
+.goodbye {
+    grid-area: goodbye;
+
+    margin-top: 1rem;
+
+    display: grid;
+
+    /* Layout is defined near the bottom of this file depending on screen size - mobile first! :) */
+
+    .copyright {
+        grid-area: copyright;
+
+        font-size: 0.5em;
+        font-weight: 700;
+        letter-spacing: 0.07rem;
+
+        writing-mode: vertical-rl;
+
+        padding-top: 10px;
+
+        color: #ffffff;
+
+        text-shadow: 0px 0px 2px #6c98b6;
+    }
+
+    .line1,
+    .line2,
+    .lines_combined {
+        font-family: "Open Sans", sans-serif;
+        font-size: 4rem;
+
+        color: #ffffff;
+        text-shadow: 3px 3px 2px #92ffff, -3px -3px 2px #ff4bff;
+    }
+
+    /* Only visible on smaller screens, take a look near the bottom of this file! */
+    .lines_combined {
+        grid-area: lines;
+
+        align-self: center;
+
+        writing-mode: vertical-lr;
+        text-orientation: upright;
+
+        text-align: center;
+
+        line-height: 3rem;
+        letter-spacing: -0.5rem;
+    }
+
+    .lines_combined, .line1 {
+        grid-area: line1;
+    }
+
+    .line2 {
+        grid-area: line2;
+
+        .heart {
+            font-size: 0.8em;
+            text-shadow: initial;
+            position: relative;
+            top: -0.55rem;
+        }
+    }
+
+    .credit {
+        grid-area: credit;
+
+        font-size: 0.6rem;
+        font-weight: 700;
+
+        color: #ffffff;
+
+        letter-spacing: 0.07rem;
+
+        text-shadow: 0px 0px 2px #6c98b6;
+
+        a {
+            color: #027780;
+            cursor: pointer;
+        }
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .main {
+        grid-template-columns: 100%;
+        grid-template-rows: 40vh auto 50vh;
+        grid-template-areas:
+            "."
+            "header"
+            "."
+            "introduction"
+            "retro_button";
+    }
+
+    .introduction {
+        border: 3px dashed #ffffff;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .goodbye {
+        display: grid;
+
+        grid-template-columns: 10px 70px 10px;
+        grid-template-rows: 2.8rem 12rem 1.5em;
+        grid-template-areas:
+            ". lines lines lines"
+            "copyright lines lines lines"
+            "copyright credit credit credit";
+
+        justify-content: center;
+
+        .line1 {
+            display: none;
+        }
+
+        .line2 {
+            display: none;
+        }
+    }
+}
+
+@media only screen and (min-width: 851px) {
+    .main {
+        grid-template-columns: 100%;
+        grid-template-areas:
+            "header"
+            "introduction"
+            "retro_button";
+    }
+
+    .introduction {
+        border: 3px dashed #ffffff;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .goodbye {
+        grid-template-columns: 1.5rem 1.5rem auto;
+        grid-template-rows: 4rem 5rem 3rem;
+        grid-template-areas:
+            "copyright line1 line1"
+            "copyright . line2"
+            "copyright . credit";
+
+        .lines_combined {
+            display: none;
+        }
+    }
+}
+
+@media only screen and (min-width: 901px) {
+    .main {
+        grid-template-columns: 50% 50%;
+        grid-template-areas:
+            "header header"
+            ". introduction"
+            "arrow arrow"
+            "retro_button retro_button";
+    }
+
+    .introduction {
+        border: 0;
+
+        text-align: left;
+
+        @include padding(0 0 0 0.5rem);
+
+        border-left: $dash-width dashed #ffffff;
+    }
+}

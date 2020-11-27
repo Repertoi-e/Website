@@ -1,0 +1,433 @@
+.content {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "main" "social_media" "goodbye";
+  justify-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+  background-image: url("data/main-me.png"), url("data/main-clouds-left.png"), url("data/main-clouds-right.png"), url("data/main-bg.jpg");
+  background-size: 110%, 150%, cover, cover;
+  background-repeat: no-repeat;
+  background-position: 0px 50px, -50px -100px, 0px 0px, 0px 0px;
+}
+
+.main {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: main;
+  height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  /* Layout is defined near the bottom of this file depending on screen size - mobile first! :) */
+  justify-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
+}
+
+/* For debugging.
+.content * {
+    border: 1px solid yellow;
+}
+*/
+.header {
+  grid-area: header;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-align: center;
+  font-weight: 700;
+  color: #ececec;
+  letter-spacing: 0.4em;
+  text-shadow: 1px 1px 1px #8fa9c0;
+  padding-top: 20px;
+}
+
+.introduction {
+  grid-area: introduction;
+  width: calc(2.6rem * 15);
+  -ms-grid-column-align: left;
+      justify-self: left;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  /*  Has border-left or entire border depending on the layout. 
+        Take a look near the bottom of the page!*/
+  color: #ffffff;
+  text-shadow: 0px 0px 5px #8fa9c0;
+}
+
+.introduction p {
+  font-size: 2em;
+}
+
+.arrow {
+  grid-area: arrow;
+  -ms-grid-row-align: stretch;
+      align-self: stretch;
+  -ms-grid-column-align: stretch;
+      justify-self: stretch;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (50%)[2];
+      grid-template-columns: repeat(2, 50%);
+  -ms-grid-rows: (auto)[3];
+      grid-template-rows: repeat(3, auto);
+  padding-bottom: 50px;
+}
+
+.arrow .vertical_line {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  grid-row: 1 / span 3;
+  -ms-grid-column: 2;
+  grid-column: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.arrow .vertical_line .inner {
+  height: 100%;
+  border-left: 0.4rem dashed #ffffff;
+}
+
+.arrow .end {
+  height: 2rem;
+  width: 2rem;
+  border-bottom: 0.4rem dashed #ffffff;
+}
+
+.arrow .end_left {
+  -ms-grid-row: 3;
+  grid-row: 3;
+  -ms-grid-column: 1;
+  grid-column: 1;
+  justify-self: flex-end;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  -webkit-transform-origin: bottom right;
+  transform-origin: bottom right;
+  -webkit-transform: translate(0.2rem, 0.2rem) rotate(45deg);
+  transform: translate(0.2rem, 0.2rem) rotate(45deg);
+}
+
+.arrow .end_right {
+  -ms-grid-row: 3;
+  grid-row: 3;
+  -ms-grid-column: 2;
+  grid-column: 2;
+  justify-self: flex-start;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  -webkit-transform-origin: bottom left;
+  transform-origin: bottom left;
+  -webkit-transform: translate(0.2rem, 0.2rem) rotate(-45deg);
+  transform: translate(0.2rem, 0.2rem) rotate(-45deg);
+}
+
+.retro_button {
+  grid-area: retro_button;
+  cursor: pointer;
+  height: 13rem;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  justify-self: stretch;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.retro_button .border {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.retro_button .border img {
+  position: absolute;
+  height: 13rem;
+  width: 13rem;
+  -webkit-clip-path: ellipse(6.5rem 6.5rem at 50% 50%);
+          clip-path: ellipse(6.5rem 6.5rem at 50% 50%);
+}
+
+.retro_button .border .circle {
+  position: absolute;
+  border-radius: 100%;
+  height: 13rem;
+  width: 13rem;
+}
+
+.retro_button .border .circle:nth-of-type(1) {
+  -webkit-box-shadow: 0 0.15em 0 0 rgba(28, 72, 249, 0.25), -0.15em 0 0 rgba(50, 132, 237, 0.25), 0.15em 0 0 0 rgba(28, 72, 249, 0.25), -0.15em 0 0 0 rgba(50, 132, 237, 0.25), 0em 0 0 rgba(39, 102, 243, 0.5), -0.15em 0.15em 0 0 rgba(39, 102, 243, 0.5), 0.15em 0.15em 0 0 rgba(17, 41, 255, 0.75), -0.3em 0 0 rgba(61, 162, 230, 0.75);
+          box-shadow: 0 0.15em 0 0 rgba(28, 72, 249, 0.25), -0.15em 0 0 rgba(50, 132, 237, 0.25), 0.15em 0 0 0 rgba(28, 72, 249, 0.25), -0.15em 0 0 0 rgba(50, 132, 237, 0.25), 0em 0 0 rgba(39, 102, 243, 0.5), -0.15em 0.15em 0 0 rgba(39, 102, 243, 0.5), 0.15em 0.15em 0 0 rgba(17, 41, 255, 0.75), -0.3em 0 0 rgba(61, 162, 230, 0.75);
+}
+
+.retro_button .border .circle:nth-of-type(2) {
+  -webkit-box-shadow: 0 0.1em 0 0 rgba(64, 0, 192, 0.25), -0.1em 0 0 rgba(192, 0, 64, 0.25), 0.1em 0 0 0 rgba(64, 0, 192, 0.25), -0.1em 0 0 0 rgba(192, 0, 64, 0.25), 0em 0 0 rgba(128, 0, 128, 0.5), -0.1em 0.1em 0 0 rgba(128, 0, 128, 0.5), 0.1em 0.1em 0 0 rgba(0, 0, 255, 0.75), -0.2em 0 0 rgba(255, 0, 0, 0.75);
+          box-shadow: 0 0.1em 0 0 rgba(64, 0, 192, 0.25), -0.1em 0 0 rgba(192, 0, 64, 0.25), 0.1em 0 0 0 rgba(64, 0, 192, 0.25), -0.1em 0 0 0 rgba(192, 0, 64, 0.25), 0em 0 0 rgba(128, 0, 128, 0.5), -0.1em 0.1em 0 0 rgba(128, 0, 128, 0.5), 0.1em 0.1em 0 0 rgba(0, 0, 255, 0.75), -0.2em 0 0 rgba(255, 0, 0, 0.75);
+  -webkit-animation: psycho_circle 3s linear infinite;
+          animation: psycho_circle 3s linear infinite;
+}
+
+.retro_button .border .circle:nth-of-type(3) {
+  -webkit-box-shadow: 0 0.1em 0 0 rgba(64, 255, 192, 0.25), -0.1em 0 0 rgba(192, 255, 64, 0.25), 0.1em 0 0 0 rgba(64, 255, 192, 0.25), -0.1em 0 0 0 rgba(192, 255, 64, 0.25), 0em 0 0 rgba(128, 255, 128, 0.5), -0.1em 0.1em 0 0 rgba(128, 255, 128, 0.5), 0.1em 0.1em 0 0 rgba(0, 255, 255, 0.75), -0.2em 0 0 rgba(255, 255, 0, 0.75);
+          box-shadow: 0 0.1em 0 0 rgba(64, 255, 192, 0.25), -0.1em 0 0 rgba(192, 255, 64, 0.25), 0.1em 0 0 0 rgba(64, 255, 192, 0.25), -0.1em 0 0 0 rgba(192, 255, 64, 0.25), 0em 0 0 rgba(128, 255, 128, 0.5), -0.1em 0.1em 0 0 rgba(128, 255, 128, 0.5), 0.1em 0.1em 0 0 rgba(0, 255, 255, 0.75), -0.2em 0 0 rgba(255, 255, 0, 0.75);
+  -webkit-animation: psycho_circle 3s linear 0.1s infinite;
+          animation: psycho_circle 3s linear 0.1s infinite;
+}
+
+.retro_button .border .circle:nth-of-type(4) {
+  -webkit-box-shadow: 0 0.1em 0 0 rgba(64, 192, 64, 0.25), -0.1em 0 0 rgba(192, 64, 192, 0.25), 0.1em 0 0 0 rgba(64, 192, 64, 0.25), -0.1em 0 0 0 rgba(192, 64, 192, 0.25), 0em 0 0 rgba(128, 128, 128, 0.5), -0.1em 0.1em 0 0 rgba(128, 128, 128, 0.5), 0.1em 0.1em 0 0 rgba(0, 255, 0, 0.75), -0.2em 0 0 rgba(255, 0, 255, 0.75);
+          box-shadow: 0 0.1em 0 0 rgba(64, 192, 64, 0.25), -0.1em 0 0 rgba(192, 64, 192, 0.25), 0.1em 0 0 0 rgba(64, 192, 64, 0.25), -0.1em 0 0 0 rgba(192, 64, 192, 0.25), 0em 0 0 rgba(128, 128, 128, 0.5), -0.1em 0.1em 0 0 rgba(128, 128, 128, 0.5), 0.1em 0.1em 0 0 rgba(0, 255, 0, 0.75), -0.2em 0 0 rgba(255, 0, 255, 0.75);
+  -webkit-animation: psycho_circle 3s linear 0.2s infinite;
+          animation: psycho_circle 3s linear 0.2s infinite;
+}
+
+@-webkit-keyframes psycho_circle {
+  0% {
+    -webkit-transform: rotate(0deg) scale(1) translate(0, 0);
+    transform: rotate(0deg) scale(1) translate(0, 0);
+  }
+  33% {
+    -webkit-transform: rotate(360deg) scale(1) translate(3px, 3px);
+    transform: rotate(360deg) scale(1) translate(3px, 3px);
+  }
+  66% {
+    -webkit-transform: rotate(720deg) scale(1) translate(-3px, -3px);
+    transform: rotate(720deg) scale(1) translate(-3px, -3px);
+  }
+  100% {
+    -webkit-transform: rotate(1080deg) scale(1) translate(0, 0);
+    transform: rotate(1080deg) scale(1) translate(0, 0);
+  }
+}
+
+@keyframes psycho_circle {
+  0% {
+    -webkit-transform: rotate(0deg) scale(1) translate(0, 0);
+    transform: rotate(0deg) scale(1) translate(0, 0);
+  }
+  33% {
+    -webkit-transform: rotate(360deg) scale(1) translate(3px, 3px);
+    transform: rotate(360deg) scale(1) translate(3px, 3px);
+  }
+  66% {
+    -webkit-transform: rotate(720deg) scale(1) translate(-3px, -3px);
+    transform: rotate(720deg) scale(1) translate(-3px, -3px);
+  }
+  100% {
+    -webkit-transform: rotate(1080deg) scale(1) translate(0, 0);
+    transform: rotate(1080deg) scale(1) translate(0, 0);
+  }
+}
+
+.social_media {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: social_media;
+  width: 90vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.social_media span {
+  margin: 5px;
+}
+
+.social_media .dashed {
+  height: 0.2rem;
+  width: 50%;
+  border-top: 0.4rem dashed #ffffff;
+}
+
+.social_media .instagram, .social_media .linkedin {
+  cursor: pointer;
+}
+
+.social_media .instagram img {
+  width: 2rem;
+}
+
+.social_media .linkedin img {
+  width: 2rem;
+}
+
+.goodbye {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: goodbye;
+  margin-top: 1rem;
+  display: -ms-grid;
+  display: grid;
+  /* Layout is defined near the bottom of this file depending on screen size - mobile first! :) */
+  /* Only visible on smaller screens, take a look near the bottom of this file! */
+}
+
+.goodbye .copyright {
+  grid-area: copyright;
+  font-size: 0.5em;
+  font-weight: 700;
+  letter-spacing: 0.07rem;
+  -webkit-writing-mode: vertical-rl;
+      -ms-writing-mode: tb-rl;
+          writing-mode: vertical-rl;
+  padding-top: 10px;
+  color: #ffffff;
+  text-shadow: 0px 0px 2px #6c98b6;
+}
+
+.goodbye .line1,
+.goodbye .line2,
+.goodbye .lines_combined {
+  font-family: "Open Sans", sans-serif;
+  font-size: 4rem;
+  color: #ffffff;
+  text-shadow: 3px 3px 2px #92ffff, -3px -3px 2px #ff4bff;
+}
+
+.goodbye .lines_combined {
+  grid-area: lines;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -webkit-writing-mode: vertical-lr;
+      -ms-writing-mode: tb-lr;
+          writing-mode: vertical-lr;
+  text-orientation: upright;
+  text-align: center;
+  line-height: 3rem;
+  letter-spacing: -0.5rem;
+}
+
+.goodbye .lines_combined, .goodbye .line1 {
+  grid-area: line1;
+}
+
+.goodbye .line2 {
+  grid-area: line2;
+}
+
+.goodbye .line2 .heart {
+  font-size: 0.8em;
+  text-shadow: initial;
+  position: relative;
+  top: -0.55rem;
+}
+
+.goodbye .credit {
+  grid-area: credit;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.07rem;
+  text-shadow: 0px 0px 2px #6c98b6;
+}
+
+.goodbye .credit a {
+  color: #027780;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 850px) {
+  .main {
+    -ms-grid-columns: 100%;
+        grid-template-columns: 100%;
+    -ms-grid-rows: 40vh auto 50vh;
+        grid-template-rows: 40vh auto 50vh;
+        grid-template-areas: "." "header" "." "introduction" "retro_button";
+  }
+  .introduction {
+    border: 3px dashed #ffffff;
+    padding: 20px;
+    text-align: center;
+  }
+  .goodbye {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 10px 70px 10px;
+        grid-template-columns: 10px 70px 10px;
+    -ms-grid-rows: 2.8rem 12rem 1.5em;
+        grid-template-rows: 2.8rem 12rem 1.5em;
+        grid-template-areas: ". lines lines lines" "copyright lines lines lines" "copyright credit credit credit";
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .goodbye .line1 {
+    display: none;
+  }
+  .goodbye .line2 {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 851px) {
+  .main {
+    -ms-grid-columns: 100%;
+        grid-template-columns: 100%;
+        grid-template-areas: "header" "introduction" "retro_button";
+  }
+  .introduction {
+    border: 3px dashed #ffffff;
+    padding: 20px;
+    text-align: center;
+  }
+  .goodbye {
+    -ms-grid-columns: 1.5rem 1.5rem auto;
+        grid-template-columns: 1.5rem 1.5rem auto;
+    -ms-grid-rows: 4rem 5rem 3rem;
+        grid-template-rows: 4rem 5rem 3rem;
+        grid-template-areas: "copyright line1 line1" "copyright . line2" "copyright . credit";
+  }
+  .goodbye .lines_combined {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 901px) {
+  .main {
+    -ms-grid-columns: 50% 50%;
+        grid-template-columns: 50% 50%;
+        grid-template-areas: "header header" ". introduction" "arrow arrow" "retro_button retro_button";
+  }
+  .introduction {
+    border: 0;
+    text-align: left;
+    padding: 0 0 0 0.5rem;
+    border-left: 0.4rem dashed #ffffff;
+  }
+}
+/*# sourceMappingURL=index.css.map */
