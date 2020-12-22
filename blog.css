@@ -11,7 +11,7 @@ body {
   top: 0;
   right: 0;
   width: 100vw;
-  height: calc(100vh + $gradient-height);
+  height: calc(100vh + 100px);
   background-image: url("data/retrowave_bg.gif");
   background-size: cover;
   background-repeat: no-repeat;
@@ -20,11 +20,12 @@ body {
 
 .gradient {
   width: 100vw;
-  height: 80vh;
+  height: calc(100vh + 100px);
   position: absolute;
-  bottom: 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), color-stop(60%, black), to(black));
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, black 60%, black 100%);
+  top: 0;
+  right: 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), color-stop(40%, black), to(black));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, black 40%, black 100%);
   z-index: -1;
 }
 
@@ -44,11 +45,6 @@ body {
       align-content: space-around;
 }
 
-/* For debugging.
-body * {
-    border: 1px solid yellow;
-}
-*/
 .header {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
@@ -142,6 +138,11 @@ body * {
   width: 204px;
 }
 
+/* For debugging.
+body * {
+    border: 1px solid yellow;
+}
+*/
 .main {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
@@ -149,11 +150,7 @@ body * {
   width: 80%;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 48rem auto;
-      grid-template-columns: 48rem auto;
-  -ms-grid-rows: 20rem;
-      grid-template-rows: 20rem;
-      grid-template-areas: "info me" "info2 me";
+      grid-template-areas: "posts";
   justify-items: center;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
@@ -164,37 +161,55 @@ body * {
   margin: 2rem;
 }
 
-.main .info {
+.main .posts {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
-  grid-area: info;
-  width: 48rem;
+  grid-area: posts;
+  width: 100%;
 }
 
-.main .info p {
-  font-size: 1.1rem;
+.main .posts .post {
+  border: 5px ridge gray;
+  margin: 2rem;
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "thumb title" "thumb desc";
+  justify-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
-.main .me {
+.main .posts .post .thumb {
   -ms-grid-row: 1;
   -ms-grid-row-span: 2;
-  -ms-grid-column: 2;
-  grid-area: me;
-}
-
-.main .me img {
-  width: 18rem;
-}
-
-.main .info2 {
-  -ms-grid-row: 2;
   -ms-grid-column: 1;
-  grid-area: info2;
-  width: 48rem;
+  grid-area: thumb;
+  height: 11rem;
+  width: 11rem;
 }
 
-.main .info2 p {
-  font-size: 1.1rem;
+.main .posts .post .title {
+  padding: 20px;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: title;
+  color: white;
+}
+
+.main .posts .post .desc {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: desc;
+  padding: 20px;
+  color: white;
+}
+
+.main .posts .post:hover {
+  border: 5px groove gray;
 }
 
 .footer {
