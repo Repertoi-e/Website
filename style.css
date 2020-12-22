@@ -12,20 +12,19 @@
 */
 html,
 body {
-  background-color: #b1c3cd;
   font-family: "Roboto Slab", serif;
   overflow-x: hidden;
 }
 
 html,
 body {
-  font-size: 7px;
+  font-size: 8px;
 }
 
 @media only screen and (min-width: 400px) {
   html,
   body {
-    font-size: calc( 7px + 9 * ((100vw - 400px) / 1000));
+    font-size: calc( 8px + 8 * ((100vw - 400px) / 1000));
   }
 }
 
@@ -132,7 +131,7 @@ h6 {
   }
 }
 
-/* Paragraphs by default have == font size with h4 */
+/* Paragraphs by default have the same font size as h4 */
 p {
   font-size: 1.067rem;
 }

@@ -1,0 +1,214 @@
+@import "node_modules/bourbon/core/bourbon";
+
+@mixin transform($values...) {
+    @each $var in $values {
+        @include prefixer(transform, #{$var}, ("webkit", "moz", "ms", "o"));
+    }
+}
+
+@mixin transform-origin($values...) {
+    @each $var in $values {
+        @include prefixer(transform-origin, #{$var}, ("webkit", "moz", "ms", "o"));
+    }
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Serif&display=swap");
+
+html,
+body {
+    font-family: "Noto Sans", sans-serif;
+
+    background-color: black;
+}
+
+$gradient-height: 100px;
+
+.background {
+    @include position(absolute, 0 0 null null);
+
+    width: 100vw;
+    height: calc(100vh + #{$gradient-height});
+
+    background-image: url("data/retrowave_bg.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.gradient {
+    width: 100vw;
+    height: $gradient-height;
+
+    @include position(absolute, null null 0 null);
+
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 127) 60%, rgba(0, 0, 0, 255) 100%);
+}
+
+$header-height: 150px;
+$hills-size: $header-height * 0.8;
+
+.content {
+    display: grid;
+
+    grid-template-columns: 100%;
+    grid-template-rows: $header-height auto;
+    grid-template-areas:
+        "header"
+        "main";
+
+    justify-items: center;
+    justify-content: center;
+    align-content: space-around;
+}
+
+/* For debugging.
+body * {
+    border: 1px solid yellow;
+}
+*/
+
+.header {
+    grid-area: header;
+
+    width: 100%;
+
+    font-family: "Noto Serif", serif;
+
+    display: grid;
+    grid-template-columns: 35vw $header-height 35vw;
+    grid-template-rows: 15vh;
+    grid-template-areas: "lbuttons icon rbuttons";
+
+    justify-items: center;
+    align-content: space-around;
+    justify-content: center;
+
+    background-color: rgba(5, 25, 56, 0.336);
+    border-bottom: 4px dashed rgba(5, 25, 56, 0.863);
+
+    .buttons_left {
+        grid-area: lbuttons;
+    }
+    .buttons_right {
+        grid-area: rbuttons;
+    }
+
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        justify-items: stretch;
+        align-content: center;
+        text-align: center;
+
+        width: 25vw;
+
+        a {
+            text-decoration: none;
+        }
+
+        h5 {
+            text-decoration: underline;
+            color: #eca089;
+        }
+
+        h5:hover {
+            cursor: pointer;
+
+            color: #d16aeb;
+            text-decoration: underline;
+        }
+
+        .active {
+            text-decoration: initial;
+
+            color: purple;
+        }
+    }
+
+    .icon {
+        grid-area: icon;
+
+        .hills {
+            left: calc(50% - #{$hills-size/2});
+            width: $hills-size;
+
+            clip-path: ellipse($hills-size/2 $hills-size/2 at 50% 50%);
+        }
+
+        $give-love-size: $hills-size * 0.85;
+
+        .give_love {
+            position: absolute;
+
+            left: calc(50% - #{$give-love-size/2});
+            width: $give-love-size;
+
+            margin-top: 6px;
+        }
+
+        $a-portfolio-size: $hills-size * 1.7;
+
+        .a_portfolio {
+            position: absolute;
+
+            left: calc(50% - #{$a-portfolio-size/2});
+            width: $a-portfolio-size;
+        }
+    }
+}
+
+.main {
+    grid-area: main;
+
+    width: 80%;
+
+    display: grid;
+    grid-template-columns: 48rem auto;
+    grid-template-rows: 20rem;
+    grid-template-areas: 
+        "info me"
+        "info2 me";
+
+    justify-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    margin: 2rem;
+
+    .info {
+        grid-area: info;
+
+        width: 48rem;
+
+        p {
+            font-size: 1.1rem;
+        }
+    }
+
+    .me {
+        grid-area: me;
+        img { width: 18rem; }
+    }
+    
+    .info2 {
+        grid-area: info2;
+
+        width: 48rem;
+
+        p {
+            font-size: 1.1rem;
+        }
+    }
+}
+
+.footer {
+    width: 100%;
+    padding: 10px;
+
+    @include position(absolute, null null 0 null);
+
+    color: rgb(146, 146, 146);
+
+    text-align: center;
+}

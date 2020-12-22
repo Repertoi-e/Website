@@ -12,6 +12,11 @@
     }
 }
 
+html,
+body {
+    background-color: #b1c3cd;
+}
+
 .content {
     display: grid;
     grid-template-areas:
@@ -49,6 +54,21 @@
 }
 */
 
+@mixin fluid-type($min-vw, $max-vw, $min-size, $max-size, $unit) {
+    & {
+        font-size: $min-size;
+
+        @media only screen and (min-width: $min-vw) {
+            font-size: calc(
+                #{$min-size} + #{($max-size - $min-size) / $unit} * ((100vw - #{$min-vw}) / #{($max-vw - $min-vw) / $unit})
+            );
+        }
+        @media only screen and (min-width: $max-vw) {
+            font-size: $max-size;
+        }
+    }
+}
+
 .header {
     grid-area: header;
 
@@ -59,11 +79,15 @@
 
     color: #ececec;
 
-    letter-spacing: 0.4em;
+    letter-spacing: 0.4rem;
 
-    text-shadow: 1px 1px 1px #8fa9c0;
+    text-shadow: 1px 1px 1px #70a1cc;
 
     padding-top: 20px;
+
+    h6 {
+        @include fluid-type(400px, 1400px, 14px, 12px, 1px);
+    }
 }
 
 .introduction {
@@ -82,7 +106,7 @@
     text-shadow: 0px 0px 5px #8fa9c0;
 
     p {
-        font-size: 2em;
+        font-size: 1.8em;
     }
 }
 
@@ -164,8 +188,6 @@ $retro-button-size: 13rem;
 .retro_button {
     grid-area: retro_button;
 
-    cursor: pointer;
-
     height: $retro-button-size;
 
     align-self: flex-start;
@@ -180,7 +202,7 @@ $retro-button-size: 13rem;
         align-items: center;
         justify-content: center;
 
-        img {
+        a {
             position: absolute;
             @include size($retro-button-size);
 
@@ -356,7 +378,7 @@ $retro-button-size: 13rem;
         height: 150vh;
 
         grid-template-columns: 100%;
-        grid-template-rows: 30vh auto 30vh;
+        grid-template-rows: 10vh 60px 5vh auto 25vh;
         grid-template-areas:
             "."
             "header"

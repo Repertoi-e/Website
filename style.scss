@@ -29,10 +29,8 @@
 
 html,
 body {
-    background-color: #b1c3cd;
-
     font-family: "Roboto Slab", serif;
-    @include fluid-type(400px, 1400px, 7px, 16px, 1px);
+    @include fluid-type(400px, 1400px, 8px, 16px, 1px);
 
     overflow-x: hidden;
 }
@@ -82,7 +80,7 @@ h6 {
     @include fluid-type(37.5rem, 80rem, $h6-min, $h6-max, 1rem);
 }
 
-/* Paragraphs by default have == font size with h4 */
+/* Paragraphs by default have the same font size as h4 */
 p {
     @include fluid-type(37.5rem, 80rem, $h4-min, $h4-max, 1rem);
 }
