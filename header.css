@@ -1,0 +1,91 @@
+.header {
+  grid-area: header;
+  width: 100%;
+  font-family: "Noto Serif", serif;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 35vw 150px 35vw;
+      grid-template-columns: 35vw 150px 35vw;
+  -ms-grid-rows: 15vh;
+      grid-template-rows: 15vh;
+      grid-template-areas: "lbuttons icon rbuttons";
+  justify-items: center;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: rgba(5, 25, 56, 0.336);
+  border-bottom: 4px dashed rgba(5, 25, 56, 0.863);
+}
+
+.header .buttons_left {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: lbuttons;
+}
+
+.header .buttons_right {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: rbuttons;
+}
+
+.header .buttons {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  justify-items: stretch;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  text-align: center;
+  width: 25vw;
+}
+
+.header .buttons a {
+  text-decoration: none;
+}
+
+.header .buttons h5 {
+  text-decoration: underline;
+  color: #eca089;
+}
+
+.header .buttons h5:hover {
+  cursor: pointer;
+  color: #d16aeb;
+  text-decoration: underline;
+}
+
+.header .buttons .active {
+  text-decoration: initial;
+  color: purple;
+}
+
+.header .icon {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: icon;
+}
+
+.header .icon .hills {
+  left: calc(50% - 60px);
+  width: 120px;
+  -webkit-clip-path: ellipse(60px 60px at 50% 50%);
+          clip-path: ellipse(60px 60px at 50% 50%);
+}
+
+.header .icon .give_love {
+  position: absolute;
+  left: calc(50% - 51px);
+  width: 102px;
+  margin-top: 6px;
+}
+
+.header .icon .a_portfolio {
+  position: absolute;
+  left: calc(50% - 102px);
+  width: 204px;
+}
+/*# sourceMappingURL=header.css.map */
