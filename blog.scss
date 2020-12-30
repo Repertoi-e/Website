@@ -45,8 +45,7 @@ body {
     z-index: -1;
 }
 
-$header-height: 150px;
-$hills-size: $header-height * 0.8;
+@import "header";
 
 .content {
     display: grid;
@@ -60,97 +59,6 @@ $hills-size: $header-height * 0.8;
     justify-items: center;
     justify-content: center;
     align-content: space-around;
-}
-
-.header {
-    grid-area: header;
-
-    width: 100%;
-
-    font-family: "Noto Serif", serif;
-
-    display: grid;
-    grid-template-columns: 35vw $header-height 35vw;
-    grid-template-rows: 15vh;
-    grid-template-areas: "lbuttons icon rbuttons";
-
-    justify-items: center;
-    align-content: space-around;
-    justify-content: center;
-
-    background-color: rgba(5, 25, 56, 0.336);
-    border-bottom: 4px dashed rgba(5, 25, 56, 0.863);
-
-    .buttons_left {
-        grid-area: lbuttons;
-    }
-    .buttons_right {
-        grid-area: rbuttons;
-    }
-
-    .buttons {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-
-        justify-items: stretch;
-        align-content: center;
-        text-align: center;
-
-        width: 25vw;
-
-        a {
-            text-decoration: none;
-        }
-
-        h5 {
-            text-decoration: underline;
-            color: #eca089;
-        }
-
-        h5:hover {
-            cursor: pointer;
-
-            color: #d16aeb;
-            text-decoration: underline;
-        }
-
-        .active {
-            text-decoration: initial;
-
-            color: purple;
-        }
-    }
-
-    .icon {
-        grid-area: icon;
-
-        .hills {
-            left: calc(50% - #{$hills-size/2});
-            width: $hills-size;
-
-            clip-path: ellipse($hills-size/2 $hills-size/2 at 50% 50%);
-        }
-
-        $give-love-size: $hills-size * 0.85;
-
-        .give_love {
-            position: absolute;
-
-            left: calc(50% - #{$give-love-size/2});
-            width: $give-love-size;
-
-            margin-top: 6px;
-        }
-
-        $a-portfolio-size: $hills-size * 1.7;
-
-        .a_portfolio {
-            position: absolute;
-
-            left: calc(50% - #{$a-portfolio-size/2});
-            width: $a-portfolio-size;
-        }
-    }
 }
 
 /* For debugging.
@@ -177,7 +85,7 @@ body * {
         grid-area: posts;
         width: 100%;
 
-        $thumbnail-size: 11rem;
+        $thumbnail-size: 13rem;
 
         a {
             text-decoration: none;
@@ -193,6 +101,7 @@ body * {
             display: grid;
             grid-template-areas: "thumb title"
                                  "thumb desc";
+            grid-template-columns: $thumbnail-size * 0.9 auto;
         
             justify-items: flex-start;
             justify-content: flex-start;
@@ -205,6 +114,7 @@ body * {
                 grid-area: thumb;
 
                 @include size($thumbnail-size);
+                mask-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
             }
 
             .title {
@@ -215,6 +125,8 @@ body * {
             .desc {
                 grid-area: desc;
                 padding: 20px;
+
+                color: rgb(185, 185, 185);
             }
         }
 
@@ -222,7 +134,7 @@ body * {
             border: 5px groove gray;
 
             color: rgb(43, 225, 238);
-            background-color: rgba(136, 146, 151, 0.308);
+            background-color: rgba(33, 68, 85, 0.308);
         }
     }
 }

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Serif&display=swap");
+
 $header-height: 150px;
 $hills-size: $header-height * 0.8;
 
@@ -42,18 +44,24 @@ $hills-size: $header-height * 0.8;
         }
 
         h5 {
+            all: revert;
+        }
+
+        h5.header__text {
+            font-size: 15px;
+
             text-decoration: underline;
             color: #eca089;
         }
 
-        h5:hover {
+        h5.header__text:hover {
             cursor: pointer;
 
             color: #d16aeb;
             text-decoration: underline;
         }
 
-        .active {
+        h5.active {
             text-decoration: initial;
 
             color: purple;

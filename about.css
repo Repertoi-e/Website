@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Serif&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Serif&display=swap");
 html,
 body {
   font-family: "Noto Sans", sans-serif;
@@ -29,27 +30,6 @@ body {
   z-index: -1;
 }
 
-.content {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 100%;
-      grid-template-columns: 100%;
-  -ms-grid-rows: 150px auto;
-      grid-template-rows: 150px auto;
-      grid-template-areas: "header" "main";
-  justify-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-line-pack: distribute;
-      align-content: space-around;
-}
-
-/* For debugging.
-body * {
-    border: 1px solid yellow;
-}
-*/
 .header {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
@@ -58,9 +38,7 @@ body * {
   font-family: "Noto Serif", serif;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 35vw 150px 35vw;
       grid-template-columns: 35vw 150px 35vw;
-  -ms-grid-rows: 15vh;
       grid-template-rows: 15vh;
       grid-template-areas: "lbuttons icon rbuttons";
   justify-items: center;
@@ -102,17 +80,22 @@ body * {
 }
 
 .header .buttons h5 {
+  all: revert;
+}
+
+.header .buttons h5.header__text {
+  font-size: 15px;
   text-decoration: underline;
   color: #eca089;
 }
 
-.header .buttons h5:hover {
+.header .buttons h5.header__text:hover {
   cursor: pointer;
   color: #d16aeb;
   text-decoration: underline;
 }
 
-.header .buttons .active {
+.header .buttons h5.active {
   text-decoration: initial;
   color: purple;
 }
@@ -143,6 +126,27 @@ body * {
   width: 204px;
 }
 
+.content {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 100%;
+      grid-template-columns: 100%;
+  -ms-grid-rows: 150px auto;
+      grid-template-rows: 150px auto;
+      grid-template-areas: "header" "main";
+  justify-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+}
+
+/* For debugging.
+body * {
+    border: 1px solid yellow;
+}
+*/
 .main {
   -ms-grid-row: 2;
   -ms-grid-column: 1;

@@ -1,0 +1,23 @@
+@import "header";
+
+.content {
+    display: grid;
+
+    grid-template-columns: 100%;
+    grid-template-rows: $header-height;
+    grid-template-areas: "header";
+
+    justify-items: center;
+    justify-content: center;
+    align-content: space-around;
+}
+
+.header {
+    background-color: black;
+    background-image: url("data/retrowave_bg.gif");
+    background-repeat: no-repeat;
+    background-position: 0vh -35vh;
+    background-size: 100vw;
+
+    border: 5px dashed yellow;
+}

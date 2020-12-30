@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Serif&display=swap");
 .header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
   grid-area: header;
   width: 100%;
   font-family: "Noto Serif", serif;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 35vw 150px 35vw;
       grid-template-columns: 35vw 150px 35vw;
-  -ms-grid-rows: 15vh;
       grid-template-rows: 15vh;
       grid-template-areas: "lbuttons icon rbuttons";
   justify-items: center;
@@ -94,4 +94,29 @@
   left: calc(50% - 102px);
   width: 204px;
 }
-/*# sourceMappingURL=header.css.map */
+
+.content {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 100%;
+      grid-template-columns: 100%;
+  -ms-grid-rows: 150px;
+      grid-template-rows: 150px;
+      grid-template-areas: "header";
+  justify-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+}
+
+.header {
+  background-color: black;
+  background-image: url("data/retrowave_bg.gif");
+  background-repeat: no-repeat;
+  background-position: 0vh -35vh;
+  background-size: 100vw;
+  border: 5px dashed yellow;
+}
+/*# sourceMappingURL=blog_article.css.map */
