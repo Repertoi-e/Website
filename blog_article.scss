@@ -4,7 +4,7 @@
     display: grid;
 
     grid-template-columns: 100%;
-    grid-template-rows: $header-height;
+    grid-template-rows: auto;
     grid-template-areas: "header";
 
     justify-items: center;
@@ -16,7 +16,15 @@
     background-color: black;
     background-image: url("data/retrowave_bg.gif");
     background-repeat: no-repeat;
-    background-position: 0vh -35vh;
+
+    @media only screen and (max-width: 519px) {
+        background-position: 0vh 15vh;
+    }
+
+    @media only screen and (min-width: 520px) {
+        background-position: 0vh -15vh;
+    }
+
     background-size: 100vw;
 
     border: 5px dashed yellow;
