@@ -18,13 +18,13 @@ body {
 
 html,
 body {
-  font-size: 8px;
+  font-size: 12px;
 }
 
 @media only screen and (min-width: 400px) {
   html,
   body {
-    font-size: calc( 8px + 8 * ((100vw - 400px) / 1000));
+    font-size: calc( 12px + 4 * ((100vw - 400px) / 1000));
   }
 }
 

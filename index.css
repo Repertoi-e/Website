@@ -70,7 +70,7 @@ body {
 
 .introduction {
   grid-area: introduction;
-  width: calc(2.6rem * 15);
+  width: calc(1.89rem * 15);
   -ms-grid-column-align: left;
       justify-self: left;
   -ms-flex-item-align: end;
@@ -390,8 +390,8 @@ body {
     height: 150vh;
     -ms-grid-columns: 100%;
         grid-template-columns: 100%;
-    -ms-grid-rows: 10vh 60px 5vh auto 25vh;
-        grid-template-rows: 10vh 60px 5vh auto 25vh;
+    -ms-grid-rows: 120px 60px 320px auto auto;
+        grid-template-rows: 120px 60px 320px auto auto;
         grid-template-areas: "." "header" "." "introduction" "arrow" "retro_button";
   }
   .introduction {

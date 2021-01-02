@@ -51,7 +51,7 @@ body {
     display: grid;
 
     grid-template-columns: 100%;
-    grid-template-rows: $header-height auto;
+    grid-template-rows: auto;
     grid-template-areas:
         "header"
         "main";

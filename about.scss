@@ -52,10 +52,11 @@ body {
     display: grid;
 
     grid-template-columns: 100%;
-    grid-template-rows: $header-height auto;
+    grid-template-rows: auto 100vh auto;
     grid-template-areas:
         "header"
-        "main";
+        "main"
+        "footer";
 
     justify-items: center;
     justify-content: center;
@@ -71,43 +72,49 @@ body * {
 .main {
     grid-area: main;
 
-    width: 80%;
-
     display: grid;
-    grid-template-columns: 48rem auto;
-    grid-template-rows: 20rem;
-    grid-template-areas: 
-        "info me"
-        "info2 me";
+
+    margin-top: 50px;
+
+    grid-template-rows: auto;
+
+    @media only screen and (max-width: 999px) {
+        grid-template-columns: 100%;
+        grid-template-areas:
+            "info"
+            "context";
+    }
+
+    @media only screen and (min-width: 1000px) {
+        grid-template-columns: auto 30px auto;
+        grid-template-areas: 
+            "info . context";
+    }
 
     justify-items: center;
     justify-content: flex-start;
     align-items: flex-start;
 
-    margin: 2rem;
-
-    .info {
+    .about {
         grid-area: info;
 
-        width: 48rem;
+        @media only screen and (max-width: 999px) {
+            width: 90vw;
+        }
+
+        @media only screen and (min-width: 1000px) {
+            width: 48em;
+        }
 
         p {
             font-size: 1.1rem;
         }
     }
 
-    .me {
-        grid-area: me;
-        img { width: 18rem; }
-    }
-    
-    .info2 {
-        grid-area: info2;
-
-        width: 48rem;
-
-        p {
-            font-size: 1.1rem;
+    .context {
+        grid-area: context;
+        img {
+            width: 18em;
         }
     }
 }
@@ -116,7 +123,7 @@ body * {
     width: 100%;
     padding: 10px;
 
-    @include position(absolute, null null 0 null);
+    //@include position(absolute, null null 0 null);
 
     color: rgb(146, 146, 146);
 

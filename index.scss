@@ -93,7 +93,7 @@ body {
 .introduction {
     grid-area: introduction;
 
-    width: calc(2.6rem * 15);
+    width: calc(1.89rem * 15);
 
     justify-self: left;
     align-self: flex-end;
@@ -378,7 +378,7 @@ $retro-button-size: 13rem;
         height: 150vh;
 
         grid-template-columns: 100%;
-        grid-template-rows: 10vh 60px 5vh auto 25vh;
+        grid-template-rows: 120px 60px 320px auto auto;
         grid-template-areas:
             "."
             "header"

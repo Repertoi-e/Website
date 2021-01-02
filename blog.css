@@ -29,37 +29,81 @@ body {
   z-index: -1;
 }
 
+/*  Fluid typography 
+    This is simply a mapping function: 
+        size = min + (max - min) * (100vw - min_width) / (max_width - min_width)
+*/
 .header {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: header;
   width: 100%;
   font-family: "Noto Serif", serif;
-  display: -ms-grid;
-  display: grid;
-      grid-template-columns: 35vw 150px 35vw;
-      grid-template-rows: 15vh;
-      grid-template-areas: "lbuttons icon rbuttons";
-  justify-items: center;
-  -ms-flex-line-pack: distribute;
-      align-content: space-around;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   background-color: rgba(5, 25, 56, 0.336);
   border-bottom: 4px dashed rgba(5, 25, 56, 0.863);
 }
 
-.header .buttons_left {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  grid-area: lbuttons;
+.header .icon_container {
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.header .buttons_right {
-  -ms-grid-row: 1;
-  -ms-grid-column: 3;
-  grid-area: rbuttons;
+.header .button_container {
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media only screen and (max-width: 519px) {
+  .header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column nowrap;
+            flex-flow: column nowrap;
+  }
+  .header .button_container {
+    margin-top: 30px;
+  }
+}
+
+@media only screen and (min-width: 520px) {
+  .header {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+  }
+  .header .button_container {
+    width: 100%;
+    margin-top: initial;
+    margin-left: -100%;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
 }
 
 .header .buttons {
@@ -83,9 +127,40 @@ body {
 }
 
 .header .buttons h5.header__text {
-  font-size: 15px;
   text-decoration: underline;
   color: #eca089;
+}
+
+.header .buttons h5.header__text {
+  font-size: 12px;
+}
+
+@media only screen and (min-width: 400px) {
+  .header .buttons h5.header__text {
+    font-size: calc( 12px + 4 * ((100vw - 400px) / 1000));
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .header .buttons h5.header__text {
+    font-size: 16px;
+  }
+}
+
+.header .buttons h5.header__text {
+  font-size: 8px;
+}
+
+@media only screen and (min-width: 200px) {
+  .header .buttons h5.header__text {
+    font-size: calc( 8px + 4 * ((100vw - 200px) / 199));
+  }
+}
+
+@media only screen and (min-width: 399px) {
+  .header .buttons h5.header__text {
+    font-size: 12px;
+  }
 }
 
 .header .buttons h5.header__text:hover {
@@ -100,29 +175,45 @@ body {
 }
 
 .header .icon {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
   grid-area: icon;
+  margin-top: 15px;
+  width: 130px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
 }
 
 .header .icon .hills {
-  left: calc(50% - 60px);
-  width: 120px;
-  -webkit-clip-path: ellipse(60px 60px at 50% 50%);
-          clip-path: ellipse(60px 60px at 50% 50%);
+  width: 100%;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  -webkit-clip-path: ellipse(65px 65px at 50% 50%);
+          clip-path: ellipse(65px 65px at 50% 50%);
 }
 
 .header .icon .give_love {
-  position: absolute;
-  left: calc(50% - 51px);
-  width: 102px;
-  margin-top: 6px;
+  width: 110.5px;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  margin-left: calc(-100% + 10px);
+  margin-top: 3px;
+  z-index: 2;
 }
 
 .header .icon .a_portfolio {
-  position: absolute;
-  left: calc(50% - 102px);
-  width: 204px;
+  width: 195px;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  margin-left: calc(-100% - 25px);
+  margin-bottom: -45px;
+  z-index: 2;
 }
 
 .content {
@@ -130,8 +221,8 @@ body {
   display: grid;
   -ms-grid-columns: 100%;
       grid-template-columns: 100%;
-  -ms-grid-rows: 150px auto;
-      grid-template-rows: 150px auto;
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
       grid-template-areas: "header" "main";
   justify-items: center;
   -webkit-box-pack: center;
