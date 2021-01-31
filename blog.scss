@@ -113,8 +113,9 @@ body * {
             .thumb {
                 grid-area: thumb;
 
-                @include size($thumbnail-size);
-                mask-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
+                // @include size($thumbnail-size);
+                height: 100%;
+                mask-image: linear-gradient(to right, rgba(0,0,0,1) 0px, rgba(0,0,0,0) $thumbnail-size);
             }
 
             .title {
@@ -142,8 +143,6 @@ body * {
 .footer {
     width: 100%;
     padding: 10px;
-
-    @include position(absolute, null null 0 null);
 
     color: rgb(146, 146, 146);
 

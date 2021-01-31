@@ -281,12 +281,9 @@ body * {
   -ms-grid-row-span: 2;
   -ms-grid-column: 1;
   grid-area: thumb;
-  height: 13rem;
-  width: 13rem;
-  -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(black), to(rgba(0, 0, 0, 0)));
-  -webkit-mask-image: linear-gradient(to right, black, rgba(0, 0, 0, 0));
-          mask-image: -webkit-gradient(linear, left top, right top, from(black), to(rgba(0, 0, 0, 0)));
-          mask-image: linear-gradient(to right, black, rgba(0, 0, 0, 0));
+  height: 100%;
+  -webkit-mask-image: linear-gradient(to right, black 0px, rgba(0, 0, 0, 0) 13rem);
+          mask-image: linear-gradient(to right, black 0px, rgba(0, 0, 0, 0) 13rem);
 }
 
 .main .posts .post .title {
@@ -313,8 +310,6 @@ body * {
 .footer {
   width: 100%;
   padding: 10px;
-  position: absolute;
-  bottom: 0;
   color: #929292;
   text-align: center;
 }

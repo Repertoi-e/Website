@@ -199,6 +199,7 @@
   background-repeat: no-repeat;
   background-size: 100vw;
   border: 5px dashed yellow;
+  margin-bottom: 20px;
 }
 
 @media only screen and (max-width: 519px) {
