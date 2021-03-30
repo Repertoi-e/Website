@@ -292,9 +292,14 @@ body {
   border-top: 0.4rem dashed #ffffff;
 }
 
-.social_media .instagram,
-.social_media .linkedin {
+.social_media .github,
+.social_media .linkedin,
+.social_media .instagram {
   cursor: pointer;
+}
+
+.social_media .github img {
+  width: 2rem;
 }
 
 .social_media .instagram img {

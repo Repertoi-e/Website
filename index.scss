@@ -271,9 +271,14 @@ $retro-button-size: 13rem;
         border-top: $dash-width dashed #ffffff;
     }
 
-    .instagram,
-    .linkedin {
+    .github,
+    .linkedin,
+    .instagram {
         cursor: pointer;
+    }
+
+    .github img {
+        width: 2rem;
     }
 
     .instagram img {
