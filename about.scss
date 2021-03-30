@@ -81,23 +81,25 @@ body * {
     @media only screen and (max-width: 999px) {
         grid-template-columns: 100%;
         grid-template-areas:
-            "info"
-            "context";
+            "about"
+            "projects"
+            "me";
     }
 
     @media only screen and (min-width: 1000px) {
         grid-template-columns: auto 30px auto;
         grid-template-areas: 
-            "info . context";
+            "about . me"
+            ". projects ."
+            "footer footer footer ";
     }
 
     justify-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-start;
+    align-content: flex-start;
 
-    .about {
-        grid-area: info;
-
+    .about, .projects {
         @media only screen and (max-width: 999px) {
             width: 90vw;
         }
@@ -109,6 +111,16 @@ body * {
         p {
             font-size: 1.1rem;
         }
+
+        margin-bottom: 1rem;
+    }
+
+    .about {
+        grid-area: about;
+    }
+
+    .projects {
+        grid-area: projects;
     }
 
     .context {
@@ -117,15 +129,26 @@ body * {
             width: 18em;
         }
     }
-}
 
-.footer {
-    width: 100%;
-    padding: 10px;
+    .me {
+        grid-area: me;
+        img {
+            width: 25em;
+        }
 
-    //@include position(absolute, null null 0 null);
+        margin-bottom: 1rem;
+    }
 
-    color: rgb(146, 146, 146);
+    .footer {
+        grid-area: footer;
 
-    text-align: center;
+        width: 100%;
+        padding: 10px;
+
+        //@include position(absolute, null null 0 null);
+
+        color: rgb(146, 146, 146);
+
+        text-align: center;
+    }
 }
