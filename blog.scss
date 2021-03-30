@@ -73,7 +73,8 @@ body * {
     width: 80%;
 
     display: grid;
-    grid-template-areas: "posts";
+    grid-template-areas: "videos"
+                         "posts";
 
     justify-items: center;
     justify-content: flex-start;

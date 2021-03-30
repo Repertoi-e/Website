@@ -235,7 +235,7 @@ body * {
   width: 80%;
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "posts";
+      grid-template-areas: "videos" "posts";
   justify-items: center;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
@@ -247,7 +247,7 @@ body * {
 }
 
 .main .posts {
-  -ms-grid-row: 1;
+  -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: posts;
   width: 100%;
