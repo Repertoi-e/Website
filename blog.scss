@@ -76,7 +76,9 @@ body * {
     display: grid;
     grid-template-areas: "videos_title"
                          "videos"
+                         "projects_title"
                          "projects"
+                         "posts_title"
                          "posts";
 
     justify-items: center;
@@ -85,7 +87,7 @@ body * {
 
     margin: 2rem;
 
-    .videos_title {
+    .videos_title, .projects_title, .posts_title {
         justify-self: left;
 
         font-family: 'Dancing Script', cursive;
@@ -94,6 +96,18 @@ body * {
         color: #c0c0c0;
 
         margin-bottom: -9px;
+        margin-top: 20px;
+    }
+
+    .projects_title, .posts_title {
+        width: 100%;
+
+        text-align: center;
+        font-family: "Noto Sans", serif;
+
+        color: #1aadad;
+
+        border-bottom: dashed 5px rgba(16, 105, 156, 0.438);
     }
 
     .videos {
@@ -113,7 +127,6 @@ body * {
             background-color: rgba(16, 105, 156, 0.438);
         }
     }
-
     
     .projects {
         grid-area: projects;
