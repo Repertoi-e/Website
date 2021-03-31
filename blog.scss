@@ -129,6 +129,8 @@ body * {
         .project {
             // cursor: pointer;
 
+            height: 13rem;
+
             border: 5px ridge gray;
 
             margin: 2rem;
@@ -147,6 +149,7 @@ body * {
             .title {
                 grid-area: title;
                 padding: 20px;
+                margin-bottom: -30px;
             }
 
             .desc {
