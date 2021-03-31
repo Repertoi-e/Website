@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Serif&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Serif&display=swap");
 html,
 body {
@@ -235,7 +236,7 @@ body * {
   width: 80%;
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "videos" "posts";
+      grid-template-areas: "videos_title" "videos" "posts";
   justify-items: center;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
@@ -246,8 +247,37 @@ body * {
   margin: 2rem;
 }
 
-.main .posts {
+.main .videos_title {
+  -ms-grid-column-align: left;
+      justify-self: left;
+  font-family: 'Dancing Script', cursive;
+  font-size: 3.5rem;
+  color: #c0c0c0;
+  margin-bottom: -9px;
+}
+
+.main .videos {
   -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: videos;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 1rem;
+  border: 5px ridge gray;
+  background-color: rgba(255, 255, 255, 0.096);
+}
+
+.main .videos .video {
+  color: #ffffff;
+  background-color: rgba(16, 105, 156, 0.438);
+}
+
+.main .posts {
+  -ms-grid-row: 3;
   -ms-grid-column: 1;
   grid-area: posts;
   width: 100%;
