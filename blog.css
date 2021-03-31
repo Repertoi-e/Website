@@ -236,7 +236,7 @@ body * {
   width: 80%;
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "videos_title" "videos" "posts";
+      grid-template-areas: "videos_title" "videos" "projects" "posts";
   justify-items: center;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
@@ -276,8 +276,62 @@ body * {
   background-color: rgba(16, 105, 156, 0.438);
 }
 
-.main .posts {
+.main .projects {
   -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: projects;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.main .projects a {
+  text-decoration: none;
+}
+
+.main .projects .project {
+  border: 5px ridge gray;
+  margin: 2rem;
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "title" "desc";
+  justify-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  color: #ffffff;
+  background-color: rgba(16, 105, 156, 0.438);
+}
+
+.main .projects .project .title {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: title;
+  padding: 20px;
+}
+
+.main .projects .project .desc {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: desc;
+  padding: 20px;
+  color: #b9b9b9;
+}
+
+.main .projects .project:hover {
+  border: 5px groove gray;
+  color: #2be1ee;
+  background-color: rgba(33, 68, 85, 0.308);
+}
+
+.main .posts {
+  -ms-grid-row: 4;
   -ms-grid-column: 1;
   grid-area: posts;
   width: 100%;
