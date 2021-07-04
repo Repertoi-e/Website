@@ -142,7 +142,7 @@ body * {
         .project {
             // cursor: pointer;
 
-            height: 13rem;
+            height: 12rem;
 
             border: 5px ridge gray;
 
@@ -185,7 +185,7 @@ body * {
         grid-area: posts;
         width: 100%;
 
-        $thumbnail-size: 13rem;
+        $thumbnail-size: 20rem;
 
         a {
             text-decoration: none;
@@ -197,11 +197,12 @@ body * {
             border: 5px ridge gray;
 
             margin: 2rem;
-
+            
             display: grid;
             grid-template-areas: "thumb title"
                                  "thumb desc";
             grid-template-columns: $thumbnail-size * 0.9 auto;
+            grid-template-rows: auto auto;
         
             justify-items: flex-start;
             justify-content: flex-start;
@@ -213,9 +214,9 @@ body * {
             .thumb {
                 grid-area: thumb;
 
-                // @include size($thumbnail-size);
+                // include size($thumbnail-size);
                 height: 100%;
-                mask-image: linear-gradient(to right, rgba(0,0,0,1) 0px, rgba(0,0,0,0) $thumbnail-size);
+                mask-image: linear-gradient(to right, rgba(0,0,0,1) 0px, rgba(0,0,0,0) $thumbnail-size - 2rem);
             }
 
             .title {
@@ -228,6 +229,10 @@ body * {
                 padding: 20px;
 
                 color: rgb(185, 185, 185);
+
+                h5 {
+                    font-size: 0.9rem;
+                }
             }
         }
 

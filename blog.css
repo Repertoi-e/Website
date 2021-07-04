@@ -302,7 +302,7 @@ body * {
 }
 
 .main .projects .project {
-  height: 13rem;
+  height: 12rem;
   border: 5px ridge gray;
   margin: 2rem;
   display: -ms-grid;
@@ -358,8 +358,10 @@ body * {
   display: -ms-grid;
   display: grid;
       grid-template-areas: "thumb title" "thumb desc";
-  -ms-grid-columns: 11.7rem auto;
-      grid-template-columns: 11.7rem auto;
+  -ms-grid-columns: 18rem auto;
+      grid-template-columns: 18rem auto;
+  -ms-grid-rows: auto auto;
+      grid-template-rows: auto auto;
   justify-items: flex-start;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
@@ -377,8 +379,8 @@ body * {
   -ms-grid-column: 1;
   grid-area: thumb;
   height: 100%;
-  -webkit-mask-image: linear-gradient(to right, black 0px, rgba(0, 0, 0, 0) 13rem);
-          mask-image: linear-gradient(to right, black 0px, rgba(0, 0, 0, 0) 13rem);
+  -webkit-mask-image: linear-gradient(to right, black 0px, rgba(0, 0, 0, 0) 18rem);
+          mask-image: linear-gradient(to right, black 0px, rgba(0, 0, 0, 0) 18rem);
 }
 
 .main .posts .post .title {
@@ -394,6 +396,10 @@ body * {
   grid-area: desc;
   padding: 20px;
   color: #b9b9b9;
+}
+
+.main .posts .post .desc h5 {
+  font-size: 0.9rem;
 }
 
 .main .posts .post:hover {
