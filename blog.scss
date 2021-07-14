@@ -76,10 +76,10 @@ body * {
     display: grid;
     grid-template-areas: "videos_title"
                          "videos"
-                         "projects_title"
-                         "projects"
                          "posts_title"
-                         "posts";
+                         "posts"
+                         "projects_title"
+                         "projects";
 
     justify-items: center;
     justify-content: flex-start;
