@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -15,84 +14,83 @@ body {
   font-family: "Roboto Slab", serif;
   overflow-x: hidden;
 }
-
 html,
 body {
   font-size: 12px;
 }
-
 @media only screen and (min-width: 400px) {
   html,
-  body {
-    font-size: calc( 12px + 4 * ((100vw - 400px) / 1000));
+body {
+    font-size: calc(
+                12px + 4 * ((100vw - 400px) / 1000)
+            );
   }
 }
-
 @media only screen and (min-width: 1400px) {
   html,
-  body {
+body {
     font-size: 16px;
   }
 }
 
 h1 {
-  font-size: 1.29616rem;
+  font-size: 1.2961572031rem;
 }
-
 @media only screen and (min-width: 37.5rem) {
   h1 {
-    font-size: calc( 1.29616rem + 1.86118 * ((100vw - 37.5rem) / 42.5));
+    font-size: calc(
+                1.2961572031rem + 1.8611773152 * ((100vw - 37.5rem) / 42.5)
+            );
   }
 }
-
 @media only screen and (min-width: 80rem) {
   h1 {
-    font-size: 3.15733rem;
+    font-size: 3.1573345183rem;
   }
 }
 
 h2 {
-  font-size: 1.21477rem;
+  font-size: 1.214767763rem;
 }
-
 @media only screen and (min-width: 37.5rem) {
   h2 {
-    font-size: calc( 1.21477rem + 1.15383 * ((100vw - 37.5rem) / 42.5));
+    font-size: calc(
+                1.214767763rem + 1.153825274 * ((100vw - 37.5rem) / 42.5)
+            );
   }
 }
-
 @media only screen and (min-width: 80rem) {
   h2 {
-    font-size: 2.36859rem;
+    font-size: 2.368593037rem;
   }
 }
 
 h3 {
-  font-size: 1.13849rem;
+  font-size: 1.138489rem;
 }
-
 @media only screen and (min-width: 37.5rem) {
   h3 {
-    font-size: calc( 1.13849rem + 0.6384 * ((100vw - 37.5rem) / 42.5));
+    font-size: calc(
+                1.138489rem + 0.6384 * ((100vw - 37.5rem) / 42.5)
+            );
   }
 }
-
 @media only screen and (min-width: 80rem) {
   h3 {
-    font-size: 1.77689rem;
+    font-size: 1.776889rem;
   }
 }
 
 h4 {
   font-size: 1.067rem;
 }
-
 @media only screen and (min-width: 37.5rem) {
   h4 {
-    font-size: calc( 1.067rem + 0.266 * ((100vw - 37.5rem) / 42.5));
+    font-size: calc(
+                1.067rem + 0.266 * ((100vw - 37.5rem) / 42.5)
+            );
   }
 }
-
 @media only screen and (min-width: 80rem) {
   h4 {
     font-size: 1.333rem;
@@ -102,13 +100,13 @@ h4 {
 h5 {
   font-size: 1rem;
 }
-
 @media only screen and (min-width: 37.5rem) {
   h5 {
-    font-size: calc( 1rem + 0 * ((100vw - 37.5rem) / 42.5));
+    font-size: calc(
+                1rem + 0 * ((100vw - 37.5rem) / 42.5)
+            );
   }
 }
-
 @media only screen and (min-width: 80rem) {
   h5 {
     font-size: 1rem;
@@ -116,18 +114,18 @@ h5 {
 }
 
 h6 {
-  font-size: 0.93721rem;
+  font-size: 0.9372071228rem;
 }
-
 @media only screen and (min-width: 37.5rem) {
   h6 {
-    font-size: calc( 0.93721rem + -0.18702 * ((100vw - 37.5rem) / 42.5));
+    font-size: calc(
+                0.9372071228rem + -0.1870195759 * ((100vw - 37.5rem) / 42.5)
+            );
   }
 }
-
 @media only screen and (min-width: 80rem) {
   h6 {
-    font-size: 0.75019rem;
+    font-size: 0.7501875469rem;
   }
 }
 
@@ -135,16 +133,15 @@ h6 {
 p {
   font-size: 1.067rem;
 }
-
 @media only screen and (min-width: 37.5rem) {
   p {
-    font-size: calc( 1.067rem + 0.266 * ((100vw - 37.5rem) / 42.5));
+    font-size: calc(
+                1.067rem + 0.266 * ((100vw - 37.5rem) / 42.5)
+            );
   }
 }
-
 @media only screen and (min-width: 80rem) {
   p {
     font-size: 1.333rem;
   }
-}
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

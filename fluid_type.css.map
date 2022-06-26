@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAAA;;;EAGE",
-    "sources": [
-        "fluid_type.scss"
-    ],
-    "names": [],
-    "file": "fluid_type.css"
-}
+{"version":3,"sources":["fluid_type.scss"],"names":[],"mappings":"AAAA;;;CAAA","file":"fluid_type.css"}

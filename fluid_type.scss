@@ -7,10 +7,9 @@
         font-size: $min-size;
 
         @media only screen and (min-width: $min-vw) {
-            font-size: calc(
-                #{$min-size} + #{($max-size - $min-size) / $unit} * ((100vw - #{$min-vw}) / #{($max-vw - $min-vw) / $unit})
-            );
+            font-size: calc(#{$min-size} + #{($max-size - $min-size) / $unit} * ((100vw - #{$min-vw}) / #{($max-vw - $min-vw) / $unit}));
         }
+
         @media only screen and (min-width: $max-vw) {
             font-size: $max-size;
         }

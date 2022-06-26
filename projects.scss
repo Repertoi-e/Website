@@ -75,11 +75,11 @@ body * {
 
     display: grid;
     grid-template-areas: "videos_title"
-                         "videos"
-                         "posts_title"
-                         "posts"
-                         "projects_title"
-                         "projects";
+        "videos"
+        "projects_title"
+        "projects"
+        "posts_title"
+        "posts";
 
     justify-items: center;
     justify-content: flex-start;
@@ -87,7 +87,9 @@ body * {
 
     margin: 2rem;
 
-    .videos_title, .projects_title, .posts_title {
+    .videos_title,
+    .projects_title,
+    .posts_title {
         justify-self: left;
 
         font-family: 'Dancing Script', cursive;
@@ -99,7 +101,8 @@ body * {
         margin-top: 20px;
     }
 
-    .projects_title, .posts_title {
+    .projects_title,
+    .posts_title {
         width: 100%;
 
         text-align: center;
@@ -116,7 +119,7 @@ body * {
 
         display: flex;
         justify-content: space-around;
-        
+
         padding: 1rem;
 
         border: 5px ridge gray;
@@ -127,7 +130,7 @@ body * {
             background-color: rgba(16, 105, 156, 0.438);
         }
     }
-    
+
     .projects {
         grid-area: projects;
         width: 100%;
@@ -150,8 +153,8 @@ body * {
 
             display: grid;
             grid-template-areas: "title"
-                                 "desc";
-        
+                "desc";
+
             justify-items: flex-start;
             justify-content: flex-start;
             align-items: flex-start;
@@ -197,13 +200,13 @@ body * {
             border: 5px ridge gray;
 
             margin: 2rem;
-            
+
             display: grid;
             grid-template-areas: "thumb title"
-                                 "thumb desc";
+                "thumb desc";
             grid-template-columns: $thumbnail-size * 0.9 auto;
             grid-template-rows: auto auto;
-        
+
             justify-items: flex-start;
             justify-content: flex-start;
             align-items: flex-start;
@@ -216,7 +219,7 @@ body * {
 
                 // include size($thumbnail-size);
                 height: 100%;
-                mask-image: linear-gradient(to right, rgba(0,0,0,1) 0px, rgba(0,0,0,0) $thumbnail-size - 2rem);
+                mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0px, rgba(0, 0, 0, 0) $thumbnail-size - 2rem);
             }
 
             .title {
@@ -253,4 +256,3 @@ body * {
 
     text-align: center;
 }
- 

@@ -1,19 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Serif&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Serif&display=swap");
-@font-face {
-  font-family: SofiaSans;
-  font-style: normal;
-  src: url(data/SofiaSans[wdth,wght].woff2) format("woff2");
-}
-@font-face {
-  font-family: SofiaSans;
-  font-style: italic;
-  src: url(data/SofiaSansItalic[wdth,wght].woff2) format("woff2");
-}
 html,
 body {
-  font-family: "SofiaSans", "Noto Sans", sans-serif;
+  font-family: "Noto Sans", sans-serif;
   background-color: black;
 }
 
@@ -35,7 +25,7 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 95%, rgb(0, 0, 0) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 40%, rgb(0, 0, 0) 100%);
   z-index: -1;
 }
 
@@ -161,8 +151,8 @@ body {
 .content {
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: auto 100vh auto;
-  grid-template-areas: "header" "main" "footer";
+  grid-template-rows: auto;
+  grid-template-areas: "header" "main";
   justify-items: center;
   justify-content: center;
   align-content: space-around;
@@ -175,69 +165,128 @@ body * {
 */
 .main {
   grid-area: main;
+  width: 80%;
   display: grid;
-  margin-top: 50px;
-  grid-template-rows: auto;
+  grid-template-areas: "videos_title" "videos" "projects_title" "projects" "posts_title" "posts";
   justify-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
-  align-content: flex-start;
+  margin: 2rem;
 }
-@media only screen and (max-width: 999px) {
-  .main {
-    grid-template-columns: 100%;
-    grid-template-areas: "about" "projects" "me";
-  }
+.main .videos_title,
+.main .projects_title,
+.main .posts_title {
+  justify-self: left;
+  font-family: "Dancing Script", cursive;
+  font-size: 3.5rem;
+  color: #c0c0c0;
+  margin-bottom: -9px;
+  margin-top: 20px;
 }
-@media only screen and (min-width: 1000px) {
-  .main {
-    grid-template-columns: auto 30px auto;
-    grid-template-areas: "about . me" ". projects ." "footer footer footer ";
-  }
+.main .projects_title,
+.main .posts_title {
+  width: 100%;
+  text-align: center;
+  font-family: "Noto Sans", serif;
+  color: #1aadad;
+  border-bottom: dashed 5px rgba(16, 105, 156, 0.438);
 }
-.main .about,
-.main .projects {
-  margin-bottom: 1rem;
+.main .videos {
+  grid-area: videos;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  border: 5px ridge gray;
+  background-color: rgba(255, 255, 255, 0.096);
 }
-@media only screen and (max-width: 999px) {
-  .main .about,
-.main .projects {
-    width: 90vw;
-  }
-}
-@media only screen and (min-width: 1000px) {
-  .main .about,
-.main .projects {
-    width: 48em;
-  }
-}
-.main .about p,
-.main .projects p {
-  font-size: 1.1rem;
-}
-.main .about {
-  grid-area: about;
+.main .videos .video {
+  color: #ffffff;
+  background-color: rgba(16, 105, 156, 0.438);
 }
 .main .projects {
   grid-area: projects;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }
-.main .context {
-  grid-area: context;
+.main .projects a {
+  text-decoration: none;
 }
-.main .context img {
-  width: 18em;
+.main .projects .project {
+  height: 12rem;
+  border: 5px ridge gray;
+  margin: 2rem;
+  display: grid;
+  grid-template-areas: "title" "desc";
+  justify-items: flex-start;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: #ffffff;
+  background-color: rgba(16, 105, 156, 0.438);
 }
-.main .me {
-  grid-area: me;
-  margin-bottom: 1rem;
+.main .projects .project .title {
+  grid-area: title;
+  padding: 20px;
+  margin-bottom: -30px;
 }
-.main .me img {
-  width: 25em;
+.main .projects .project .desc {
+  grid-area: desc;
+  padding: 20px;
+  color: rgb(185, 185, 185);
 }
-.main .footer {
-  grid-area: footer;
+.main .projects .project:hover {
+  border: 5px groove gray;
+  color: rgb(43, 225, 238);
+  background-color: rgba(33, 68, 85, 0.308);
+}
+.main .posts {
+  grid-area: posts;
+  width: 100%;
+}
+.main .posts a {
+  text-decoration: none;
+}
+.main .posts .post {
+  border: 5px ridge gray;
+  margin: 2rem;
+  display: grid;
+  grid-template-areas: "thumb title" "thumb desc";
+  grid-template-columns: 18rem auto;
+  grid-template-rows: auto auto;
+  justify-items: flex-start;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: #ffffff;
+  background-color: rgba(16, 105, 156, 0.438);
+}
+.main .posts .post .thumb {
+  grid-area: thumb;
+  height: 100%;
+  -webkit-mask-image: linear-gradient(to right, rgb(0, 0, 0) 0px, rgba(0, 0, 0, 0) 18rem);
+          mask-image: linear-gradient(to right, rgb(0, 0, 0) 0px, rgba(0, 0, 0, 0) 18rem);
+}
+.main .posts .post .title {
+  grid-area: title;
+  padding: 20px;
+}
+.main .posts .post .desc {
+  grid-area: desc;
+  padding: 20px;
+  color: rgb(185, 185, 185);
+}
+.main .posts .post .desc h5 {
+  font-size: 0.9rem;
+}
+.main .posts .post:hover {
+  border: 5px groove gray;
+  color: rgb(43, 225, 238);
+  background-color: rgba(33, 68, 85, 0.308);
+}
+
+.footer {
   width: 100%;
   padding: 10px;
   color: rgb(146, 146, 146);
   text-align: center;
-}/*# sourceMappingURL=about.css.map */
+}/*# sourceMappingURL=projects.css.map */
