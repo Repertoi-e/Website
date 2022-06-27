@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Serif&display=swap");
+/*  Fluid typography 
+    This is simply a mapping function: 
+        size = min + (max - min) * (100vw - min_width) / (max_width - min_width)
+*/
+@font-face {
+  font-family: SofiaSans;
+  font-style: normal;
+  src: url(data/SofiaSans[wdth,wght].woff2) format("woff2");
+}
+@font-face {
+  font-family: SofiaSans;
+  font-style: italic;
+  src: url(data/SofiaSansItalic[wdth,wght].woff2) format("woff2");
+}
+html,
+body {
+  font-family: "SofiaSans", "Noto Sans", sans-serif;
+  background-color: white;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: calc(100vh + 100px);
+  z-index: -2;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto 100vh auto;
+  grid-template-areas: "header" "main" "footer";
+  justify-items: center;
+  justify-content: center;
+  align-content: space-around;
+}
+
+.main {
+  grid-area: main;
+}
+.main .title {
+  margin-top: -15px;
+}
+.main .articles {
+  margin-top: 50px;
+}
+.main .articles .article_link a {
+  color: #222222;
+  text-decoration: none;
+}
+.main .articles .article_link a :hover {
+  text-decoration: underline;
+}
+.main .articles .article_link .date {
+  font-size: 1.5em;
+}
+
+.footer {
+  grid-area: footer;
+  width: 100%;
+  padding: 10px;
+  color: rgb(146, 146, 146);
+  text-align: center;
+}
+
+.header {
+  grid-area: header;
+  width: 100%;
+  display: flex;
+}
+.header .icon_container {
+  flex: none;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header .icon {
+  margin-top: 15px;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  flex-flow: row nowrap;
+}
+.header .icon .hills {
+  width: 100%;
+  flex: none;
+  -webkit-clip-path: ellipse(65px 65px at 50% 50%);
+          clip-path: ellipse(65px 65px at 50% 50%);
+}/*# sourceMappingURL=blog.css.map */
