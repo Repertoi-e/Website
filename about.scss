@@ -14,25 +14,11 @@
     }
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Serif&display=swap");
-
-@font-face {
-    font-family: SofiaSans;
-    font-style: normal;
-    src: url(data/SofiaSans[wdth,wght].woff2) format("woff2");
-}
-
-@font-face {
-    font-family: SofiaSans;
-    font-style: italic;
-    src: url(data/SofiaSansItalic[wdth,wght].woff2) format("woff2");
-}
-
-html,
-body {
+html * {
     font-family: "SofiaSans", "Noto Sans", sans-serif;
+}
 
+html body {
     background-color: black;
 }
 
@@ -120,7 +106,7 @@ body * {
 
         .about {
             @media only screen and (max-width: 999px) {
-                width: 80vw;
+                width: 95vw;
             }
 
             @media only screen and (min-width: 1000px) {
@@ -140,6 +126,8 @@ body * {
             .projects {
                 display: flex;
                 align-items: center;
+                
+                margin-top: 5px;
 
                 .icon {
                     display: flex;

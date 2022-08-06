@@ -67,3 +67,19 @@ h6 {
 p {
     @include fluid-type(37.5rem, 80rem, $h4-min, $h4-max, 1rem);
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Serif&display=swap");
+
+@font-face {
+    font-family: SofiaSans;
+    font-style: normal;
+    src: url(data/SofiaSans[wdth,wght].woff2) format("woff2");
+}
+
+@font-face {
+    font-family: SofiaSans;
+    font-style: italic;
+    src: url(data/SofiaSansItalic[wdth,wght].woff2) format("woff2");
+}
+

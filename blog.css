@@ -14,9 +14,11 @@
   font-style: italic;
   src: url(data/SofiaSansItalic[wdth,wght].woff2) format("woff2");
 }
-html,
-body {
+html * {
   font-family: "SofiaSans", "Noto Sans", sans-serif;
+}
+
+html body {
   background-color: white;
 }
 
@@ -43,7 +45,7 @@ body {
   grid-area: main;
 }
 .main .title {
-  margin-top: -15px;
+  margin-top: -10px;
 }
 .main .articles {
   margin-top: 50px;

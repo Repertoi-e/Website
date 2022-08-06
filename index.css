@@ -3,8 +3,7 @@
         size = min + (max - min) * (100vw - min_width) / (max_width - min_width)
 */
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap");
-html,
-body {
+html body {
   background-color: #b1c3cd;
 }
 
@@ -316,6 +315,7 @@ body {
 }
 .goodbye .credit {
   grid-area: credit;
+  margin-top: 15px;
   font-size: 0.6rem;
   font-weight: 700;
   color: #ffffff;

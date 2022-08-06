@@ -17,8 +17,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
 
-html,
-body {
+html * {
+    // font-family: "SofiaSans", "Noto Sans", sans-serif;
+}
+
+html body {
     background-color: #b1c3cd;
 }
 
@@ -378,6 +381,8 @@ $washed-white-color: rgba(255, 255, 255, 0.762);
 
     .credit {
         grid-area: credit;
+        
+        margin-top: 15px;
 
         font-size: 0.6rem;
         font-weight: 700;
