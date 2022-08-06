@@ -218,6 +218,19 @@ body * {
 .main .about {
   grid-area: about;
 }
+.main .about .spotify, .main .about .github, .main .about .projects {
+  display: flex;
+  align-items: center;
+}
+.main .about .spotify .icon, .main .about .github .icon, .main .about .projects .icon {
+  display: flex;
+  align-items: center;
+  width: 25px;
+  margin-right: 8px;
+}
+.main .about .spotify .icon img, .main .about .github .icon img, .main .about .projects .icon img {
+  width: 25px;
+}
 .main .projects {
   grid-area: projects;
 }

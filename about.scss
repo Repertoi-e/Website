@@ -130,6 +130,23 @@ body * {
 
     .about {
         grid-area: about;
+
+        .spotify, .github, .projects {
+            display: flex;
+            align-items: center;
+
+            .icon {
+                display: flex;
+                align-items: center;
+
+                width: 25px;
+                margin-right: 8px;
+            
+                img {
+                    width: 25px;
+                }
+            }
+        }
     }
 
     .projects {
