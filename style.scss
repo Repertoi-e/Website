@@ -8,7 +8,7 @@
     padding: 0;
 }
 
-@import "fluid_type";
+@import "mix_vw_and_fluid_type";
 
 html,
 body {
@@ -36,8 +36,8 @@ $h4-max: $mod_2 * 1rem;
 $h5-min: 1rem;
 $h5-max: 1rem;
 
-$h6-min: (1rem / $mod_1);
-$h6-max: (1rem / $mod_2);
+$h6-min: calc(1rem / $mod_1);
+$h6-max: calc(1rem / $mod_2);
 
 h1 {
     @include fluid-type(37.5rem, 80rem, $h1-min, $h1-max, 1rem);

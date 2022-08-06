@@ -1,6 +1,7 @@
 @use "sass:math";
 
 @import "node_modules/bourbon/core/bourbon";
+@import "mix_vw_and_fluid_type";
 
 @mixin transform($values...) {
     @each $var in $values {
@@ -13,6 +14,8 @@
         @include prefixer(transform-origin, #{$var}, ("webkit", "moz", "ms", "o"));
     }
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
 
 html,
 body {
@@ -55,20 +58,6 @@ body {
     border: 1px solid yellow;
 }
 */
-
-@mixin fluid-type($min-vw, $max-vw, $min-size, $max-size, $unit) {
-    & {
-        font-size: $min-size;
-
-        @media only screen and (min-width: $min-vw) {
-            font-size: calc(#{$min-size} + #{math.div($max-size - $min-size, $unit)} * ((100vw - #{$min-vw}) / #{math.div($max-vw - $min-vw, $unit)}));
-        }
-
-        @media only screen and (min-width: $max-vw) {
-            font-size: $max-size;
-        }
-    }
-}
 
 .header {
     grid-area: header;
@@ -263,6 +252,8 @@ $retro-button-size: 13rem;
     }
 }
 
+$washed-white-color: rgba(255, 255, 255, 0.762);
+
 .social_media {
     grid-area: social_media;
 
@@ -270,36 +261,51 @@ $retro-button-size: 13rem;
 
     display: flex;
     align-items: center;
+    flex-direction: column;
 
     margin-top: 50px;
     margin-bottom: 20px;
 
-    span {
-        margin: 5px;
+    .info_text {
+        font-size: 2.5rem;
+        color: $washed-white-color;
+        margin: 20px;
     }
 
-    .dashed {
-        @include size(50%, calc($dash-width / 2));
+    .icons {
+        width: 100%;
 
-        border-top: $dash-width dashed #ffffff;
-    }
+        display: flex;
+        align-items: center;
+        flex-direction: row;
 
-    .github,
-    .linkedin,
-    .instagram {
-        cursor: pointer;
-    }
+        span {
+            margin: 5px;
+        }
 
-    .github img {
-        width: 2.65rem;
-    }
+        .dashed {
+            @include size(50%, calc($dash-width / 2));
 
-    .instagram img {
-        width: 2.65rem;
-    }
+            border-top: $dash-width dashed $washed-white-color;
+        }
 
-    .linkedin img {
-        width: 2.65rem;
+        .github,
+        .linkedin,
+        .instagram {
+            cursor: pointer;
+        }
+
+        .github img {
+            width: 2.65rem;
+        }
+
+        .instagram img {
+            width: 2.65rem;
+        }
+
+        .linkedin img {
+            width: 2.65rem;
+        }
     }
 }
 
@@ -347,8 +353,11 @@ $retro-button-size: 13rem;
 
         writing-mode: vertical-lr;
 
-        line-height: 3rem;
-        letter-spacing: -0.5rem;
+        line-height: 4.5rem;
+        letter-spacing: -1.5rem;
+
+        @include fluid-type(200px, 1400px, 50px, 150px, 1px);
+        @include map-vw(line-height, 200px, 1400px, 5rem, 4.5rem, 1rem);
     }
 
     .lines_combined,

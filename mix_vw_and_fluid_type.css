@@ -1,4 +1,4 @@
 /*  Fluid typography 
     This is simply a mapping function: 
         size = min + (max - min) * (100vw - min_width) / (max_width - min_width)
-*//*# sourceMappingURL=fluid_type.css.map */
+*//*# sourceMappingURL=mix_vw_and_fluid_type.css.map */

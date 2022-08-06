@@ -1,3 +1,8 @@
+/*  Fluid typography 
+    This is simply a mapping function: 
+        size = min + (max - min) * (100vw - min_width) / (max_width - min_width)
+*/
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap");
 html,
 body {
   background-color: #b1c3cd;
@@ -44,7 +49,7 @@ body {
 }
 @media only screen and (min-width: 400px) {
   .header h6 {
-    font-size: calc(14px + -2 * ((100vw - 400px) / 1000));
+    font-size: calc(14px + calc(($max-size - $min-size) / $unit) * ((100vw - 400px) / calc(($max-vw - $min-vw) / $unit)));
   }
 }
 @media only screen and (min-width: 1400px) {
@@ -197,29 +202,41 @@ body {
   width: 90vw;
   display: flex;
   align-items: center;
+  flex-direction: column;
   margin-top: 50px;
   margin-bottom: 20px;
 }
-.social_media span {
+.social_media .info_text {
+  font-size: 2.5rem;
+  color: rgba(255, 255, 255, 0.762);
+  margin: 20px;
+}
+.social_media .icons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.social_media .icons span {
   margin: 5px;
 }
-.social_media .dashed {
+.social_media .icons .dashed {
   height: 0.2rem;
   width: 50%;
-  border-top: 0.4rem dashed #ffffff;
+  border-top: 0.4rem dashed rgba(255, 255, 255, 0.762);
 }
-.social_media .github,
-.social_media .linkedin,
-.social_media .instagram {
+.social_media .icons .github,
+.social_media .icons .linkedin,
+.social_media .icons .instagram {
   cursor: pointer;
 }
-.social_media .github img {
+.social_media .icons .github img {
   width: 2.65rem;
 }
-.social_media .instagram img {
+.social_media .icons .instagram img {
   width: 2.65rem;
 }
-.social_media .linkedin img {
+.social_media .icons .linkedin img {
   width: 2.65rem;
 }
 
@@ -255,8 +272,34 @@ body {
   text-orientation: upright;
   -ms-writing-mode: tb-lr;
       writing-mode: vertical-lr;
-  line-height: 3rem;
-  letter-spacing: -0.5rem;
+  line-height: 4.5rem;
+  letter-spacing: -1.5rem;
+}
+.goodbye .lines_combined {
+  font-size: 50px;
+}
+@media only screen and (min-width: 200px) {
+  .goodbye .lines_combined {
+    font-size: calc(50px + calc(($max-size - $min-size) / $unit) * ((100vw - 200px) / calc(($max-vw - $min-vw) / $unit)));
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .goodbye .lines_combined {
+    font-size: 150px;
+  }
+}
+.goodbye .lines_combined {
+  line-height: 5rem;
+}
+@media only screen and (min-width: 200px) {
+  .goodbye .lines_combined {
+    line-height: calc(5rem + calc(($max-size - $min-size) / $unit) * ((100vw - 200px) / calc(($max-vw - $min-vw) / $unit)));
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .goodbye .lines_combined {
+    line-height: 4.5rem;
+  }
 }
 .goodbye .lines_combined,
 .goodbye .line1 {
@@ -290,20 +333,17 @@ body {
     background-size: 210%, 350%, cover, cover;
     background-position: 0px 170px, -80px -100px, 0px 0px, 0px 0px;
   }
-
   .main {
     height: 150vh;
     grid-template-columns: 100%;
     grid-template-rows: auto 100px auto 200px auto;
     grid-template-areas: "header" "." "introduction" "arrow" "retro_button";
   }
-
   .introduction {
     border: 0.4rem dashed #ffffff;
     padding: 0.8rem;
     text-align: center;
   }
-
   .goodbye {
     display: grid;
     grid-template-columns: 1.5rem 1.5rem auto;
@@ -330,20 +370,17 @@ body {
     background-size: 110%, 150%, cover, cover;
     background-position: 0px 50px, -50px -100px, 0px 0px, 0px 0px;
   }
-
   .main {
     height: 150vh;
     grid-template-columns: 100%;
     grid-template-rows: auto 50px auto 150px auto;
     grid-template-areas: "header" "." "introduction" "arrow" "retro_button";
   }
-
   .introduction {
     border: 0.4rem dashed #ffffff;
     padding: 0.8rem;
     text-align: center;
   }
-
   .goodbye {
     grid-template-columns: 1.5rem 1.5rem auto;
     grid-template-rows: 4rem 9rem 5rem;
@@ -362,7 +399,6 @@ body {
     grid-template-rows: auto 25px auto auto auto;
     grid-template-areas: "header header" ". ." ". introduction" "arrow arrow" "retro_button retro_button";
   }
-
   .introduction {
     border: 0;
     text-align: left;

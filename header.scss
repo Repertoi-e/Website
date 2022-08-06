@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Serif&display=swap");
 
-@import "fluid_type";
+@import "mix_vw_and_fluid_type";
 
 $hills-size: 130px;
 
@@ -118,7 +118,7 @@ $hills-size: 130px;
 
             flex: none;
 
-            clip-path: ellipse($hills-size/2 $hills-size/2 at 50% 50%);
+            clip-path: ellipse(calc($hills-size / 2) calc($hills-size / 2) at 50% 50%);
         }
 
         $give-love-size: $hills-size * 0.85;

@@ -103,7 +103,7 @@ body {
 }
 @media only screen and (min-width: 400px) {
   .header .buttons h5.header__text {
-    font-size: calc(12px + 4 * ((100vw - 400px) / 1000));
+    font-size: calc(12px + calc(($max-size - $min-size) / $unit) * ((100vw - 400px) / calc(($max-vw - $min-vw) / $unit)));
   }
 }
 @media only screen and (min-width: 1400px) {
