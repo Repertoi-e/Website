@@ -1,3 +1,7 @@
+/*  Fluid typography 
+    This is simply a mapping function: 
+        size = min + (max - min) * (100vw - min_width) / (max_width - min_width)
+*/
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Serif&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Serif&display=swap");
@@ -175,79 +179,86 @@ body * {
 */
 .main {
   grid-area: main;
-  display: grid;
-  margin-top: 50px;
-  grid-template-rows: auto;
-  justify-items: center;
-  justify-content: center;
-  align-items: flex-start;
-  align-content: flex-start;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 30px;
+}
+.main .windows {
+  display: flex;
 }
 @media only screen and (max-width: 999px) {
-  .main {
-    grid-template-columns: 100%;
-    grid-template-areas: "about" "projects" "me";
+  .main .windows {
+    align-items: center;
+    flex-direction: column;
   }
 }
 @media only screen and (min-width: 1000px) {
-  .main {
-    grid-template-columns: auto 30px auto;
-    grid-template-areas: "about . me" ". projects ." "footer footer footer ";
+  .main .windows {
+    align-items: flex-start;
+    flex-direction: row;
   }
 }
-.main .about,
-.main .projects {
+.main .windows .about,
+.main .windows .me {
+  margin: 20px;
+}
+.main .windows .me {
+  margin-bottom: 1rem;
+}
+.main .windows .me img {
+  width: 15em;
+}
+@media only screen and (min-width: 200px) {
+  .main .windows .me img {
+    width: calc(15em + calc(($max-size - $min-size) / $unit) * ((100vw - 200px) / calc(($max-vw - $min-vw) / $unit)));
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .main .windows .me img {
+    width: 25em;
+  }
+}
+.main .windows .about {
   margin-bottom: 1rem;
 }
 @media only screen and (max-width: 999px) {
-  .main .about,
-.main .projects {
-    width: 90vw;
+  .main .windows .about {
+    width: 80vw;
   }
 }
 @media only screen and (min-width: 1000px) {
-  .main .about,
-.main .projects {
+  .main .windows .about {
     width: 48em;
   }
 }
-.main .about p,
-.main .projects p {
+.main .windows .about p {
   font-size: 1.1rem;
 }
-.main .about {
-  grid-area: about;
-}
-.main .about .spotify, .main .about .github, .main .about .projects {
+.main .windows .about .spotify,
+.main .windows .about .github,
+.main .windows .about .projects {
   display: flex;
   align-items: center;
 }
-.main .about .spotify .icon, .main .about .github .icon, .main .about .projects .icon {
+.main .windows .about .spotify .icon,
+.main .windows .about .github .icon,
+.main .windows .about .projects .icon {
   display: flex;
   align-items: center;
   width: 25px;
   margin-right: 8px;
 }
-.main .about .spotify .icon img, .main .about .github .icon img, .main .about .projects .icon img {
+.main .windows .about .spotify .icon img,
+.main .windows .about .github .icon img,
+.main .windows .about .projects .icon img {
   width: 25px;
 }
-.main .projects {
-  grid-area: projects;
-}
-.main .context {
-  grid-area: context;
-}
-.main .context img {
+.main .windows .context img {
   width: 18em;
 }
-.main .me {
-  grid-area: me;
-  margin-bottom: 1rem;
-}
-.main .me img {
-  width: 25em;
-}
 .main .footer {
+  margin-top: 20px;
   grid-area: footer;
   width: 100%;
   padding: 10px;

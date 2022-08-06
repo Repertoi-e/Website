@@ -1,6 +1,6 @@
 
 
-@mixin map-vw($property, $min-vw, $max-vw, $min-size, $max-size, $unit) {
+@mixin mix-vw($property, $min-vw, $max-vw, $min-size, $max-size, $unit) {
     & {
         #{$property}: $min-size;
 
@@ -20,6 +20,6 @@
 */
 @mixin fluid-type($min-vw, $max-vw, $min-size, $max-size, $unit) {
     & {
-        @include map-vw(font-size, $min-vw, $max-vw, $min-size, $max-size, $unit)
+        @include mix-vw(font-size, $min-vw, $max-vw, $min-size, $max-size, $unit)
     }
 }

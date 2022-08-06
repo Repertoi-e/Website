@@ -357,7 +357,7 @@ $washed-white-color: rgba(255, 255, 255, 0.762);
         letter-spacing: -1.5rem;
 
         @include fluid-type(200px, 1400px, 50px, 150px, 1px);
-        @include map-vw(line-height, 200px, 1400px, 5rem, 4.5rem, 1rem);
+        @include mix-vw(line-height, 200px, 1400px, 5rem, 4.5rem, 1rem);
     }
 
     .lines_combined,

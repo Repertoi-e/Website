@@ -1,5 +1,7 @@
 @import "node_modules/bourbon/core/bourbon";
 
+@import "mix_vw_and_fluid_type";
+
 @mixin transform($values...) {
     @each $var in $values {
         @include prefixer(transform, #{$var}, ("webkit", "moz", "ms", "o"));
@@ -84,94 +86,85 @@ body * {
 .main {
     grid-area: main;
 
-    display: grid;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 
-    margin-top: 50px;
+    margin-top: 30px;
 
-    grid-template-rows: auto;
+    .windows {
+        display: flex;
 
-    @media only screen and (max-width: 999px) {
-        grid-template-columns: 100%;
-        grid-template-areas:
-            "about"
-            "projects"
-            "me";
-    }
-
-    @media only screen and (min-width: 1000px) {
-        grid-template-columns: auto 30px auto;
-        grid-template-areas:
-            "about . me"
-            ". projects ."
-            "footer footer footer ";
-    }
-
-    justify-items: center;
-    justify-content: center;
-    align-items: flex-start;
-    align-content: flex-start;
-
-    .about,
-    .projects {
         @media only screen and (max-width: 999px) {
-            width: 90vw;
+            align-items: center;
+            flex-direction: column;
         }
 
         @media only screen and (min-width: 1000px) {
-            width: 48em;
+            align-items: flex-start;
+            flex-direction: row;
         }
 
-        p {
-            font-size: 1.1rem;
+        .about,
+        .me {
+            margin: 20px;
         }
 
-        margin-bottom: 1rem;
-    }
+        .me {
+            img {
+                @include mix-vw(width, 200px, 1200px, 15em, 25em, 1em);
+            }
 
-    .about {
-        grid-area: about;
+            margin-bottom: 1rem;
+        }
 
-        .spotify, .github, .projects {
-            display: flex;
-            align-items: center;
+        .about {
+            @media only screen and (max-width: 999px) {
+                width: 80vw;
+            }
 
-            .icon {
+            @media only screen and (min-width: 1000px) {
+                width: 48em;
+            }
+
+            p {
+                font-size: 1.1rem;
+            }
+
+            margin-bottom: 1rem;
+        }
+
+        .about {
+            .spotify,
+            .github,
+            .projects {
                 display: flex;
                 align-items: center;
 
-                width: 25px;
-                margin-right: 8px;
-            
-                img {
+                .icon {
+                    display: flex;
+                    align-items: center;
+
                     width: 25px;
+                    margin-right: 8px;
+
+                    img {
+                        width: 25px;
+                    }
                 }
+            }
+        }
+
+        .context {
+            img {
+                width: 18em;
             }
         }
     }
 
-    .projects {
-        grid-area: projects;
-    }
-
-    .context {
-        grid-area: context;
-
-        img {
-            width: 18em;
-        }
-    }
-
-    .me {
-        grid-area: me;
-
-        img {
-            width: 25em;
-        }
-
-        margin-bottom: 1rem;
-    }
-
     .footer {
+        margin-top: 20px;
+        
         grid-area: footer;
 
         width: 100%;
