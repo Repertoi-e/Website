@@ -47,6 +47,9 @@ html body {
 .main .title {
   margin-top: -10px;
 }
+.main .title h1 {
+  font-family: sans-serif;
+}
 .main .articles {
   margin-top: 50px;
 }
