@@ -55,11 +55,16 @@ html body {
 .content {
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: auto auto auto;
-  grid-template-areas: "header" "main" "footer";
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas: "back_to" "header" "main" "footer";
   justify-items: center;
   justify-content: center;
   align-content: space-around;
+}
+
+.back_to {
+  grid-area: back_to;
+  margin: 20px;
 }
 
 .main {
