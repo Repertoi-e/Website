@@ -152,7 +152,7 @@ html body {
 .main .article .content .message_section {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 90%;
   margin: 20px;
 }
 .main .article .content .message_section .message_bilil_div,
@@ -162,14 +162,15 @@ html body {
 .main .article .content .message_section .message_soti_div {
   justify-content: flex-end;
 }
+.main .article .content .message_section .message_bilil_container, .main .article .content .message_section .message_soti_container {
+  width: 60%;
+}
 .main .article .content .message_section .message_bilil_container {
-  width: 20rem;
   display: flex;
   flex-direction: column;
 }
-.main .article .content .message_section .message_bilil {
-  border: solid 1px #e1e1e1;
-  border-radius: 0.5rem;
+.main .article .content .message_section .message_bilil, .main .article .content .message_section .message_soti {
+  font-size: 1.4rem;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -179,8 +180,11 @@ html body {
   padding: 0.5rem 1rem;
   margin: 0.12rem 0.5rem;
 }
+.main .article .content .message_section .message_bilil {
+  border: solid 1px #e1e1e1;
+  border-radius: 0.5rem;
+}
 .main .article .content .message_section .message_soti_container {
-  width: 20rem;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -190,14 +194,6 @@ html body {
   background-attachment: fixed;
   color: #fff;
   border-radius: 0.5rem 0.2rem 0.2rem 0.5rem;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 0.5rem 1rem;
-  margin: 0.12rem 0.5rem;
 }
 .main .article .content .message_section .message_soti_container > div:first-child {
   border-radius: 0.5rem 1rem 0.2rem 0.5rem;
