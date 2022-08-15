@@ -21,8 +21,6 @@
 
 <body>
     <div class="content">
-        <div class="back_to"><h4>back to <a href="../blog.html">blog</a></h4></div>
-
         <div class="header">
             <div class="icon_container">
                 <div class="icon">
@@ -35,18 +33,30 @@
 
         <div class="main">
             <div class="title">
-                <h1>Soti's Blog</h1>
+                <a href="../blog.html"><h1>Soti's Blog</h1></a>
             </div>
 
             <div class="article">
                 <div class="header">
-                    <h2>@TITLE</h2>
-                </div>
+                    <div class="title_and_author">
+                        <div class="title">
+                            <h2>@TITLE</h2>
+                        </div>
+                        <div class="author">
+                            <h4>Димитър Сотиров</h4>
+                        </div>
+                    </div>
 
-                <div class="date">
-                    <p>@DATE г.</p>
+                    <div class="dates">
+                        <div class="date">
+                            <p>@DATE г.</p>
+                        </div>
+    
+                        <div class="edit_date">
+                            <p>Последна редакция @EDITDATE г.</p>
+                        </div>
+                    </div>
                 </div>
-
 
                 <div class="content">
                     @CONTENT

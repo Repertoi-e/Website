@@ -4,6 +4,9 @@ from datetime import date
 
 from bs4 import BeautifulSoup
 
+import os.path
+import re 
+
 def main():
 	if len(sys.argv) < 2:
 		print("Enter content file name and target file name, pleas :)")
@@ -132,19 +135,29 @@ def main():
 	html_gen = BeautifulSoup(html_gen, features="html.parser").prettify()
 
 	today = date.today()
-	d = today.strftime("%d.%m.%Y")
+	date_string = today.strftime("%d.%m.%Y")
+	edit_date_string = None
 
-	print(f'Version: {version}, title: "{title}", date: {d}')
+	target_path = f"blog_posts/{title_ident}.html"
+	if os.path.exists(target_path):
+		with open(target_path, "rt", encoding="utf-8") as target:
+			existing_content = target.read()
+			match = re.findall(r'<div class="date">\s*<p>([0-9.]*) г.</p>', existing_content)
+			edit_date_string = date_string
+			date_string = match[0]
+
+	print(f'Version: {version}, title: "{title}", date: {date_string}, edit date (today): {edit_date_string}')
 
 	with open("blog_posts/blog_post_template.html", "rt", encoding="utf-8") as template:
 		 content = template.read()
 	content = content.replace("@TITLE", title)
-	content = content.replace("@DATE", d)
+	content = content.replace("@DATE", date_string)
+	content = content.replace("@EDITDATE", edit_date_string)
 
 	# print(html_gen)
 	content = content.replace("@CONTENT", html_gen)
 
-	with open(f"blog_posts/{title_ident}.html", "wt", encoding="utf-8") as target:
+	with open(target_path, "wt", encoding="utf-8") as target:
 		target.write(content)
 	
 if __name__ == "__main__":

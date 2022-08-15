@@ -104,6 +104,15 @@ html body {
             font-family: sans-serif;
             text-align: center;
         }
+        
+        a {
+            color: #222222;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 
     .articles {
@@ -176,16 +185,64 @@ html body {
 
     .article {
         .header {
-            margin-top: 50px;
-            margin-bottom: 8px;
-        }
+            width: 100%;
 
-        .date {
-            p {
-                font-size: 1.3rem;
+            display: flex;
+            flex-direction: column;
+
+            .title_and_author {
+                width: 100%;
+
+                display: flex;
+                align-items: baseline;
+                justify-content: space-between;
+
+                @media only screen and (max-width: 550px) {
+                    flex-direction: column;
+                }
+
+                @media only screen and (min-width: 551px) {
+                    flex-direction: row;
+                }
+
+                margin-top: 50px;
+                margin-bottom: 8px;
             }
 
-            margin-bottom: 30px;
+            .dates {
+                width: 100%;
+                
+                display: flex;
+
+                @media only screen and (max-width: 350px) {
+                    flex-direction: column;
+                }
+
+                @media only screen and (min-width: 351px) {
+                    flex-direction: row;
+                }
+
+                align-items: baseline;
+                justify-content: space-between;
+
+                .date {
+                    p {
+                        font-size: 1.3rem;
+                    }
+
+                    margin-bottom: 3px;
+                }
+
+                .edit_date {
+                    p {
+                        font-size: 1rem;
+                    }
+
+                    margin-bottom: 30px;
+
+                    color: gray;
+                }
+            }
         }
 
         .content {
@@ -214,24 +271,26 @@ html body {
                     justify-content: flex-end;
                 }
 
-                .message_bilil_container, .message_soti_container {
+                .message_bilil_container,
+                .message_soti_container {
                     width: 80%;
                 }
 
                 .message_bilil_container {
                     display: flex;
                     flex-direction: column;
-    
+
                     :first-child {
                         border-radius: 1rem 0.5rem 0.2rem 0.5rem;
                     }
-    
+
                     :last-child {
                         border-radius: 0.5rem 0.2rem 0.5rem 1rem;
                     }
                 }
 
-                .message_bilil, .message_soti {
+                .message_bilil,
+                .message_soti {
                     font-size: 1.4rem;
                     height: fit-content;
                     width: fit-content;
@@ -253,7 +312,7 @@ html body {
                     :first-child {
                         border-radius: 0.5rem 1rem 0.2rem 0.5rem;
                     }
-    
+
                     :last-child {
                         border-radius: 0.5rem 0.2rem 1rem 0.5rem;
                     }
