@@ -111,8 +111,10 @@ def main():
 				
 		if doing_paragraph:
 			html_gen += last_line + "<br>"
-		if doing_python:
+		elif doing_python:
 			html_gen += last_line + "\n"
+		#elif len(last_line) != 0:
+		#	print(f"[{line_number}] Skipping non-empty line: {last_line}")
 
 		if last_line.startswith("##"):
 			if doing_paragraph:

@@ -435,21 +435,29 @@ for a in range(1, 100):
    How? Let's see.
    <br/>
    <br/>
-   The analysis in the previous section about twin roots: $a_2 = rb - a_1$, can be applied to $b$ as well! (Remember that the original equation is symmetric in terms of $a$ and $b$). This means that $b_2 = ra - b_1$ (by using similar reasoning and using Vieta's formulas again).
+   The analysis in the previous section about the twin roots: $a_2 = rb - a_1$, can be applied to $b$ as well! (Remember that the original equation is symmetric in terms of $a$ and $b$). This means that $b_2 = ra - b_1$ (by using similar reasoning and using Vieta's formulas again).
+   <br/>
+   <br/>
+   And now it's a this point playing with it really sparks up the hidden gem that is set in this problem. Can you spot it?
+   <br/>
+   <br/>
+   What if we start with a pair like $(30, 8)$. This is a solution and gives $r = 4$. By applying the formula we found: $a_2 = 4 * 8 - 30 = 2$. So our new pair (which is also a solution) is $(2, 8)$. Look at that! It's simpler. But is that always the case?
+   <br/>
+   <br/>
+   What if we started with $b$: $b_2 = 4 * 30 - 8 = 112$. So new pair is $(30, 112)$. Hmm.. can you see the pattern? Play with it more if you want you.
+   <br/>
+   <br/>
+   Seems like if we start with the higher number, we get a more complicated result. So... easy, just always pick the lower number!
+   <br/>
+   <br/>
+   By this logic $(2, 8)$ then becomes $b_2 = 4 * 2 - 8 = 0$... or $(2, 0)$. AH! A zero. This is forbidden, or is it? Do you remember what we said about proving something more general in order to prove something more specific?
+   <br/>
+   <br/>
+   In this case we got a whole family of solutions: $...$, $(30, 112)$, $(30, 8)$, $(2, 8)$, and $(2, 0)$. And you can continue this to infinity by going up - choosing the larger number! AND you can flip $a$ and $b$ to get.. double more infinitely many solutions.
    <br/>
    <br/>
    <br/>
   </p>
-  <pre><code class="language-klipse-pyodide">
-import math
-for a in range(1, 100):
-  for b in range(1, 100):
-    r = (a**2 + b**2) / (1 + a * b)
-    if r.is_integer():
-      r = int(r)
-      #print(f"Found a, b = {a}, {b}, r = {r}")
-
-</code></pre>
   <p>
    <h4>
     Third Insight: The Power of Induction ✨
@@ -457,12 +465,28 @@ for a in range(1, 100):
    <br/>
   </p>
   <p>
+   The axiom of induction and why you might not agree with it...
+   <br/>
+   <br/>
    <br/>
   </p>
   <p>
    <h4>
     Conclusion
    </h4>
+   <br/>
+  </p>
+  <p>
+   I hope I've shown you how 3 clever insights can work together to create a beautiful solution (now very well known and one of few times competitive Math has sparked researched into a topic - now known as proof by "Vieta" jumping) to the question which still holds reputation of being one of the hardest ever set on the IMO.
+   <br/>
+   <br/>
+   The key takeaway here is not the solution to the problem itself. What I found most interesting is how counter-intuitive are some of the steps taken. I wanted to share in details something of their nature, and who knows - maybe these will be incredibly useful to a problem you and I try to solve the future.
+   <br/>
+   <br/>
+   By thinking about it conceptually I'd bet you can apply them to real life as well. (Who says Math is all amount scribbles on paper!)
+   <br/>
+   <br/>
+   Anyway, hope you enjoyed, bye for now &lt;3.
    <br/>
   </p>
  </p>
