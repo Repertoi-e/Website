@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html lang="en-GB">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="A Bulgarian thinker and programmer's blog." />
+    <meta name="keywords"
+        content="portfolio, machine learning, data science, game developer, dimitar sotirov, soti, dimitar, sotirov, C++ developer, programmer, student" />
+    <meta name="author" content="Dimitar Sotirov" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500|Roboto:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../blog.css">
+    <link rel="stylesheet" href="https://unpkg.com/xp.css" />
+    <title>Notes on IMO's Most Difficult Problem | Soti's Blog</title>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+</head>
+
+
+<body>
+    <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css">
+
+    <script>
+        window.klipse_settings = {
+            selector_pyodide: '.language-klipse-pyodide', 
+            editor_type: 'html'
+        };
+    </script>
+
+    <div class="content">
+        <div class="header">
+            <div class="icon_container">
+                <div class="icon">
+                    <img class="hills" src="../data/hand.gif">
+                    <img class="give_love" src="">
+                    <img class="a_portfolio" src="">
+                </div>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="title">
+                <a href="../blog.html"><h1>Soti's Blog</h1></a>
+            </div>
+
+            <div class="article">
+                <div class="header">
+                    <div class="title_and_author">
+                        <div class="title">
+                            <h2>Notes on IMO's Most Difficult Problem</h2>
+                        </div>
+                        <div class="author">
+                            <i><h4>Dimitar Sotirov</h4></i>
+                        </div>
+                    </div>
+
+                    <div class="dates">
+                        <div class="date">
+                            <p>13.08.2022</p>
+                        </div>
+    
+                        <div class="edit_date">
+                            <p>Last edited 16.08.2022</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <p>
+ Today I'd like to share the problem which has a reputation of being the hardest ever set on the International Mathematical Olympiad.
+ <br/>
+ <br/>
+ That's some serious business! And... the goal here is not simply to present
+ <i>
+  a
+ </i>
+ solution, but to walk you through 3 increasingly-brilliant insights, that give rise to a genius solution, and in the end hopefully make you feel like a better problem-solver, armed with some new... super tools of sorts.
+ <br/>
+ <br/>
+ <br/>
+</p>
+<p>
+ <h4>
+  0. Story
+ </h4>
+ <br/>
+</p>
+<p>
+ It is about problem 6 from the 1988
+ <a href="https://www.imo-official.org/" target="_blank">
+  IMO
+ </a>
+ . I got obsessed over it a few days ago when Numberphile uploaded a video, featuring Zvezdelina Stankova, the only girl to solve the problem at the competition, who shares Emanouil Atanassov's solution, for which he won a special brilliancy award.
+ <br/>
+</p>
+<p>
+ <span class="note">
+  Both Zvezdelina and Emanouil are Bulgarians, so this resonates with me on one more dimension.
+ </span>
+ <br/>
+</p>
+<p>
+ I recommend watching the original video, but here I present a brief overview of the solution Zvezda talks about. My contribution is that I'll highlight and delve more into the interesting mathy-some-what-philosophical ideas you can think about when cracking this problem wide open.
+ <br/>
+ <br/>
+ <br/>
+</p>
+<p>
+ <h4>
+  1. The Statement
+ </h4>
+ <br/>
+</p>
+<p>
+ Let $a$ and $b$ be natural numbers, such that $1 + ab$ divides $a^2 + b^2$.
+ <br/>
+ Prove that
+ <br/>
+ $$\frac{a^2 +b^2}{1 + ab}$$
+ <br/>
+ is a perfect square.
+ <br/>
+</p>
+<p>
+ <span class="note">
+  Problem 6, 1988 IMO
+ </span>
+ <br/>
+</p>
+<p>
+ Note: a perfect square is a number in the form $1^2, 2^2, 3^2, ... n^2$.
+ <br/>
+ <br/>
+ It's genuinely a hard number theory problem. Just to be clear, it asks about specific numbers $a$ and $b$ which, when plugged in the equation, equal a whole number. Now it's easy to see that's not always the case. In fact, most of time the result is going to be a fraction. The problem says that we don't care about those cases ("Throw them to the dogs!", as a Math teacher used to tell us).
+ <br/>
+</p>
+<p>
+ $$\frac{6^2 +3^2}{1 + 6*3} = \frac{693}{19}$$
+ <br/>
+ <span class="note">
+  No good, we don't bother further with this.
+ </span>
+ <br/>
+</p>
+<p>
+ The ratio seems so important that we naturally might give it a letter, for example $r$. What is not obvious at all is why does $r$ (when it happens to be a whole number) necessarily has to be a perfect square?
+ <br/>
+ <br/>
+ Now, you are not at the IMO, there's no time pressure. You are at home maybe. Perhaps, grab out a pen and a piece of paper to follow along.
+ <br/>
+ <br/>
+ ...
+ <br/>
+ <br/>
+ Where to start?
+ <br/>
+ <br/>
+ To reassure yourself the problem even makes sense, imagine trying to find a triplet of $a$, $b$ and $r$ which satisfies the condition.
+ <br/>
+ <br/>
+ You might even write a quick program so the computer does the hard work for you.
+ <br/>
+</p>
+<pre><code class="language-klipse-pyodide">
+import math
+for a in range(1, 100):
+  for b in range(1, 100):
+    r = (a**2 + b**2) / (1 + a * b)
+    if r.is_integer():
+      r = int(r)
+      #print(f"Found a, b = {a}, {b}, r = {r}")
+
+</code></pre>
+<p>
+ <span class="note">
+  Try to remove the '#' from the print statement in the code box above. It's interactive!
+ </span>
+ <br/>
+</p>
+<p>
+ Eventually you might stumble upon a solution like $(a, b) = (112, 30),\ r = 4$.
+ <br/>
+ <br/>
+ When doing Math sometimes numbers are completely left-out! So it's always nice to have a concrete example on the side when working on abstract problems such as this one.
+ <br/>
+ <br/>
+ Now back to the equation. If you look closely, it might look at you back with a sort of beautiful symmetry: it doesn't matter if $a$ is $a$ and $b$ is $b$. They can switch places!
+ <br/>
+ <br/>
+ $$r = \frac{a^2 + b^2}{1 + ab} = \frac{b^2 + a^2}{1 + ba}$$
+ <br/>
+ <br/>
+ Before and after - it's the same statement. So that implies that any solution we find also has a twin. So from the earlier example $(a, b) = (30, 112),\ r = 4$ is also a solution.
+ <br/>
+ <br/>
+ <br/>
+</p>
+<p>
+ <h4>
+  2. ...constants, parameters and variables?
+ </h4>
+ <br/>
+</p>
+<p>
+ There are
+ <b>
+  3
+ </b>
+ unknowns here, so you might get stumbled and think - there's nothing much to do with rearranging
+ <b>
+  one
+ </b>
+ equation without having more information beforehand - without having something to constrain it.
+ <br/>
+ <br/>
+ And that's a very good intuition! A very good rule of thumb in Math is that if you have 3 variables, to solve for them, you need 3 equations. You can think of it as if one equation "locks" in a relationship between one of the variables and the rest.
+ <br/>
+ <br/>
+ I remember in high-school when there was a geometry problem which also required algebra I would get stuck rearranging equations, finding the same
+ <br/>
+ ratios between variables over and over again, because I was trying to solve for e.g. 3 variables, by having only 2 equations (or two geometrical constraints).
+ <br/>
+ <br/>
+ <br/>
+ $$ \left\{
+ <br/>
+ \begin{array}{ll}
+ <br/>
+ 3x^2+y+z = 10\\
+ <br/>
+ \frac{1}{1+e^{-x}}=3y\\
+ <br/>
+ \frac{z}{x+y}=2
+ <br/>
+ \end{array}
+ <br/>
+ \right.$$
+ <br/>
+</p>
+<p>
+ ... Don't worry, we are not going to solve this monster. That's not important here. But take a look at the third line, we can instantly get $z = 2(x+y)$. If we substitute our newfound information about $z$ in the first line, we'll get something like: $3x^2 + y + 2(x+y) = 10$. We've eliminated one variable! Bingo!
+ <br/>
+ <br/>
+ Now we can solve for either x or y (eliminating one more variable), and then use the second line to finally arrive at a solution. After that we back-track to all the relationships till we get a triplet $(x, y, z)$, which is a solution to the whole system. We might get 0 solutions, infinitely many, or a couple, but the method is the same.
+ <br/>
+ <br/>
+</p>
+<p>
+ <span class="note">
+  Not every equation can have one of variables isolated on one side-though, so this can sometimes fail, just be careful!
+ </span>
+ <br/>
+</p>
+<p>
+ This however, is not the route we're going to take with the IMO problem.
+ <br/>
+ <br/>
+ You might've learned about letters in Math - how they can represent constants (like $\pi$, $\phi$, ...), parameters ($a$, $b$, $c$, ...) or variables ($x$, $y$, $z$, ...) but these are just conventions, which can be shifted. Nothing stops us from using $x$ as a constant and $\phi$ as a variable, for example.
+ <br/>
+ <br/>
+ Moreover, how "variable" something is - is entirely context dependent! We are used to thing variables change "more often" than parameters which by themselves change more often than constants.
+ <br/>
+ <br/>
+ "We build up our mental representation of a situation layer by layer. The lowest layer establishes the deepest aspect of the context - sometimes being so low that it cannot vary at all. For instance, the three-dimensionality of our world is so ingrained that most of us never would imagine letting it slip mentally. It is a constant constant."
+ <br/>
+ <br/>
+ Parameters play the role of a "something between a variable and a constant" type. For a clear example let's see the following graph:
+ <br/>
+ <br/>
+ <div id="ggb-plot-variables">
+ </div>
+ <br/>
+ <br/>
+ We key difference between the three concepts above is the level of variability
+ <br/>
+ <br/>
+ The difference between constants
+ <br/>
+ <br/>
+ But here comes the first key insight
+ <br/>
+ <br/>
+ Let's promote r from a variable to a parameter.
+ <br/>
+ <br/>
+ <br/>
+ ... about constants, parameters and variables:
+ <br/>
+ <br/>
+ You might've learned in high-school how in Math
+ <br/>
+ we like to use letters to designate "unknowns"
+ <br/>
+ or "varying quantities". You are told that constants,
+ <br/>
+ which are numbers that are fixed in place get special
+ <br/>
+ letters: c, pi, phi, etc.
+ <br/>
+ <br/>
+ Parameters - another set: a, b, c
+ <br/>
+ and variables:  x, y, z
+ <br/>
+ <br/>
+ In reality though this is just an artificial
+ <br/>
+ difference in essentially a thing that is entirely
+ <br/>
+ dependent on context.
+ <br/>
+ <br/>
+ For example, I claim, all constants, parameters and
+ <br/>
+ variables, are...    variables, on different levels.
+ <br/>
+ <br/>
+ Example with graph:    y = 2x + c
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Gif in header, owner -
+            <a href="https://artoftheglitch.tumblr.com" target="_blank">artoftheglitch.tumblr.com</a><br><br>
+            © 2022 – Dimitar Sotirov
+        </div>
+    </div>
+
+    <script src="https://storage.googleapis.com/app.klipse.tech/plugin_prod/js/klipse_plugin.min.js"></script>
+
+    <script>  
+        var params = {"appName": "graphing", "width": 800, "height": 600, "showToolBar": true, "showAlgebraInput": true, "showMenuBar": true };
+        var applet = new GGBApplet(params, true);
+        window.addEventListener("load", function() { 
+            applet.inject('ggb-plot-variables');
+        });
+    </script>
+
+</body>
+
+</html>

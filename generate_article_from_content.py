@@ -29,14 +29,18 @@ def main():
 	version = None # Not used for now, but for future compatibility :)
 
 	doing_paragraph = False
+	doing_python = False
 
 	# Version 1: Either ## (Sotikus) or :: (Bebsikus Il Il)
 	doing_messages_from = None 
 
 	line_number = 0
 
+	lang_en = False
+
 	for l in lines:
-		l = l.strip()
+		if not doing_python: 
+			l = l.strip()
 		line_number += 1
 		if last_line is None and len(l) == 0: continue
 		
@@ -59,6 +63,9 @@ def main():
 			else:
 				titles = last_line[6:].strip()
 				titles = titles.split()
+				if titles[0] == "[EN]":
+					lang_en = True
+					titles = titles[1:]
 
 				title_ident = titles[-1]
 				title = " ".join(titles[:-1])
@@ -77,18 +84,35 @@ def main():
 				continue
 			last_line = last_line[2:]
 
+		if last_line.startswith("[py"):
+			if doing_messages_from is not None:
+				# End message section
+				html_gen += "</div></div></div>"
+				doing_messages_from = None
+			doing_python = True
+			html_gen += '<pre><code class="language-klipse-pyodide">\n'
+			if len(last_line) <= 3:
+				continue
+			last_line = last_line[3:]
+
 		if last_line.endswith("]]"):
-			if not doing_paragraph:
+			if not doing_paragraph and not doing_python:
 				print(f"[{line_number}] Unmatched ']]'. We use that for paragraphs! No beginning '[[' did we parse correctly... ")
 				return
 			if len(last_line) > 2:
 				last_line = last_line[:-2]
 				html_gen += last_line + "<br>"
-			html_gen += "</p>"
-			doing_paragraph = False	
-
+			if doing_paragraph:
+				html_gen += "</p>"
+				doing_paragraph = False	
+			if doing_python:
+				html_gen += "\n</code></pre>"
+				doing_python = False	
+				
 		if doing_paragraph:
 			html_gen += last_line + "<br>"
+		if doing_python:
+			html_gen += last_line + "\n"
 
 		if last_line.startswith("##"):
 			if doing_paragraph:
@@ -142,17 +166,26 @@ def main():
 	if os.path.exists(target_path):
 		with open(target_path, "rt", encoding="utf-8") as target:
 			existing_content = target.read()
-			match = re.findall(r'<div class="date">\s*<p>([0-9.]*) г.</p>', existing_content)
+			
+			if lang_en:
+				match = re.findall(r'<div class="date">\s*<p>([0-9.]*)</p>', existing_content)
+			else:
+				match = re.findall(r'<div class="date">\s*<p>([0-9.]*) г.</p>', existing_content)
+			
 			edit_date_string = date_string
 			date_string = match[0]
 
 	print(f'Version: {version}, title: "{title}", date: {date_string}, edit date (today): {edit_date_string}')
 
-	with open("blog_posts/blog_post_template.html", "rt", encoding="utf-8") as template:
+	template_path = f"blog_posts/blog_post_template{'_en' if lang_en else ''}.html"
+	with open(template_path, "rt", encoding="utf-8") as template:
 		 content = template.read()
 	content = content.replace("@TITLE", title)
 	content = content.replace("@DATE", date_string)
-	content = content.replace("@EDITDATE", edit_date_string)
+	if edit_date_string is not None:
+		content = content.replace("@EDITDATE", edit_date_string)
+	else:
+		content = content.replace('<div class="edit_date">', '<div class="edit_date" style="visibility: hidden;">')
 
 	# print(html_gen)
 	content = content.replace("@CONTENT", html_gen)

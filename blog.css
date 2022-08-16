@@ -151,7 +151,7 @@ html body {
 .main .article .header .title_and_author {
   width: 100%;
   display: flex;
-  align-items: baseline;
+  align-items: flex-end;
   justify-content: space-between;
   margin-top: 50px;
   margin-bottom: 8px;
@@ -160,17 +160,23 @@ html body {
   .main .article .header .title_and_author {
     flex-direction: column;
   }
+  .main .article .header .title_and_author .title {
+    width: 100%;
+  }
 }
 @media only screen and (min-width: 551px) {
   .main .article .header .title_and_author {
     flex-direction: row;
   }
+  .main .article .header .title_and_author .title {
+    width: 60%;
+  }
 }
 .main .article .header .dates {
   width: 100%;
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
+  margin-bottom: 30px;
+  align-items: flex-start;
 }
 @media only screen and (max-width: 350px) {
   .main .article .header .dates {
@@ -189,11 +195,21 @@ html body {
   font-size: 1.3rem;
 }
 .main .article .header .dates .edit_date {
-  margin-bottom: 30px;
+  margin-top: 0.12rem;
   color: gray;
 }
 .main .article .header .dates .edit_date p {
   font-size: 1rem;
+}
+@media only screen and (max-width: 350px) {
+  .main .article .header .dates .edit_date {
+    margin-left: 0px;
+  }
+}
+@media only screen and (min-width: 351px) {
+  .main .article .header .dates .edit_date {
+    margin-left: 15px;
+  }
 }
 .main .article .content {
   display: flex;
@@ -203,6 +219,18 @@ html body {
 .main .article .content p {
   font-family: sans-serif;
   font-size: 1.4rem;
+}
+.main .article .content pre {
+  background-color: white;
+  font-size: 1.2rem;
+  color: #232323;
+}
+.main .article .content .note {
+  font-size: 1rem;
+  color: gray;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 .main .article .content .message_section {
   display: flex;

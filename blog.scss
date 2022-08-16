@@ -194,15 +194,23 @@ html body {
                 width: 100%;
 
                 display: flex;
-                align-items: baseline;
+                align-items: flex-end;
                 justify-content: space-between;
 
                 @media only screen and (max-width: 550px) {
                     flex-direction: column;
+
+                    .title {
+                        width: 100%;
+                    }
                 }
 
                 @media only screen and (min-width: 551px) {
                     flex-direction: row;
+
+                    .title {
+                        width: 60%;
+                    }
                 }
 
                 margin-top: 50px;
@@ -214,6 +222,8 @@ html body {
                 
                 display: flex;
 
+                margin-bottom: 30px;
+
                 @media only screen and (max-width: 350px) {
                     flex-direction: column;
                 }
@@ -222,8 +232,7 @@ html body {
                     flex-direction: row;
                 }
 
-                align-items: baseline;
-                justify-content: space-between;
+                align-items: flex-start;
 
                 .date {
                     p {
@@ -238,7 +247,14 @@ html body {
                         font-size: 1rem;
                     }
 
-                    margin-bottom: 30px;
+                    @media only screen and (max-width: 350px) {
+                        margin-left: 0px;
+                    }
+    
+                    @media only screen and (min-width: 351px) {
+                        margin-left: 15px;
+                    }
+                    margin-top: 0.12rem;
 
                     color: gray;
                 }
@@ -253,6 +269,21 @@ html body {
             p {
                 font-family: sans-serif;
                 font-size: 1.4rem;
+            }
+
+            pre {
+                background-color: white;
+                font-size: 1.2rem;
+                color: #232323;
+            }
+
+            .note {
+                font-size: 1.0rem;
+                color: gray;
+
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
             }
 
             .message_section {

@@ -19,19 +19,21 @@
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
     </script>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <link rel="stylesheet" type="text/css" href="http://app.klipse.tech/css/codemirror.css">
-    <script>
-        window.klipse_settings = {
-            selector_eval_python_client: '.language-klipse-python'
-        };
-    </script>
-    <script src="http://app.klipse.tech/plugin_prod/js/klipse_plugin.min.js"></script>
 
+    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
 </head>
 
 
 <body>
+    <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css">
+
+    <script>
+        window.klipse_settings = {
+            selector_pyodide: '.language-klipse-pyodide', 
+            editor_type: 'html'
+        };
+    </script>
+
     <div class="content">
         <div class="header">
             <div class="icon_container">
@@ -55,17 +57,17 @@
                             <h2>@TITLE</h2>
                         </div>
                         <div class="author">
-                            <i><h4>Димитър Сотиров</h4></i>
+                            <i><h4>Dimitar Sotirov</h4></i>
                         </div>
                     </div>
 
                     <div class="dates">
                         <div class="date">
-                            <p>@DATE г.</p>
+                            <p>@DATE</p>
                         </div>
     
                         <div class="edit_date">
-                            <p>Последна редакция @EDITDATE г.</p>
+                            <p>Last edited @EDITDATE</p>
                         </div>
                     </div>
                 </div>
@@ -82,6 +84,17 @@
             © 2022 – Dimitar Sotirov
         </div>
     </div>
+
+    <script src="https://storage.googleapis.com/app.klipse.tech/plugin_prod/js/klipse_plugin.min.js"></script>
+
+    <script>  
+        var params = {"appName": "graphing", "width": 800, "height": 600, "showToolBar": true, "showAlgebraInput": true, "showMenuBar": true };
+        var applet = new GGBApplet(params, true);
+        window.addEventListener("load", function() { 
+            applet.inject('ggb-plot-variables');
+        });
+    </script>
+
 </body>
 
 </html>
