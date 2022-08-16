@@ -88,10 +88,10 @@
     <script src="https://storage.googleapis.com/app.klipse.tech/plugin_prod/js/klipse_plugin.min.js"></script>
 
     <script>  
-        var params = {"appName": "graphing", "width": 800, "height": 600, "showToolBar": true, "showAlgebraInput": true, "showMenuBar": true };
-        var applet = new GGBApplet(params, true);
+        var ggb_plot_variables = new GGBApplet({"material_id": "phrs5jkc", "width": 614, "height": 300, "showToolBar": false, "showAlgebraInput": false, "showMenuBar": false }, true);  
+
         window.addEventListener("load", function() { 
-            applet.inject('ggb-plot-variables');
+            ggb_plot_variables.inject('ggb-plot-variables');
         });
     </script>
 

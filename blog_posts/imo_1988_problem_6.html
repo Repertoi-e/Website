@@ -88,7 +88,7 @@
 </p>
 <p>
  <h4>
-  0. Story
+  Story
  </h4>
  <br/>
 </p>
@@ -99,10 +99,14 @@
  </a>
  . I got obsessed over it a few days ago when Numberphile uploaded a video, featuring Zvezdelina Stankova, the only girl to solve the problem at the competition, who shares Emanouil Atanassov's solution, for which he won a special brilliancy award.
  <br/>
+ <br/>
+ <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube-nocookie.com/embed/NcaYEaVTA4g" title="YouTube video player" width="560">
+ </iframe>
+ <br/>
 </p>
 <p>
  <span class="note">
-  Both Zvezdelina and Emanouil are Bulgarians, so this resonates with me on one more dimension.
+  Btw, both Zvezdelina and Emanouil are Bulgarians, so this resonates with me on even one more dimension.
  </span>
  <br/>
 </p>
@@ -114,7 +118,7 @@
 </p>
 <p>
  <h4>
-  1. The Statement
+  The Statement
  </h4>
  <br/>
 </p>
@@ -204,7 +208,7 @@ for a in range(1, 100):
 </p>
 <p>
  <h4>
-  2. ...constants, parameters and variables?
+  ...constants, parameters and variables?
  </h4>
  <br/>
 </p>
@@ -270,6 +274,8 @@ for a in range(1, 100):
  <br/>
  "We build up our mental representation of a situation layer by layer. The lowest layer establishes the deepest aspect of the context - sometimes being so low that it cannot vary at all. For instance, the three-dimensionality of our world is so ingrained that most of us never would imagine letting it slip mentally. It is a constant constant."
  <br/>
+ - Douglas Hofstadter, "Gödel, Escher, Bach"
+ <br/>
  <br/>
  Parameters play the role of a "something between a variable and a constant" type. For a clear example let's see the following graph:
  <br/>
@@ -277,55 +283,68 @@ for a in range(1, 100):
  <div id="ggb-plot-variables">
  </div>
  <br/>
+</p>
+<p>
+ <span class="note">
+  This is a plot of $y=ax^2+x-1$. The graph is the result as we let $x$ "vary" over the real number line. So it makes sense to fix the parameter $a$ (imagine the mess if for each different number of the $x$ axis, a different $p$ was chosen!). But if you play with it, $a$ is also "variable" in the sense that, for different values of it, a different problem all together is graphed. $a$ is "variable" on another level, a higher-level. The constant $-1$ in the equation is even more fixed than $a$.
+ </span>
  <br/>
- We key difference between the three concepts above is the level of variability
- <br/>
- <br/>
- The difference between constants
- <br/>
- <br/>
- But here comes the first key insight
- <br/>
- <br/>
- Let's promote r from a variable to a parameter.
+</p>
+<p>
+ I hope you've seen how "wavy" and almost artificial the definition of parameters and variables is. Most people out off from high-school thinking that just because something is called $x$, it must be a variable, $a$ must be a parameter (whatever that means).
  <br/>
  <br/>
- <br/>
- ... about constants, parameters and variables:
- <br/>
- <br/>
- You might've learned in high-school how in Math
- <br/>
- we like to use letters to designate "unknowns"
- <br/>
- or "varying quantities". You are told that constants,
- <br/>
- which are numbers that are fixed in place get special
- <br/>
- letters: c, pi, phi, etc.
- <br/>
- <br/>
- Parameters - another set: a, b, c
- <br/>
- and variables:  x, y, z
- <br/>
- <br/>
- In reality though this is just an artificial
- <br/>
- difference in essentially a thing that is entirely
- <br/>
- dependent on context.
- <br/>
- <br/>
- For example, I claim, all constants, parameters and
- <br/>
- variables, are...    variables, on different levels.
- <br/>
- <br/>
- Example with graph:    y = 2x + c
+ In reality it's entirely dependent on context, and here, the proof of our original problem 6 can "abuse" this.
  <br/>
  <br/>
  <br/>
+</p>
+<p>
+ <h4>
+  First Insight: Promote $r$ to a parameter
+ </h4>
+ <br/>
+</p>
+<p>
+ As Zvezda says in the video, doing this is something non-trivial. You don't just casually go around in problems, fixing one of the variables to a parameter. But in this case it just so happens this is a really productive way to crack the problem.
+ <br/>
+ <br/>
+ For example's sake, let's fix it as $4$.
+ <br/>
+ <br/>
+ $$\frac{a^2 +b^2}{1 + ab} = r\ \ (r = 4)$$
+ <br/>
+ <br/>
+ @@@ TODO: Say stuff about Machine Learning and hyper-parameters being extra levels of variability (the hierarchy of parameters).
+ <br/>
+</p>
+<p>
+ <span class="note">
+  We'll still use $r$ as a letter, in the sense that it's not really fixed, but in the back of your head you can just say "$r$ is $4$" for when you want to jump down to the variable level.
+ </span>
+ <br/>
+</p>
+<p>
+ Now we have an equation with 2 unknowns (better than 3!). If you think about for a bit, this means that we can find a relation between $a$ and $b$. And that's exactly how the proof goes on!
+ <br/>
+ <br/>
+ $$\frac{a^2 +b^2}{1 + ab} = r $$
+ <br/>
+ $$a^2 +b^2 = r(1 + ab) $$
+ <br/>
+ $$a^2 +b^2 = r + rab $$
+ <br/>
+ <br/>
+ Since $a$ and $b$ are symmetric, we can choose either:
+ <br/>
+ <br/>
+ $$a^2 + (rb)a + b^2 - r = 0 $$
+ <br/>
+ <br/>
+ ... and finally we get a quadratic equation (in terms of $a$). To hopefully bring it back to more familiar land, Zvezda substitutes $x$ for $a$:
+ <br/>
+ <br/>
+ $$x^2 + (rb)x + b^2 - r = 0 $$
  <br/>
  <br/>
  <br/>
@@ -344,10 +363,10 @@ for a in range(1, 100):
     <script src="https://storage.googleapis.com/app.klipse.tech/plugin_prod/js/klipse_plugin.min.js"></script>
 
     <script>  
-        var params = {"appName": "graphing", "width": 800, "height": 600, "showToolBar": true, "showAlgebraInput": true, "showMenuBar": true };
-        var applet = new GGBApplet(params, true);
+        var ggb_plot_variables = new GGBApplet({"material_id": "phrs5jkc", "width": 614, "height": 300, "showToolBar": false, "showAlgebraInput": false, "showMenuBar": false }, true);  
+
         window.addEventListener("load", function() { 
-            applet.inject('ggb-plot-variables');
+            ggb_plot_variables.inject('ggb-plot-variables');
         });
     </script>
 
