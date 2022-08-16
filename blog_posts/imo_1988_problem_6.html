@@ -67,7 +67,7 @@
                         </div>
     
                         <div class="edit_date">
-                            <p>Last edited 16.08.2022</p>
+                            <p>Last edited 17.08.2022</p>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
  <br/>
 </p>
 <p>
- It is about problem 6 from the 1988
+ ... It's... about problem 6 from the 1988
  <a href="https://www.imo-official.org/" target="_blank">
   IMO
  </a>
@@ -111,7 +111,7 @@
  <br/>
 </p>
 <p>
- I recommend watching the original video, but here I present a brief overview of the solution Zvezda talks about. My contribution is that I'll highlight and delve more into the interesting mathy-some-what-philosophical ideas you can think about when cracking this problem wide open.
+ I recommend watching the original video, but here I present a brief overview of the solution Zvezda talks about. My contribution is that I'll highlight and delve more into the interesting problem-solving mathy-some-what-philosophical ideas you can think about...
  <br/>
  <br/>
  <br/>
@@ -294,7 +294,7 @@ for a in range(1, 100):
  I hope you've seen how "wavy" and almost artificial the definition of parameters and variables is. Most people out off from high-school thinking that just because something is called $x$, it must be a variable, $a$ must be a parameter (whatever that means).
  <br/>
  <br/>
- In reality it's entirely dependent on context, and here, the proof of our original problem 6 can "abuse" this.
+ In the context of Machine Learning we can often talk about parameters, and then hyper-parameters, which are another level "up" the hierarchy of "variability". But that's just a note that there can be more than three levels. In reality it's entirely dependent on context. So here, the proof of our original problem 6 can "abuse" this.
  <br/>
  <br/>
  <br/>
@@ -315,39 +315,157 @@ for a in range(1, 100):
  $$\frac{a^2 +b^2}{1 + ab} = r\ \ (r = 4)$$
  <br/>
  <br/>
- @@@ TODO: Say stuff about Machine Learning and hyper-parameters being extra levels of variability (the hierarchy of parameters).
- <br/>
-</p>
-<p>
- <span class="note">
-  We'll still use $r$ as a letter, in the sense that it's not really fixed, but in the back of your head you can just say "$r$ is $4$" for when you want to jump down to the variable level.
- </span>
- <br/>
-</p>
-<p>
- Now we have an equation with 2 unknowns (better than 3!). If you think about for a bit, this means that we can find a relation between $a$ and $b$. And that's exactly how the proof goes on!
- <br/>
- <br/>
- $$\frac{a^2 +b^2}{1 + ab} = r $$
- <br/>
- $$a^2 +b^2 = r(1 + ab) $$
- <br/>
- $$a^2 +b^2 = r + rab $$
- <br/>
- <br/>
- Since $a$ and $b$ are symmetric, we can choose either:
- <br/>
- <br/>
- $$a^2 + (rb)a + b^2 - r = 0 $$
- <br/>
- <br/>
- ... and finally we get a quadratic equation (in terms of $a$). To hopefully bring it back to more familiar land, Zvezda substitutes $x$ for $a$:
- <br/>
- <br/>
- $$x^2 + (rb)x + b^2 - r = 0 $$
- <br/>
- <br/>
- <br/>
+ <p>
+  <span class="note">
+   <br/>
+   We'll still use $r$ as a letter, in the sense that it's not really fixed, but in the back of your head you can just say "$r$ is $4$" for when you want to jump down to the variable level.
+  </span>
+  <br/>
+ </p>
+ <p>
+  Now we have an equation with 2 unknowns (better than 3!). If you think about for a bit, this means that we can find a relation between $a$ and $b$. And that's exactly how the proof goes on!
+  <br/>
+  <br/>
+  $$\frac{a^2 +b^2}{1 + ab} = r $$
+  <br/>
+  $$a^2 +b^2 = r(1 + ab) $$
+  <br/>
+  $$a^2 +b^2 = r + rab $$
+  <br/>
+  <br/>
+  Since $a$ and $b$ are symmetric, we can choose either:
+  <br/>
+  <br/>
+  $$a^2 - (rb)a + b^2 - r = 0 $$
+  <br/>
+  <br/>
+  ... and finally we get a quadratic equation (in terms of $a$). To hopefully bring it back to more familiar land, Zvezda substitutes $x$ for $a$:
+  <br/>
+  <br/>
+  $$x^2 - (rb)x + b^2 - r = 0 $$
+  <br/>
+  <br/>
+  You can jump in now and use the quadratic formula to solve for $x_1$ and $x_2$ (we know there are exactly 2 solutions), but there is a shortcut: Vieta's formulas.
+  <br/>
+  <br/>
+  $$x_1 + x_2 = -\frac{b}{a},\ x_1x_2 = \frac{c}{a}$$
+  <br/>
+  <p>
+   <span class="note">
+    <br/>
+    Here $a$, $b$ and $c$ are the coefficients of the quadratic equation. You can prove these formulas yourself, but since they are pretty well-known (and usually taught in Math class) the proof uses them directly as given.
+   </span>
+   <br/>
+  </p>
+  <p>
+   In our example:
+   <br/>
+   <br/>
+   $$x_1 + x_2 = rb$$
+   <br/>
+   $$x_2 = rb - x_1$$
+   <br/>
+   <br/>
+   But what this says is that if we substitute $rb - x_1$ (remember $x$ = $a$) in the original:
+   <br/>
+   <br/>
+   $$\frac{(a_1)^2 + b^2}{1 + a_1b} = r $$
+   <br/>
+   <br/>
+   We'd also get a solution!
+   <br/>
+   <br/>
+   $$\frac{(a_2)^2 + b^2}{1 + a_2b} = \frac{(rb - x_1)^2 + b^2}{1 + (rb - x_1)b} = r $$
+   <br/>
+   <br/>
+   The top side of the fraction is always positive, $r$ is positive, so the bottom must be as well. What this leaves is with is that $1 + a_2b$ must be positive as well. Or that $a_2$ is at most 0.
+   <br/>
+   <br/>
+   Hold on. What did we just do? We used the original fraction, transformed it into a quadratic equation, found a twin solution $a_2$ to the original $a$ (or $a_1$), and we've shown it must be nonnegative. It must also be an integer! Why? (Can you think of the reasoning - it's again, by using the original fraction.)
+   <br/>
+   <br/>
+   Overall, if we have a pair $(a, b)$ for which we know is a solution. When we've shown that $(rb - a, b)$ must also be a solution, where $rb - a$ can potentially be zero (and that's what we'll tackle now!).
+   <br/>
+   <br/>
+  </p>
+  <p>
+   <h4>
+    Second Insight: Can 0 be a solution?
+   </h4>
+   <br/>
+  </p>
+  <p>
+   If you were especially thoughtful in the beginning when searching for a pair $(a, b)$ for which $r$ is a perfect square, you might have wondered, what if one of the numbers is zero?
+   <br/>
+   <br/>
+   $$\frac{a^2 + 0^2}{1 + a*0} = r $$
+   <br/>
+   <br/>
+   Then we get directly:
+   <br/>
+   <br/>
+   $$\frac{a^2}{1} = a^2 = r $$
+   <br/>
+   <br/>
+   So $r$ indeed is a perfect square for any pair $(a, 0)$ (or $(0, b)$ as we saw - they are symmetric).
+   <br/>
+   <br/>
+   But the question statement is very stubborn in that regard - it specifically says $a$ and $b$ must be natural numbers.
+   <br/>
+  </p>
+  <p>
+   <span class="note">
+    <br/>
+    Sometimes natural numbers are defined to include 0. In Bulgaria that's not usually the case. Actually, in the Olympiad statement the term "positive integers" is used to avoid confusion.
+   </span>
+   <br/>
+  </p>
+  <p>
+   So $0$ doesn't seem to work. But... do we care? If we prove that it works for all non-negative numbers ($0$, $1$, $2$, $3$...), then logically it follows that it's also proven for just positives ($1$, $2$, $3$...). You might think "isn't it more difficult to prove a more general statement, though?" And more often than not - that's the case! However, this is one of the rare cases when it turns out to be easier to prove more, than to prove less.
+   <br/>
+  </p>
+  <p>
+   <span class="note">
+    <br/>
+    Perhaps the authors of the question have anticipated this and it turn deliberately made the question more difficult by stating it in a more specific manner.
+   </span>
+   <br/>
+  </p>
+  <p>
+   How? Let's see.
+   <br/>
+   <br/>
+   The analysis in the previous section about twin roots: $a_2 = rb - a_1$, can be applied to $b$ as well! (Remember that the original equation is symmetric in terms of $a$ and $b$). This means that $b_2 = ra - b_1$ (by using similar reasoning and using Vieta's formulas again).
+   <br/>
+   <br/>
+   <br/>
+  </p>
+  <pre><code class="language-klipse-pyodide">
+import math
+for a in range(1, 100):
+  for b in range(1, 100):
+    r = (a**2 + b**2) / (1 + a * b)
+    if r.is_integer():
+      r = int(r)
+      #print(f"Found a, b = {a}, {b}, r = {r}")
+
+</code></pre>
+  <p>
+   <h4>
+    Third Insight: The Power of Induction ✨
+   </h4>
+   <br/>
+  </p>
+  <p>
+   <br/>
+  </p>
+  <p>
+   <h4>
+    Conclusion
+   </h4>
+   <br/>
+  </p>
+ </p>
 </p>
                 </div>
             </div>
