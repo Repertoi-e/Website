@@ -174,8 +174,8 @@
 </p>
 <pre><code class="language-klipse-pyodide">
 import math
-for a in range(1, 100):
-  for b in range(1, 100):
+for a in range(1, 200):
+  for b in range(1, 200):
     r = (a**2 + b**2) / (1 + a * b)
     if r.is_integer():
       r = int(r)
@@ -227,9 +227,7 @@ for a in range(1, 100):
  And that's a very good intuition! A very good rule of thumb in Math is that if you have 3 variables, to solve for them, you need 3 equations. You can think of it as if one equation "locks" in a relationship between one of the variables and the rest.
  <br/>
  <br/>
- I remember in high-school when there was a geometry problem which also required algebra I would get stuck rearranging equations, finding the same
- <br/>
- ratios between variables over and over again, because I was trying to solve for e.g. 3 variables, by having only 2 equations (or two geometrical constraints).
+ I remember in high-school when there was a geometry problem which also required algebra I would sometimes get stuck rearranging equations, finding the same ratios between variables over and over again, because I was trying to solve for e.g. 3 variables, by having only 2 equations (or two geometrical constraints).
  <br/>
  <br/>
  <br/>
@@ -269,7 +267,7 @@ for a in range(1, 100):
  You might've learned about letters in Math - how they can represent constants (like $\pi$, $\phi$, ...), parameters ($a$, $b$, $c$, ...) or variables ($x$, $y$, $z$, ...) but these are just conventions, which can be shifted. Nothing stops us from using $x$ as a constant and $\phi$ as a variable, for example.
  <br/>
  <br/>
- Moreover, how "variable" something is - is entirely context dependent! We are used to thing variables change "more often" than parameters which by themselves change more often than constants.
+ Moreover, how "variable" something is - is entirely context dependent! We are used to thinking variables change "more often" than parameters which by themselves change more often than constants.
  <br/>
  <br/>
  "We build up our mental representation of a situation layer by layer. The lowest layer establishes the deepest aspect of the context - sometimes being so low that it cannot vary at all. For instance, the three-dimensionality of our world is so ingrained that most of us never would imagine letting it slip mentally. It is a constant constant."
@@ -286,7 +284,7 @@ for a in range(1, 100):
 </p>
 <p>
  <span class="note">
-  This is a plot of $y=ax^2+x-1$. The graph is the result as we let $x$ "vary" over the real number line. So it makes sense to fix the parameter $a$ (imagine the mess if for each different number of the $x$ axis, a different $p$ was chosen!). But if you play with it, $a$ is also "variable" in the sense that, for different values of it, a different problem all together is graphed. $a$ is "variable" on another level, a higher-level. The constant $-1$ in the equation is even more fixed than $a$.
+  This is a plot of $y=ax^2+x-1$. The graph is the result as we let $x$ "vary" over the real number line. So it makes sense to fix the parameter $a$ (imagine the mess if for each different number of the $x$ axis, a different $a$ was chosen!). But if you play with it, $a$ is also "variable" in the sense that, for different values of it, a different problem all together is graphed. $a$ is "variable" on another level, a higher-level. The constant $-1$ in the equation is even more fixed than $a$.
  </span>
  <br/>
 </p>
@@ -294,7 +292,7 @@ for a in range(1, 100):
  I hope you've seen how "wavy" and almost artificial the definition of parameters and variables is. Most people out off from high-school thinking that just because something is called $x$, it must be a variable, $a$ must be a parameter (whatever that means).
  <br/>
  <br/>
- In the context of Machine Learning we can often talk about parameters, and then hyper-parameters, which are another level "up" the hierarchy of "variability". But that's just a note that there can be more than three levels. In reality it's entirely dependent on context. So here, the proof of our original problem 6 can "abuse" this.
+ In the context of Machine Learning we can often talk about parameters, and then hyper-parameters, which are another level "up" the hierarchy of "variability". But that's just a note that there can be more than three levels. In reality it's entirely dependent on context.
  <br/>
  <br/>
  <br/>
@@ -381,10 +379,10 @@ for a in range(1, 100):
    The top side of the fraction is always positive, $r$ is positive, so the bottom must be as well. What this leaves is with is that $1 + a_2b$ must be positive as well. Or that $a_2$ is at most 0.
    <br/>
    <br/>
-   Hold on. What did we just do? We used the original fraction, transformed it into a quadratic equation, found a twin solution $a_2$ to the original $a$ (or $a_1$), and we've shown it must be nonnegative. It must also be an integer! Why? (Can you think of the reasoning - it's again, by using the original fraction.)
+   Hold on. What did we just do? We used the original fraction, transformed it into a quadratic equation, found a twin solution $a_2$ to the original $a$ (or $a_1$), and we've shown it must be nonnegative. It must also be an integer! Why? (Can you think of a reasoning for homework? It's again - by using the original fraction.)
    <br/>
    <br/>
-   Overall, if we have a pair $(a, b)$ for which we know is a solution. When we've shown that $(rb - a, b)$ must also be a solution, where $rb - a$ can potentially be zero (and that's what we'll tackle now!).
+   Overall, if we have a pair $(a, b)$ for which we know is a solution. Then we've shown that $(rb - a, b)$ must also be a solution, where $rb - a$ can potentially be zero (and that's what we'll tackle now!).
    <br/>
    <br/>
   </p>
@@ -435,13 +433,10 @@ for a in range(1, 100):
    How? Let's see.
    <br/>
    <br/>
-   The analysis in the previous section about the twin roots: $a_2 = rb - a_1$, can be applied to $b$ as well! (Remember that the original equation is symmetric in terms of $a$ and $b$). This means that $b_2 = ra - b_1$ (by using similar reasoning and using Vieta's formulas again).
+   The analysis in the previous section about the twin roots: $a_2 = rb - a_1$, can be applied to $b$ as well! (Remember that the original equation is symmetric in terms of $a$ and $b$). This means that $b_2 = ra - b_1$.
    <br/>
    <br/>
-   And now it's a this point playing with it really sparks up the hidden gem that is set in this problem. Can you spot it?
-   <br/>
-   <br/>
-   What if we start with a pair like $(30, 8)$. This is a solution and gives $r = 4$. By applying the formula we found: $a_2 = 4 * 8 - 30 = 2$. So our new pair (which is also a solution) is $(2, 8)$. Look at that! It's simpler. But is that always the case?
+   What if we start with a pair like $(30, 8)$. This is a solution and gives $r = 4$. By applying the formula we find: $a_2 = 4 * 8 - 30 = 2$. So our new pair (which is also a solution) is $(2, 8)$. Look at that! It's simpler. But is that always the case?
    <br/>
    <br/>
    What if we started with $b$: $b_2 = 4 * 30 - 8 = 112$. So new pair is $(30, 112)$. Hmm.. can you see the pattern? Play with it more if you want you.
@@ -460,12 +455,60 @@ for a in range(1, 100):
   </p>
   <p>
    <h4>
+    Releasing $r$
+   </h4>
+   <br/>
+  </p>
+  <p>
+   But... the implications here are even larger. You can start with ANY pair $(a, b)$, and by choosing the lower number
+   <i>
+    it seems like
+   </i>
+   you will eventually reach $0$. When you do, the equation becomes in the form:
+   <br/>
+   <br/>
+   $$\frac{a_n^2 + 0^2}{1 + a_n*0} = a_n^2 = r $$
+   <br/>
+   <br/>
+   or
+   <br/>
+   <br/>
+   $$\frac{b_n^2 + 0^2}{1 + b_n*0} = b_n^2 = r $$
+   <br/>
+   <br/>
+   Where $n$ is an arbitrary however-many-it-takes number of steps. And here, at the final step - we can know $r$. If you want later you can go back up the stairs (remember $r$ stays fixed for one family of ladder solutions) and see the original randomly chosen pair $(a, b)$ must also give a ratio which is a perfect square!
+   <br/>
+   <br/>
+   And voila! It's a pretty convincing reasoning. Not really technical (which we'll fix shortly). But intuitive, I hope.
+   <br/>
+   <br/>
+   You might wonder what will happen if after taking a step, one of the numbers goes into the negative realm - then everything will break and we'll never reach zero. But worry not - it's actually impossible for a number to go negative after flip-flopping. It will eventually at most go to 0. Why? We answered that earlier in the section where we found the formula for $a_2$ in the first place. In general it turned out that the twin root must be nonnegative - in order to conform with the original expression. If it's necessary, go up and think through it again to reassure yourself that's the case.
+   <br/>
+   <br/>
+   Also go back to appreciate what we did with $r$. We fixed it as a parameter in order to be able to look at concrete fixed "sub-problems", but still let ourselves a backdoor of sorts - now when the time came, we reasoned about $r$ as if we didn't know it's value at all.
+   <br/>
+   <br/>
+   <br/>
+  </p>
+  <p>
+   <h4>
     Third Insight: The Power of Induction ✨
    </h4>
    <br/>
   </p>
   <p>
-   The axiom of induction and why you might not agree with it...
+   The elephant in the room of the first paragraph of the previous section is: "...
+   <i>
+    it seems like
+   </i>
+   you will eventually reach $0$". Well, when doing technical proofs "it seems like" is not really enough. You have to formalize it. Here we'll take time to think about how we use
+   <i>
+    induction
+   </i>
+   all over our daily lives without realizing it.
+   <br/>
+   <br/>
+   @TODO: The axiom of induction and why you might not agree with it...
    <br/>
    <br/>
    <br/>
@@ -477,7 +520,7 @@ for a in range(1, 100):
    <br/>
   </p>
   <p>
-   I hope I've shown you how 3 clever insights can work together to create a beautiful solution (now very well known and one of few times competitive Math has sparked researched into a topic - now known as proof by "Vieta" jumping) to the question which still holds reputation of being one of the hardest ever set on the IMO.
+   I hope I've shown you how 3 clever insights can work together to create a beautiful solution to the question which still holds reputation of being one of the hardest ever set on the IMO. It's one of few times competitive Math has sparked research into a topic - now known as proof by "Vieta" jumping, if you want to explore it more.
    <br/>
    <br/>
    The key takeaway here is not the solution to the problem itself. What I found most interesting is how counter-intuitive are some of the steps taken. I wanted to share in details something of their nature, and who knows - maybe these will be incredibly useful to a problem you and I try to solve the future.
@@ -486,7 +529,21 @@ for a in range(1, 100):
    By thinking about it conceptually I'd bet you can apply them to real life as well. (Who says Math is all amount scribbles on paper!)
    <br/>
    <br/>
+  </p>
+  <p>
+   <span class="note">
+    <br/>
+    So many thoughts... endless, re-lease. yYour mind...
+   </span>
+   <br/>
+  </p>
+  <p>
    Anyway, hope you enjoyed, bye for now &lt;3.
+   <br/>
+   <br/>
+   <br/>
+   <br/>
+   <br/>
    <br/>
   </p>
  </p>
