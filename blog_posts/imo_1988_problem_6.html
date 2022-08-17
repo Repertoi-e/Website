@@ -114,7 +114,7 @@
  <br/>
 </p>
 <p>
- I recommend watching the original video, but here I present a brief overview of the solution Zvezda talks about. My contribution is that I'll highlight and delve more into the interesting problem-solving mathy-some-what-philosophical ideas you can think about...
+ I recommend watching the original video, but here I present a brief overview of the solution Zvezda talks about. My contribution is that I'll focus more on the problem-solving strategies and the non-trivial steps taken in the proof and think about them maybe more philosophically.
  <br/>
  <br/>
  <br/>
@@ -142,7 +142,7 @@
  <br/>
 </p>
 <p>
- Note: a perfect square is a number in the form $1^2, 2^2, 3^2, ... n^2$.
+ Note: a perfect square is a number in the form $1^2, 2^2, 3^2, ..., n^2$.
  <br/>
  <br/>
  It's genuinely a hard number theory problem. Just to be clear, it asks about specific numbers $a$ and $b$ which, when plugged in the equation, equal a whole number. Now it's easy to see that's not always the case. In fact, most of time the result is going to be a fraction. The problem says that we don't care about those cases ("Throw them to the dogs!", as a Math teacher used to tell us).
@@ -182,7 +182,7 @@ for a in range(1, 200):
     r = (a**2 + b**2) / (1 + a * b)
     if r.is_integer():
       r = int(r)
-      #print(f"Found a, b = {a}, {b}, r = {r}")
+      #print(f"Found a = {a}, b = {b}, r = {r}")
 
 </code></pre>
 <p>
@@ -198,7 +198,7 @@ for a in range(1, 200):
  When doing Math sometimes numbers are completely left-out! So it's always nice to have a concrete example on the side when working on abstract problems such as this one.
  <br/>
  <br/>
- Now back to the equation. If you look closely, it might look at you back with a sort of beautiful symmetry: it doesn't matter if $a$ is $a$ and $b$ is $b$. They can switch places!
+ Now back to the expression. If you look closely, it might look at you back with a sort of beautiful symmetry: it doesn't matter if $a$ is $a$ and $b$ is $b$. They can switch places!
  <br/>
  <br/>
  $$r = \frac{a^2 + b^2}{1 + ab} = \frac{b^2 + a^2}{1 + ba}$$
@@ -227,10 +227,10 @@ for a in range(1, 200):
  equation without having more information beforehand - without having something to constrain it.
  <br/>
  <br/>
- And that's a very good intuition! A very good rule of thumb in Math is that if you have 3 variables, to solve for them, you need 3 equations. You can think of it as if one equation "locks" in a relationship between one of the variables and the rest.
+ And that's a very good intuition! A very good rule of thumb in Math is that if you have 3 variables, to solve for them, you need 3 equations. You can think of it as if one expression "locks" in a relationship between one of the variables and the rest.
  <br/>
  <br/>
- I remember in high-school when there was a geometry problem which also required algebra I would sometimes get stuck rearranging equations, finding the same ratios between variables over and over again, because I was trying to solve for e.g. 3 variables, by having only 2 equations (or two geometrical constraints).
+ I remember in high-school when there was a geometry problem which also required algebra I would sometimes get stuck rearranging equations, finding the same ratios over and over again, because I was trying to solve for e.g. 3 variables, by having only 2 equations (or two geometrical constraints).
  <br/>
  <br/>
  <br/>
@@ -253,7 +253,7 @@ for a in range(1, 200):
  ... Don't worry, we are not going to solve this monster. That's not important here. But take a look at the third line, we can instantly get $z = 2(x+y)$. If we substitute our newfound information about $z$ in the first line, we'll get something like: $3x^2 + y + 2(x+y) = 10$. We've eliminated one variable! Bingo!
  <br/>
  <br/>
- Now we can solve for either x or y (eliminating one more variable), and then use the second line to finally arrive at a solution. After that we back-track to all the relationships till we get a triplet $(x, y, z)$, which is a solution to the whole system. We might get 0 solutions, infinitely many, or a couple, but the method is the same.
+ Now we can solve for either $x$ or $y$ (eliminating one more variable), and then use the second line to finally arrive at a solution. After that we back-track to all the relationships till we get a triplet $(x, y, z)$, which is a solution to the whole system. We might get 0 solutions, infinitely many, or a couple, but the method is the same.
  <br/>
  <br/>
 </p>
@@ -273,12 +273,16 @@ for a in range(1, 200):
  Moreover, how "variable" something is - is entirely context dependent! We are used to thinking variables change "more often" than parameters which by themselves change more often than constants.
  <br/>
  <br/>
- "We build up our mental representation of a situation layer by layer. The lowest layer establishes the deepest aspect of the context - sometimes being so low that it cannot vary at all. For instance, the three-dimensionality of our world is so ingrained that most of us never would imagine letting it slip mentally. It is a constant constant."
- <br/>
- - Douglas Hofstadter, "Gödel, Escher, Bach"
+ There is a section in "Gödel, Escher, Bach" by Douglas Hofstadter where the author talks about the layers of stability, which inspired me to even touch on this topic here:
  <br/>
  <br/>
- Parameters play the role of a "something between a variable and a constant" type. For a clear example let's see the following graph:
+ "... The terms constant, parameter, and variable, borrowed from mathematics, seem useful here. Often mathematicians, physicists, and others will carry out a calculation, saying "$c$ is a constant, $p$ is a parameter, and $v$ is a variable". What they mean is that any of them can vary (including the "constant"); however, there is a kind of hierarchy of variability. In the situation which is being represented by the symbols, $c$ establishes a global condition; $p$ establishes some less global condition which can vary while $c$ is held fixed; and finally, $v$ can run around while $c$ and $p$ are held fixed. It makes little sense to think of holding $v$ fixed while $c$ and $p$ vary, for $c$ and $p$ establish the context in which $v$ has meaning. For instance, think of a dentist who has a list of patients, and for each patient, a list of teeth. It makes perfect sense (and plenty of money) to hold the patient fixed and vary his teeth-but it makes no sense at all to hold one tooth fixed and vary the patient. (Although sometimes it makes good sense to vary the dentist ...)
+ <br/>
+ <br/>
+ We build up our mental representation of a situation layer by layer. The lowest layer establishes the deepest aspect of the context - sometimes being so low that it cannot vary at all. For instance, the three-dimensionality of our world is so ingrained that most of us never would imagine letting it slip mentally. It is a constant constant." [*]
+ <br/>
+ <br/>
+ For another example, let's see the following graph:
  <br/>
  <br/>
  <div id="ggb-plot-variables">
@@ -287,7 +291,7 @@ for a in range(1, 200):
 </p>
 <p>
  <span class="note">
-  This is a plot of $y=ax^2+x-1$. The graph is the result as we let $x$ "vary" over the real number line. So it makes sense to fix the parameter $a$ (imagine the mess if for each different number of the $x$ axis, a different $a$ was chosen!). But if you play with it, $a$ is also "variable" in the sense that, for different values of it, a different problem all together is graphed. $a$ is "variable" on another level, a higher-level. The constant $-1$ in the equation is even more fixed than $a$.
+  This is a plot of $y=ax^2+x-1$. The axes are not labeled but the horizontal one is the $x$ axis and the vertical one is $y$. The graph is the result as we let $x$ "vary" over the real number line from $-\infty$ to $+\infty$. So it kinda makes sense that the parameter $a$ is fixed (imagine the mess if for each different number on the $x$ axis, a different $a$ was chosen!). But if you play with it (tune the slider!), $a$ is also "variable" in the sense that, for different values of it, a different problem all together is graphed. $a$ is "variable" on another level, a higher-level, and it sets the context in which $x$ has meaning. The constant $-1$ in the equation is even more fixed than $a$ - almost nobody would even think about changing the value of "$-1$". (This shouldn't stop you from trying, though!)
  </span>
  <br/>
 </p>
@@ -295,7 +299,7 @@ for a in range(1, 200):
  I hope you've seen how "wavy" and almost artificial the definition of parameters and variables is. Most people out off from high-school thinking that just because something is called $x$, it must be a variable, $a$ must be a parameter (whatever that means).
  <br/>
  <br/>
- In the context of Machine Learning we can often talk about parameters, and then hyper-parameters, which are another level "up" the hierarchy of "variability". But that's just a note that there can be more than three levels. In reality it's entirely dependent on context.
+ In the context of Machine Learning we can even talk about hyper-parameters, which are another level "up" the hierarchy of "variability". But that's just a note that there can be more than three levels (there can be even hyper-hyper-parameters). It's entirely dependent on context.
  <br/>
  <br/>
  <br/>
@@ -324,6 +328,9 @@ for a in range(1, 200):
   <br/>
  </p>
  <p>
+  What we've done is essentially redefined the problem in terms of $r$. It now makes sense to solve for $(a, b)$ only when $r$ is already fixed to something. It's a subtle difference, but now we've essentially split the original problem into infinitely many sub-problems (each value of $r$ may spur up a family of solutions $(a, b)$).
+  <br/>
+  <br/>
   Now we have an equation with 2 unknowns (better than 3!). If you think about for a bit, this means that we can find a relation between $a$ and $b$. And that's exactly how the proof goes on!
   <br/>
   <br/>
@@ -354,7 +361,7 @@ for a in range(1, 200):
   <p>
    <span class="note">
     <br/>
-    Here $a$, $b$ and $c$ are the coefficients of the quadratic equation. You can prove these formulas yourself, but since they are pretty well-known (and usually taught in Math class) the proof uses them directly as given.
+    Here $a$, $b$ and $c$ are the coefficients of the quadratic equation. You can prove these formulas yourself (using the quadratic formula), but since they are pretty well-known (and usually taught in Math class) the proof uses them directly as given.
    </span>
    <br/>
   </p>
@@ -482,13 +489,13 @@ for a in range(1, 200):
    Where $n$ is an arbitrary however-many-it-takes number of steps. And here, at the final step - we can know $r$. If you want later you can go back up the stairs (remember $r$ stays fixed for one family of ladder solutions) and see the original randomly chosen pair $(a, b)$ must also give a ratio which is a perfect square!
    <br/>
    <br/>
-   And voila! It's a pretty convincing reasoning. Not really technical (which we'll fix shortly). But intuitive, I hope.
+   And voila! It's a pretty convincing reasoning which finally proves problem 6. Not really technical (which we'll fix shortly). But intuitive, I hope.
    <br/>
    <br/>
    You might wonder what will happen if after taking a step, one of the numbers goes into the negative realm - then everything will break and we'll never reach zero. But worry not - it's actually impossible for a number to go negative after flip-flopping. It will eventually at most go to 0. Why? We answered that earlier in the section where we found the formula for $a_2$ in the first place. In general it turned out that the twin root must be nonnegative - in order to conform with the original expression. If it's necessary, go up and think through it again to reassure yourself that's the case.
    <br/>
    <br/>
-   Also go back to appreciate what we did with $r$. We fixed it as a parameter in order to be able to look at concrete fixed "sub-problems", but still let ourselves a backdoor of sorts - now when the time came, we reasoned about $r$ as if we didn't know it's value at all.
+   Also go back to appreciate what we did with $r$. We fixed it as a parameter in order to be able to look at concrete fixed "sub-problem", but still let ourselves a backdoor of sorts - now when the time came, we reasoned about $r$ as if we didn't know it's value at all.
    <br/>
    <br/>
    <br/>
@@ -508,6 +515,17 @@ for a in range(1, 200):
    <i>
     induction
    </i>
+   to wrap the solution into a more rigorous package.
+   <br/>
+   <br/>
+   First of all, what even is induction? It's logical in the sense that - it's *difficult* to disagree with it, but when applied to math it almost feels like magic.
+   <br/>
+   <br/>
+   Take a look at this classic proof for the sum of the first $n$ integers:
+   <br/>
+   <br/>
+   <br/>
+   <br/>
    all over our daily lives without realizing it.
    <br/>
    <br/>
@@ -531,13 +549,6 @@ for a in range(1, 200):
    <br/>
    By thinking about it conceptually I'd bet you can apply them to real life as well. (Who says Math is all amount scribbles on paper!)
    <br/>
-   <br/>
-  </p>
-  <p>
-   <span class="note">
-    <br/>
-    So many thoughts... endless, re-lease. yYour mind...
-   </span>
    <br/>
   </p>
   <p>
