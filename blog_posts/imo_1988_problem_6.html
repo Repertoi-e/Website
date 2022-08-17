@@ -70,7 +70,7 @@
                         </div>
     
                         <div class="edit_date">
-                            <p>Last edited 16.08.2022</p>
+                            <p>Last edited 17.08.2022</p>
                         </div>
                     </div>
                 </div>
@@ -103,7 +103,7 @@
  . I got obsessed over it a few days ago when Numberphile uploaded a video, featuring Zvezdelina Stankova, the only girl to solve the problem at the competition, who shares Emanouil Atanassov's solution, for which he won a special brilliancy award.
  <br/>
  <br/>
- <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube-nocookie.com/embed/NcaYEaVTA4g" title="YouTube video player" width="560">
+ <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="300px" src="https://www.youtube-nocookie.com/embed/NcaYEaVTA4g" title="YouTube video player" width="100%">
  </iframe>
  <br/>
 </p>
@@ -276,12 +276,17 @@ for a in range(1, 200):
  There is a section in "Gödel, Escher, Bach" by Douglas Hofstadter where the author talks about the layers of stability, which inspired me to even touch on this topic here:
  <br/>
  <br/>
- "... The terms constant, parameter, and variable, borrowed from mathematics, seem useful here. Often mathematicians, physicists, and others will carry out a calculation, saying "$c$ is a constant, $p$ is a parameter, and $v$ is a variable". What they mean is that any of them can vary (including the "constant"); however, there is a kind of hierarchy of variability. In the situation which is being represented by the symbols, $c$ establishes a global condition; $p$ establishes some less global condition which can vary while $c$ is held fixed; and finally, $v$ can run around while $c$ and $p$ are held fixed. It makes little sense to think of holding $v$ fixed while $c$ and $p$ vary, for $c$ and $p$ establish the context in which $v$ has meaning. For instance, think of a dentist who has a list of patients, and for each patient, a list of teeth. It makes perfect sense (and plenty of money) to hold the patient fixed and vary his teeth-but it makes no sense at all to hold one tooth fixed and vary the patient. (Although sometimes it makes good sense to vary the dentist ...)
+</p>
+<p>
+ <span class="note">
+  "... The terms constant, parameter, and variable, borrowed from mathematics, seem useful here. Often mathematicians, physicists, and others will carry out a calculation, saying "$c$ is a constant, $p$ is a parameter, and $v$ is a variable". What they mean is that any of them can vary (including the "constant"); however, there is a kind of hierarchy of variability. In the situation which is being represented by the symbols, $c$ establishes a global condition; $p$ establishes some less global condition which can vary while $c$ is held fixed; and finally, $v$ can run around while $c$ and $p$ are held fixed. It makes little sense to think of holding $v$ fixed while $c$ and $p$ vary, for $c$ and $p$ establish the context in which $v$ has meaning. For instance, think of a dentist who has a list of patients, and for each patient, a list of teeth. It makes perfect sense (and plenty of money) to hold the patient fixed and vary his teeth-but it makes no sense at all to hold one tooth fixed and vary the patient. (Although sometimes it makes good sense to vary the dentist...)
+  <br/>
+  <br/>
+  We build up our mental representation of a situation layer by layer. The lowest layer establishes the deepest aspect of the context - sometimes being so low that it cannot vary at all. For instance, the three-dimensionality of our world is so ingrained that most of us never would imagine letting it slip mentally. It is a constant constant." [*]
+ </span>
  <br/>
- <br/>
- We build up our mental representation of a situation layer by layer. The lowest layer establishes the deepest aspect of the context - sometimes being so low that it cannot vary at all. For instance, the three-dimensionality of our world is so ingrained that most of us never would imagine letting it slip mentally. It is a constant constant." [*]
- <br/>
- <br/>
+</p>
+<p>
  For another example, let's see the following graph:
  <br/>
  <br/>
@@ -492,7 +497,7 @@ for a in range(1, 200):
    And voila! It's a pretty convincing reasoning which finally proves problem 6. Not really technical (which we'll fix shortly). But intuitive, I hope.
    <br/>
    <br/>
-   You might wonder what will happen if after taking a step, one of the numbers goes into the negative realm - then everything will break and we'll never reach zero. But worry not - it's actually impossible for a number to go negative after flip-flopping. It will eventually at most go to 0. Why? We answered that earlier in the section where we found the formula for $a_2$ in the first place. In general it turned out that the twin root must be nonnegative - in order to conform with the original expression. If it's necessary, go up and think through it again to reassure yourself that's the case.
+   You might wonder what will happen if after taking a step, one of the numbers goes into the negative realm - then everything will break and we'll never reach zero. But worry not - it's actually impossible for a number to go negative after "flip-flopping". It will eventually at most go to 0. Why? We answered that earlier in the section where we found the formula for $a_2$ in the first place. In general it turned out that the twin root must be nonnegative - in order to conform with the original expression. If it's necessary, go up and think through it again to reassure yourself that's the case.
    <br/>
    <br/>
    Also go back to appreciate what we did with $r$. We fixed it as a parameter in order to be able to look at concrete fixed "sub-problem", but still let ourselves a backdoor of sorts - now when the time came, we reasoned about $r$ as if we didn't know it's value at all.
@@ -518,19 +523,183 @@ for a in range(1, 200):
    to wrap the solution into a more rigorous package.
    <br/>
    <br/>
-   First of all, what even is induction? It's logical in the sense that - it's *difficult* to disagree with it, but when applied to math it almost feels like magic.
+   First of all, what even is induction? It's logical in the sense that - it's
+   <i>
+    difficult
+   </i>
+   to disagree with it, but when applied to math it almost feels like magic. Let's look at the second case first to illustrate.
    <br/>
    <br/>
-   Take a look at this classic proof for the sum of the first $n$ integers:
+   Take a look at this classic proof for the sum of the first $n$ integers. The axiom of induction has 3 parts - a base step, an inductive hypothesis, and an inductive step which triggers like a chain to prove (potentially infinitely) many statements.
    <br/>
    <br/>
+   Firstly, it's important to note that induction won't give us the answer. We must already know the answer before-hand. For the sum it
+   <i>
+    looks like
+   </i>
+   :
    <br/>
    <br/>
-   all over our daily lives without realizing it.
+   $$1 + 2 + 3 + ... + n = \frac{1}{2}n(n+1)$$
    <br/>
    <br/>
-   @TODO: The axiom of induction and why you might not agree with it...
+   Shall we try?
    <br/>
+  </p>
+  <pre><code class="language-klipse-pyodide">
+N = 5
+
+sum = 0
+# We must use N + 1 here,
+# because "range" is not inclusive!
+for i in range(N + 1):
+	sum += i
+
+formula = N * (N + 1) // 2
+
+print(f"Sum is: {sum}")
+print(f"The formula gives us: {formula}")
+
+</code></pre>
+  <p>
+   <span class="note">
+    Again, it's interactive! Try to change "N" to different values to see what happens.
+   </span>
+   <br/>
+  </p>
+  <p>
+   But you can go up and up and up... to arbitrarily large $N$... how do you know it doesn't break for $N+1$. It could suddenly break. Lot's of formulas in Math seem to work up until some point after which they diverge from the true answer. In general eye-balling - as in it works for big enough $N$, is not enough.
+   <br/>
+   <br/>
+   The proof starts like this. The base step is:
+   <br/>
+   <br/>
+   $$(1)\ It\ works\ for\ n=1.$$
+   <br/>
+   $$1 = \frac{1}{2}1(1 + 1)$$
+   <br/>
+   <br/>
+   Sure enough. We'd see why we need this. The second step is to
+   <i>
+    assume
+   </i>
+   it works up until an integer $k$:
+   <br/>
+   <br/>
+   $$(2)\ It\ works\ for\ some\ k.$$
+   <br/>
+   $$1 + 2 + 3 + ... + k = \frac{1}{2}k(k + 1)$$
+   <br/>
+   <br/>
+   Now, for the final step, show that it's true for $k + 1$.
+   <br/>
+   <br/>
+   $$(3) 1 + 2 + 3 + ... + k + (k + 1) = \frac{1}{2}k(k + 1) + (k + 1) = (k+1)(\frac{1}{2}k + 1) = (k+1)(\frac{k + 2}{2}) = \frac{1}{2}(k+1)(k+2)$$
+   <br/>
+   <br/>
+   The final term is exactly the original formula we wanted to prove $\frac{1}{2}n(n+1)$if $n= k + 1$. So by the principle of mathematical induction the statement is true for all natural numbers $1, 2, 3, ...$
+   <br/>
+   <br/>
+   Aren't we assuming something more here, though? Take a look step 2. It seems like we're just saying - assume the formula is true therefore the formula is true. But it's a bit subtle. We said
+   <i>
+    assume
+   </i>
+   it works
+   <b>
+    up to
+   </b>
+   an integer $k$. This $k$ can be $1$ - or any $N$ we found using the Python program. That's why we need the base step - to show it's true for just 1 integer. Now that we wrapped up our empirical evidence in $k$, in the final step we manipulate the expression in order to show that it must work for $k+1$. This triggers a chain of proofs and eventually catches all natural numbers. Therefore the formula always works.
+   <br/>
+   <br/>
+   A good analogy for induction is by using natural language:
+   <br/>
+   <br/>
+   An evil wizard has cursed a kingdom with a spell that makes it rain if it has rained on the previous day. Today it rains. Will it rain forever? The logical answer seems to be "yes". There will always a previous day on which it has rained. Today it rains and this is the "base step" which triggers like a chain for all days in the future.
+   <br/>
+   <br/>
+   It's interesting to see why induction must be included as an axiom in Math. It turns out it cannot be proven from other axioms, or something more: some statements are $unprovable$ without induction.
+   <br/>
+   <br/>
+   Let's see another example from "Gödel, Escher, Bach". It turns out the following statement is undecidable in the regular number theory (without induction):
+   <br/>
+   <br/>
+   $$For\ all\ n:\ (0 + n) = n$$
+   <br/>
+   <br/>
+   You can individually prove each statement by itself:
+   <br/>
+   <br/>
+   $$(0 + 0) = 0$$
+   <br/>
+   $$(0 + 1) = 1$$
+   <br/>
+   $$(0 + 2) = 2$$
+   <br/>
+   $$(0 + 3) = 3$$
+   <br/>
+   $$ ... $$
+   <br/>
+   <br/>
+   Each of these has a rigorous, step-by-step proof by the base axioms of Mathematics (for brevity we'll not discuss them here in detail, you can look up "
+   <a href="https://en.wikipedia.org/wiki/Peano_axioms#:~:text=The%20Peano%20axioms%20define%20the,0%20is%20a%20natural%20number." traget="_blank">
+    Peano's axioms"
+   </a>
+   to get a head-start!), but the whole family is undecidable in the sense that we
+   <i>
+    simply don't know
+   </i>
+   it's not going to break for example at $0 + 1298592589 = 1298592589$. The key here is that we can find a pattern in the proof from one statement to the next (like we did with the inductive step). So a final induction axiom which completes number theory.
+   <br/>
+   <br/>
+   Of course you can choose not to believe in induction. Then you can simply add:
+   <br/>
+   <br/>
+   $$For\ all\ n:\ (0 + n) = n$$
+   <br/>
+   <br/>
+   as an axiom to your theory. However, there is something to be said about the operation of addition - shouldn't it be captured fully in the theory? This feels like artificially plugging in a statement to fix the holes. Can you guarantee there are no other holes? Induction seems like a framework that's more powerful (while still being weirdly easy to grasp). (Of course, even with induction, there are still unprovable statements in Math, take a look at
+   <a href="https://en.wikipedia.org/wiki/G%C3%B6del%27s_incompleteness_theorems" target="_blank">
+    Gödel's incompleteness theorems
+   </a>
+   ).
+   <br/>
+   <br/>
+   ... but let's stay you are stubborn and simply refuse to agree with induction. There's nobody to stop you! And that's good, many fields in math are found by simply breaking the rules. For example, addition and multiplication are commutative in most number systems, but not always. Take a look at
+   <a href="https://en.wikipedia.org/wiki/Matrix_multiplication" target="_blank">
+    matrix multiplication
+    <br/>
+    There are thinkable worlds in which more and more basic logic rules are broken. For example, a popular tautology is that either $p$ or $~p$ (not $p$) is true. There is no middle ground - either a logical statement is true or false. But you can decide to stop "believing" in that - who knows what you'll find? (One interpretation of Quantum mechanics is that statements about the future can be neither true nor false, so there's that.)
+    <br/>
+    <br/>
+    We can continue this discussion until infinity. The point here to take is that, what you "believe" as true directly puts you in a frame, which tells you what you can and what you cannot deduce in your system. Don't be afraid to break the system from time to time. But for now...
+    <br/>
+    <br/>
+    ... let's just go back to our land of familiar Math. One that is logical and seems to makes sense for most of our daily lives. Where addition and multiplication is commutative, induction is intuitive. We still have an Olympiad problem to wrap up!!
+    <br/>
+    <br/>
+    <br/>
+   </a>
+  </p>
+  <p>
+   <h4>
+    Wrapping up our proof
+   </h4>
+   <br/>
+  </p>
+  <p>
+   There is another variation of induction - finite induction. In our case we have to show that eventually in a pair $(a, b)$ one of the terms will go down to zero (without loss of generality it doesn't matter which, it's symmetric).
+   <br/>
+   <br/>
+   The only missing link in our proof is that $(a, b)$ with it's corresponding formulas to "flip-flop": $a_2 = rb - a_1$, $b_2 = ra - b_1$, doesn't always guarantee that we'll go down. What if both $a$ and $b$ go up? Can that happen? We don't know - it didn't happen in our example, but how do we know it doesn't break at a specifically chosen $(a, b)$. Smells like it begs for induction.
+   <br/>
+   <br/>
+   In general the only thing missing is the inductive step. Show that for $(a, b)$ either $(a, b_2)$ or $(a_2, b)$ "went down". Can you prove this for homework? (Hint: use proof by contradiction and Vieta's formula about the product of the two roots... or you can also look at how Zvezda proves it in the Numberphile video).
+   <br/>
+   <br/>
+   In any case, once this is done, we're essentially done. For any whole numbered pair $(a, b)$, we've shown a method to bring down one of the terms to zero (while at every step we have a valid solution to the equation!) and in the end, the other term squared must be equal to $r$. Which implies that $r$ is, indeed, a perfect square, always.
+   <br/>
+   <br/>
+   Phew.
    <br/>
    <br/>
   </p>
@@ -541,7 +710,11 @@ for a in range(1, 200):
    <br/>
   </p>
   <p>
-   I hope I've shown you how 3 clever insights can work together to create a beautiful solution to the question which still holds reputation of being one of the hardest ever set on the IMO. It's one of few times competitive Math has sparked research into a topic - now known as proof by "Vieta" jumping, if you want to explore it more.
+   I hope I've shown you how 3 clever insights can work together to create a beautiful solution to the question which still holds reputation of being one of the hardest ever set on the IMO. It's one of few times competitive Math has sparked research into a topic - now known as proof by "
+   <a href="https://en.wikipedia.org/wiki/Vieta_jumping" target="_blank">
+    Vieta jumping
+   </a>
+   ", if you want to explore it more.
    <br/>
    <br/>
    The key takeaway here is not the solution to the problem itself. What I found most interesting is how counter-intuitive are some of the steps taken. I wanted to share in details something of their nature, and who knows - maybe these will be incredibly useful to a problem you and I try to solve the future.
