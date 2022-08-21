@@ -1,0 +1,65 @@
+* {
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: Bitter;
+    font-style: normal;
+    src: url(../resources/fonts/Bitter-Regular.woff) format("woff");
+}
+
+@font-face {
+    font-family: Bitter;
+    font-style: italic;
+    src: url(../resources/fonts/Bitter-Italic.woff) format("woff");
+}
+
+@font-face {
+    font-family: Bitter;
+    font-style: normal;
+    font-weight: 700;
+    src: url(../resources/fonts/Bitter-Bold.woff) format("woff");
+}
+
+$mod_1: 1.067;
+$mod_2: 1.333;
+
+$h5-font-size: 100%;
+$h4-font-size: $mod_1 * $h5-font-size;
+$h3-font-size: $mod_1 * $h4-font-size;
+$h2-font-size: $mod_1 * $h3-font-size;
+$h1-font-size: $mod_1 * $h2-font-size;
+$h6-font-size: calc($h5-font-size / $mod_1);
+
+:root {
+    font-family: "Bitter", serif;
+    font-size: $h5-font-size;
+}
+
+h1 {
+    font-size: $h1-font-size;
+}
+
+h2 {
+    font-size: $h2-font-size;
+}
+
+h3 {
+    font-size: $h3-font-size;
+}
+
+h4 {
+    font-size: $h4-font-size;
+}
+
+h5 {
+    font-size: $h5-font-size;
+}
+
+h6 {
+    font-size: $h6-font-size;
+}
+

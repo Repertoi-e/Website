@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: Bitter;
+  font-style: normal;
+  src: url(../resources/fonts/Bitter-Regular.woff) format("woff");
+}
+@font-face {
+  font-family: Bitter;
+  font-style: italic;
+  src: url(../resources/fonts/Bitter-Italic.woff) format("woff");
+}
+@font-face {
+  font-family: Bitter;
+  font-style: normal;
+  font-weight: 700;
+  src: url(../resources/fonts/Bitter-Bold.woff) format("woff");
+}
+:root {
+  font-family: "Bitter", serif;
+  font-size: 100%;
+}
+
+h1 {
+  font-size: 129.6157203121%;
+}
+
+h2 {
+  font-size: 121.4767763%;
+}
+
+h3 {
+  font-size: 113.8489%;
+}
+
+h4 {
+  font-size: 106.7%;
+}
+
+h5 {
+  font-size: 100%;
+}
+
+h6 {
+  font-size: 93.7207122774%;
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,100 @@
+@import "transform";
+
+@mixin border-gradient($thickness, $from, $to, $weight: 0) {
+    $mix-main: mix($from, $to);
+    $mix-sub-from: mix($mix-main, $from);
+    $mix-sub-to: mix($mix-main, $to);
+
+    box-shadow: 0 $thickness 0 $weight rgba($mix-sub-to, 0.25), 0 -$thickness 0 $weight rgba($mix-sub-from, 0.25),
+        $thickness 0 0 $weight rgba($mix-sub-to, 0.25), -$thickness 0 0 $weight rgba($mix-sub-from, 0.25),
+        $thickness -$thickness 0 $weight rgba($mix-main, 0.5), -$thickness $thickness 0 $weight rgba($mix-main, 0.5),
+        $thickness $thickness 0 $weight rgba($to, 0.75), -$thickness -$thickness 0 $weight rgba($from, 0.75);
+}
+
+@mixin psycho-circle($size) {
+    & {
+        .circle {
+            position: absolute;
+
+            border-radius: 100%;
+
+            width: $size;
+            height: $size;
+
+            &:nth-of-type(1) {
+                @include border-gradient(0.15em, rgb(61, 162, 230), rgb(17, 41, 255));
+            }
+
+            &:nth-of-type(2) {
+                @include border-gradient(0.1em, red, blue);
+                animation: psycho_circle 3s linear infinite;
+            }
+
+            &:nth-of-type(3) {
+                @include border-gradient(0.1em, rgb(255, 255, 0), rgb(0, 255, 255));
+                animation: psycho_circle 3s linear 0.1s infinite;
+            }
+
+            &:nth-of-type(4) {
+                @include border-gradient(0.1em, rgb(255, 0, 255), rgb(0, 255, 0));
+                animation: psycho_circle 3s linear 0.2s infinite;
+            }
+        }
+    }
+}
+
+
+@keyframes psycho_circle {
+    0% {
+        @include transform(rotate(0deg) scale(1) translate(0, 0));
+    }
+
+    33% {
+        @include transform(rotate(360deg) scale(1) translate(3px, 3px));
+    }
+
+    66% {
+        @include transform(rotate(720deg) scale(1) translate(-3px, -3px));
+    }
+
+    100% {
+        @include transform(rotate(1080deg) scale(1) translate(0, 0));
+    }
+}
+
+@mixin psycho-circle-button($button-size) {
+    & {
+        height: $button-size;
+
+        align-self: flex-start;
+        justify-self: stretch;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding-bottom: 1rem;
+
+        .border {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            a {
+                position: absolute;
+                
+                width: $button-size;
+                height: $button-size;
+
+                clip-path: ellipse(calc($button-size/2) calc($button-size/2) at 50% 50%);
+
+                img {
+                    width: $button-size;
+                    height: $button-size;
+                }
+            }
+
+            @include psycho-circle($button-size);
+        }
+    }
+}
