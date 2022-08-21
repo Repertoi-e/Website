@@ -77,26 +77,26 @@
 
                 <div class="content">
                     <p>
- Today I'd like to share the problem which has a reputation of being the hardest ever set on the International Mathematical Olympiad.
+ Today I'd like to share with you the problem which has a reputation of being the hardest ever set on the International Mathematical Olympiad.
  <br/>
  <br/>
  That's some serious business! And... the goal here is not simply to present
  <i>
   a
  </i>
- solution, but to walk you through 3 increasingly-brilliant insights, that aid the proof, and in the end hopefully make you feel like a better problem-solver, armed with some new... super tools of sorts.
+ solution, but to walk you through 3 increasingly-brilliant insights that aid the proof, and in the end hopefully make you a better problem-solver, armed with some new... super tools of sorts.
  <br/>
  <br/>
  <br/>
 </p>
 <p>
  <h4>
-  Story
+  The Story
  </h4>
  <br/>
 </p>
 <p>
- ... It's... about problem 6 from the 1988
+ It's... about problem 6 from the 1988
  <a href="https://www.imo-official.org/" target="_blank">
   IMO
  </a>
@@ -114,7 +114,7 @@
  <br/>
 </p>
 <p>
- I recommend watching the original video, but here I present an overview of the solution Zvezda talks about. My contribution is that I'll focus more deep-down on the problem-solving strategies and the non-trivial steps taken in the proof (and  maybe think about them more philosophically).
+ Watching the original video first is not mandatory (but recommended!), since here I'll focus more on the problem-solving strategies and the non-trivial steps taken in the proof (although I will also give an overview of the solution Zvezda talks about!). The focus in this article, however, is going to be more on the stuff that's applicable outside this specific problem.
  <br/>
  <br/>
  <br/>
@@ -198,7 +198,11 @@ for a in range(1, 200):
  When doing Math sometimes numbers are completely left-out! So it's always nice to have a concrete example on the side when working on abstract problems such as this one.
  <br/>
  <br/>
- Now back to the expression. If you look closely, it might look at you back with a sort of beautiful symmetry: it doesn't matter if $a$ is $a$ and $b$ is $b$. They can switch places!
+ Now back to the expression. If you look closely, it might
+ <i>
+  look back at you
+ </i>
+ with a sort of beautiful symmetry: it doesn't matter if $a$ is $a$ and $b$ is $b$. They can switch places!
  <br/>
  <br/>
  $$r = \frac{a^2 + b^2}{1 + ab} = \frac{b^2 + a^2}{1 + ba}$$
@@ -211,7 +215,7 @@ for a in range(1, 200):
 </p>
 <p>
  <h4>
-  ...constants, parameters and variables?
+  Constraints
  </h4>
  <br/>
 </p>
@@ -264,6 +268,14 @@ for a in range(1, 200):
   Not every equation can have one of variables isolated on one side-though, so this can sometimes fail, just be careful!
  </span>
  <br/>
+ <br/>
+ <br/>
+</p>
+<p>
+ <h4>
+  ...constants, parameters and variables?
+ </h4>
+ <br/>
 </p>
 <p>
  This however, is not the route we're going to take with the IMO problem.
@@ -272,19 +284,16 @@ for a in range(1, 200):
  You might've learned about letters in Math - how they can represent constants (like $\pi$, $\phi$, ...), parameters ($a$, $b$, $c$, ...) or variables ($x$, $y$, $z$, ...) but these are just conventions, which can be shifted. Nothing stops us from using $x$ as a constant and $\phi$ as a variable, for example.
  <br/>
  <br/>
- Moreover, how "variable" something is - is entirely context dependent! We are used to thinking variables change "more often" than parameters which by themselves change more often than constants.
+ Moreover, how "variable" something is - is entirely context dependent! We are used to thinking variables change "more often" than parameters which by themselves change more often than constants. You can think of it in layers.
  <br/>
  <br/>
  There is a section in "Gödel, Escher, Bach" by Douglas Hofstadter where the author talks about the layers of stability, which inspired me to even touch on this topic here:
  <br/>
  <br/>
- "...The terms constant, parameter, and variable, borrowed from mathematics, seem useful here. Often mathematicians, physicists, and others will carry out a calculation, saying "$c$ is a constant, $p$ is a parameter, and $v$ is a variable". What they mean is that any of them can vary (including the "constant"); however, there is a kind of hierarchy of variability. In the situation which is being represented by the symbols, $c$ establishes a global condition; $p$ establishes some less global condition which can vary while $c$ is held fixed; and finally, $v$ can run around while $c$ and $p$ are held fixed. It makes little sense to think of holding $v$ fixed while $c$ and $p$ vary, for $c$ and $p$ establish the context in which $v$ has meaning. For instance, think of a dentist who has a list of patients, and for each patient, a list of teeth. It makes perfect sense (and plenty of money) to hold the patient fixed and vary his teeth-but it makes no sense at all to hold one tooth fixed and vary the patient. (Although sometimes it makes good sense to vary the dentist...)
+ "We build up our mental representation of a situation layer by layer. The lowest layer establishes the deepest aspect of the context - sometimes being so low that it cannot vary at all. For instance, the three-dimensionality of our world is so ingrained that most of us never would imagine letting it slip mentally. It is a constant constant." [*]
  <br/>
  <br/>
- We build up our mental representation of a situation layer by layer. The lowest layer establishes the deepest aspect of the context - sometimes being so low that it cannot vary at all. For instance, the three-dimensionality of our world is so ingrained that most of us never would imagine letting it slip mentally. It is a constant constant." [*]
- <br/>
- <br/>
- For another example, let's see the following graph:
+ To illustrate, let's see the following graph:
  <br/>
  <br/>
  <div id="ggb-plot-variables">
@@ -293,7 +302,7 @@ for a in range(1, 200):
 </p>
 <p>
  <span class="note">
-  This is a plot of $y=ax^2+x-1$. The axes are not labeled but the horizontal one is the $x$ axis and the vertical one is $y$. The graph is the result as we let $x$ "vary" over the real number line from $-\infty$ to $+\infty$. So it kinda makes sense that the parameter $a$ is fixed (imagine the mess if for each different number on the $x$ axis, a different $a$ was chosen!). But if you play with it (tune the slider!), $a$ is also "variable" in the sense that, for different values of it, a different problem all together is graphed. $a$ is "variable" on another level, a higher-level, and it sets the context in which $x$ has meaning. The constant $-1$ in the equation is even more fixed than $a$ - almost nobody would even think about changing the value of "$-1$". (This shouldn't stop you from trying, though!)
+  This is a plot of $y=ax^2+x-1$. The horizontal axis is the $x$ axis and the vertical one is $y$. The graph is the result as we let $x$ "vary" over the real number line from $-\infty$ to $+\infty$. So it kinda makes sense that the parameter $a$ is fixed (imagine the mess if for each different number on the $x$ axis, a different $a$ was chosen!). But if you play with it (tune the slider!), $a$ is also "variable" in the sense that, for different values of it, a different problem all together is graphed. $a$ is "variable" on another level, a higher-level, and it sets the context in which $x$ has meaning. The constant $-1$ in the equation is even more fixed than $a$ - almost nobody would even think about changing the value of "$-1$". (This shouldn't stop you from trying, though!)
  </span>
  <br/>
 </p>
@@ -301,7 +310,7 @@ for a in range(1, 200):
  I hope you've seen how "wavy" and almost artificial the definition of parameters and variables is. Most people out off from high-school thinking that just because something is called $x$, it must be a variable, $a$ must be a parameter (whatever that means).
  <br/>
  <br/>
- In the context of Machine Learning we can even talk about hyper-parameters, which are another level "up" the hierarchy of "variability". But that's just a note that there can be more than three levels (there can be even hyper-hyper-parameters). It's entirely dependent on context.
+ In the context of Machine Learning we can even talk about hyper-parameters, which are another level "up" the hierarchy of "variability". But that's just a note that there can be more than three levels (there can be even hyper-hyper-parameters).
  <br/>
  <br/>
  <br/>
@@ -325,7 +334,9 @@ for a in range(1, 200):
  <p>
   <span class="note">
    <br/>
-   We'll still use $r$ as a letter, in the sense that it's not really fixed, but in the back of your head you can just say "$r$ is $4$" for when you want to jump down to the variable level.
+   We'll still use $r$ as a letter, in the sense that it's not really fixed, but in the back of your head you can just say
+   <br/>
+   "$r$ is $4$" for when you want to jump down to the variable level.
   </span>
   <br/>
  </p>
@@ -379,22 +390,23 @@ for a in range(1, 200):
    But what this says is that if we substitute $rb - x_1$ (remember $x$ = $a$) in the original:
    <br/>
    <br/>
-   $$\frac{(a_1)^2 + b^2}{1 + a_1b} = r $$
+   $$\frac{x^2 + b^2}{1 + xb} = r $$
    <br/>
    <br/>
    We'd also get a solution!
    <br/>
    <br/>
-   $$\frac{(a_2)^2 + b^2}{1 + a_2b} = \frac{(rb - x_1)^2 + b^2}{1 + (rb - x_1)b} = r $$
+   $$\frac{(x_2)^2 + b^2}{1 + x_2b} = \frac{(rb - x_1)^2 + b^2}{1 + (rb - x_1)b} = r $$
    <br/>
    <br/>
-   The top side of the fraction is always positive, $r$ is positive, so the bottom must be as well. What this leaves is with is that $1 + a_2b$ must be positive as well. Or that $a_2$ is at most 0.
+   The top side of the fraction is always positive, $r$ is positive, so the bottom must be as well. What this leaves is with is that $1 + x_2b$ must be positive as well. Or that $x_2$ is at most 0.
    <br/>
    <br/>
-   Hold on. What did we just do? We used the original fraction, transformed it into a quadratic equation, found a twin solution $a_2$ to the original $a$ (or $a_1$), and we've shown it must be nonnegative. It must also be an integer! Why? (Can you think of a reasoning for homework? It's again - by using the original fraction.)
+   Hold on. What did we just do? We used the original fraction, transformed it into a quadratic equation, found a twin solution $x_2$ for the original $a$, and we've shown it must be nonnegative. It must also be an integer! Why? (Can you think of a reasoning for homework? It's again - by using the original fraction.)
    <br/>
    <br/>
    Overall, if we have a pair $(a, b)$ for which we know is a solution. Then we've shown that $(rb - a, b)$ must also be a solution, where $rb - a$ can potentially be zero (and that's what we'll tackle now!).
+   <br/>
    <br/>
    <br/>
   </p>
@@ -463,6 +475,20 @@ for a in range(1, 200):
    In this case we got a whole family of solutions: $...$, $(30, 112)$, $(30, 8)$, $(2, 8)$, and $(2, 0)$. And you can continue this to infinity by going up - choosing the larger number! AND you can flip $a$ and $b$ to get.. double more infinitely many solutions.
    <br/>
    <br/>
+   <div id="ggb-plot-jumping">
+   </div>
+   <br/>
+  </p>
+  <p>
+   <span class="note">
+    The green plot is
+    <i>
+     all
+    </i>
+    of the solutions to the IMO statement (even non-integer) for a fixed $r = 4$. It's symmetric because $a$ and $b$ are interchangable (where the axes here represent $a$ and $b$). With blue points I've marked the first two integer solutions. You can see how all solution pairs sort of "jump" between each other (remember how we transformed the expression earlier into a quadratic equation with two solutions). In general it appears that you can continue jumping by choosing either $a$ and $b$ - there are always two ways to go - except when you are at $0$.
+   </span>
+   <br/>
+   <br/>
    <br/>
   </p>
   <p>
@@ -472,11 +498,11 @@ for a in range(1, 200):
    <br/>
   </p>
   <p>
-   But... the implications here are even larger. You can start with ANY pair $(a, b)$, and by choosing the lower number
+   But... the implications here are even larger. Let's go in the other direction - start by not knowing $r$. We can start with ANY pair $(a, b)$, and by choosing the lower number
    <i>
     it seems like
    </i>
-   you will eventually reach $0$. When you do, the equation becomes in the form:
+   we will eventually reach $0$. When we do, the equation becomes in the form:
    <br/>
    <br/>
    $$\frac{a_n^2 + 0^2}{1 + a_n*0} = a_n^2 = r $$
@@ -494,10 +520,10 @@ for a in range(1, 200):
    And voila! It's a pretty convincing reasoning which finally proves problem 6. Not really technical (which we'll fix shortly). But intuitive, I hope.
    <br/>
    <br/>
-   You might wonder what will happen if after taking a step, one of the numbers goes into the negative realm - then everything will break and we'll never reach zero. But worry not - it's actually impossible for a number to go negative after "flip-flopping". It will eventually at most go to 0. Why? We answered that earlier in the section where we found the formula for $a_2$ in the first place. It turned out that the twin root must be nonnegative - in order to conform with the original expression. If it's necessary, go up and think through it again to reassure yourself that's the case.
+   You might wonder what will happen if after taking a step, one of the numbers goes into the negative realm - then everything will break and we'll never reach zero. But worry not - it's actually impossible for a number to go negative after "flip-flopping". It will eventually at most go to $0$. Why? We answered that earlier in the section where we found the formula for $a_2$ in the first place. It turned out that the twin root must be nonnegative - in order to conform with the original expression. If it's necessary, go up and think through it again to reassure yourself that's the case.
    <br/>
    <br/>
-   Also go back to appreciate what we did with $r$. We fixed it as a parameter in order to be able to look at concrete fixed "sub-problem", but still let ourselves a backdoor of sorts - now when the time came, we reasoned about $r$ as if we didn't know it's value at all.
+   Also go back to appreciate what we did with $r$. We fixed it as a parameter in order to be able to look at concrete fixed "sub-problem", but still let ourselves a backdoor of sorts - now, when the time came, we reasoned about $r$ as if we didn't know it's value at all!
    <br/>
    <br/>
    <br/>
@@ -513,7 +539,7 @@ for a in range(1, 200):
    <i>
     it seems like
    </i>
-   you will eventually reach $0$". Well, when doing technical proofs "it seems like" is not really enough. You have to formalize it. Here we'll take time to think about how we use
+   you will eventually reach $0$". Well, when doing technical proofs "it seems like" is not really enough. We have to formalize it. Here we'll take time to think about how we use
    <i>
     induction
    </i>
@@ -544,8 +570,8 @@ for a in range(1, 200):
    <br/>
   </p>
   <pre><code class="language-klipse-pyodide">
-N = 5
-
+#N = 5
+ 
 sum = 0
 # We must use N + 1 here,
 # because "range" is not inclusive!
@@ -560,7 +586,7 @@ print(f"The formula gives us: {formula}")
 </code></pre>
   <p>
    <span class="note">
-    Again, it's interactive! Try to change "N" to different values to see what happens.
+    Again, it's interactive! Remove the "#" from the first line to fix the errors and try to change "N" to different values to see what happens.
    </span>
    <br/>
   </p>
@@ -788,9 +814,11 @@ print(f"The formula gives us: {formula}")
 
     <script>  
         var ggb_plot_variables = new GGBApplet({"material_id": "phrs5jkc", "width": 614, "height": 300, "showToolBar": false, "showAlgebraInput": false, "showMenuBar": false }, true);  
+        var ggb_plot_jumping = new GGBApplet({"material_id": "fhkzaygq", "width": 614, "height": 300, "showToolBar": false, "showAlgebraInput": false, "showMenuBar": false }, true);  
 
         window.addEventListener("load", function() { 
             ggb_plot_variables.inject('ggb-plot-variables');
+            ggb_plot_jumping.inject('ggb-plot-jumping');
         });
     </script>
 
