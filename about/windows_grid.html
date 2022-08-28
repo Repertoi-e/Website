@@ -9,7 +9,7 @@
 <button aria-label="Close"></button>
 
 @content:
-<img src="../resources/about/me.jpg" alt="">
+<div class="me_img"><img src="../resources/about/me.jpg" alt=""></div>
 
 @xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 @css: about
@@ -50,6 +50,28 @@
 </p>
 
 @xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+@css: playlist
+@title: <span class="spotify">
+    <span class="icon">
+        <img src="../resources/about/spotify.png" alt="">
+    </span>
+    <span class="text">
+        My Fav Playlist
+    </span>
+</span>
+
+@controls:
+<button aria-label="Minimize"></button>
+<button aria-label="Maximize"></button>
+<button aria-label="Close"></button>
+
+@content:
+<p>
+    Named after a star in the constellation Sextant.<br>
+    <iframe src="https://open.spotify.com/embed/playlist/0cCIC7LZt8YWNKIvLBbvif?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+</p>
+
+@xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 @css: about
 @title: About
 
@@ -60,22 +82,22 @@
 
 @content:
 <p>
-    <span css="projects">
-        <span css="icon">
-            <img src="data/missing.pngs">
+    <span class="projects">
+        <span class="icon">
+            <img src="../resources/about/missing.png">
         </span>
-        <span css="text">
+        <span class="text">
             Some projects are on this page &nbsp; ----- &nbsp; <a
                 href="projects.html">Click</a><br>
         </span>
     </span>
 
-    <span css="github">
-        <span css="icon">
-            <img src="data/github.svg" alt="">
+    <span class="github">
+        <span class="icon">
+            <img src="../resources/about/github.svg" alt="">
         </span>
-        <span css="text">
-            Source code is almost always (except when it's too cringe)<br> uploaded on
+        <span class="text">
+            Source code is almost always <br> uploaded on
             my
             GitHub
             &nbsp; ----- &nbsp; <a href="https://github.com/Repertoi-e"
@@ -90,27 +112,18 @@
         target="_blank">Click</a>
     <br>
     <br>
-    My favorite words in Bulgarian are вселена
-    and тотал щета :P
+    My favorite words in Bulgarian are <span lang="bg">"вселена"</span>
+    and <span lang="bg">"тотал щета"</span> :P
     <br>
     <br>
-    <span css="spotify">
-        <span css="icon">
-            <img src="data/spotify.png" alt="">
-        </span>
-        <span css="text">
-            And here is my Spotify profile &nbsp; -----&nbsp; <a
-                href="https://open.spotify.com/user/213l745pywu4t2ejqwym4h3oa?si=fe0c254dcc3a4410"
-                target="_blank">Click</a>
-        </span>
-    </span>
 </p>
 
 @xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-@css: projects
+@css: about
 @title: I have worked on
 
 @controls:
+<button aria-label="Close"></button>
 
 @content:
 <p>
@@ -146,9 +159,25 @@
 @title: Context
 
 @controls:
+<button aria-label="Close"></button>
 
 @content:
-<img src="../resources/about/marble_statue1.gif" alt="">
+<div class="context_img"><img src="../resources/about/marble_statue2.gif" alt=""></div>
+
+
+
+@xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+@css: tiktok
+@title: TikTok Era
+
+@controls:
+<button aria-label="Minimize"></button>
+<button aria-label="Maximize"></button>
+<button aria-label="Close"></button>
+
+@content:
+<blockquote class="tiktok-embed" cite="https://www.tiktok.com/@glupsoti/video/7134124577948470534" data-video-id="7134124577948470534" style="width: 325px;" > <section> <a target="_blank" title="@glupsoti" href="https://www.tiktok.com/@glupsoti?refer=embed">@glupsoti</a> now it&#39;s gonna rain for a week <a title="fyp" target="_blank" href="https://www.tiktok.com/tag/fyp?refer=embed">#fyp</a> <a title="umbrellachallenge" target="_blank" href="https://www.tiktok.com/tag/umbrellachallenge?refer=embed">#umbrellachallenge</a> <a title="rihanna" target="_blank" href="https://www.tiktok.com/tag/rihanna?refer=embed">#rihanna</a> <a title="umbrella" target="_blank" href="https://www.tiktok.com/tag/umbrella?refer=embed">#umbrella</a> <a title="sexy" target="_blank" href="https://www.tiktok.com/tag/sexy?refer=embed">#sexy</a> <a target="_blank" title="♬ Umbrella (Remix) - 泽鹿Music&#38;南辰Music" href="https://www.tiktok.com/music/Umbrella-Remix-6869039943667157000?refer=embed">♬ Umbrella (Remix) - 泽鹿Music&#38;南辰Music</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+
 
 # [[[xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx]]]
 # 

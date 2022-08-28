@@ -39,14 +39,10 @@ def return_line():
 		return
 	line_number -= 1
 
-class Window:
-	css: str
-	title: str
-	controls: str
-	content: str
-
 windows = []
-window: Window = None
+window = None
+
+directives = ["css", "title", "controls", "content"]
 
 def expect_window():
 	if window is None:
@@ -104,35 +100,19 @@ def try_parse_directive():
 		if window is not None:
 			windows.append(window)
 		
-		window = Window()
-		return True
-	
-	content = directive(l, "css")
-	if content is not None:
-		# print("css", content)
-		window.css = content
+		window = dict()
 		return True
 
-	content = directive(l, "title")
-	if content is not None:
-		# print("title", content)
-		window.title = content
-		return True
-	
-	content = directive(l, "controls")
-	if content is not None:
-		# print("controls", content)
-		window.controls = content
-		return True
-
-	content = directive(l, "content")
-	if content is not None:
-		# print("content", content)
-		window.content = content
-		return True
+	content = None
+	for d in directives:
+		content = directive(l, d)
+		if content is not None:
+			# print(d, content)
+			window[d] = content
+			return True
 
 	if content is None:
-		report("Unknown directive.")
+		report("Unknown directive")
 
 def try_parse_version():
 	global version
@@ -196,10 +176,9 @@ def main():
 	"""
 
 	for w in windows:
-		gen = html_template.replace("@css", w.css)
-		gen = gen.replace("@title", w.title)
-		gen = gen.replace("@controls", w.controls)
-		gen = gen.replace("@content", w.content)
+		gen = html_template
+		for d in directives:
+			gen = gen.replace(f"@{d}", w.get(d, ""))
 		html_gen += gen + "\n"
 
 	template_path = f"index_template.html"

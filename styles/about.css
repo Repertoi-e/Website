@@ -55,18 +55,37 @@ html body {
 .header {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
-  padding: 2rem;
-  /*.text_back, .text_forward {
+  padding: 4rem;
+  /*
+  .text_back,
+  .text_forward {
       color: white;
       font-size: 2rem;
 
-      width: 20rem;
+      width: 8rem;
+      text-align: center;
   }*/
 }
-.header .sky_button {
-  height: 10rem;
+.header .imperfection {
+  background-size: 100% 100%;
+  width: 25rem;
+  height: 12rem;
+  border-radius: 5rem;
+  box-shadow: 0 0 8px 8px black inset;
+}
+.header .sky_button .a_portfolio,
+.header .hand_button .a_portfolio {
+  position: absolute;
+  top: 4rem;
+  width: 12rem;
+  z-index: 10;
+  pointer-events: none;
+}
+.header .sky_button,
+.header .hand_button {
+  height: 8rem;
   align-self: flex-start;
   justify-self: stretch;
   display: flex;
@@ -74,42 +93,50 @@ html body {
   align-items: center;
   padding-bottom: 1rem;
 }
-.header .sky_button .border {
+.header .sky_button .border,
+.header .hand_button .border {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.header .sky_button .border a {
+.header .sky_button .border a,
+.header .hand_button .border a {
   position: absolute;
-  width: 10rem;
-  height: 10rem;
-  -webkit-clip-path: ellipse(5rem 5rem at 50% 50%);
-          clip-path: ellipse(5rem 5rem at 50% 50%);
+  width: 8rem;
+  height: 8rem;
+  -webkit-clip-path: ellipse(4rem 4rem at 50% 50%);
+          clip-path: ellipse(4rem 4rem at 50% 50%);
 }
-.header .sky_button .border a img {
-  width: 10rem;
-  height: 10rem;
+.header .sky_button .border a img,
+.header .hand_button .border a img {
+  width: 8rem;
+  height: 8rem;
 }
-.header .sky_button .border .circle {
+.header .sky_button .border .circle,
+.header .hand_button .border .circle {
   position: absolute;
   border-radius: 100%;
-  width: 10rem;
-  height: 10rem;
+  width: 8rem;
+  height: 8rem;
 }
-.header .sky_button .border .circle:nth-of-type(1) {
+.header .sky_button .border .circle:nth-of-type(1),
+.header .hand_button .border .circle:nth-of-type(1) {
   box-shadow: 0 0.15em 0 0 rgba(28, 72, 249, 0.25), -0.15em 0 0 rgba(50, 132, 237, 0.25), 0.15em 0 0 0 rgba(28, 72, 249, 0.25), -0.15em 0 0 0 rgba(50, 132, 237, 0.25), 0em 0 0 rgba(39, 102, 243, 0.5), -0.15em 0.15em 0 0 rgba(39, 102, 243, 0.5), 0.15em 0.15em 0 0 rgba(17, 41, 255, 0.75), -0.3em 0 0 rgba(61, 162, 230, 0.75);
 }
-.header .sky_button .border .circle:nth-of-type(2) {
+.header .sky_button .border .circle:nth-of-type(2),
+.header .hand_button .border .circle:nth-of-type(2) {
   box-shadow: 0 0.1em 0 0 rgba(64, 0, 192, 0.25), -0.1em 0 0 rgba(192, 0, 64, 0.25), 0.1em 0 0 0 rgba(64, 0, 192, 0.25), -0.1em 0 0 0 rgba(192, 0, 64, 0.25), 0em 0 0 rgba(128, 0, 128, 0.5), -0.1em 0.1em 0 0 rgba(128, 0, 128, 0.5), 0.1em 0.1em 0 0 rgba(0, 0, 255, 0.75), -0.2em 0 0 rgba(255, 0, 0, 0.75);
   -webkit-animation: psycho_circle 3s linear infinite;
           animation: psycho_circle 3s linear infinite;
 }
-.header .sky_button .border .circle:nth-of-type(3) {
+.header .sky_button .border .circle:nth-of-type(3),
+.header .hand_button .border .circle:nth-of-type(3) {
   box-shadow: 0 0.1em 0 0 rgba(64, 255, 192, 0.25), -0.1em 0 0 rgba(192, 255, 64, 0.25), 0.1em 0 0 0 rgba(64, 255, 192, 0.25), -0.1em 0 0 0 rgba(192, 255, 64, 0.25), 0em 0 0 rgba(128, 255, 128, 0.5), -0.1em 0.1em 0 0 rgba(128, 255, 128, 0.5), 0.1em 0.1em 0 0 rgba(0, 255, 255, 0.75), -0.2em 0 0 rgba(255, 255, 0, 0.75);
   -webkit-animation: psycho_circle 3s linear 0.1s infinite;
           animation: psycho_circle 3s linear 0.1s infinite;
 }
-.header .sky_button .border .circle:nth-of-type(4) {
+.header .sky_button .border .circle:nth-of-type(4),
+.header .hand_button .border .circle:nth-of-type(4) {
   box-shadow: 0 0.1em 0 0 rgba(64, 192, 64, 0.25), -0.1em 0 0 rgba(192, 64, 192, 0.25), 0.1em 0 0 0 rgba(64, 192, 64, 0.25), -0.1em 0 0 0 rgba(192, 64, 192, 0.25), 0em 0 0 rgba(128, 128, 128, 0.5), -0.1em 0.1em 0 0 rgba(128, 128, 128, 0.5), 0.1em 0.1em 0 0 rgba(0, 255, 0, 0.75), -0.2em 0 0 rgba(255, 0, 255, 0.75);
   -webkit-animation: psycho_circle 3s linear 0.2s infinite;
           animation: psycho_circle 3s linear 0.2s infinite;
@@ -118,6 +145,7 @@ html body {
 .content {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 /* For debugging.
@@ -129,50 +157,83 @@ body * {
   display: flex;
   align-items: center;
   flex-direction: column;
+  width: 95vw;
   margin-top: 30px;
 }
 .main .windows {
   content: "default";
   width: 95%;
+  font-size: 0.8rem;
+}
+.main .windows .title-bar-text,
+.main .windows .window-body {
+  font-family: "Vollkorn";
+}
+.main .windows .title-bar {
+  height: 1.7rem;
 }
 .main .windows .window_container {
   margin-bottom: 10px;
 }
 @media only screen and (max-width: 410px) {
-  .main .windows .window_container {
+  .main .windows .window_container .window {
     width: 200px;
   }
 }
 @media only screen and (min-width: 411px) {
-  .main .windows .window_container {
-    width: 300px;
+  .main .windows .window_container .window {
+    width: 280px;
   }
 }
-.main .windows .window_container .me img {
+.main .windows .window_container .tiktok {
+  width: 355px;
+  height: 805px;
+}
+.main .windows .window_container .tiktok blockquote {
+  border-radius: 13px;
+}
+.main .windows .window_container .playlist iframe {
+  margin-top: 7px;
+}
+.main .windows .window_container .me_img,
+.main .windows .window_container .context_img {
+  display: flex;
+  justify-content: center;
+}
+.main .windows .window_container .me_img img,
+.main .windows .window_container .context_img img {
   width: 95%;
 }
-.main .windows .window_container .about .spotify,
-.main .windows .window_container .about .github,
-.main .windows .window_container .about .projects {
+.main .windows .window_container .github,
+.main .windows .window_container .projects {
   display: flex;
   align-items: center;
   margin-top: 5px;
 }
-.main .windows .window_container .about .spotify .icon,
-.main .windows .window_container .about .github .icon,
-.main .windows .window_container .about .projects .icon {
+.main .windows .window_container .github .icon,
+.main .windows .window_container .projects .icon {
   display: flex;
   align-items: center;
   width: 25px;
   margin-right: 8px;
 }
-.main .windows .window_container .about .spotify .icon img,
-.main .windows .window_container .about .github .icon img,
-.main .windows .window_container .about .projects .icon img {
+.main .windows .window_container .github .icon img,
+.main .windows .window_container .projects .icon img {
   width: 25px;
 }
-.main .windows .window_container .context img {
-  width: 18em;
+.main .windows .window_container .spotify {
+  display: flex;
+  align-items: center;
+  margin-left: 3px;
+}
+.main .windows .window_container .spotify .icon {
+  display: flex;
+  align-items: center;
+  width: 1rem;
+  margin-right: 8px;
+}
+.main .windows .window_container .spotify .icon img {
+  width: 1rem;
 }
 
 .footer {

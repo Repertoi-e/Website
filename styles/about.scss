@@ -37,26 +37,50 @@ html body {
     display: flex;
     flex-direction: row;
 
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
 
-    padding: 2rem;
+    padding: 4rem;
 
-    /*.text_back, .text_forward {
+    /*
+    .text_back,
+    .text_forward {
         color: white;
         font-size: 2rem;
-        
-        width: 20rem;
+
+        width: 8rem;
+        text-align: center;
     }*/
 
-    .sky_button {
-        @include psycho-circle-button(10rem);
+    .imperfection {
+        background-size: 100% 100%;
+        width: 25rem;
+        height: 12rem;
+        border-radius: 5rem;
+        box-shadow: 0 0 8px 8px black inset;
+    }
+
+    .sky_button,
+    .hand_button {
+        .a_portfolio {
+            position: absolute;
+            top: 4rem;
+
+            width: 12rem;
+            z-index: 10;
+
+            pointer-events: none;
+        }
+
+        @include psycho-circle-button(8rem);
     }
 }
 
 .content {
     display: flex;
     flex-direction: column;
+
+    align-items: center;
 }
 
 /* For debugging.
@@ -70,6 +94,8 @@ body * {
     align-items: center;
     flex-direction: column;
 
+    width: 95vw;
+
     margin-top: 30px;
 
     .windows {
@@ -77,59 +103,95 @@ body * {
 
         width: 95%;
 
+        font-size: 0.8rem;
+
+        .title-bar-text,
+        .window-body {
+            font-family: "Vollkorn";
+        }
+
+        .title-bar {
+            height: 1.7rem;
+        }
+
         .window_container {
             margin-bottom: 10px;
 
-            @media only screen and (max-width: 410px) {
-                & {
-                    width: 200px;
+            .window {
+                @media only screen and (max-width: 410px) {
+                    & {
+                        width: 200px;
+                    }
                 }
-            }
-        
-            @media only screen and (min-width: 411px) {
-                & {
-                    width: 300px;
+
+                @media only screen and (min-width: 411px) {
+                    & {
+                        width: 280px;
+                    }
                 }
             }
 
-            .me {
+            .tiktok {
+                width: 355px;
+                height: 805px;
+
+                blockquote {
+                    border-radius: 13px;
+                }
+            }
+
+            .playlist {
+                iframe {
+                    margin-top: 7px;
+                }
+            }
+
+            .me_img,
+            .context_img {
+                display: flex;
+                justify-content: center;
+
                 img {
                     width: 95%;
                 }
             }
 
-            .about {
-            }
-
+            .github,
             .projects {
-            }
+                display: flex;
+                align-items: center;
 
-            .about {
-                .spotify,
-                .github,
-                .projects {
+                margin-top: 5px;
+
+                .icon {
                     display: flex;
                     align-items: center;
 
-                    margin-top: 5px;
+                    width: 25px;
+                    margin-right: 8px;
 
-                    .icon {
-                        display: flex;
-                        align-items: center;
-
+                    img {
                         width: 25px;
-                        margin-right: 8px;
-
-                        img {
-                            width: 25px;
-                        }
                     }
                 }
             }
 
-            .context {
-                img {
-                    width: 18em;
+            .spotify {
+                display: flex;
+                align-items: center;
+
+                margin-left: 3px;
+
+                .icon {
+                    display: flex;
+                    align-items: center;
+
+                    width: 1rem;
+                    margin-right: 8px;
+
+                    img {
+                        width: 1rem;
+                    }
                 }
             }
         }

@@ -6,22 +6,15 @@
 }
 
 @font-face {
-    font-family: Bitter;
+    font-family: Vollkorn;
     font-style: normal;
-    src: url(../resources/fonts/Bitter-Regular.woff) format("woff");
+    src: url(../resources/fonts/Vollkorn-Regular.woff) format("woff");
 }
 
 @font-face {
-    font-family: Bitter;
+    font-family: Vollkorn;
     font-style: italic;
-    src: url(../resources/fonts/Bitter-Italic.woff) format("woff");
-}
-
-@font-face {
-    font-family: Bitter;
-    font-style: normal;
-    font-weight: 700;
-    src: url(../resources/fonts/Bitter-Bold.woff) format("woff");
+    src: url(../resources/fonts/Vollkorn-Italic.woff) format("woff");
 }
 
 $mod_1: 1.067;
@@ -35,7 +28,7 @@ $h1-font-size: $mod_1 * $h2-font-size;
 $h6-font-size: calc($h5-font-size / $mod_1);
 
 :root {
-    font-family: "Bitter", serif;
+    font-family: "Vollkorn", serif;
     font-size: $h5-font-size;
 }
 
