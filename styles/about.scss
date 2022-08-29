@@ -33,13 +33,26 @@ html body {
     z-index: -1;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .header {
     display: flex;
     flex-direction: row;
 
+    margin-top: 1rem;
+
     justify-content: space-around;
     align-items: center;
 
+    border-top: dotted 10px white;
+    border-bottom: dotted 10px white;
+    width: 100vw;
+    height: 15rem;
+
+    background-color: rgba(60, 0, 255, 0.109);
+    
     padding: 4rem;
 
     /*
@@ -52,26 +65,19 @@ html body {
         text-align: center;
     }*/
 
-    .imperfection {
-        background-size: 100% 100%;
-        width: 25rem;
-        height: 12rem;
-        border-radius: 5rem;
-        box-shadow: 0 0 8px 8px black inset;
+    .button_text {
+        position: absolute;
+        top: 1.1rem;
+
+        width: 12rem;
+
+        z-index: 2;
+
+        pointer-events: none;
     }
 
     .sky_button,
     .hand_button {
-        .a_portfolio {
-            position: absolute;
-            top: 4rem;
-
-            width: 12rem;
-            z-index: 10;
-
-            pointer-events: none;
-        }
-
         @include psycho-circle-button(8rem);
     }
 }
@@ -89,6 +95,15 @@ body * {
 }
 */
 
+.title-bar-text,
+.window-body {
+    font-family: "Vollkorn";
+}
+
+.title-bar {
+    height: 1.7rem;
+}
+
 .main {
     display: flex;
     align-items: center;
@@ -98,21 +113,20 @@ body * {
 
     margin-top: 30px;
 
+    .cmd {
+        margin-top: 2rem;
+        
+        font-size: 0.8rem;
+    }
+
     .windows {
         content: 'default';
 
         width: 95%;
 
+        margin-top: 5rem;
+
         font-size: 0.8rem;
-
-        .title-bar-text,
-        .window-body {
-            font-family: "Vollkorn";
-        }
-
-        .title-bar {
-            height: 1.7rem;
-        }
 
         .window_container {
             margin-bottom: 10px;
