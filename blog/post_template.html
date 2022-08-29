@@ -4,19 +4,32 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="description" content="A Bulgarian thinker and programmer's blog." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="@DESC" />
     <meta name="keywords"
-        content="portfolio, machine learning, data science, game developer, dimitar sotirov, soti, dimitar, sotirov, C++ developer, programmer, student" />
+        content="portfolio, game developer, camp, dimitar sotirov, soti, dimitar, sotirov, C++, developer, programmer, student, looking for job, hire me, job, hiring, HR, @KEYWORDS" />
     <meta name="author" content="Dimitar Sotirov" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500|Roboto:300,400" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../blog.css">
-    <link rel="stylesheet" href="https://unpkg.com/xp.css" />
+    <meta property="og:title" content="@TITLE | Soti's Blog" />
+    <meta property="og:description" content="@DESC" />
+    <meta property="og:image" content="../../../resources/index/hand.gif" />
+    <meta property="og:url" content="soti.camp" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="@TITLE | Soti's Blog" />
+    <meta name="twitter:description" content="@DESC" />
+    <meta name="twitter:image" content="../../../resources/index/hand.gif" />
+
+    <link rel="stylesheet" href="../../../styles/style.css">
+    <link rel="stylesheet" href="../../../styles/blog.css">
+
+    <link rel="icon" href="../../../resources/just_give_love.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../../resources/just_give_love.ico" type="image/x-icon" />
+
     <title>@TITLE | Soti's Blog</title>
-    
-    
+
     <script type="text/x-mathjax-config">
         MathJax.Hub.Config({ extensions: ["tex2jax.js"], jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true }, "HTML-CSS": { availableFonts: ["TeX"] } });
     </script>
@@ -24,10 +37,7 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 
     <script src="https://www.geogebra.org/apps/deployggb.js"></script>
-</head>
 
-
-<body>
     <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css">
 
     <script>
@@ -37,20 +47,24 @@
         };
     </script>
 
+
+</head>
+
+
+<body>
+    
     <div class="content">
         <div class="header">
             <div class="icon_container">
                 <div class="icon">
-                    <img class="hills" src="../data/hand.gif">
-                    <img class="give_love" src="">
-                    <img class="a_portfolio" src="">
+                    <img class="hills" src="../../../resources/index/hand.gif">
                 </div>
             </div>
         </div>
 
         <div class="main">
             <div class="title">
-                <a href="../blog.html"><h1>Soti's Blog</h1></a>
+                <a href="../../"><h1>Soti's Blog</h1></a>
             </div>
 
             <div class="article">
@@ -60,7 +74,7 @@
                             <h2>@TITLE</h2>
                         </div>
                         <div class="author">
-                            <i><h4>Dimitar Sotirov</h4></i>
+                            <i><h4>@AUTHOR</h4></i>
                         </div>
                     </div>
 
@@ -70,7 +84,7 @@
                         </div>
     
                         <div class="edit_date">
-                            <p>Last edited @EDITDATE</p>
+                            <p>@EDITDATE</p>
                         </div>
                     </div>
                 </div>
@@ -92,12 +106,13 @@
 
     <script>  
         var ggb_plot_variables = new GGBApplet({"material_id": "phrs5jkc", "width": 614, "height": 300, "showToolBar": false, "showAlgebraInput": false, "showMenuBar": false }, true);  
+        var ggb_plot_jumping = new GGBApplet({"material_id": "fhkzaygq", "width": 614, "height": 300, "showToolBar": false, "showAlgebraInput": false, "showMenuBar": false }, true);  
 
         window.addEventListener("load", function() { 
             ggb_plot_variables.inject('ggb-plot-variables');
+            ggb_plot_jumping.inject('ggb-plot-jumping');
         });
     </script>
-
 </body>
 
 </html>

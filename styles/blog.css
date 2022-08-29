@@ -1,41 +1,64 @@
+@font-face {
+  font-family: SofiaSans;
+  font-style: normal;
+  src: url(../resources/fonts/SofiaSans[wdth\,wght].woff2) format("woff2");
+}
+@font-face {
+  font-family: SofiaSans;
+  font-style: italic;
+  src: url(../resources/fonts/SofiaSans-Italic[wdth\,wght].woff2) format("woff2");
+}
+@font-face {
+  font-family: FiraGO;
+  font-style: normal;
+  src: url(../resources/fonts/FiraGO_WEB_1001/Roman/FiraGO-Regular.woff) format("woff");
+}
+@font-face {
+  font-family: FiraGO;
+  font-style: italic;
+  src: url(../resources/fonts/FiraGO_WEB_1001/Italic/FiraGO-Italic.woff) format("woff");
+}
+@font-face {
+  font-family: FiraCode;
+  font-style: italic;
+  src: url(../resources/fonts/FiraCode-VF.woff) format("woff");
+}
+:root {
+  font-family: "FiraGO", sans-serif;
+}
+
 html body {
   background-color: white;
 }
 
-.background {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100vw;
-  height: calc(100vh + 100px);
-  z-index: -2;
-}
-
 .content {
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: auto auto auto auto;
-  grid-template-areas: "back_to" "header" "main" "footer";
-  justify-items: center;
-  justify-content: center;
-  align-content: space-around;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .back_to {
-  grid-area: back_to;
   margin: 20px;
+}
+.back_to a {
+  color: #222222;
+}
+.back_to a:hover {
+  color: #9c9c9c;
+  text-decoration: underline;
 }
 
 .main {
-  grid-area: main;
   width: min(90vw, 700px);
 }
 .main .title {
-  margin-top: -10px;
+  margin-top: -1.3rem;
 }
 .main .title h1 {
   font-family: sans-serif;
+  font-size: 6rem;
   text-align: center;
+  color: #222222;
 }
 .main .title a {
   color: #222222;
@@ -44,45 +67,48 @@ html body {
 .main .title a:hover {
   text-decoration: underline;
 }
-.main .articles {
+.main .desc {
+  margin-top: 2rem;
+}
+.main .article_links {
   height: 60vh;
   margin-top: 50px;
 }
-.main .articles .article_link {
+.main .article_links .article_link {
   display: flex;
   flex-direction: column;
+  font-family: "SofiaSans";
 }
-.main .articles .article_link .title_tags {
+.main .article_links .article_link .title_and_tags {
   display: flex;
   align-items: center;
 }
 @media only screen and (max-width: 850px) {
-  .main .articles .article_link .title_tags {
+  .main .article_links .article_link .title_and_tags {
     align-items: flex-start;
     flex-direction: column;
   }
 }
 @media only screen and (min-width: 851px) {
-  .main .articles .article_link .title_tags {
+  .main .article_links .article_link .title_and_tags {
     flex-direction: row;
   }
 }
-.main .articles .article_link .title_tags .title {
-  margin-bottom: 8px;
+.main .article_links .article_link .title_and_tags .title {
+  font-size: 1.1rem;
 }
-.main .articles .article_link .title_tags .title a {
+.main .article_links .article_link .title_and_tags .title a {
   color: #222222;
   text-decoration: none;
 }
-.main .articles .article_link .title_tags .title a :hover {
+.main .article_links .article_link .title_and_tags .title a :hover {
   text-decoration: underline;
 }
-.main .articles .article_link .title_tags .tags {
-  margin-bottom: 8px;
+.main .article_links .article_link .title_and_tags .tags {
   display: flex;
-  margin-top: -9px;
+  margin-top: -1.2rem;
 }
-.main .articles .article_link .title_tags .tags .tag {
+.main .article_links .article_link .title_and_tags .tags .tag {
   margin-left: 8px;
   background-color: cornflowerblue;
   border-radius: 4px;
@@ -94,26 +120,31 @@ html body {
   width: fit-content;
   padding: 0.3rem 0.3rem;
 }
-.main .articles .article_link .title_tags .tags .tag span {
+.main .article_links .article_link .title_and_tags .tags .tag span {
   color: white;
   margin: 6px;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
 }
-.main .articles .article_link .date p {
-  font-size: 1.5rem;
+.main .article_links .article_link .title_and_tags .tags .tag a {
+  color: white;
 }
+
 .main .article .header {
   width: 100%;
   display: flex;
   flex-direction: column;
+  font-family: "SofiaSans";
 }
 .main .article .header .title_and_author {
   width: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-top: 50px;
-  margin-bottom: 8px;
+  margin-top: 2rem;
+}
+.main .article .header .title_and_author .title {
+  font-size: 1.1rem;
+  color: #222222;
 }
 @media only screen and (max-width: 550px) {
   .main .article .header .title_and_author {
@@ -147,18 +178,12 @@ html body {
     flex-direction: row;
   }
 }
-.main .article .header .dates .date {
-  margin-bottom: 3px;
-}
-.main .article .header .dates .date p {
-  font-size: 1.3rem;
-}
 .main .article .header .dates .edit_date {
-  margin-top: 0.12rem;
+  margin-top: 0.05rem;
   color: gray;
 }
 .main .article .header .dates .edit_date p {
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 @media only screen and (max-width: 350px) {
   .main .article .header .dates .edit_date {
@@ -176,17 +201,23 @@ html body {
   align-items: center;
 }
 .main .article .content p {
-  font-family: sans-serif;
-  font-size: 1.4rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+.main .article .content .cent {
+  text-align: center;
+}
+.main .article .content h4 {
+  margin-bottom: -2rem;
 }
 .main .article .content pre {
+  font-family: "FiraCode";
   background-color: white;
-  font-size: 1.2rem;
   color: #232323;
 }
 .main .article .content .note {
-  font-size: 1.2rem;
   color: gray;
+  font-size: 0.9rem;
   text-align: center;
   display: block;
   margin-left: auto;
@@ -221,7 +252,6 @@ html body {
 }
 .main .article .content .message_section .message_bilil,
 .main .article .content .message_section .message_soti {
-  font-size: 1.4rem;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -254,7 +284,6 @@ html body {
 }
 
 .footer {
-  grid-area: footer;
   width: 100%;
   padding: 10px;
   color: rgb(146, 146, 146);
@@ -262,7 +291,6 @@ html body {
 }
 
 .header {
-  grid-area: header;
   width: 100%;
   display: flex;
 }
@@ -275,14 +303,14 @@ html body {
 }
 .header .icon {
   margin-top: 15px;
-  width: 130px;
-  height: 130px;
+  width: 160px;
+  height: 160px;
   display: flex;
   flex-flow: row nowrap;
 }
 .header .icon .hills {
   width: 100%;
   flex: none;
-  -webkit-clip-path: ellipse(65px 65px at 50% 50%);
-          clip-path: ellipse(65px 65px at 50% 50%);
+  -webkit-clip-path: ellipse(80px 80px at 50% 50%);
+          clip-path: ellipse(80px 80px at 50% 50%);
 }/*# sourceMappingURL=blog.css.map */

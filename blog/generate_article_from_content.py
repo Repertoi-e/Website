@@ -9,7 +9,7 @@ import re
 
 def main():
 	if len(sys.argv) < 2:
-		print("Enter content file name and target file name, pleas :)")
+		print("Enter content file name, pleas :)")
 		return
 
 	file = sys.argv[1]
@@ -26,6 +26,8 @@ def main():
 
 	title = None
 	title_ident = None
+	desc = None
+	keywords = None
 	version = None # Not used for now, but for future compatibility :)
 
 	doing_paragraph = False
@@ -69,20 +71,44 @@ def main():
 
 				title_ident = titles[-1]
 				title = " ".join(titles[:-1])
+				continue
+
+		if desc is None:
+			if not last_line.startswith("@Desc "):
+				print(f"[{line_number}] Expected a @Desc statement with the article description..")
+				return
+			else:
+				desc = last_line[6:].strip()
+				continue
+
+		if keywords is None:
+			if not last_line.startswith("@Keywords "):
+				print(f"[{line_number}] Expected a @Keywords statement with the article keywords..")
+				return
+			else:
+				keywords = last_line[10:].strip()
+				continue
 
 		if last_line.startswith("@End"):
 			break
-
-		if last_line.startswith("[["):
+		 
+		paragraph_centered = last_line.startswith("[[cent")
+		if paragraph_centered or last_line.startswith("[["):
 			if doing_messages_from is not None:
 				# End message section
 				html_gen += "</div></div></div>"
 				doing_messages_from = None
 			doing_paragraph = True
-			html_gen += "<p>"
+			if paragraph_centered:
+				html_gen += '<p class="cent">'
+			else:
+				html_gen += "<p>"
 			if len(last_line) <= 2:
 				continue
-			last_line = last_line[2:]
+			if paragraph_centered:
+				last_line = last_line[6:]
+			else:
+				last_line = last_line[2:]
 
 		if last_line.startswith("[py"):
 			if doing_messages_from is not None:
@@ -161,38 +187,41 @@ def main():
 	html_gen = BeautifulSoup(html_gen, features="html.parser").prettify()
 
 	today = date.today()
-	date_string = today.strftime("%d.%m.%Y")
+	date_string = today.strftime("%d.%m.%Y" if lang_en else "%d.%m.%Y г.")
 	edit_date_string = None
 
-	target_path = f"{title_ident}.html"
+	target_path = f"post/{title_ident}/index.html"
 	if os.path.exists(target_path):
 		with open(target_path, "rt", encoding="utf-8") as target:
 			existing_content = target.read()
 			
-			if lang_en:
-				match = re.findall(r'<div class="date">\s*<p>([0-9.]*)</p>', existing_content)
-			else:
-				match = re.findall(r'<div class="date">\s*<p>([0-9.]*) г.</p>', existing_content)
+			match = re.findall(r'<div class="date">\s*<p>([0-9.]*)', existing_content)
 			
-			edit_date_string = date_string
+			edit_date_string = f"Last edited {date_string}" if lang_en else f"Последна редакция {date_string}"
 			date_string = match[0]
 
 	print(f'Version: {version}, title: "{title}", date: {date_string}, edit date (today): {edit_date_string}')
 
-	template_path = f"blog_post_template{'_en' if lang_en else ''}.html"
+	template_path = f"post_template.html"
 	with open(template_path, "rt", encoding="utf-8") as template:
 		content = template.read()
 	content = content.replace("@TITLE", title)
 	content = content.replace("@DATE", date_string)
+	content = content.replace("@DESC", desc)
+	content = content.replace("@KEYWORDS", keywords)
+	content = content.replace("@AUTHOR", "Dimitar Sotirov" if lang_en else "Димитър Сотиров")
 	if edit_date_string is not None:
 		content = content.replace("@EDITDATE", edit_date_string)
 	else:
 		content = content.replace('<div class="edit_date">', '<div class="edit_date" style="visibility: hidden;">')
 
+	if not lang_en:
+		content = content.replace('<html lang="en-GB">', '<html lang="bg">')
+
 	# print(html_gen)
 	content = content.replace("@CONTENT", html_gen)
 
-	with open(target_path, "wt", encoding="utf-8") as target:
+	with open(target_path, "w+", encoding="utf-8") as target:
 		target.write(content)
 	
 if __name__ == "__main__":
