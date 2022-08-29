@@ -3,9 +3,10 @@
 @import "psycho_circle";
 
 html body {
-    background-color: black;
+    background-color: #fddd19;
 }
 
+/*
 .background {
     @include position(absolute, 0 0 null null);
 
@@ -32,10 +33,7 @@ html body {
 
     z-index: -1;
 }
-
-body {
-    overflow-x: hidden;
-}
+*/
 
 .header {
     display: flex;
@@ -46,8 +44,6 @@ body {
     justify-content: space-around;
     align-items: center;
 
-    border-top: dotted 10px white;
-    border-bottom: dotted 10px white;
     width: 100vw;
     height: 15rem;
 
@@ -87,6 +83,23 @@ body {
     flex-direction: column;
 
     align-items: center;
+
+    overflow-x: hidden;
+
+    .disclaimer {
+        font-size: 5rem;
+        
+        color:rgb(0, 0, 0);
+    }
+
+    .disclaimer_rest {
+        font-size: 8rem;
+        font-family: sans-serif;
+        line-height: 6rem;
+        width: 100vw;
+        color: rgba(0, 0, 0, 0.176);
+        height: 4 * 8rem;
+    }
 }
 
 /* For debugging.
