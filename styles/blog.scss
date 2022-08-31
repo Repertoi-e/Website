@@ -60,14 +60,15 @@ html body {
 }
 
 .main {
-    width: min(90vw, 700px);
+    width: 90vw;
+    max-width: 700px;
 
     .title {
-        margin-top: -1.3rem;
-
         h1 {
             font-family: sans-serif;
             font-size: 6rem;
+
+            line-height: 0.9;
 
             text-align: center;
 
@@ -89,7 +90,7 @@ html body {
     }
 
     .article_links {
-        height: 60vh;
+        min-height: 60vh;
         margin-top: 50px;
 
         .article_link {
@@ -114,6 +115,8 @@ html body {
                 .title {
                     font-size: 1.1rem;
 
+                    margin-right: 8px;
+
                     a {
                         color: #222222;
 
@@ -128,11 +131,11 @@ html body {
                 .tags {
                     display: flex;
 
-                    margin-top: -1.2rem;
+                    .tag + .tag {
+                        margin-left: 8px;
+                    }
 
                     .tag {
-                        margin-left: 8px;
-
                         background-color: cornflowerblue;
                         border-radius: 4px;
 
@@ -153,6 +156,9 @@ html body {
                     }
                 }
             }
+
+            .date {
+            }
         }
     }
 }
@@ -160,18 +166,13 @@ html body {
 .main {
     .article {
         .header {
-            width: 100%;
-
             display: flex;
             flex-direction: column;
 
             font-family: "SofiaSans";
 
             .title_and_author {
-                width: 100%;
-
                 display: flex;
-                align-items: flex-end;
                 justify-content: space-between;
 
                 .title {
@@ -179,19 +180,23 @@ html body {
                     color: #222222;
                 }
 
-                @media only screen and (max-width: 550px) {
+                .author {
+                    font-size: 0.8em;
+                }
+
+                @media only screen and (max-width: 500px) {
                     flex-direction: column;
 
-                    .title {
-                        width: 100%;
+                    .author {
+                        margin-top: -8px;
                     }
                 }
 
-                @media only screen and (min-width: 551px) {
+                @media only screen and (min-width: 501px) {
                     flex-direction: row;
 
-                    .title {
-                        width: 60%;
+                    .author {
+                        margin-top: 8px;
                     }
                 }
 
@@ -199,35 +204,16 @@ html body {
             }
 
             .dates {
-                width: 100%;
-
                 display: flex;
 
                 margin-bottom: 30px;
-
-                @media only screen and (max-width: 350px) {
-                    flex-direction: column;
-                }
-
-                @media only screen and (min-width: 351px) {
-                    flex-direction: row;
-                }
-
-                align-items: flex-start;
 
                 .edit_date {
                     p {
                         font-size: 0.9rem;
                     }
 
-                    @media only screen and (max-width: 350px) {
-                        margin-left: 0px;
-                    }
-
-                    @media only screen and (min-width: 351px) {
-                        margin-left: 15px;
-                    }
-
+                    margin-left: 15px;
                     margin-top: 0.05rem;
 
                     color: gray;

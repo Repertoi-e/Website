@@ -33,7 +33,6 @@ html body {
 .content {
   display: flex;
   flex-direction: column;
-  width: 100%;
   align-items: center;
   background-image: url("../resources/index/main-me.png"), url("../resources/index/main-clouds-left.png"), url("../resources/index/main-clouds-right.png"), url("../resources/index/main-bg.jpg");
   background-repeat: no-repeat;
@@ -64,9 +63,7 @@ html body {
 
 .main {
   display: grid;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  min-height: 100vh;
   justify-items: center;
   justify-content: center;
   align-content: stretch;
@@ -88,15 +85,20 @@ html body {
 .main .header {
   grid-area: header;
   color: #ececec;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 700;
   text-align: center;
   text-shadow: 1px 1px 1px #70a1cc;
   letter-spacing: 0.4rem;
-  padding-top: 1rem;
+  padding-top: 2rem;
+  line-height: 1.7;
+}
+.main .header h6 {
+  margin: 0;
 }
 .main .introduction {
   grid-area: introduction;
+  max-width: 27rem;
   color: #ffffff;
   text-shadow: 0px 0px 5px #8fa9c0;
   font-size: 1.5rem;
@@ -106,6 +108,7 @@ html body {
     border: 0.4rem dashed #ffffff;
     margin: 0.5rem;
     margin-bottom: 0;
+    padding: 0.5rem;
     justify-self: center;
     text-align: center;
   }
@@ -147,12 +150,12 @@ html body {
   margin-top: 0.4rem;
 }
 .arrow .vertical_line .inner {
-  height: 100%;
+  min-height: 100%;
   border-left: 0.4rem dashed #ffffff;
 }
 .arrow .end {
   width: 2rem;
-  height: 2rem;
+  min-height: 2rem;
   border-bottom: 0.4rem dashed #ffffff;
 }
 .arrow .end_left {
@@ -234,13 +237,13 @@ html body {
 }
 @media only screen and (max-width: 500px) {
   .social_media {
-    width: 95vw;
+    max-width: 95vw;
     padding: 0.5rem;
   }
 }
 @media only screen and (min-width: 501px) {
   .social_media {
-    width: 80vw;
+    max-width: 80vw;
     padding: 0;
   }
 }
@@ -279,7 +282,7 @@ html body {
 }
 .social_media .icons .dashed {
   width: 50%;
-  height: 0.2rem;
+  min-height: 0.2rem;
   border-top: 0.4rem dashed rgba(255, 255, 255, 0.762);
 }
 .social_media .icons .github,
@@ -298,11 +301,20 @@ html body {
 }
 
 .goodbye {
-  margin-top: 10rem;
   margin-bottom: 3rem;
   display: flex;
   flex-direction: column;
   width: 80vw;
+}
+@media only screen and (max-width: 500px) {
+  .goodbye {
+    margin-top: 2rem;
+  }
+}
+@media only screen and (min-width: 501px) {
+  .goodbye {
+    margin-top: 10rem;
+  }
 }
 .goodbye .copyright_and_greet {
   display: flex;
@@ -311,21 +323,21 @@ html body {
 .goodbye .copyright_and_greet .copyright {
   -ms-writing-mode: tb-rl;
       writing-mode: vertical-rl;
-  font-size: clamp(0.5rem, 1vw, 0.75rem);
+  font-size: clamp(0.625rem, 1.2vw, 0.875rem);
   font-weight: 700;
   letter-spacing: 0.07rem;
   color: #ffffff;
   text-shadow: 0px 0px 2px #6c98b6;
 }
 .goodbye .copyright_and_greet .greet {
-  font-size: clamp(4.375rem, 18vw, 11.875rem);
-  line-height: clamp(2.8125rem, 11vw, 7.5rem);
+  font-size: clamp(7.5rem, 18vw, 11.875rem);
+  line-height: clamp(5rem, 11vw, 7.5rem);
   color: #ffffff;
   text-shadow: 3px 3px 2px #92ffff, -3px -3px 2px #ff4bff;
 }
 .goodbye .credits {
   margin-top: 5rem;
-  font-size: 0.5em;
+  font-size: 0.6em;
   font-weight: 700;
   letter-spacing: 0.07rem;
   color: #ffffff;

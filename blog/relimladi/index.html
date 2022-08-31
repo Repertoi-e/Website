@@ -13,52 +13,58 @@
 
     <meta property="og:title" content="религиозните млади | Soti's Blog" />
     <meta property="og:description" content="запознайте се с Бебсикус Ил Ил и Сотикус. двамата младежи, които от време на време си нямат по-добра работа от това да дълбаят във философските недра..." />
-    <meta property="og:image" content="../../../resources/index/hand.gif" />
+    <meta property="og:image" content="../../resources/index/hand.gif" />
     <meta property="og:url" content="soti.camp" />
     <meta property="og:type" content="website" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="религиозните млади | Soti's Blog" />
     <meta name="twitter:description" content="запознайте се с Бебсикус Ил Ил и Сотикус. двамата младежи, които от време на време си нямат по-добра работа от това да дълбаят във философските недра..." />
-    <meta name="twitter:image" content="../../../resources/index/hand.gif" />
+    <meta name="twitter:image" content="../../resources/index/hand.gif" />
 
-    <link rel="stylesheet" href="../../../styles/style.css">
-    <link rel="stylesheet" href="../../../styles/blog.css">
+    <link rel="stylesheet" href="../../styles/style.css">
+    <link rel="stylesheet" href="../../styles/blog.css">
 
-    <link rel="icon" href="../../../resources/just_give_love.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="../../../resources/just_give_love.ico" type="image/x-icon" />
+    <link rel="icon" href="../../resources/just_give_love.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../resources/just_give_love.ico" type="image/x-icon" />
 
     <title>религиозните млади | Soti's Blog</title>
 
     <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+        MathJax.Hub.Config({ extensions: ["tex2jax.js"], jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true }, "HTML-CSS": { availableFonts: ["TeX"] } });
     </script>
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <link rel="stylesheet" type="text/css" href="http://app.klipse.tech/css/codemirror.css">
+
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css">
+
     <script>
         window.klipse_settings = {
-            selector_eval_python_client: '.language-klipse-python'
+            selector_pyodide: '.language-klipse-pyodide', 
+            editor_type: 'html'
         };
     </script>
-    <script src="http://app.klipse.tech/plugin_prod/js/klipse_plugin.min.js"></script>
+
 
 </head>
 
 
 <body>
+    
     <div class="content">
         <div class="header">
             <div class="icon_container">
                 <div class="icon">
-                    <img class="hills" src="../../../resources/index/hand.gif">
+                    <img class="hills" src="../../resources/index/hand.gif">
                 </div>
             </div>
         </div>
 
         <div class="main">
             <div class="title">
-                <a href="../../"><h1>Soti's Blog</h1></a>
+                <a href="../"><h1>Soti's Blog</h1></a>
             </div>
 
             <div class="article">
@@ -78,7 +84,7 @@
                         </div>
     
                         <div class="edit_date">
-                            <p>Последна редакция 29.08.2022 г.</p>
+                            <p>Последна редакция 01.09.2022 г.</p>
                         </div>
                     </div>
                 </div>
@@ -380,6 +386,18 @@
             © 2022 – Dimitar Sotirov
         </div>
     </div>
+
+    <script src="https://storage.googleapis.com/app.klipse.tech/plugin_prod/js/klipse_plugin.min.js"></script>
+
+    <script>  
+        var ggb_plot_variables = new GGBApplet({"material_id": "phrs5jkc", "width": 614, "height": 300, "showToolBar": false, "showAlgebraInput": false, "showMenuBar": false }, true);  
+        var ggb_plot_jumping = new GGBApplet({"material_id": "fhkzaygq", "width": 614, "height": 300, "showToolBar": false, "showAlgebraInput": false, "showMenuBar": false }, true);  
+
+        window.addEventListener("load", function() { 
+            ggb_plot_variables.inject('ggb-plot-variables');
+            ggb_plot_jumping.inject('ggb-plot-jumping');
+        });
+    </script>
 </body>
 
 </html>

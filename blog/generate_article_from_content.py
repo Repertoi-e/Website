@@ -190,7 +190,7 @@ def main():
 	date_string = today.strftime("%d.%m.%Y" if lang_en else "%d.%m.%Y г.")
 	edit_date_string = None
 
-	target_path = f"post/{title_ident}/index.html"
+	target_path = f"{title_ident}/index.html"
 	if os.path.exists(target_path):
 		with open(target_path, "rt", encoding="utf-8") as target:
 			existing_content = target.read()
