@@ -1,403 +1,373 @@
 <!DOCTYPE html>
-
 <html lang="bg">
-
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description" content="запознайте се с Бебсикус Ил Ил и Сотикус. двамата младежи, които от време на време си нямат по-добра работа от това да дълбаят във философските недра..." />
-    <meta name="keywords"
-        content="portfolio, game developer, camp, dimitar sotirov, soti, dimitar, sotirov, C++, developer, programmer, student, looking for job, hire me, job, hiring, HR, философия, бръщолевици, време, млади, религия, вяра" />
-    <meta name="author" content="Dimitar Sotirov" />
-
-    <meta property="og:title" content="религиозните млади | Soti's Blog" />
-    <meta property="og:description" content="запознайте се с Бебсикус Ил Ил и Сотикус. двамата младежи, които от време на време си нямат по-добра работа от това да дълбаят във философските недра..." />
-    <meta property="og:image" content="../../resources/index/hand.gif" />
-    <meta property="og:url" content="soti.camp" />
-    <meta property="og:type" content="website" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="религиозните млади | Soti's Blog" />
-    <meta name="twitter:description" content="запознайте се с Бебсикус Ил Ил и Сотикус. двамата младежи, които от време на време си нямат по-добра работа от това да дълбаят във философските недра..." />
-    <meta name="twitter:image" content="../../resources/index/hand.gif" />
-
-    <link rel="stylesheet" href="../../styles/style.css">
-    <link rel="stylesheet" href="../../styles/blog.css">
-
-    <link rel="icon" href="../../resources/just_give_love.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="../../resources/just_give_love.ico" type="image/x-icon" />
-
-    <title>религиозните млади | Soti's Blog</title>
-
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({ extensions: ["tex2jax.js"], jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true }, "HTML-CSS": { availableFonts: ["TeX"] } });
-    </script>
-
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-
-    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css">
-
-    <script>
-        window.klipse_settings = {
-            selector_pyodide: '.language-klipse-pyodide', 
-            editor_type: 'html'
-        };
-    </script>
-
-
-</head>
-
-
-<body>
-    
-    <div class="content">
-        <div class="header">
-            <div class="icon_container">
-                <div class="icon">
-                    <img class="hills" src="../../resources/index/hand.gif">
-                </div>
-            </div>
-        </div>
-
-        <div class="main">
-            <div class="title">
-                <a href="../"><h1>Soti's Blog</h1></a>
-            </div>
-
-            <div class="article">
-                <div class="header">
-                    <div class="title_and_author">
-                        <div class="title">
-                            <h2>религиозните млади</h2>
-                        </div>
-                        <div class="author">
-                            <i><h4>Димитър Сотиров</h4></i>
-                        </div>
-                    </div>
-
-                    <div class="dates">
-                        <div class="date">
-                            <p>6.08.2022</p>
-                        </div>
-    
-                        <div class="edit_date">
-                            <p>Последна редакция 01.09.2022 г.</p>
-                        </div>
+    <head>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+        <meta content="запознайте се с Бебсикус Ил Ил и Сотикус. двамата младежи, които от време на време си нямат по-добра работа от това да дълбаят във философските недра..." name="description"/>
+        <meta content="portfolio, game developer, camp, dimitar sotirov, soti, dimitar, sotirov, C++, developer, programmer, student, looking for job, hire me, job, hiring, HR, философия, бръщолевици, време, млади, религия, вяра" name="keywords"/>
+        <meta content="Dimitar Sotirov" name="author"/>
+        <meta content="религиозните млади | Soti's Blog" property="og:title"/>
+        <meta content="запознайте се с Бебсикус Ил Ил и Сотикус. двамата младежи, които от време на време си нямат по-добра работа от това да дълбаят във философските недра..." property="og:description"/>
+        <meta content="../../resources/index/hand.gif" property="og:image"/>
+        <meta content="soti.camp" property="og:url"/>
+        <meta content="website" property="og:type"/>
+        <meta content="summary_large_image" name="twitter:card"/>
+        <meta content="религиозните млади | Soti's Blog" name="twitter:title"/>
+        <meta content="запознайте се с Бебсикус Ил Ил и Сотикус. двамата младежи, които от време на време си нямат по-добра работа от това да дълбаят във философските недра..." name="twitter:description"/>
+        <meta content="../../resources/index/hand.gif" name="twitter:image"/>
+        <link href="../../styles/style.css" rel="stylesheet"/>
+        <link href="../../styles/blog.css" rel="stylesheet"/>
+        <link href="../../resources/just_give_love.ico" rel="icon" type="image/x-icon"/>
+        <link href="../../resources/just_give_love.ico" rel="shortcut icon" type="image/x-icon"/>
+        <title>
+            религиозните млади | Soti's Blog
+        </title>
+    </head>
+    <body>
+        <div class="content">
+            <div class="header">
+                <div class="icon_container">
+                    <div class="icon">
+                        <img class="hills" src="../../resources/index/hand.gif"/>
                     </div>
                 </div>
-
-                <div class="content">
-                    <p>
- запознайте се с Бебсикус Ил Ил и Сотикус. двамата младежи, които от време на време си нямат по-добра работа от това да дълбаят във философските недра на етера (или (3+1)-измерния пространствено-времеви континуум) [*], изпълнен с... *неща* (за които двамата биха имали различни гледни точки относно дали изобщо съществуват или не), създаващи дълбокосложната мрежа от образи-феномени в човешкия ум, която е твърде интересна, за да остане не-обект на скромния и бегъл опит от тяхна страна да бъде разбрана по начин, който да унищожи наивността на не-съзнаваното
- <br/>
- <br/>
- ... или иначе казано - запознайте се с дървено-каменните философи, които понякога обичат да спорят за спорта, но понякога и задълбават в някой цитат или най-случайното събитие от ежедневието. във всички случаи диалога звучи доста надменно и превзето
- <br/>
-</p>
-<div class="message_section">
- <div class="message_soti_div">
-  <div class="message_soti_container">
-   <span class="message_soti">
-    "Бих казал, че това, което се случва отива отвъд религията и не зависи от определена вяра или нещо друго. То е цялостно и непосредствено преживяване. Днешните млади всичките са религиозни, без обаче да имат вяра."
-   </span>
-   <span class="message_soti">
-    бебка, виж един цитат от Мартинов, който ще ви даде и на вас другата година
-   </span>
-   <span class="message_soti">
-    не помня автора (* питай Роси как беше), но годината е 1971 г. доста предвидливо описва модерната ситуация
-   </span>
-  </div>
- </div>
- <div class="message_bilil_div">
-  <div class="message_bilil_container">
-   <span class="message_bilil">
-    на чат изглежда малко
-   </span>
-   <span class="message_bilil">
-    ама е много секси
-   </span>
-  </div>
- </div>
- <div class="message_soti_div">
-  <div class="message_soti_container">
-   <span class="message_soti">
-    това, до което стигнахме в часа е, че примерно сутрешното проверяване на Insta, гледането на YouTube, докато ядеш или изобщо цялото това с технологиите служи като ритуал (религиозното), без обаче да я има вярата (описана явно като в библия)
-   </span>
-   <span class="message_soti">
-    дори бих казал, че самата парола работи по магичен начин, някакво на практика пази неща само от познати хора, нищо, че целта и е обратното, и все пак средно на всеки 10 минути човек си отваря телефона и казва: *оп* "сезам, отвори се!"
-   </span>
-   <span class="message_soti">
-    (или как би било на чешки "сезаме, отзаври се!" ?)
-   </span>
-  </div>
- </div>
- <div class="message_bilil_div">
-  <div class="message_bilil_container">
-   <span class="message_bilil">
-    Ugh what a great country to be a phone in
-   </span>
-   <span class="message_bilil">
-    ..но, да, честно казано има много логика. тук може да спориш, че човек така или иначе ще намери как да има това религиозно нещо. сега вече като Бог е мъртъв, традицията също, полът става реален колкото и атомите [*]...
-   </span>
-  </div>
- </div>
- <div class="message_soti_div">
-  <div class="message_soti_container">
-   <span class="message_soti">
-    мхм..
-   </span>
-   <span class="message_soti">
-    но и това даже не е баш пълно, не е *цялото* религиозно, защото не успяхме да отговорим къде е страхопочитанието (което го има, когато вляза в църквата например)
-   </span>
-   <span class="message_soti">
-    т.е. онова изтръпване, когато "бог ти се яви"... винаги ти се изплъзва и не успяваш да го уловиш, но знаеш, че точно в този момент някаква истина ти се явява за света, като фойерверк [*], който се появява за миг и после изчезва
-   </span>
-  </div>
- </div>
- <div class="message_bilil_div">
-  <div class="message_bilil_container">
-   <span class="message_bilil">
-    oх, side note, но
-   </span>
-   <span class="message_bilil">
-    теориите, които "убиват магията" и казват, че нищо не е толкова специално и целенасочено и че всичко е в главите на "хората, които си представят неща, които не са там наистина" (като онова с богоявлението)
-   </span>
-   <span class="message_bilil">
-    са много по не опасни (смисъл екзистенциално ☠), защото в крайна сметка имаш чистата фактичност на науката като враг, с който да се биеш, тъй като и да искаш не можеш да видиш света от гледната точка на формула
-   </span>
-   <span class="message_bilil">
-    и по някакъв начин даже се до-радикализираш в досегашната си позиция на - "НЕ! даже е още по-магическо!"
-   </span>
-   <span class="message_bilil">
-    а като мислим научно, lowkey сме обречени да убиваме сами магията докато не умрем или ние, или тя
-   </span>
-  </div>
- </div>
- <div class="message_soti_div">
-  <div class="message_soti_container">
-   <span class="message_soti">
-    то го има и това, че колкото повече бягаш от Бог чрез науката, в един момент се завърташ в кръг и повея на постмодерността те праща обратно при абсолюта на нещото, необяснимото (дали в науката това ще бъде енергия, време, пространство или такова понятие - още по-базово)
-   </span>
-  </div>
- </div>
-</div>
-<p class="cent">
- "Първата глътка от чашата на природните науки прави човека атеист, но на дъното на чашата го очаква Бог." (В. Хайзенберг)
- <br/>
-</p>
-<div class="message_section">
- <div class="message_bilil_div">
-  <div class="message_bilil_container">
-   <span class="message_bilil">
-    но има опасност и това ("науката те води право към Бог") да се развие като сляпо вярване в християнския Бог (или някой друг бог), защото Той е истината за света и прочие
-   </span>
-  </div>
- </div>
- <div class="message_soti_div">
-  <div class="message_soti_container">
-   <span class="message_soti">
-    да.. мисля, че известна доза скептичност във всичко е в баланса на нещата
-   </span>
-   <span class="message_soti">
-    но и науката го има това екстра, че не е баш религия (въпреки, че много наподобява по същност), защото има претенции за своя метод - експерименти, които да са измерими, повторими, верифициране на хипотези, обособяване на теории, проба грешка и т.н. на кратко дадена форма на обективност
-   </span>
-  </div>
- </div>
- <div class="message_bilil_div">
-  <div class="message_bilil_container">
-   <span class="message_bilil">
-    доколкото тази обективност е отново субективността на нашия мозък, защото нищо не изключва "света" в нашата глава да е създаден само от сенки на нещата във Вселената
-   </span>
-  </div>
- </div>
- <div class="message_soti_div">
-  <div class="message_soti_container">
-   <span class="message_soti">
-    но това може да го оставим за друг път...
-   </span>
-  </div>
- </div>
-</div>
-<p class="cent">
- ...
- <br/>
-</p>
-<div class="message_section">
- <div class="message_soti_div">
-  <div class="message_soti_container">
-   <span class="message_soti">
-    мисля, че ми дойде нещо, господина в часа каза, че тези, които слушат музика със слушалки в градския, все едно изпадат в друго измерение
-   </span>
-   <span class="message_soti">
-    онова изтръпване, когато чуеш хубава песен или я слушаш за 10298925829 път, или си представяш, че попадаш на даден концерт на любимия изпълнител (всичкото докато си физически още в тръмбусащ се трамвай) е много подобно чувство, което ти се изплъзва, на страхопочитанието при богоявлението...
-   </span>
-  </div>
- </div>
- <div class="message_bilil_div">
-  <div class="message_bilil_container">
-   <span class="message_bilil">
-    тук може да спориш, че човек така или иначе ще намери как да има това религиозно нещо
-   </span>
-   <span class="message_bilil">
-    ^^^^^^
-   </span>
-   <span class="message_bilil">
-    нещо в човешката природа е
-   </span>
-  </div>
- </div>
- <div class="message_soti_div">
-  <div class="message_soti_container">
-   <span class="message_soti">
-    да да точно, само вече я няма "библията", т.е. където да пише какво и как да слушаш пр. FHAWIHFAUWIF
-   </span>
-  </div>
- </div>
- <div class="message_bilil_div">
-  <div class="message_bilil_container">
-   <span class="message_bilil">
-    ☠️☠️
-   </span>
-  </div>
- </div>
- <div class="message_soti_div">
-  <div class="message_soti_container">
-   <span class="message_soti">
-    относно младите, това че си търсят религиозно, може би и се разширява и в социалните мрежи
-   </span>
-   <span class="message_soti">
-    като някоя кифла си качи черна профилна заради BLM, нищо че е през една Земя разстояние и сигурно ѝ липсва необходимия контекст изобщо да се доближи до разбиране и истинска солидарност, изглежда ми по-скоро симулирана, въпреки това се задвижва вълната и самото нещо даже придобива "култовски" характер
-   </span>
-   <span class="message_soti">
-    и се оказваш bitch, ако не си я сложиш и ти
-   </span>
-   <span class="message_soti">
-    придобива точно една фанатична емоционалност "АМА КАК НЯМА ДА ТИ ПУКА! РАСИСТ!"
-   </span>
-  </div>
- </div>
- <div class="message_bilil_div">
-  <div class="message_bilil_container">
-   <span class="message_bilil">
-    честно, сякаш младите вече се вкопчват и до най-нашумялото нещо
-   </span>
-   <span class="message_bilil">
-    някакси факта, че вече го няма сигурния отговор в науката и в библията, много по-лесно е да си помислиш, че правиш правилното нещо, като приемеш една идентичност на неизчерпаема солидарност към всичко живо, което се случва
-   </span>
-   <span class="message_bilil">
-    дори и акта да се състои само в смяна на една профилна, пак излиза фанатично, когато започнеш спора с някого по темата
-   </span>
-  </div>
- </div>
- <div class="message_soti_div">
-  <div class="message_soti_container">
-   <span class="message_soti">
-    др. пример са и фанатичните вегани
-   </span>
-   <span class="message_soti">
-    или "мейнстрийм еколозите" - имам чувството, че е повече "омг вижте ме, пука ми за костенурките" и самото нещо става част от твоето търсене на идентичност, докато действията говорят друго (аз например съм много дълбоко застъпен в това последното :))
-   </span>
-   <span class="message_soti">
-    защото една пластмасова сламка по-малко в кифленското ти Starbucks кафе, няма да направи нищо (имайки предвид, че дори и чашата ти е още от пластмаса, а ако е от картон, то и в него има пластмаса, която даже не се рециклира)
-   </span>
-  </div>
- </div>
- <div class="message_bilil_div">
-  <div class="message_bilil_container">
-   <span class="message_bilil">
-    въпроса е, че когато е осъзнато (напр. това с пластмасата) някак си спираш да бъдеш толкова фанатичен по темата и да изпадаш в безсмислени спорове
-   </span>
-   <span class="message_bilil">
-    но доколкото това с "новото религиозно вкопчване" да то май си е останало същото, но се е променил само контекста... няма готови отговори и истина като при традиционните течения (християнството през Средновековието, науката през Просвещението)
-   </span>
-  </div>
- </div>
- <div class="message_soti_div">
-  <div class="message_soti_container">
-   <span class="message_soti">
-    днес всичко може да важи и да бъде валидно мнение, все ще се намери някой, който да вярва, че земята е плосък диск, който се ускорява с 9.8 м/с^2 на раменете на великани върху огромна костенурка
-   </span>
-   <span class="message_soti">
-    so
-   </span>
-   <span class="message_soti">
-    "Днешните млади всичките са религиозни, без обаче да имат вяра."
-   </span>
-  </div>
- </div>
-</div>
-<p class="cent">
- ...
- <br/>
-</p>
-<div class="message_section">
- <div class="message_bilil_div">
-  <div class="message_bilil_container">
-   <span class="message_bilil">
-    все още ни убягва това със страхопочитанието, though
-   </span>
-  </div>
- </div>
- <div class="message_soti_div">
-  <div class="message_soti_container">
-   <span class="message_soti">
-    ... хмм
-   </span>
-   <span class="message_soti">
-    може би за да има страхопочитание от *нещо*, то трябва да го има това ясно осъзнато нещо, но докато ние вече нямаме вярата в библия или в религия, а вместо това имаме само ритуалното и от време на време фанатичното, то няма как изобщо да изпитаме това чувство
-   </span>
-  </div>
- </div>
- <div class="message_bilil_div">
-  <div class="message_bilil_container">
-   <span class="message_bilil">
-    омг.. или екзистенциалната криза
-   </span>
-   <span class="message_bilil">
-    не е ли точно тя страхопочитание от *нищо*? точно това чувство, като изпаднеш в летаргия относно света, и изведнъж нищо няма смисъл, после става по-силно и по-силно, свиваш се на кълбо на дивана и се чудиш защо утре да не скочиш пред метрото (или ако нямаш столични привилегии, някъде другаде да се хвърлиш) и изобщо ще има ли смисъл за някого
-   </span>
-  </div>
- </div>
- <div class="message_soti_div">
-  <div class="message_soti_container">
-   <span class="message_soti">
-    хм.. значи и тоталната липса на вяра, пак се оказва религиозно преживяване
-   </span>
-  </div>
- </div>
- <div class="message_bilil_div">
-  <div class="message_bilil_container">
-   <span class="message_bilil">
-    може би цялото нещо с това да бъдеш човек, е, че някой (или никой) те е пръкнал тук и сега на Земята и трябва да се справиш със ситуацията, като постоянно се бориш да се захванеш за сламка, иначе изпадаш и се давиш в бездната[*]
-   </span>
-  </div>
- </div>
-</div>
+            </div>
+            <div class="main">
+                <div class="title">
+                    <a href="../">
+                        <h1>
+                            Soti's Blog
+                        </h1>
+                    </a>
+                </div>
+                <div class="article">
+                    <div class="header">
+                        <div class="title_and_author">
+                            <div class="title">
+                                <h2>
+                                    религиозните млади
+                                </h2>
+                            </div>
+                            <div class="author">
+                                <i>
+                                    <h4>
+                                        Димитър Сотиров
+                                    </h4>
+                                </i>
+                            </div>
+                        </div>
+                        <div class="dates">
+                            <div class="date">
+                                <p>
+                                    6.08.2022
+                                </p>
+                            </div>
+                            <div class="edit_date">
+                                <p>
+                                    Последна редакция 02.09.2022 г.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <p>
+                            запознайте се с Бебсикус Ил Ил и Сотикус. двамата младежи, които от време на време си нямат по-добра работа от това да дълбаят във философските недра на етера (или (3+1)-измерния пространствено-времеви континуум) [*], изпълнен с... *неща* (за които двамата биха имали различни гледни точки относно дали изобщо съществуват или не), създаващи дълбокосложната мрежа от образи-феномени в човешкия ум, която е твърде интересна, за да остане не-обект на скромния и бегъл опит от тяхна страна да бъде разбрана по начин, който да унищожи наивността на не-съзнаваното
+                            <br/>
+                            <br/>
+                            ... или иначе казано - запознайте се с дървено-каменните философи, които понякога обичат да спорят за спорта, но понякога и задълбават в някой цитат или най-случайното събитие от ежедневието. във всички случаи диалога звучи доста надменно и превзето
+                            <br/>
+                        </p>
+                        <div class="message_section">
+                            <div class="message_soti_div">
+                                <div class="message_soti_container">
+                                    <span class="message_soti">
+                                        "Бих казал, че това, което се случва отива отвъд религията и не зависи от определена вяра или нещо друго. То е цялостно и непосредствено преживяване. Днешните млади всичките са религиозни, без обаче да имат вяра."
+                                    </span>
+                                    <span class="message_soti">
+                                        бебка, виж един цитат от Мартинов, който ще ви даде и на вас другата година
+                                    </span>
+                                    <span class="message_soti">
+                                        не помня автора (* питай Роси как беше), но годината е 1971 г. доста предвидливо описва модерната ситуация
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="message_bilil_div">
+                                <div class="message_bilil_container">
+                                    <span class="message_bilil">
+                                        на чат изглежда малко
+                                    </span>
+                                    <span class="message_bilil">
+                                        ама е много секси
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="message_soti_div">
+                                <div class="message_soti_container">
+                                    <span class="message_soti">
+                                        това, до което стигнахме в часа е, че примерно сутрешното проверяване на Insta, гледането на YouTube, докато ядеш или изобщо цялото това с технологиите служи като ритуал (религиозното), без обаче да я има вярата (описана явно като в библия)
+                                    </span>
+                                    <span class="message_soti">
+                                        дори бих казал, че самата парола работи по магичен начин, някакво на практика пази неща само от познати хора, нищо, че целта и е обратното, и все пак средно на всеки 10 минути човек си отваря телефона и казва: *оп* "сезам, отвори се!"
+                                    </span>
+                                    <span class="message_soti">
+                                        (или как би било на чешки "сезаме, отзаври се!" ?)
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="message_bilil_div">
+                                <div class="message_bilil_container">
+                                    <span class="message_bilil">
+                                        Ugh what a great country to be a phone in
+                                    </span>
+                                    <span class="message_bilil">
+                                        ..но, да, честно казано има много логика. тук може да спориш, че човек така или иначе ще намери как да има това религиозно нещо. сега вече като Бог е мъртъв, традицията също, полът става реален колкото и атомите [*]...
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="message_soti_div">
+                                <div class="message_soti_container">
+                                    <span class="message_soti">
+                                        мхм..
+                                    </span>
+                                    <span class="message_soti">
+                                        но и това даже не е баш пълно, не е *цялото* религиозно, защото не успяхме да отговорим къде е страхопочитанието (което го има, когато вляза в църквата например)
+                                    </span>
+                                    <span class="message_soti">
+                                        т.е. онова изтръпване, когато "бог ти се яви"... винаги ти се изплъзва и не успяваш да го уловиш, но знаеш, че точно в този момент някаква истина ти се явява за света, като фойерверк [*], който се появява за миг и после изчезва
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="message_bilil_div">
+                                <div class="message_bilil_container">
+                                    <span class="message_bilil">
+                                        oх, side note, но
+                                    </span>
+                                    <span class="message_bilil">
+                                        теориите, които "убиват магията" и казват, че нищо не е толкова специално и целенасочено и че всичко е в главите на "хората, които си представят неща, които не са там наистина" (като онова с богоявлението)
+                                    </span>
+                                    <span class="message_bilil">
+                                        са много по не опасни (смисъл екзистенциално ☠), защото в крайна сметка имаш чистата фактичност на науката като враг, с който да се биеш, тъй като и да искаш не можеш да видиш света от гледната точка на формула
+                                    </span>
+                                    <span class="message_bilil">
+                                        и по някакъв начин даже се до-радикализираш в досегашната си позиция на - "НЕ! даже е още по-магическо!"
+                                    </span>
+                                    <span class="message_bilil">
+                                        а като мислим научно, lowkey сме обречени да убиваме сами магията докато не умрем или ние, или тя
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="message_soti_div">
+                                <div class="message_soti_container">
+                                    <span class="message_soti">
+                                        то го има и това, че колкото повече бягаш от Бог чрез науката, в един момент се завърташ в кръг и повея на постмодерността те праща обратно при абсолюта на нещото, необяснимото (дали в науката това ще бъде енергия, време, пространство или такова понятие - още по-базово)
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="cent">
+                            "Първата глътка от чашата на природните науки прави човека атеист, но на дъното на чашата го очаква Бог." (В. Хайзенберг)
+                            <br/>
+                        </p>
+                        <div class="message_section">
+                            <div class="message_bilil_div">
+                                <div class="message_bilil_container">
+                                    <span class="message_bilil">
+                                        но има опасност и това ("науката те води право към Бог") да се развие като сляпо вярване в християнския Бог (или някой друг бог), защото Той е истината за света и прочие
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="message_soti_div">
+                                <div class="message_soti_container">
+                                    <span class="message_soti">
+                                        да.. мисля, че известна доза скептичност във всичко е в баланса на нещата
+                                    </span>
+                                    <span class="message_soti">
+                                        но и науката го има това екстра, че не е баш религия (въпреки, че много наподобява по същност), защото има претенции за своя метод - експерименти, които да са измерими, повторими, верифициране на хипотези, обособяване на теории, проба грешка и т.н. на кратко дадена форма на обективност
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="message_bilil_div">
+                                <div class="message_bilil_container">
+                                    <span class="message_bilil">
+                                        доколкото тази обективност е отново субективността на нашия мозък, защото нищо не изключва "света" в нашата глава да е създаден само от сенки на нещата във Вселената
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="message_soti_div">
+                                <div class="message_soti_container">
+                                    <span class="message_soti">
+                                        но това може да го оставим за друг път...
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="cent">
+                            ...
+                            <br/>
+                        </p>
+                        <div class="message_section">
+                            <div class="message_soti_div">
+                                <div class="message_soti_container">
+                                    <span class="message_soti">
+                                        мисля, че ми дойде нещо, господина в часа каза, че тези, които слушат музика със слушалки в градския, все едно изпадат в друго измерение
+                                    </span>
+                                    <span class="message_soti">
+                                        онова изтръпване, когато чуеш хубава песен или я слушаш за 10298925829 път, или си представяш, че попадаш на даден концерт на любимия изпълнител (всичкото докато си физически още в тръмбусащ се трамвай) е много подобно чувство, което ти се изплъзва, на страхопочитанието при богоявлението...
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="message_bilil_div">
+                                <div class="message_bilil_container">
+                                    <span class="message_bilil">
+                                        тук може да спориш, че човек така или иначе ще намери как да има това религиозно нещо
+                                    </span>
+                                    <span class="message_bilil">
+                                        ^^^^^^
+                                    </span>
+                                    <span class="message_bilil">
+                                        нещо в човешката природа е
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="message_soti_div">
+                                <div class="message_soti_container">
+                                    <span class="message_soti">
+                                        да да точно, само вече я няма "библията", т.е. където да пише какво и как да слушаш пр. FHAWIHFAUWIF
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="message_bilil_div">
+                                <div class="message_bilil_container">
+                                    <span class="message_bilil">
+                                        ☠️☠️
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="message_soti_div">
+                                <div class="message_soti_container">
+                                    <span class="message_soti">
+                                        относно младите, това че си търсят религиозно, може би и се разширява и в социалните мрежи
+                                    </span>
+                                    <span class="message_soti">
+                                        като някоя кифла си качи черна профилна заради BLM, нищо че е през една Земя разстояние и сигурно ѝ липсва необходимия контекст изобщо да се доближи до разбиране и истинска солидарност, изглежда ми по-скоро симулирана, въпреки това се задвижва вълната и самото нещо даже придобива "култовски" характер
+                                    </span>
+                                    <span class="message_soti">
+                                        и се оказваш bitch, ако не си я сложиш и ти
+                                    </span>
+                                    <span class="message_soti">
+                                        придобива точно една фанатична емоционалност "АМА КАК НЯМА ДА ТИ ПУКА! РАСИСТ!"
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="message_bilil_div">
+                                <div class="message_bilil_container">
+                                    <span class="message_bilil">
+                                        честно, сякаш младите вече се вкопчват и до най-нашумялото нещо
+                                    </span>
+                                    <span class="message_bilil">
+                                        някакси факта, че вече го няма сигурния отговор в науката и в библията, много по-лесно е да си помислиш, че правиш правилното нещо, като приемеш една идентичност на неизчерпаема солидарност към всичко живо, което се случва
+                                    </span>
+                                    <span class="message_bilil">
+                                        дори и акта да се състои само в смяна на една профилна, пак излиза фанатично, когато започнеш спора с някого по темата
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="message_soti_div">
+                                <div class="message_soti_container">
+                                    <span class="message_soti">
+                                        др. пример са и фанатичните вегани
+                                    </span>
+                                    <span class="message_soti">
+                                        или "мейнстрийм еколозите" - имам чувството, че е повече "омг вижте ме, пука ми за костенурките" и самото нещо става част от твоето търсене на идентичност, докато действията говорят друго (аз например съм много дълбоко застъпен в това последното :))
+                                    </span>
+                                    <span class="message_soti">
+                                        защото една пластмасова сламка по-малко в кифленското ти Starbucks кафе, няма да направи нищо (имайки предвид, че дори и чашата ти е още от пластмаса, а ако е от картон, то и в него има пластмаса, която даже не се рециклира)
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="message_bilil_div">
+                                <div class="message_bilil_container">
+                                    <span class="message_bilil">
+                                        въпроса е, че когато е осъзнато (напр. това с пластмасата) някак си спираш да бъдеш толкова фанатичен по темата и да изпадаш в безсмислени спорове
+                                    </span>
+                                    <span class="message_bilil">
+                                        но доколкото това с "новото религиозно вкопчване" да то май си е останало същото, но се е променил само контекста... няма готови отговори и истина като при традиционните течения (християнството през Средновековието, науката през Просвещението)
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="message_soti_div">
+                                <div class="message_soti_container">
+                                    <span class="message_soti">
+                                        днес всичко може да важи и да бъде валидно мнение, все ще се намери някой, който да вярва, че земята е плосък диск, който се ускорява с 9.8 м/с^2 на раменете на великани върху огромна костенурка
+                                    </span>
+                                    <span class="message_soti">
+                                        so
+                                    </span>
+                                    <span class="message_soti">
+                                        "Днешните млади всичките са религиозни, без обаче да имат вяра."
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="cent">
+                            ...
+                            <br/>
+                        </p>
+                        <div class="message_section">
+                            <div class="message_bilil_div">
+                                <div class="message_bilil_container">
+                                    <span class="message_bilil">
+                                        все още ни убягва това със страхопочитанието, though
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="message_soti_div">
+                                <div class="message_soti_container">
+                                    <span class="message_soti">
+                                        ... хмм
+                                    </span>
+                                    <span class="message_soti">
+                                        може би за да има страхопочитание от *нещо*, то трябва да го има това ясно осъзнато нещо, но докато ние вече нямаме вярата в библия или в религия, а вместо това имаме само ритуалното и от време на време фанатичното, то няма как изобщо да изпитаме това чувство
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="message_bilil_div">
+                                <div class="message_bilil_container">
+                                    <span class="message_bilil">
+                                        омг.. или екзистенциалната криза
+                                    </span>
+                                    <span class="message_bilil">
+                                        не е ли точно тя страхопочитание от *нищо*? точно това чувство, като изпаднеш в летаргия относно света, и изведнъж нищо няма смисъл, после става по-силно и по-силно, свиваш се на кълбо на дивана и се чудиш защо утре да не скочиш пред метрото (или ако нямаш столични привилегии, някъде другаде да се хвърлиш) и изобщо ще има ли смисъл за някого
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="message_soti_div">
+                                <div class="message_soti_container">
+                                    <span class="message_soti">
+                                        хм.. значи и тоталната липса на вяра, пак се оказва религиозно преживяване
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="message_bilil_div">
+                                <div class="message_bilil_container">
+                                    <span class="message_bilil">
+                                        може би цялото нещо с това да бъдеш човек, е, че някой (или никой) те е пръкнал тук и сега на Земята и трябва да се справиш със ситуацията, като постоянно се бориш да се захванеш за сламка, иначе изпадаш и се давиш в бездната[*]
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            Gif in header, owner -
+                            <a href="https://artoftheglitch.tumblr.com" target="_blank">
+                                artoftheglitch.tumblr.com
+                            </a>
+                            <br/>
+                            <br/>
+                            © 2022 – Dimitar Sotirov
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="footer">
-            Gif in header, owner -
-            <a href="https://artoftheglitch.tumblr.com" target="_blank">artoftheglitch.tumblr.com</a><br><br>
-            © 2022 – Dimitar Sotirov
-        </div>
-    </div>
-
-    <script src="https://storage.googleapis.com/app.klipse.tech/plugin_prod/js/klipse_plugin.min.js"></script>
-
-    <script>  
-        var ggb_plot_variables = new GGBApplet({"material_id": "phrs5jkc", "width": 614, "height": 300, "showToolBar": false, "showAlgebraInput": false, "showMenuBar": false }, true);  
-        var ggb_plot_jumping = new GGBApplet({"material_id": "fhkzaygq", "width": 614, "height": 300, "showToolBar": false, "showAlgebraInput": false, "showMenuBar": false }, true);  
-
-        window.addEventListener("load", function() { 
-            ggb_plot_variables.inject('ggb-plot-variables');
-            ggb_plot_jumping.inject('ggb-plot-jumping');
-        });
-    </script>
-</body>
-
+    </body>
 </html>
