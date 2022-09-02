@@ -36,9 +36,7 @@
 
 html body {
     background-color: white;
-}
 
-.content {
     display: flex;
     flex-direction: column;
 
@@ -131,7 +129,7 @@ html body {
                 .tags {
                     display: flex;
 
-                    .tag + .tag {
+                    .tag+.tag {
                         margin-left: 8px;
                     }
 
@@ -157,8 +155,7 @@ html body {
                 }
             }
 
-            .date {
-            }
+            .date {}
         }
     }
 }
@@ -241,10 +238,13 @@ html body {
 
             pre {
                 font-family: "FiraCode";
-                
+
                 background-color: white;
-                
+
                 color: #232323;
+
+                max-width: 95%;
+                word-wrap: break-word;
             }
 
             .note {

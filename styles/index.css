@@ -28,9 +28,6 @@
 }
 html body {
   background-color: #b1c3cd;
-}
-
-.content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,24 +35,24 @@ html body {
   background-repeat: no-repeat;
 }
 @media only screen and (max-width: 200px) {
-  .content {
+  html body {
     background-size: 210%, 0%, 0%, 0%;
   }
 }
 @media only screen and (min-width: 201px) {
-  .content {
+  html body {
     background-size: 210%, 350%, cover, cover;
     background-position: 0px 0px, -80px -100px, 0px 0px, 0px 0px;
   }
 }
 @media only screen and (min-width: 401px) {
-  .content {
+  html body {
     background-size: 210%, 350%, cover, cover;
     background-position: 0px -100px, -80px -100px, 0px 0px, 0px 0px;
   }
 }
 @media only screen and (min-width: 851px) {
-  .content {
+  html body {
     background-size: 110%, 120%, cover, cover;
     background-position: 0px 50px, -50px -100px, -800px 0px, 0px 0px;
   }
@@ -125,11 +122,6 @@ html body {
   }
 }
 
-/* For debugging.
-.content * {
-    border: 1px solid yellow;
-}
-*/
 .arrow {
   grid-area: arrow;
   align-self: stretch;

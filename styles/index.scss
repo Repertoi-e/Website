@@ -4,9 +4,7 @@
 
 html body {
     background-color: #b1c3cd;
-}
 
-.content {
     display: flex;
     flex-direction: column;
 
@@ -147,12 +145,6 @@ $dash-width: 0.4rem;
         font-size: 1.5rem;
     }
 }
-
-/* For debugging.
-.content * {
-    border: 1px solid yellow;
-}
-*/
 
 .arrow {
     grid-area: arrow;

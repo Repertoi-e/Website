@@ -29,9 +29,6 @@
 
 html body {
   background-color: white;
-}
-
-.content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -193,6 +190,8 @@ html body {
   font-family: "FiraCode";
   background-color: white;
   color: #232323;
+  max-width: 95%;
+  word-wrap: break-word;
 }
 .main .article .content .note {
   color: gray;

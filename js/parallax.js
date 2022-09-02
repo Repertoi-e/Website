@@ -1,5 +1,5 @@
-const contentContainer = document.querySelector(".content");
-const speeds = [0.2, 0.7, 0.7, 1]; /* @Hardcoded: me, clouds, clouds, bg */
+const contentContainer = document.querySelector("body");
+const speeds = [0.2, 0.7, 0.7, 1]; /* @Hardcoded for index page: me, clouds, clouds, bg */
 
 const bgPositions = getComputedStyle(contentContainer).backgroundPosition.replace(/^\s+|\s+$/g, "").split(/\s*,\s*/);
 
