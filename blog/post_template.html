@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <meta name="description" content="@DESC" />
     <meta name="keywords"
@@ -26,28 +26,11 @@
     <link rel="stylesheet" href="../../styles/blog.css">
 
     <link rel="icon" href="../../resources/just_give_love.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="../../resources/just_give_love.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="../../resources/just_give_love.ico" type="image/x-icon">
 
     <title>@TITLE | Soti's Blog</title>
 
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({ extensions: ["tex2jax.js"], jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true }, "HTML-CSS": { availableFonts: ["TeX"] } });
-    </script>
-
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-
-    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css">
-
-    <script>
-        window.klipse_settings = {
-            selector_pyodide: '.language-klipse-pyodide', 
-            editor_type: 'html'
-        };
-    </script>
-
-
+    @EXTRAHEAD
 </head>
 
 
@@ -102,17 +85,7 @@
         </div>
     </div>
 
-    <script src="https://storage.googleapis.com/app.klipse.tech/plugin_prod/js/klipse_plugin.min.js"></script>
-
-    <script>  
-        var ggb_plot_variables = new GGBApplet({"material_id": "phrs5jkc", "width": 614, "height": 300, "showToolBar": false, "showAlgebraInput": false, "showMenuBar": false }, true);  
-        var ggb_plot_jumping = new GGBApplet({"material_id": "fhkzaygq", "width": 614, "height": 300, "showToolBar": false, "showAlgebraInput": false, "showMenuBar": false }, true);  
-
-        window.addEventListener("load", function() { 
-            ggb_plot_variables.inject('ggb-plot-variables');
-            ggb_plot_jumping.inject('ggb-plot-jumping');
-        });
-    </script>
+    @EXTRABODY
 </body>
 
 </html>

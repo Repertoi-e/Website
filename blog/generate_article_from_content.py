@@ -2,6 +2,7 @@ import sys
 
 from datetime import date
 
+import bs4
 from bs4 import BeautifulSoup
 
 import os.path
@@ -21,6 +22,8 @@ def main():
 	lines = content.split("\n")
 
 	html_gen = ""
+	html_gen_head = ""
+	html_gen_body = ""
 
 	last_line = None
 
@@ -31,7 +34,9 @@ def main():
 	version = None # Not used for now, but for future compatibility :)
 
 	doing_paragraph = False
-	doing_python = False
+	doing_code = False
+	doing_code_but_doing_extra_head = False
+	doing_code_but_doing_extra_body = False
 
 	# Version 1: Either ## (Sotikus) or :: (Bebsikus Il Il)
 	doing_messages_from = None 
@@ -41,7 +46,7 @@ def main():
 	lang_en = False
 
 	for l in lines:
-		if not doing_python: 
+		if not doing_code: 
 			l = l.strip()
 		line_number += 1
 		if last_line is None and len(l) == 0: continue
@@ -110,19 +115,35 @@ def main():
 			else:
 				last_line = last_line[2:]
 
-		if last_line.startswith("[py"):
+		is_directive_py = last_line.startswith("[py")
+		is_directive_extra_head = last_line.startswith("[extra_head")
+		is_directive_extra_body = last_line.startswith("[extra_body")
+
+		if is_directive_py or is_directive_extra_head or is_directive_extra_body:
 			if doing_messages_from is not None:
 				# End message section
 				html_gen += "</div></div></div>"
 				doing_messages_from = None
-			doing_python = True
-			html_gen += '<pre><code class="language-klipse-pyodide">\n'
-			if len(last_line) <= 3:
+			doing_code = True
+
+			doing_code_but_doing_extra_head = False
+			doing_code_but_doing_extra_body = False
+
+			if is_directive_py:
+				html_gen += '<pre><code class="language-klipse-pyodide">\n'
+			if is_directive_extra_head:
+				doing_code_but_doing_extra_head = True
+			if is_directive_extra_body:
+				doing_code_but_doing_extra_body = True
+			line_len_hardcoded = 3
+			if not is_directive_py:
+				line_len_hardcoded = 11
+			if len(last_line) <= line_len_hardcoded:
 				continue
-			last_line = last_line[3:]
+			last_line = last_line[line_len_hardcoded:]
 
 		if last_line.endswith("]]"):
-			if not doing_paragraph and not doing_python:
+			if not doing_paragraph and not doing_code:
 				print(f"[{line_number}] Unmatched ']]'. We use that for paragraphs! No beginning '[[' did we parse correctly... ")
 				return
 			if len(last_line) > 2:
@@ -131,14 +152,22 @@ def main():
 			if doing_paragraph:
 				html_gen += "</p>"
 				doing_paragraph = False	
-			if doing_python:
-				html_gen += "\n</code></pre>"
-				doing_python = False	
-				
+			if doing_code:
+				if not doing_code_but_doing_extra_head and not doing_code_but_doing_extra_body:
+					html_gen += "\n</code></pre>"
+				doing_code = False	
+				doing_code_but_doing_extra_head = False
+				doing_code_but_doing_extra_body = False
+
 		if doing_paragraph:
 			html_gen += last_line + "<br>"
-		elif doing_python:
-			html_gen += last_line + "\n"
+		elif doing_code:
+			if doing_code_but_doing_extra_head:
+				html_gen_head += last_line + "\n"
+			elif doing_code_but_doing_extra_body:
+				html_gen_body += last_line + "\n"
+			else:
+				html_gen += last_line + "\n"
 		#elif len(last_line) != 0:
 		#	print(f"[{line_number}] Skipping non-empty line: {last_line}")
 
@@ -184,8 +213,6 @@ def main():
 		print("Opa, empty file")
 		return
 
-	html_gen = BeautifulSoup(html_gen, features="html.parser").prettify()
-
 	today = date.today()
 	date_string = today.strftime("%d.%m.%Y" if lang_en else "%d.%m.%Y г.")
 	edit_date_string = None
@@ -195,7 +222,7 @@ def main():
 		with open(target_path, "rt", encoding="utf-8") as target:
 			existing_content = target.read()
 			
-			match = re.findall(r'<div class="date">\s*<p>([0-9.]*)', existing_content)
+			match = re.findall(r'<div class="date">\s*<p>\s*([0-9.]*)', existing_content)
 			
 			edit_date_string = f"Last edited {date_string}" if lang_en else f"Последна редакция {date_string}"
 			date_string = match[0]
@@ -220,6 +247,11 @@ def main():
 
 	# print(html_gen)
 	content = content.replace("@CONTENT", html_gen)
+	content = content.replace("@EXTRAHEAD", html_gen_head)
+	content = content.replace("@EXTRABODY", html_gen_body)
+
+	formatter = bs4.formatter.HTMLFormatter(indent=4)
+	content = BeautifulSoup(content, features="html.parser").prettify(formatter=formatter)
 
 	with open(target_path, "w+", encoding="utf-8") as target:
 		target.write(content)
