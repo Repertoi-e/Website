@@ -79,6 +79,7 @@ html body {
 
             &:hover {
                 text-decoration: underline;
+                text-decoration-color: #222222;
             }
         }
     }
@@ -162,18 +163,18 @@ html body {
 
 $theme-color: #2edeb2;
 
+a {
+    color: black;
+    text-decoration-color: $theme-color;
+    text-decoration-thickness: 0.1rem;
+
+    &:hover {
+        color: $theme-color;
+    }
+}
+
 .main {
     .article {
-        a {
-            color: black;
-            text-decoration-color: $theme-color;
-            text-decoration-thickness: 0.1rem;
-    
-            &:hover {
-                color: $theme-color;
-            }
-        }
-        
         .header {
             display: flex;
             flex-direction: column;
@@ -238,7 +239,7 @@ $theme-color: #2edeb2;
             p {
                 width: 100%;
 
-                .centered {
+                &.centered {
                     text-align: center;
                 }
 
@@ -354,6 +355,8 @@ $theme-color: #2edeb2;
 }
 
 .footer {
+    margin-top: 5rem;
+
     width: 100%;
     padding: 10px;
 

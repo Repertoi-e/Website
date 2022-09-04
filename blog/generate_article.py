@@ -118,11 +118,10 @@ class HTMLGen():
             report(f"Already doing messages for {message_sender}!")
             return
 
-        if not self.is_doing_messages():
+        if self.current_message_sender == MessageSender.NOBODY:
             # Begin new section
             self.src.append('<div class="message_section">')
         else:
-            # End old sender section
             self.src.append('</div></div>')
 
         if message_sender == MessageSender.SOTI:
@@ -132,14 +131,14 @@ class HTMLGen():
             self.src.append(
                 '<div class="message_bebka_div"><div class="message_bebka_container">')
         elif message_sender == MessageSender.NOBODY:
-            # End message section all together
-            self.src.append("</div></div></div>")
+            # End message section 
+            self.src.append("</div>")
         else:
             report(f"Internal error: {message_sender} was not handled!")
 
             if self.current_message_sender != MessageSender.NOBODY:
-                # End message section all together to avoid weird HTML behaviour
-                self.src.append("</div></div></div>")
+                # End message section to avoid weird HTML behaviour
+                self.src.append("</div>")
                 self.current_message_sender = MessageSender.NOBODY
             return
 
@@ -363,7 +362,7 @@ def main():
                 print("Parsed meta:")
                 for k, v in meta.items():
                     print(k, "=", v)
-                required_meta = ["url", "title"]
+                required_meta = ["url", "title", "lang"]
                 for r in required_meta:
                     if r not in meta:
                         print(
@@ -413,8 +412,8 @@ def main():
     content = content.replace('@LANG_META_HTML', get_localized_html_lang_meta_str())
 
     content = content.replace("@CONTENT", html_gen.get_baked_src())
-    content = content.replace("@EXTRA_HEAD", meta["extra_html_head"])
-    content = content.replace("@EXTRA_BODY", meta["extra_html_body"])
+    content = content.replace("@EXTRA_HEAD", meta.get("extra_html_head", ""))
+    content = content.replace("@EXTRA_BODY", meta.get("extra_html_body", ""))
 
     formatter = bs4.formatter.HTMLFormatter(indent=4)
     content = bs4.BeautifulSoup(content, features="html.parser").prettify(formatter=formatter)
