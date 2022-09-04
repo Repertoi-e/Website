@@ -8,8 +8,6 @@ from datetime import date
 import re
 import os.path
 
-import bs4
-
 line_number: int = 0
 version: int = 0
 lines: list[str] = []
@@ -223,6 +221,7 @@ def try_parse_meta_directive() -> bool:
         "lang": lambda x: languages_dict[x.lower()],
         "url": lambda x: x,
         "title": lambda x: x,
+        "index": lambda x: True if x.lower() == "yes" else False,
         "desc": lambda x: eat_lines_until_next_meta_directive(x, "<br><br>"),
         "keywords": lambda x: eat_lines_until_next_meta_directive(x, ""),
         "extra_html_head": lambda x: eat_lines_until_next_meta_directive(x, "\n", code=True),
@@ -414,9 +413,6 @@ def main():
     content = content.replace("@CONTENT", html_gen.get_baked_src())
     content = content.replace("@EXTRA_HEAD", meta.get("extra_html_head", ""))
     content = content.replace("@EXTRA_BODY", meta.get("extra_html_body", ""))
-
-    formatter = bs4.formatter.HTMLFormatter(indent=4)
-    content = bs4.BeautifulSoup(content, features="html.parser").prettify(formatter=formatter)
 
     with open(target_path, "w+", encoding="utf-8") as target:
         target.write(content)
