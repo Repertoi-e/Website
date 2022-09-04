@@ -28,13 +28,24 @@
     <title>
         About | Dimitar Sotirov
     </title>
-    </link>
-    </meta>
+    <script src="../js/jquery-3.6.1.slim.min.js"></script>
+    <script src="../js/three.js"></script>
+    <script src="../js/OrbitControls.js"></script>
 </head>
 
 <body>
-    <div class="vitosha">
+    <div id="vitosha">
+        <script>
+            const g_Scene = new THREE.Scene();
+            const g_Camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+            const g_Renderer = new THREE.WebGLRenderer();
+            g_Renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById("vitosha").appendChild(g_Renderer.domElement);
+        </script>
     </div>
+
+    <script src="../js/about.js"></script>
 
     <div class="header">
     </div>
