@@ -5,3 +5,4 @@ gulpfile.js
 package-lock.json
 
 .vscode/*
+blog/__pycache__/generate_article_v1.cpython-39.pyc

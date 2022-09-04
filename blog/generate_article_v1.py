@@ -196,7 +196,7 @@ def main():
 				# End old recipient
 				html_gen += "</div></div>"
 			doing_messages_from = "::"
-			html_gen += '<div class="message_bilil_div"><div class="message_bilil_container">'
+			html_gen += '<div class="message_bebka_div"><div class="message_bebka_container">'
 			if len(last_line) <= 2:
 				continue
 			last_line = last_line[2:]
@@ -207,7 +207,7 @@ def main():
 
 		if doing_messages_from == "::":
 			if len(last_line) == 0: continue
-			html_gen += f'<span class="message_bilil">{last_line}</span>'
+			html_gen += f'<span class="message_bebka">{last_line}</span>'
 
 	if last_line is None:
 		print("Opa, empty file")
@@ -242,13 +242,12 @@ def main():
 	else:
 		content = content.replace('<div class="edit_date">', '<div class="edit_date" style="visibility: hidden;">')
 
-	if not lang_en:
-		content = content.replace('<html lang="en-GB">', '<html lang="bg">')
+	content = content.replace("@LANG_META_HTML", '<html lang="en-GB">' if lang_en else '<html lang="bg">')
 
 	# print(html_gen)
 	content = content.replace("@CONTENT", html_gen)
-	content = content.replace("@EXTRAHEAD", html_gen_head)
-	content = content.replace("@EXTRABODY", html_gen_body)
+	content = content.replace("@EXTRA_HEAD", html_gen_head)
+	content = content.replace("@EXTRA_BODY", html_gen_body)
 
 	formatter = bs4.formatter.HTMLFormatter(indent=4)
 	content = BeautifulSoup(content, features="html.parser").prettify(formatter=formatter)
@@ -256,5 +255,3 @@ def main():
 	with open(target_path, "w+", encoding="utf-8") as target:
 		target.write(content)
 	
-if __name__ == "__main__":
-	main()

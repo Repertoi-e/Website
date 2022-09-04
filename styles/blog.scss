@@ -97,6 +97,8 @@ html body {
 
             font-family: "SofiaSans";
 
+            margin-bottom: 1rem;
+
             .title_and_tags {
                 display: flex;
                 align-items: center;
@@ -154,14 +156,24 @@ html body {
                     }
                 }
             }
-
-            .date {}
         }
     }
 }
 
+$theme-color: #2edeb2;
+
 .main {
     .article {
+        a {
+            color: black;
+            text-decoration-color: $theme-color;
+            text-decoration-thickness: 0.1rem;
+    
+            &:hover {
+                color: $theme-color;
+            }
+        }
+        
         .header {
             display: flex;
             flex-direction: column;
@@ -225,48 +237,52 @@ html body {
 
             p {
                 width: 100%;
-                margin-bottom: 2rem;
-            }
 
-            .cent {
-                text-align: center;
-            }
+                .centered {
+                    text-align: center;
+                }
 
+                margin-top: 1rem;
+            }
+            
             h4 {
-                margin-bottom: -2rem;
+                margin-top: 3rem;
             }
 
             pre {
                 font-family: "FiraCode";
+                font-size: 0.8rem;
 
                 background-color: white;
 
                 color: #232323;
 
-                max-width: 95%;
-                word-wrap: break-word;
+                max-width: 100%;
             }
 
             .note {
                 color: gray;
 
-                font-size: 0.9rem;
-
-                text-align: center;
+                margin-top: 1rem;
 
                 display: block;
                 margin-left: auto;
                 margin-right: auto;
+
+                font-size: 0.9rem;
+
+                text-align: center;
             }
 
             .message_section {
                 display: flex;
                 flex-direction: column;
+                
                 width: 100%;
 
                 margin: 20px;
 
-                .message_bilil_div,
+                .message_bebka_div,
                 .message_soti_div {
                     display: flex;
                 }
@@ -275,12 +291,13 @@ html body {
                     justify-content: flex-end;
                 }
 
-                .message_bilil_container,
+                .message_bebka_container,
                 .message_soti_container {
                     width: 80%;
+                    max-width: 40rem;
                 }
 
-                .message_bilil_container {
+                .message_bebka_container {
                     display: flex;
                     flex-direction: column;
 
@@ -293,7 +310,7 @@ html body {
                     }
                 }
 
-                .message_bilil,
+                .message_bebka,
                 .message_soti {
                     height: fit-content;
                     width: fit-content;
@@ -301,10 +318,9 @@ html body {
                     margin: 0.12rem 0.5rem;
                 }
 
-                .message_bilil {
+                .message_bebka {
                     border: solid 1px #e1e1e1;
                     border-radius: 0.5rem;
-                    // color: #fff;
                 }
 
                 .message_soti_container {
@@ -327,8 +343,10 @@ html body {
                             rgba(103, 88, 205, 1) 51%,
                             rgba(89, 116, 219, 1) 92%) no-repeat center;
                     background-attachment: fixed;
-                    color: #fff;
+
                     border-radius: 0.5rem 0.2rem 0.2rem 0.5rem;
+
+                    color: #fff;
                 }
             }
         }
