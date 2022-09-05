@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: SofiaSans;
   font-style: normal;
@@ -140,42 +141,42 @@ a:hover {
   color: #2edeb2;
 }
 
+.main .article .divider {
+  border-top: 1px solid #222222;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
 .main .article .header {
   display: flex;
   flex-direction: column;
   font-family: "SofiaSans";
 }
+.main .article .header .directory {
+  margin-top: 4rem;
+  font-size: 1rem;
+  color: #636363;
+}
+.main .article .header .directory a {
+  text-decoration: none;
+}
+.main .article .header .directory .separator {
+  color: #2edeb2;
+  margin-inline: 0.3rem;
+  text-decoration: none;
+}
 .main .article .header .title_and_author {
-  display: flex;
-  justify-content: space-between;
   margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
 }
 .main .article .header .title_and_author .title {
-  font-size: 1.1rem;
+  font-size: 2rem;
+  line-height: 2rem;
   color: #222222;
-}
-.main .article .header .title_and_author .author {
-  font-size: 0.8em;
-}
-@media only screen and (max-width: 500px) {
-  .main .article .header .title_and_author {
-    flex-direction: column;
-  }
-  .main .article .header .title_and_author .author {
-    margin-top: -8px;
-  }
-}
-@media only screen and (min-width: 501px) {
-  .main .article .header .title_and_author {
-    flex-direction: row;
-  }
-  .main .article .header .title_and_author .author {
-    margin-top: 8px;
-  }
 }
 .main .article .header .dates {
   display: flex;
-  margin-bottom: 30px;
+  margin-left: 0.05rem;
 }
 .main .article .header .dates .edit_date {
   margin-left: 15px;
@@ -190,6 +191,29 @@ a:hover {
   flex-direction: column;
   align-items: center;
 }
+.main .article .content .index {
+  width: 100%;
+}
+.main .article .content .index ul {
+  list-style-type: none;
+}
+.main .article .content .index li::before {
+  content: "⟶";
+  margin-right: 0.2rem;
+}
+@media only screen and (max-width: 850px) {
+  .main .article .content .index li::before {
+    margin-left: -2rem;
+  }
+}
+@media only screen and (min-width: 851px) {
+  .main .article .content .index li::before {
+    margin-left: 0;
+  }
+}
+.main .article .content .index a {
+  text-decoration: none;
+}
 .main .article .content p {
   width: 100%;
   margin-top: 1rem;
@@ -200,8 +224,18 @@ a:hover {
 .main .article .content h4 {
   margin-top: 3rem;
 }
-.main .article .content pre {
+.main .article .content h4 a {
+  color: #2edeb2;
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+.main .article .content code {
   font-family: "FiraCode";
+  font-size: 0.9rem;
+  background-color: #dbdbdb;
+  padding: 4px;
+}
+.main .article .content pre {
   font-size: 0.8rem;
   background-color: white;
   color: #232323;

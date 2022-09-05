@@ -8,13 +8,15 @@ from datetime import date
 import re
 import os.path
 
+from collections import OrderedDict
+
 line_number: int = 0
 version: int = 0
 lines: list[str] = []
 
 
-def report(msg: str):
-    print(f"[{line_number + 1}] {msg}")
+def report(msg: str, subtract_one_from_line_number: bool = False):
+    print(f"[{line_number + 1 - (1 if subtract_one_from_line_number else 0)}] {msg}")
 
 
 def eat_next_line(code: bool = False) -> tuple[str, bool]:
@@ -29,7 +31,7 @@ def eat_next_line(code: bool = False) -> tuple[str, bool]:
         line_number += 1
 
         if not code:
-            l = l.strip()
+            l = l.rstrip()
             if len(l) == 0:  # Ignore regular empty lines
                 continue
             if l.startswith("//"):  # Ignore comments
@@ -39,6 +41,10 @@ def eat_next_line(code: bool = False) -> tuple[str, bool]:
 
 
 def return_line():
+    """
+    Use x to override with rest of the line if something 
+    has been parsed, i.e. "return a "partial" line".
+    """
     global line_number
     if line_number == 0:
         print("Internal error: returning first line...")
@@ -93,14 +99,18 @@ class MessageSender(Enum):
 
 meta: dict[str, Any] = dict()
 
+
 def get_localized_date_str(d: date) -> str:
     return d.strftime("%d.%m.%Y" if meta["lang"] == Language.ENGLISH else "%d.%m.%Y г.")
+
 
 def get_localized_last_edit_str(d_str: str) -> str:
     return f"Last edited {d_str}" if meta["lang"] == Language.ENGLISH else f"Последна редакция {d_str}"
 
+
 def get_localized_author_me_str() -> str:
     return "Dimitar Sotirov" if meta["lang"] == Language.ENGLISH else "Димитър Сотиров"
+
 
 def get_localized_html_lang_meta_str() -> str:
     return '<html lang="en-GB">' if meta["lang"] == Language.ENGLISH else '<html lang="bg">'
@@ -129,7 +139,7 @@ class HTMLGen():
             self.src.append(
                 '<div class="message_bebka_div"><div class="message_bebka_container">')
         elif message_sender == MessageSender.NOBODY:
-            # End message section 
+            # End message section
             self.src.append("</div>")
         else:
             report(f"Internal error: {message_sender} was not handled!")
@@ -166,7 +176,6 @@ class HTMLGen():
 
     def get_baked_src(self) -> str:
         return "".join(self.src)
-        
 
 
 html_gen: HTMLGen = HTMLGen()
@@ -188,20 +197,35 @@ def eat_lines_until_next_meta_directive(rest_of_this_line: str, joiner: str, cod
     return joiner.join(lines)
 
 
-def eat_lines_until_code_stop(rest_of_this_line: str, joiner: str = "\n", code: bool = False) -> str:
-    lines: list[str] = [rest_of_this_line]
+def expect_eat_until(rest_of_this_line: str, stop: str, joiner: str = "\n", code: bool = False, escapable: bool = False, new_lines: bool = True) -> tuple[str, str, bool]:
+    """
+    Returns the eaten text, the rest of the final line (if any) and a success flag
+    """
+    lines: list[str] = []
 
+    l = rest_of_this_line
     while True:
-        l, status = eat_next_line(code=code)
+        index = l.find(stop)
 
-        if not status:
-            break
-        if l.startswith("```"):
-            # Don't return line.. instead parsing continues as normal from next
-            break
-        lines.append(l)
+        if escapable and index > 0:
+            if l[index - 1] == "\\":
+                l = l[index + 1:]
+                continue
 
-    return joiner.join(lines)
+        if index == -1:
+            if not new_lines:
+                return "", "", False
+            else:
+                lines.append(l)
+                l, status = eat_next_line(code=code)
+                if not status:
+                    return "", "", False
+        else:
+            lines.append(l[:index])
+            l = l[index + len(stop):]
+            break
+
+    return joiner.join(lines), l, True
 
 
 def try_parse_meta_directive() -> bool:
@@ -217,15 +241,16 @@ def try_parse_meta_directive() -> bool:
     l = rest
 
     meta_directives: dict[str, Callable[[str], Any]] = {
-        "end_meta": lambda x: x,  # Dummy
-        "lang": lambda x: languages_dict[x.lower()],
-        "url": lambda x: x,
-        "title": lambda x: x,
-        "index": lambda x: True if x.lower() == "yes" else False,
-        "desc": lambda x: eat_lines_until_next_meta_directive(x, "<br><br>"),
-        "keywords": lambda x: eat_lines_until_next_meta_directive(x, ""),
-        "extra_html_head": lambda x: eat_lines_until_next_meta_directive(x, "\n", code=True),
-        "extra_html_body": lambda x: eat_lines_until_next_meta_directive(x, "\n", code=True)
+        "end_meta": lambda rest: rest,  # Dummy
+        "lang": lambda rest: languages_dict[rest.lower()],
+        "url": lambda rest: rest,
+        "title": lambda rest: rest,
+        "index": lambda rest: rest,
+        "desc": lambda rest: eat_lines_until_next_meta_directive(rest, "<br><br>"),
+        "keywords": lambda rest: eat_lines_until_next_meta_directive(rest, ""),
+        "tags": lambda rest: eat_lines_until_next_meta_directive(rest, ""),
+        "extra_html_head": lambda rest: eat_lines_until_next_meta_directive(rest, "\n", code=True),
+        "extra_html_body": lambda rest: eat_lines_until_next_meta_directive(rest, "\n", code=True)
     }
 
     rest: str
@@ -251,6 +276,114 @@ def try_parse_meta_directive() -> bool:
     return True
 
 
+article_sections: OrderedDict[str, str] = OrderedDict()
+
+
+def str_to_ident(x: str) -> str:
+    x = re.sub(r'\W+|^(?=\d)', '_', x.lower())
+    return x.strip("_")
+
+
+def get_article_section_html_and_save_record(x: str) -> str:
+    ident = str_to_ident(x)
+
+    conditional_arrow_str = "<a href=\"#table_of_contents\"><sup>↑</sup></a>" if "index" in meta else ""
+    result = f'<h4 id="{ident}">{x} {conditional_arrow_str}</h4>'
+
+    article_sections[ident] = x
+    return result
+
+
+annotations: list[str] = []
+
+
+def get_annotation_html_and_save_record(x: str, content: str) -> str:
+    annotations.append(x)
+    id = len(annotations)
+
+    number_link_html = f"<a href=\"#annotation_post_{id}\"><sup>{id:02d}</sup></a>"
+    result = f'<span class="annotation_inline" id="annotation_inline_{id}">{x}</span><span class="annotation_content" id="annotation_content_{id}">{content}</span> {number_link_html}'
+
+    return result
+
+
+def handle_multiline_code(rest: str) -> tuple[str, str, bool]:
+    # "rest" here acts as the rest of the line after the "```"
+    if len(rest) != 0 and rest != "python":
+        report(f'Error: Unsupported language "{rest}" in code directive. ')
+        return "", "", False
+
+    rest, status = eat_next_line(code=True)
+    if not status:
+        return "", "", False
+
+    code, rest, status = expect_eat_until(rest, "```", "\n", code=True)
+    if not status:
+        report("Error: Unmatched ``` in multiline code directive", True)
+        return "", "", False
+
+    result = f'<pre><code class="language-klipse-pyodide">{code}</code></pre>'
+    return result, rest, True
+
+
+def handle_simple_inline(rest: str, stop: str, html_format: str) -> tuple[str, str, bool]:
+    eaten, rest, status = expect_eat_until(rest, stop, new_lines=False)
+    if not status:
+        report(f'Error: Unmatched "{stop}"" in multiline code directive', True)
+        return "", "", False
+    result = html_format.format(eaten)
+    return result, rest, True
+
+
+# The lambda should returns the resulting HTML,
+# the rest of the last line read and a status flag
+formattings: dict[str, Callable[[str], tuple[str, str, bool]]] = {
+    "```": handle_multiline_code,
+    "`": lambda rest: handle_simple_inline(rest, stop='`', html_format="<code>{}</code>"),
+    #"#italic(": lambda rest: handle_simple_inline(rest, stop=')', html_format="<em>{}</em>"),
+    #"#bold(": lambda rest: handle_simple_inline(rest, stop=')', html_format="<bold>{}</bold>"),
+    # "#note": lambda x: x,
+    # "#note_link": lambda x: x,
+}
+
+formattings_first_symbols: str = ""
+for k, _ in formattings.items():
+    if k[0] not in formattings_first_symbols:
+        formattings_first_symbols += k[0]
+
+
+def handle_inline_formatting(l: str) -> tuple[str, bool]:
+    lines: list[str] = []
+
+    while True:
+        match = re.search(f"[{formattings_first_symbols}]", l)
+        if match is None:
+            break
+
+        index = match.start()
+        lines.append(l[:index])
+        rest = l[index:]
+
+        for directive, f in formattings.items():
+            if rest.startswith(directive):
+                rest, status = expect_eat(rest, directive)
+                assert(status)
+
+                html, rest, status = f(rest)
+                if not status:
+                    return "", False
+
+                lines.append(html)
+                break
+
+        l = rest
+        continue
+
+    if len(l) != 0:
+        lines.append(l)
+    return "".join(lines), True
+
+
 def try_parse_next() -> bool:
     l, status = eat_next_line()
     if not status:
@@ -269,7 +402,10 @@ def try_parse_next() -> bool:
     if status:
         rest = rest.strip()
         if len(rest) != 0:
-            html_gen.insert_text(rest)
+            text, status = handle_inline_formatting(rest)
+            if not status:
+                return False
+            html_gen.insert_text(text)
         return True
 
     # == means: end message section and start doing normal text again
@@ -278,28 +414,32 @@ def try_parse_next() -> bool:
         html_gen.set_message_sender(MessageSender.NOBODY)
         return True
 
-    rest, status = expect_eat(l, "#")
+    text, status = handle_inline_formatting(l)
+    if not status:
+        return False
+
+    rest, status = expect_eat(text, "#")
     if not status:
         # Doing normal paragraph...
-        html_gen.insert_text(l)
+        html_gen.insert_text(text)
         return True
 
-    # Else: try doing directive
+    # Else: found # at the start, try to handle directive
 
-    l = rest
+    text = rest
 
     # Lists of directives and the html they generate:
     directives: dict[str, Callable[[str], Any]] = {
-        "section_header": lambda x: f"<h4>{x}</h4>",
+        "section_header": lambda x: get_article_section_html_and_save_record(x),
         "note": lambda x: f'<span class="note">{x}</span>',
         "center": lambda x: f'<p class="centered">{x}</p>',
-        "```python": lambda x: f'<pre><code class="language-klipse-pyodide">{eat_lines_until_code_stop(x, code=True)}</code></pre>',
+        "index": lambda x: f'@INDEX',
     }
 
     status: bool
     directive: str = ""
     for directive, _ in directives.items():
-        rest, status = expect_eat(l, directive)
+        rest, status = expect_eat(text, directive)
         if status:
             break
     rest = rest.strip()
@@ -356,11 +496,11 @@ def main():
                 continue
             else:
                 doing_meta = False
-                print(
-                    f"Stopped doing meta directives on line {line_number}. Any further ones will get ignored.")
-                print("Parsed meta:")
-                for k, v in meta.items():
-                    print(k, "=", v)
+                report(
+                    f"Stopped doing meta directives on this line. Any further ones will get ignored.", True)
+                #print("Parsed meta:")
+                # for k, v in meta.items():
+                #    print(k, "=", v)
                 required_meta = ["url", "title", "lang"]
                 for r in required_meta:
                     if r not in meta:
@@ -384,9 +524,10 @@ def main():
     if os.path.exists(target_path):
         with open(target_path, "rt", encoding="utf-8") as target:
             existing_content = target.read()
-            
-            match = re.findall(r'<div class="date">\s*<p>\s*([0-9.]*)', existing_content)
-            
+
+            match = re.findall(
+                r'<div class="date">\s*<p>\s*([0-9.]*)', existing_content)
+
             edit_date_str = get_localized_last_edit_str(date_str)
             date_str = match[0]
 
@@ -401,16 +542,32 @@ def main():
     content = content.replace("@DESC", meta["desc"])
     content = content.replace("@KEYWORDS", meta["keywords"])
     content = content.replace("@AUTHOR", get_localized_author_me_str())
-    
+
+    html_tags = ""
+    if "tags" in meta:
+        html_tags = ", ".join(
+            [f'<a href="../">{x.strip()}</a>' for x in meta["tags"].split(",")])
+    content = content.replace("@TAGS", html_tags)
+
     if edit_date_str is not None:
         content = content.replace("@EDITDATE", edit_date_str)
         print(f"{edit_date_str}")
     else:
-        content = content.replace('<div class="edit_date">', '<div class="edit_date" style="visibility: hidden;">')
+        content = content.replace(
+            '<div class="edit_date">', '<div class="edit_date" style="visibility: hidden;">')
 
-    content = content.replace('@LANG_META_HTML', get_localized_html_lang_meta_str())
+    content = content.replace(
+        '@LANG_META_HTML', get_localized_html_lang_meta_str())
+
+    index_html = ""
+    if "index" in meta:
+        index_html = '<div class="index"><h4 id="table_of_contents">Table of Contents</h4><ul>'
+        for section_ident, section in article_sections.items():
+            index_html += f'<li><a href="#{section_ident}">{section}</a></li>'
+        index_html += "</ul></div>"
 
     content = content.replace("@CONTENT", html_gen.get_baked_src())
+    content = content.replace("@INDEX", index_html)
     content = content.replace("@EXTRA_HEAD", meta.get("extra_html_head", ""))
     content = content.replace("@EXTRA_BODY", meta.get("extra_html_body", ""))
 

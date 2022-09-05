@@ -175,48 +175,53 @@ a {
 
 .main {
     .article {
+        .divider {
+            border-top: 1px solid #222222;
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
         .header {
             display: flex;
             flex-direction: column;
 
             font-family: "SofiaSans";
 
+            .directory {
+                margin-top: 4rem;
+
+                font-size: 1rem;
+
+                color: #636363;
+
+                a {
+                    text-decoration: none;
+                }
+
+                .separator {
+                    color: $theme-color;
+                    margin-inline: 0.3rem;
+                    text-decoration: none;
+                }
+            }
+
             .title_and_author {
+                margin-top: 2rem;
+
                 display: flex;
-                justify-content: space-between;
+                flex-direction: column;
 
                 .title {
-                    font-size: 1.1rem;
+                    font-size: 2rem;
+                    line-height: 2rem;
                     color: #222222;
                 }
-
-                .author {
-                    font-size: 0.8em;
-                }
-
-                @media only screen and (max-width: 500px) {
-                    flex-direction: column;
-
-                    .author {
-                        margin-top: -8px;
-                    }
-                }
-
-                @media only screen and (min-width: 501px) {
-                    flex-direction: row;
-
-                    .author {
-                        margin-top: 8px;
-                    }
-                }
-
-                margin-top: 2rem;
             }
 
             .dates {
                 display: flex;
 
-                margin-bottom: 30px;
+                margin-left: 0.05rem;
 
                 .edit_date {
                     p {
@@ -236,6 +241,31 @@ a {
             flex-direction: column;
             align-items: center;
 
+            .index {
+                width: 100%;
+
+                ul {
+                    list-style-type: none;
+                }
+
+                li::before {
+                    content: '\27F6';
+                    margin-right: 0.2rem;
+
+                    @media only screen and (max-width: 850px) {
+                        margin-left: -2rem;
+                    }
+    
+                    @media only screen and (min-width: 851px) {
+                        margin-left: 0;
+                    }
+                }
+
+                a {
+                    text-decoration: none;
+                }
+            }
+
             p {
                 width: 100%;
 
@@ -245,15 +275,28 @@ a {
 
                 margin-top: 1rem;
             }
-            
+
             h4 {
                 margin-top: 3rem;
+
+                a {
+                    color: $theme-color;
+
+                    font-size: 0.8rem;
+                    text-decoration: none;
+                }
+            }
+
+            code {
+                font-family: "FiraCode";
+                font-size: 0.9rem;
+
+                background-color: #dbdbdb;
+                padding: 4px;
             }
 
             pre {
-                font-family: "FiraCode";
                 font-size: 0.8rem;
-
                 background-color: white;
 
                 color: #232323;
@@ -278,7 +321,7 @@ a {
             .message_section {
                 display: flex;
                 flex-direction: column;
-                
+
                 width: 100%;
 
                 margin: 20px;
