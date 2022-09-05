@@ -204,15 +204,14 @@ def expect_eat_until(rest_of_this_line: str, stop: str, joiner: str = "\n", code
     lines: list[str] = []
 
     l = rest_of_this_line
+    
+    escaped_stops = "".join(["\\" + x for x in stop])
+    search_pattern = f"(?<!\\\\)(?:\\\\\\\\)*({escaped_stops})"
+
     while True:
-        index = l.find(stop)
+        match = re.search(search_pattern, l)
 
-        if escapable and index > 0:
-            if l[index - 1] == "\\":
-                l = l[index + 1:]
-                continue
-
-        if index == -1:
+        if match is None:
             if not new_lines:
                 return "", "", False
             else:
@@ -221,11 +220,16 @@ def expect_eat_until(rest_of_this_line: str, stop: str, joiner: str = "\n", code
                 if not status:
                     return "", "", False
         else:
+            index = match.start()
             lines.append(l[:index])
             l = l[index + len(stop):]
             break
 
-    return joiner.join(lines), l, True
+    result = joiner.join(lines)
+
+    search_pattern = f"(\\\\)((?:\\\\\\\\)*)({escaped_stops})"
+    result = re.sub(search_pattern, r"\g<2>" + stop, result)
+    return result, l, True
 
 
 def try_parse_meta_directive() -> bool:
@@ -294,19 +298,6 @@ def get_article_section_html_and_save_record(x: str) -> str:
     return result
 
 
-annotations: list[str] = []
-
-
-def get_annotation_html_and_save_record(x: str, content: str) -> str:
-    annotations.append(x)
-    id = len(annotations)
-
-    number_link_html = f"<a href=\"#annotation_post_{id}\"><sup>{id:02d}</sup></a>"
-    result = f'<span class="annotation_inline" id="annotation_inline_{id}">{x}</span><span class="annotation_content" id="annotation_content_{id}">{content}</span> {number_link_html}'
-
-    return result
-
-
 def handle_multiline_code(rest: str) -> tuple[str, str, bool]:
     # "rest" here acts as the rest of the line after the "```"
     if len(rest) != 0 and rest != "python":
@@ -326,28 +317,80 @@ def handle_multiline_code(rest: str) -> tuple[str, str, bool]:
     return result, rest, True
 
 
-def handle_simple_inline(rest: str, stop: str, html_format: str) -> tuple[str, str, bool]:
-    eaten, rest, status = expect_eat_until(rest, stop, new_lines=False)
+def handle_simple_inline(rest: str, stop: str, format: str) -> tuple[str, str, bool]:
+    eaten, rest, status = expect_eat_until(rest, stop, new_lines=False, escapable=True)
     if not status:
-        report(f'Error: Unmatched "{stop}"" in multiline code directive', True)
+        report(f'Error: Unmatched "{stop}"" in inline formatting', True)
         return "", "", False
-    result = html_format.format(eaten)
+    result = format.format(eaten)
     return result, rest, True
 
+annotations: list[str] = []
+
+def handle_note(rest: str) -> tuple[str, str, bool]:
+    display, rest, status = handle_simple_inline(rest, stop="]", format="{}")
+    if not status:
+        return "", "", False
+
+    rest, status = expect_eat(rest, "(")
+    if not status:
+        report(f"Error: Expected a () group for note, which would contain the display text, e.g.: #note[content](display)", True)
+        return "", "", False
+
+    content, rest, status = handle_simple_inline(rest, stop=")", format="{}")
+    if not status:
+        return "", "", False
+
+    annotations.append(content)
+    id = len(annotations)
+
+    result = f"""<span class="annotation annotation_{id}">
+                    <span class="annotation_inline">{display}</span>
+                    <a class="annotation_link" href=\"#annotation_{id}\"><sup>{id:02d}</sup></a>
+                    <span class="annotation_content">
+                        <span class="annotation_bracket">[</span>
+                        {content}
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span>"""
+   
+    return result, rest, True
+
+
+def handle_note_link(rest: str) -> tuple[str, str, bool]:
+    display, rest, status = handle_simple_inline(rest, stop="]", format="{}")
+    if not status:
+        return "", "", False
+
+    content = annotations[-1]
+    id = len(annotations)
+
+    result = f"""<span class="annotation annotation_{id}">
+                    <span class="annotation_inline">{display}</span>
+                    <a class="annotation_link" href=\"#annotation_{id}\"><sup>{id:02d}</sup></a>
+                    <span class="annotation_content">
+                        <span class="annotation_bracket">[</span>
+                        {content}
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span>"""
+   
+    return result, rest, True
 
 # List of inline formattings and what they do:
 
 # The lambda should return the resulting HTML,
 # the rest of the last line read and a status flag.
 
-# Order here matters because just a signle ` could 
-# get caught too early without checking the rest.
+# Order here matters, because e.g. just a single ` could 
+# get caught too early without checking for ```.
 formattings: OrderedDict[str, Callable[[str], tuple[str, str, bool]]] = OrderedDict()
 formattings["```"] = handle_multiline_code
-formattings["#bold("] = lambda rest: handle_simple_inline(rest, stop=')', html_format="<b>{}</b>")
-formattings["#italic("] = lambda rest: handle_simple_inline(rest, stop=')', html_format="<em>{}</em>")
-formattings["`"] = lambda rest: handle_simple_inline(rest, stop='`', html_format="<code>{}</code>")
-
+formattings["`"] = lambda rest: handle_simple_inline(rest, stop='`', format="<code>{}</code>")
+formattings["#bold("] = lambda rest: handle_simple_inline(rest, stop=')', format="<b>{}</b>")
+formattings["#italic("] = lambda rest: handle_simple_inline(rest, stop=')', format="<em>{}</em>")
+formattings["#note["] = lambda rest: handle_note(rest)
+formattings["#note_link["] = lambda rest: handle_note_link(rest)
 # "#note": lambda x: x,
 # "#note_link": lambda x: x,
 

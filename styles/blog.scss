@@ -304,6 +304,26 @@ a {
                 max-width: 100%;
             }
 
+            .annotation {
+                padding-left: 0.2rem;
+
+                background-color: rgba($theme-color, 0.08);
+
+                cursor: help;
+
+                .annotation_bracket {
+                    color: $theme-color;
+                }
+
+                sup {
+                    font-size: 0.75em;
+                }
+            }
+
+            .annotation_hover {
+                background-color: rgba($theme-color, 0.2);
+            }
+
             .note {
                 color: gray;
 
