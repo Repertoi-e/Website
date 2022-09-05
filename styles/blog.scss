@@ -220,16 +220,16 @@ a {
 
             .dates {
                 display: flex;
+                align-items: baseline;
 
                 margin-left: 0.05rem;
 
                 .edit_date {
                     p {
-                        font-size: 0.9rem;
+                        font-size: 0.91rem;
                     }
 
-                    margin-left: 15px;
-                    margin-top: 0.05rem;
+                    margin-left: 8px;
 
                     color: gray;
                 }

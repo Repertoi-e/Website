@@ -335,16 +335,22 @@ def handle_simple_inline(rest: str, stop: str, html_format: str) -> tuple[str, s
     return result, rest, True
 
 
-# The lambda should returns the resulting HTML,
-# the rest of the last line read and a status flag
-formattings: dict[str, Callable[[str], tuple[str, str, bool]]] = {
-    "```": handle_multiline_code,
-    "`": lambda rest: handle_simple_inline(rest, stop='`', html_format="<code>{}</code>"),
-    #"#italic(": lambda rest: handle_simple_inline(rest, stop=')', html_format="<em>{}</em>"),
-    #"#bold(": lambda rest: handle_simple_inline(rest, stop=')', html_format="<bold>{}</bold>"),
-    # "#note": lambda x: x,
-    # "#note_link": lambda x: x,
-}
+# List of inline formattings and what they do:
+
+# The lambda should return the resulting HTML,
+# the rest of the last line read and a status flag.
+
+# Order here matters because just a signle ` could 
+# get caught too early without checking the rest.
+formattings: OrderedDict[str, Callable[[str], tuple[str, str, bool]]] = OrderedDict()
+formattings["```"] = handle_multiline_code
+formattings["#bold("] = lambda rest: handle_simple_inline(rest, stop=')', html_format="<b>{}</b>")
+formattings["#italic("] = lambda rest: handle_simple_inline(rest, stop=')', html_format="<em>{}</em>")
+formattings["`"] = lambda rest: handle_simple_inline(rest, stop='`', html_format="<code>{}</code>")
+
+# "#note": lambda x: x,
+# "#note_link": lambda x: x,
+
 
 formattings_first_symbols: str = ""
 for k, _ in formattings.items():
@@ -364,6 +370,7 @@ def handle_inline_formatting(l: str) -> tuple[str, bool]:
         lines.append(l[:index])
         rest = l[index:]
 
+        done: bool = False
         for directive, f in formattings.items():
             if rest.startswith(directive):
                 rest, status = expect_eat(rest, directive)
@@ -374,9 +381,16 @@ def handle_inline_formatting(l: str) -> tuple[str, bool]:
                     return "", False
 
                 lines.append(html)
+                done = True
                 break
 
-        l = rest
+        if not done:
+            # False alarm... matched formatting first 
+            # symbol without it being something we recognize.
+            lines.append(rest[0])
+            l = rest[1:]
+        else:
+            l = rest
         continue
 
     if len(l) != 0:

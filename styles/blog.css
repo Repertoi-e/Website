@@ -176,15 +176,15 @@ a:hover {
 }
 .main .article .header .dates {
   display: flex;
+  align-items: baseline;
   margin-left: 0.05rem;
 }
 .main .article .header .dates .edit_date {
-  margin-left: 15px;
-  margin-top: 0.05rem;
+  margin-left: 8px;
   color: gray;
 }
 .main .article .header .dates .edit_date p {
-  font-size: 0.9rem;
+  font-size: 0.91rem;
 }
 .main .article .content {
   display: flex;
