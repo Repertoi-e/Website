@@ -345,10 +345,10 @@ def handle_note(rest: str) -> tuple[str, str, bool]:
 
     result = f"""<span class="annotation annotation_{id}">
                     <span class="annotation_inline" id="annotation_inline_{id}">{display}</span>
-                    <a class="annotation_link" href="#annotation_{id}"><sup>{id:02d}</sup></a>
-                    <span class="annotation_content">
+                    <a class="annotation_link" href="#annotation_{id}" style="display:none"><sup>{id:02d}</sup></a>
+                    <span class="annotation_content" style="display:none">
                         <span class="annotation_bracket">[</span>
-                        {content}
+                        <span class="annotation_content_raw">{content}</span>
                         <span class="annotation_bracket">]</span>
                     </span>
                 </span>"""
@@ -366,10 +366,10 @@ def handle_note_link(rest: str) -> tuple[str, str, bool]:
 
     result = f"""<span class="annotation annotation_{id}">
                     <span class="annotation_inline" id="annotation_inline_{id}">{display}</span>
-                    <a class="annotation_link" href="#annotation_{id}"><sup>{id:02d}</sup></a>
-                    <span class="annotation_content">
+                    <a class="annotation_link" href="#annotation_{id}" style="display:none"><sup>{id:02d}</sup></a>
+                    <span class="annotation_content" style="display:none">
                         <span class="annotation_bracket">[</span>
-                        {content}
+                        <span class="annotation_content_raw">{content}</span>
                         <span class="annotation_bracket">]</span>
                     </span>
                 </span>"""

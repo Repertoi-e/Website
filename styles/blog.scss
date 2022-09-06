@@ -237,7 +237,7 @@ a {
 
             .disclaimer {
                 margin-top: 2rem;
-                
+
                 font-size: 0.8rem;
 
                 color: #232323;
@@ -453,15 +453,44 @@ a {
 
                 width: 1rem;
                 margin-right: 1rem;
-
-                /*@media only screen and (max-width: 850px) {
-                    margin-left: -2rem;
-                }
-
-                @media only screen and (min-width: 851px) {
-                    margin-left: 0;
-                }*/
             }
+        }
+
+        .annotation_preview {
+            position: fixed;
+
+            bottom: 2rem;
+            right: 1rem;
+            
+            display: none;
+
+            width: 100%;
+            min-width: 10rem;
+            max-width: calc((100vw - 700px) / 2 - 2.5rem);
+
+            height: fit-content;
+
+            border: solid 4px $theme-color;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 1em;
+
+            background-color: white;
+
+            @media only screen and (max-width: 850px) {
+                visibility: hidden;
+            }
+
+            @media only screen and (min-width: 851px) {
+                visibility: visible;
+            }
+        }
+
+        .annotation_preview_number {
+            color: $theme-color;
+        }   
+
+        .annotation_preview_content {
+            margin-top: 0.5rem;
         }
     }
 }

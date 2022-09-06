@@ -352,13 +352,38 @@ a:hover {
   flex-shrink: 0;
   width: 1rem;
   margin-right: 1rem;
-  /*@media only screen and (max-width: 850px) {
-      margin-left: -2rem;
+}
+.main .article .annotation_preview {
+  position: fixed;
+  bottom: 2rem;
+  right: 1rem;
+  display: none;
+  width: 100%;
+  min-width: 10rem;
+  max-width: calc((100vw - 700px) / 2 - 2.5rem);
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: solid 4px #2edeb2;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 1em;
+  background-color: white;
+}
+@media only screen and (max-width: 850px) {
+  .main .article .annotation_preview {
+    visibility: hidden;
   }
-
-  @media only screen and (min-width: 851px) {
-      margin-left: 0;
-  }*/
+}
+@media only screen and (min-width: 851px) {
+  .main .article .annotation_preview {
+    visibility: visible;
+  }
+}
+.main .article .annotation_preview_number {
+  color: #2edeb2;
+}
+.main .article .annotation_preview_content {
+  margin-top: 0.5rem;
 }
 
 .footer {
