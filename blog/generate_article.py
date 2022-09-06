@@ -345,8 +345,8 @@ def handle_note(rest: str) -> tuple[str, str, bool]:
     id = len(annotations)
 
     result = f"""<span class="annotation annotation_{id}">
-                    <span class="annotation_inline">{display}</span>
-                    <a class="annotation_link" href=\"#annotation_{id}\"><sup>{id:02d}</sup></a>
+                    <span class="annotation_inline" id="annotation_inline_{id}">{display}</span>
+                    <a class="annotation_link" href="#annotation_{id}"><sup>{id:02d}</sup></a>
                     <span class="annotation_content">
                         <span class="annotation_bracket">[</span>
                         {content}
@@ -366,8 +366,8 @@ def handle_note_link(rest: str) -> tuple[str, str, bool]:
     id = len(annotations)
 
     result = f"""<span class="annotation annotation_{id}">
-                    <span class="annotation_inline">{display}</span>
-                    <a class="annotation_link" href=\"#annotation_{id}\"><sup>{id:02d}</sup></a>
+                    <span class="annotation_inline" id="annotation_inline_{id}">{display}</span>
+                    <a class="annotation_link" href="#annotation_{id}"><sup>{id:02d}</sup></a>
                     <span class="annotation_content">
                         <span class="annotation_bracket">[</span>
                         {content}
@@ -627,6 +627,20 @@ def main():
     content = content.replace("@INDEX", index_html)
     content = content.replace("@EXTRA_HEAD", meta.get("extra_html_head", ""))
     content = content.replace("@EXTRA_BODY", meta.get("extra_html_body", ""))
+
+    annotations_html = "<ul>"
+    for i, a in enumerate(annotations):
+        id = i + 1
+        annotations_html += f"""<li>
+                        <span class="annotation_number" id="annotation_{id}">{id:02d}</span>
+                        <span class="annotation_expanded_content">{a} 
+                            <a href="#annotation_inline_{id}">↑</a>
+                        </span>
+                    </li>
+                    """
+    annotations_html += "</ul>"
+
+    content = content.replace("@ANNOTATIONS", annotations_html)
 
     with open(target_path, "w+", encoding="utf-8") as target:
         target.write(content)

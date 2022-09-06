@@ -255,7 +255,7 @@ a {
                     @media only screen and (max-width: 850px) {
                         margin-left: -2rem;
                     }
-    
+
                     @media only screen and (min-width: 851px) {
                         margin-left: 0;
                     }
@@ -412,6 +412,38 @@ a {
 
                     color: #fff;
                 }
+            }
+        }
+
+        .annotations {
+            width: 100%;
+
+            ul {
+                list-style-type: none;
+            }
+
+            li {
+                display: flex;
+                margin-top: 0.7rem;
+            }
+
+            .annotation_number {
+                color: $theme-color;
+                font-size: 1.1rem;
+                
+                flex-grow: 0;
+                flex-shrink: 0;
+                
+                width: 1rem;
+                margin-right: 1rem;
+
+                /*@media only screen and (max-width: 850px) {
+                    margin-left: -2rem;
+                }
+
+                @media only screen and (min-width: 851px) {
+                    margin-left: 0;
+                }*/
             }
         }
     }
