@@ -437,6 +437,14 @@ a {
 
             ul {
                 list-style-type: none;
+
+                @media only screen and (max-width: 850px) {
+                    margin-left: -2rem;
+                }
+
+                @media only screen and (min-width: 851px) {
+                    margin-left: 0;
+                }
             }
 
             li {
