@@ -109,8 +109,7 @@ def get_localized_last_edit_str(d_str: str) -> str:
 
 
 def get_localized_author_me_str() -> str:
-    return "Dimitar Sotirov" if meta["lang"] == Language.ENGLISH else "Димитър Сотиров"
-
+    return "by Dimitar Sotirov" if meta["lang"] == Language.ENGLISH else "- Димитър Сотиров"
 
 def get_localized_html_lang_meta_str() -> str:
     return '<html lang="en-GB">' if meta["lang"] == Language.ENGLISH else '<html lang="bg">'
@@ -491,6 +490,7 @@ def try_parse_next() -> bool:
         "note": lambda x: f'<span class="note">{x}</span>',
         "center": lambda x: f'<p class="centered">{x}</p>',
         "index": lambda x: f'@INDEX',
+        "author": lambda x: f'@AUTHOR',
     }
 
     status: bool
@@ -598,7 +598,6 @@ def main():
     content = content.replace("@DATE", date_str)
     content = content.replace("@DESC", meta["desc"])
     content = content.replace("@KEYWORDS", meta["keywords"])
-    content = content.replace("@AUTHOR", get_localized_author_me_str())
 
     html_tags = ""
     if "tags" in meta:
@@ -627,6 +626,9 @@ def main():
     content = content.replace("@INDEX", index_html)
     content = content.replace("@EXTRA_HEAD", meta.get("extra_html_head", ""))
     content = content.replace("@EXTRA_BODY", meta.get("extra_html_body", ""))
+
+    author_html = f'<h3 class="author">{get_localized_author_me_str()}</h3>'
+    content = content.replace("@AUTHOR", author_html)
 
     annotations_html = "<ul>"
     for i, a in enumerate(annotations):

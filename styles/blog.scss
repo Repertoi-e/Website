@@ -346,6 +346,15 @@ a {
                 text-align: center;
             }
 
+            .author {
+                align-self: flex-end;
+
+                margin-top: 1rem;
+                margin-right: 2rem;
+
+                font-size: 0.9rem;
+            }
+
             .message_section {
                 display: flex;
                 flex-direction: column;

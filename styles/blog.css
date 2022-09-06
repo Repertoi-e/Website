@@ -269,6 +269,12 @@ a:hover {
   font-size: 0.9rem;
   text-align: center;
 }
+.main .article .content .author {
+  align-self: flex-end;
+  margin-top: 1rem;
+  margin-right: 2rem;
+  font-size: 0.9rem;
+}
 .main .article .content .message_section {
   display: flex;
   flex-direction: column;
