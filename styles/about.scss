@@ -6,13 +6,65 @@ html body {
     background-color: white;
 }
 
-#vitosha {
-    width: 100vw;
-    height: 100vh;
+$theme-color: #b5ffff;
+$theme-color-darker: #22c6c6;
 
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+
+    position: relative;
+}
+
+.header__title {
     display: block;
-    position: fixed;
+    position: absolute;
 
-    top: 0;
-    left: 0;
+    bottom: 0;
+
+    font-size: 3rem;
+    color: white;
+}
+
+.header__link {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    font-size: 3rem;
+
+    a {
+        color: $theme-color-darker;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.header__title:first-of-type {
+    bottom: 1.5rem;
+
+    padding-right: 3.6rem;
+
+    span {
+        color: $theme-color;
+    }
+}
+
+.header__title:last-of-type {
+    padding-left: 3rem;
+
+    color: $theme-color;
+}
+
+.header__hills {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 100%;
+
+    margin: 1rem;
 }

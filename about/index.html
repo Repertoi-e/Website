@@ -29,26 +29,16 @@
         About | Dimitar Sotirov
     </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
-    <script src="../js/three.js"></script>
-    <script src="../js/OrbitControls.js"></script>
 </head>
 
 <body>
-    <div id="vitosha">
-        <script>
-            const g_Scene = new THREE.Scene();
-            const g_Camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-
-            const g_Renderer = new THREE.WebGLRenderer();
-            g_Renderer.setSize(window.innerWidth, window.innerHeight);
-            document.getElementById("vitosha").appendChild(g_Renderer.domElement);
-        </script>
-    </div>
-
-    <script src="../js/about.js"></script>
-
     <div class="header">
+        <div class="header__link arrow"><a href="../">⟵ CONT.</a></div>
+        <h4 class="header__title"><span>DI</span>MITAR</h4>
+        <h4 class="header__title">SOTIROV</h4>
+        <img class="header__hills" src="../resources/index/hills.gif" />
+        <div class="header__link"><a href="../blog">BLOG ⟶</a></div>
+
     </div>
 
     <div class="main">
