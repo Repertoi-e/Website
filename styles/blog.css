@@ -186,6 +186,11 @@ a:hover {
 .main .article .header .dates .edit_date p {
   font-size: 0.91rem;
 }
+.main .article .header .disclaimer {
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  color: #232323;
+}
 .main .article .content {
   display: flex;
   flex-direction: column;
