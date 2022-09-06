@@ -6,6 +6,7 @@ html body {
 $theme-color: #b5ffff;
 $theme-color-darker: #22c6c6;
 
+
 .header {
     display: flex;
     flex-direction: column;
@@ -16,26 +17,48 @@ $theme-color-darker: #22c6c6;
     display: flex;
     justify-content: space-around;
 
-    @media only screen and (max-width: 450px) {
-        margin-top: 2rem;
+    margin-top: 1rem;
+
+    @media only screen and (max-width: 600px) {
         flex-direction: column;
     }
 
-    @media only screen and (min-width: 451px) {
+    @media only screen and (min-width: 601px) {
         flex-direction: row;
     }
 
     width: 100%;
+
+    .divider {
+        @media only screen and (max-width: 600px) {
+            width: 0;
+        }
+    
+        @media only screen and (min-width: 601px) {
+            width: 100%;
+        }
+    }
 }
 
 .header__link {
     width: 100%;
 
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+
+    @media only screen and (max-width: 600px) {
+        justify-content: center;
+    }
+
     font-size: 3rem;
 
+    padding-inline: 1rem;
+
+    color: $theme-color-darker;
+
     a {
+        margin-inline: 1rem;
+
         color: $theme-color-darker;
         text-decoration: none;
 

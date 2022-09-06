@@ -139,12 +139,12 @@ html body {
 
 a {
   color: black;
-  -webkit-text-decoration-color: #2edeb2;
-          text-decoration-color: #2edeb2;
+  -webkit-text-decoration-color: #22c6c6;
+          text-decoration-color: #22c6c6;
   text-decoration-thickness: 0.1rem;
 }
 a:hover {
-  color: #2edeb2;
+  color: #22c6c6;
 }
 
 .main .article .divider {
@@ -166,7 +166,7 @@ a:hover {
   text-decoration: none;
 }
 .main .article .header .directory .separator {
-  color: #2edeb2;
+  color: #22c6c6;
   margin-inline: 0.3rem;
   text-decoration: none;
 }
@@ -236,7 +236,7 @@ a:hover {
   margin-top: 3rem;
 }
 .main .article .content h4 a {
-  color: #2edeb2;
+  color: #22c6c6;
   font-size: 0.8rem;
   text-decoration: none;
 }
@@ -254,17 +254,17 @@ a:hover {
 }
 .main .article .content .annotation {
   padding-left: 0.2rem;
-  background-color: rgba(46, 222, 178, 0.08);
+  background-color: rgba(34, 198, 198, 0.08);
   cursor: help;
 }
 .main .article .content .annotation .annotation_bracket {
-  color: #2edeb2;
+  color: #22c6c6;
 }
 .main .article .content .annotation sup {
   font-size: 0.75em;
 }
 .main .article .content .annotation_hover {
-  background-color: rgba(46, 222, 178, 0.2);
+  background-color: rgba(34, 198, 198, 0.2);
 }
 .main .article .content .note {
   color: gray;
@@ -362,7 +362,7 @@ a:hover {
   margin-top: 0.7rem;
 }
 .main .article .annotations .annotation_number {
-  color: #2edeb2;
+  color: #22c6c6;
   font-size: 1.1rem;
   flex-grow: 0;
   flex-shrink: 0;
@@ -373,6 +373,7 @@ a:hover {
   position: fixed;
   bottom: 2rem;
   right: 1rem;
+  font-size: 0.9rem;
   display: none;
   width: 100%;
   min-width: 10rem;
@@ -380,7 +381,7 @@ a:hover {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  border: solid 4px #2edeb2;
+  border: solid 4px #22c6c6;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 1em;
   background-color: white;
@@ -396,7 +397,7 @@ a:hover {
   }
 }
 .main .article .annotation_preview_number {
-  color: #2edeb2;
+  color: #22c6c6;
 }
 .main .article .annotation_preview_content {
   margin-top: 0.5rem;

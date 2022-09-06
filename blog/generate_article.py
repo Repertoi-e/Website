@@ -345,7 +345,7 @@ def handle_note(rest: str) -> tuple[str, str, bool]:
 
     result = f"""<span class="annotation annotation_{id}">
                     <span class="annotation_inline" id="annotation_inline_{id}">{display}</span>
-                    <a class="annotation_link" href="#annotation_{id}" style="display:none"><sup>{id:02d}</sup></a>
+                    <sup><a class="annotation_link" href="#annotation_{id}" style="display:none">{id:02d}</a></sup>
                     <span class="annotation_content" style="display:none">
                         <span class="annotation_bracket">[</span>
                         <span class="annotation_content_raw">{content}</span>
@@ -366,7 +366,7 @@ def handle_note_link(rest: str) -> tuple[str, str, bool]:
 
     result = f"""<span class="annotation annotation_{id}">
                     <span class="annotation_inline" id="annotation_inline_{id}">{display}</span>
-                    <a class="annotation_link" href="#annotation_{id}" style="display:none"><sup>{id:02d}</sup></a>
+                    <sup><a class="annotation_link" href="#annotation_{id}" style="display:none">{id:02d}</a></sup>
                     <span class="annotation_content" style="display:none">
                         <span class="annotation_bracket">[</span>
                         <span class="annotation_content_raw">{content}</span>
@@ -582,11 +582,11 @@ def main():
         with open(target_path, "rt", encoding="utf-8") as target:
             existing_content = target.read()
 
-            match = re.findall(
-                r'<div class="date">\s*<p>\s*([0-9.]*)', existing_content)
+            match = re.search(
+                r'<div class="date">\s*<p>\s*([0-9.]*)', existing_content).group(1)
 
             edit_date_str = get_localized_last_edit_str(date_str)
-            date_str = match[0]
+            date_str = match
 
     print(f'Date posted {date_str}')
 
@@ -600,9 +600,12 @@ def main():
     content = content.replace("@KEYWORDS", meta["keywords"])
 
     html_tags = ""
+    tags_clean = ""
     if "tags" in meta:
-        html_tags = ", ".join(
-            [f'<a href="../">{x.strip()}</a>' for x in meta["tags"].split(",")])
+        tags = [x.strip() for x in meta["tags"].split(",")]
+        tags_clean = ", ".join(tags)
+        html_tags = ", ".join([f'<a href="../">{x}</a>' for x in tags])
+    content = content.replace("@TAGS_CLEAN", f"TAGS_CLEAN: {tags_clean}")
     content = content.replace("@TAGS", html_tags)
 
     if edit_date_str is not None:
@@ -646,6 +649,9 @@ def main():
 
     with open(target_path, "w+", encoding="utf-8") as target:
         target.write(content)
+
+    import generate_index
+    generate_index.main(silent=True)
 
 
 if __name__ == "__main__":
