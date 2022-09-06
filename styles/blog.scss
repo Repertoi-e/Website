@@ -48,6 +48,7 @@ html body {
 
     a {
         color: #222222;
+        text-decoration-color: #222222;
 
         &:hover {
             color: #9c9c9c;
@@ -101,6 +102,10 @@ html body {
             margin-bottom: 1rem;
 
             .title_and_tags {
+                a {
+                    text-decoration-color: white;
+                }
+
                 display: flex;
                 align-items: center;
 
