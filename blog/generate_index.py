@@ -25,6 +25,7 @@ def main(silent: bool = False):
 
             tags_html = ""
             for t in tags:
+                if len(t) == 0: continue
                 tags_html += f'<div class="tag"><span>{t}</span></div>\n'
 
             html = f"""<div class="article_link">

@@ -126,7 +126,7 @@ html body {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  padding: 0.3rem 0.3rem;
+  padding: 0.1rem 0.1rem;
 }
 .main .article_links .article_link .title_and_tags .tags .tag span {
   color: white;
