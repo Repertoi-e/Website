@@ -1,6 +1,3 @@
-@import "transform";
-@import "position";
-@import "psycho_circle";
 
 html body {
     background-color: white;
@@ -11,20 +8,24 @@ $theme-color-darker: #22c6c6;
 
 .header {
     display: flex;
-    justify-content: center;
-    align-items: baseline;
-
-    position: relative;
+    flex-direction: column;
+    align-items: center;
 }
 
-.header__title {
-    display: block;
-    position: absolute;
+.header__links {
+    display: flex;
+    justify-content: space-around;
 
-    bottom: 0;
+    @media only screen and (max-width: 450px) {
+        margin-top: 2rem;
+        flex-direction: column;
+    }
 
-    font-size: 3rem;
-    color: white;
+    @media only screen and (min-width: 451px) {
+        flex-direction: row;
+    }
+
+    width: 100%;
 }
 
 .header__link {
@@ -32,7 +33,6 @@ $theme-color-darker: #22c6c6;
 
     display: flex;
     justify-content: center;
-
     font-size: 3rem;
 
     a {
@@ -45,10 +45,28 @@ $theme-color-darker: #22c6c6;
     }
 }
 
-.header__title:first-of-type {
-    bottom: 1.5rem;
+.header__img {
+    display: flex;
+    position: relative;
+}
 
-    padding-right: 3.6rem;
+.header__hills {
+    width: 10rem;
+    margin-top: 1rem;
+    border-radius: 100%;
+}
+
+.header__title {
+    display: block;
+    position: absolute;
+
+    font-size: 3rem;
+    color: white;
+}
+
+.header__title:first-of-type {
+    bottom: 0.5rem;
+    left: -3rem;
 
     span {
         color: $theme-color;
@@ -56,15 +74,8 @@ $theme-color-darker: #22c6c6;
 }
 
 .header__title:last-of-type {
-    padding-left: 3rem;
-
     color: $theme-color;
-}
 
-.header__hills {
-    width: 10rem;
-    height: 10rem;
-    border-radius: 100%;
-
-    margin: 1rem;
+    bottom: -1rem;
+    left: 0.2rem;
 }
