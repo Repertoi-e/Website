@@ -44,6 +44,7 @@ html body {
 }
 
 .back_to {
+    font-family: "Vollkorn";
     margin: 20px;
 
     a {
@@ -62,9 +63,13 @@ html body {
     width: 90vw;
     max-width: 700px;
 
-    .title {
+    .blog_title {
+        margin-top: -3rem;
+        z-index: 5;
+
         h1 {
-            font-family: sans-serif;
+            font-family: "Vollkorn";
+            letter-spacing: 0.2rem;
             font-size: 6rem;
 
             line-height: 0.9;
@@ -93,6 +98,14 @@ html body {
         min-height: 60vh;
         margin-top: 50px;
 
+        @media only screen and (max-width: 850px) {
+            padding-left: 1.5rem;
+        }
+
+        @media only screen and (min-width: 851px) {
+            padding-left: 0;
+        }
+
         .article_link {
             display: flex;
             flex-direction: column;
@@ -107,19 +120,15 @@ html body {
                 }
 
                 display: flex;
-                align-items: center;
-
-                @media only screen and (max-width: 850px) {
-                    align-items: flex-start;
-                    flex-direction: column;
-                }
-
-                @media only screen and (min-width: 851px) {
-                    flex-direction: row;
-                }
+                flex-direction: column;
+                flex-wrap: wrap;
 
                 .title {
+                    margin-top: 0.2rem;
+                    margin-bottom: 0.4rem;
+
                     font-size: 1.1rem;
+                    line-height: 1rem;
 
                     margin-right: 8px;
 
@@ -132,6 +141,17 @@ html body {
                             text-decoration: underline;
                         }
                     }
+                }
+
+                .title_arrow {
+                    display: block;
+                    position: absolute;
+                    
+                    margin-top: 0.1rem;
+                    margin-left: -2rem;
+
+                    font-family: 5rem;
+                    font-weight: 700;
                 }
 
                 .tags {
@@ -161,6 +181,10 @@ html body {
                         }
                     }
                 }
+            }
+            
+            .date {
+                margin-top: -0.5rem;
             }
         }
     }
@@ -528,6 +552,8 @@ $hills-size: 160px;
 .header {
     width: 100%;
     display: flex;
+
+    z-index: -1;
 
     .icon_container {
         flex: none;

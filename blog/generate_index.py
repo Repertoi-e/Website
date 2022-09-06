@@ -30,14 +30,15 @@ def main(silent: bool = False):
 
             html = f"""<div class="article_link">
                 <div class="title_and_tags">
+                    <div class="tags">
+                        {tags_html}
+                    </div>
                     <span class="title">
+                        <span class="title_arrow">⟶</span>
                         <a href="./{d}/">
                             <h3>{title}</h3>
                         </a>
                     </span>
-                    <div class="tags">
-                        {tags_html}
-                    </div>
                 </div>
                 <span class="date">
                     <p>

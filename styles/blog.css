@@ -36,6 +36,7 @@ html body {
 }
 
 .back_to {
+  font-family: "Vollkorn";
   margin: 20px;
 }
 .back_to a {
@@ -52,18 +53,23 @@ html body {
   width: 90vw;
   max-width: 700px;
 }
-.main .title h1 {
-  font-family: sans-serif;
+.main .blog_title {
+  margin-top: -3rem;
+  z-index: 5;
+}
+.main .blog_title h1 {
+  font-family: "Vollkorn";
+  letter-spacing: 0.2rem;
   font-size: 6rem;
   line-height: 0.9;
   text-align: center;
   color: #222222;
 }
-.main .title a {
+.main .blog_title a {
   color: #222222;
   text-decoration: none;
 }
-.main .title a:hover {
+.main .blog_title a:hover {
   text-decoration: underline;
   -webkit-text-decoration-color: #222222;
           text-decoration-color: #222222;
@@ -75,6 +81,16 @@ html body {
   min-height: 60vh;
   margin-top: 50px;
 }
+@media only screen and (max-width: 850px) {
+  .main .article_links {
+    padding-left: 1.5rem;
+  }
+}
+@media only screen and (min-width: 851px) {
+  .main .article_links {
+    padding-left: 0;
+  }
+}
 .main .article_links .article_link {
   display: flex;
   flex-direction: column;
@@ -83,25 +99,18 @@ html body {
 }
 .main .article_links .article_link .title_and_tags {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 .main .article_links .article_link .title_and_tags a {
   -webkit-text-decoration-color: white;
           text-decoration-color: white;
 }
-@media only screen and (max-width: 850px) {
-  .main .article_links .article_link .title_and_tags {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-}
-@media only screen and (min-width: 851px) {
-  .main .article_links .article_link .title_and_tags {
-    flex-direction: row;
-  }
-}
 .main .article_links .article_link .title_and_tags .title {
+  margin-top: 0.2rem;
+  margin-bottom: 0.4rem;
   font-size: 1.1rem;
+  line-height: 1rem;
   margin-right: 8px;
 }
 .main .article_links .article_link .title_and_tags .title a {
@@ -110,6 +119,14 @@ html body {
 }
 .main .article_links .article_link .title_and_tags .title a :hover {
   text-decoration: underline;
+}
+.main .article_links .article_link .title_and_tags .title_arrow {
+  display: block;
+  position: absolute;
+  margin-top: 0.1rem;
+  margin-left: -2rem;
+  font-family: 5rem;
+  font-weight: 700;
 }
 .main .article_links .article_link .title_and_tags .tags {
   display: flex;
@@ -135,6 +152,9 @@ html body {
 }
 .main .article_links .article_link .title_and_tags .tags .tag a {
   color: white;
+}
+.main .article_links .article_link .date {
+  margin-top: -0.5rem;
 }
 
 a {
@@ -414,6 +434,7 @@ a:hover {
 .header {
   width: 100%;
   display: flex;
+  z-index: -1;
 }
 .header .icon_container {
   flex: none;
