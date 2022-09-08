@@ -1,0 +1,41 @@
+
+@font-face {
+    font-family: SofiaSans;
+    font-style: normal;
+    src: url(../resources/fonts/SofiaSans[wdth\,wght].woff2) format("woff2"),
+        url(../resources/fonts/SofiaSans[wdth\,wght].woff) format("woff");
+
+}
+
+@font-face {
+    font-family: SofiaSans;
+    font-style: italic;
+    src: url(../resources/fonts/SofiaSans-Italic[wdth\,wght].woff2) format("woff2"),
+        url(../resources/fonts/SofiaSans-Italic[wdth\,wght].woff) format("woff");
+
+}
+
+@font-face {
+    font-family: FiraGO;
+    font-style: normal;
+    src: url(../resources/fonts/FiraGO_WEB_1001/Roman/FiraGO-Regular.woff2) format("woff2"),
+        url(../resources/fonts/FiraGO_WEB_1001/Roman/FiraGO-Regular.woff) format("woff"),
+        url(../resources/fonts/FiraGO_WEB_1001/Roman/FiraGO-Regular.eot) format("eot");
+
+}
+
+@font-face {
+    font-family: FiraGO;
+    font-style: italic;
+    src: url(../resources/fonts/FiraGO_WEB_1001/Italic/FiraGO-Italic.woff2) format("woff2"),
+        url(../resources/fonts/FiraGO_WEB_1001/Italic/FiraGO-Italic.woff) format("woff"),
+        url(../resources/fonts/FiraGO_WEB_1001/Italic/FiraGO-Italic.eot) format("eot");
+}
+
+@font-face {
+    font-family: FiraCode;
+    font-style: italic;
+    src: url(../resources/fonts/FiraCode-VF.woff2) format("woff2"),
+        url(../resources/fonts/FiraCode-VF.woff) format("woff");
+
+}

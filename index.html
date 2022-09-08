@@ -15,7 +15,7 @@
     <meta property="og:title" content="Dimitar Sotirov">
     <meta property="og:description"
         content="A Bulgarian thinker and low-level code wizard. Expert at creating more from less.">
-    <meta property="og:image" content="./resources/index/hand.gif">
+    <meta property="og:image" content="/resources/index/hand.gif">
     <meta property="og:url" content="soti.camp">
     <meta property="og:type" content="website">
 
@@ -23,24 +23,32 @@
     <meta name="twitter:title" content="Dimitar Sotirov">
     <meta name="twitter:description"
         content="A Bulgarian thinker and low-level code wizard. Expert at creating more from less.">
-    <meta name="twitter:image" content="./resources/index/hand.gif">
+    <meta name="twitter:image" content="/resources/index/hand.gif">
 
-    <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="/styles/index.css">
 
-    <link rel="icon" href="./resources/just_give_love.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="./resources/just_give_love.ico" type="image/x-icon">
+    <link rel="icon" href="/resources/just_give_love.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/resources/just_give_love.ico" type="image/x-icon">
+
+    <script type="text/javascript" src="/js/vendor/smooth-parallax/smooth-parallax.min.js"></script>
 
     <title>Dimitar Sotirov</title>
 </head>
 
 <body>
-    <div class="main">
-        <div class="header">
-            <h6>Dimitar Sotirov</h6>
-            <h6>A portfolio</h6>
-        </div>
+    <div class="background">
+        <img smooth-parallax="" src="/resources/index/main-bg.jpg">
+        <img smooth-parallax="" start-position-y="0" end-position-y="3.5" end-position-x="-3.5" src="/resources/index/main-clouds-left.png">
+        <img smooth-parallax="" start-position-y="0" end-position-y="3.5" end-position-x="3.5" src="/resources/index/main-clouds-right.png">
+        <img smooth-parallax="" end-movement="0.1" end-position-y="0.4" start-position-x="-0.25" end-position-x="0" src="/resources/index/main-me.png">
+    </div>
 
+    <header>
+        <b>Dimitar Sotirov</b><br>
+        <b>A portfolio</b>
+    </header>
+
+    <main>
         <div class="introduction">
             <p>
                 <br>
@@ -54,71 +62,79 @@
             </p>
         </div>
 
-        <div class="arrow">
-            <div class="vertical_line">
-                <span class="inner"></span>
+        <div class="arrow" smooth-parallax="" end-movement="0.4" start-position-y="0.8" end-position-y="-2">
+            <div class="arrow__vertical-line">
+                <span></span>
             </div>
-            <div class="end end_left">
-            </div>
-            <div class="end end_right">
-            </div>
+            <div class="arrow__end"></div>
+            <div class="arrow__end"></div>
         </div>
 
-        <div class="retro_button" id="contacts">
-            <div class="border">
-                <span class="circle"></span>
-                <span class="circle"></span>
-                <span class="circle"></span>
-                <span class="circle"></span>
-                <a href="./about">
-                    <img src="./resources/index/hills.gif" alt="">
+        <div class="hills-button">
+            <div class="hills-button__border">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <a href="/about">
+                    <img src="/resources/index/hills.gif" alt="">
                 </a>
             </div>
         </div>
-    </div>
 
-    <div class="social_media">
-        <span class="info_text">Hey! If you want to chat, you can find me on:</span>
+        <div class="social" id="contacts">
+            <span class="social__info">Click wormhole above for more.<br><br><br>If you want to chat, you can find me on:</span>
 
-        <span class="mail" style="overflow-wrap: break-word;"><a
-                href="mailto: dsotirov@windowslive.com">dsotirov@windowslive.com</a></span>
+            <span class="social__mail" style="overflow-wrap: break-word;"><a
+                    href="mailto: dsotirov@windowslive.com">dsotirov@windowslive.com</a></span>
 
-        <div class="icons">
-            <span class="dashed"></span>
-            <span class="linkedin">
-                <a href="https://www.linkedin.com/in/dimitar-sotirov-583303200" target="_blank">
-                    <img src="./resources/index/linkedin.png" alt="">
-                </a>
-            </span>
-            <!--span class="github">
+            <div class="social__icons">
+                <span class="social__icons__dashed"></span>
+                <span class="social__icons__icon">
+                    <a href="https://www.linkedin.com/in/dimitar-sotirov-583303200" target="_blank">
+                        <img src="/resources/index/linkedin.png" alt="">
+                    </a>
+                </span>
+                <!--span class="social__icons__icon">
                     <a href="https://github.com/Repertoi-e" target="_blank">
-                        <img src="./resources/index/github-sign.png" alt="">
+                        <img src="/resources/index/github-sign.png" alt="">
                     </a>
                 </span-->
-            <span class="instagram">
-                <a href="https://www.instagram.com/soti.and.friends/" target="_blank">
-                    <img src="./resources/index/instagram.png" alt="">
-                </a>
-            </span>
-            <span class="dashed"></span>
+                <span class="social__icons__icon">
+                    <a href="https://www.instagram.com/soti.and.friends/" target="_blank">
+                        <img src="/resources/index/instagram.png" alt="">
+                    </a>
+                </span>
+                <span class="social__icons__dashed"></span>
+            </div>
         </div>
-    </div>
+    </main>
 
-    <div class="goodbye">
-        <div class="copyright_and_greet">
+    <footer>
+        <div class="copyright-and-greet">
             <span class="copyright">© 2022 – Dimitar Sotirov</span>
             <span class="greet">NOW I WISH YOU<br>
                 &nbsp;ALL THE BEST</span>
         </div>
+
         <span class="credits">
-            Icons - <a href="https://www.flaticon.com/free-icons">Flaticon</a>, <!--Github one created by Dave
+            Icons - <a href="https://www.flaticon.com/free-icons">Flaticon</a>,
+            <!--Github one created by Dave
             Gandy,<br>-->
             LinkedIn one created by riajulislam, <br> Instagram - by Pixel perfect.<br><br>
             Gif owner: <a href="https://philiprugo.tumblr.com/" target="_blank">philiprugo.tumblr.com</a>.
         </span>
-    </div>
+    </footer>
 
-    <script src="./js/parallax.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", function () {
+            if (window.SmoothParallax) {
+                window.SmoothParallax.init({
+                    basePercentageOn: 'pageScroll',
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>

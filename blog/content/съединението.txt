@@ -11,7 +11,7 @@
 
 @end_meta
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Syedinena_Bylgaria_-_Litografia_na_N.Pavlovich.JPG" width="250px"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Syedinena_Bylgaria_-_Litografia_na_N.Pavlovich.JPG" width="25z`0px"/>
 
 Скрий се! Бързо! Идва журналист!
 
