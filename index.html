@@ -31,6 +31,15 @@
     <link rel="shortcut icon" href="/resources/just_give_love.ico" type="image/x-icon">
 
     <script type="text/javascript" src="/js/vendor/smooth-parallax/smooth-parallax.min.js"></script>
+    <script type="text/javascript">
+        window.addEventListener("DOMContentLoaded", function () {
+            if (window.SmoothParallax) {
+                window.SmoothParallax.init({
+                    basePercentageOn: "pageScroll",
+                });
+            }
+        });
+    </script>
 
     <title>Dimitar Sotirov</title>
 </head>
@@ -38,17 +47,37 @@
 <body>
     <div class="background">
         <img smooth-parallax="" src="/resources/index/main-bg.jpg">
-        <img smooth-parallax="" start-position-y="0" end-position-y="3.5" end-position-x="-3.5" src="/resources/index/main-clouds-left.png">
-        <img smooth-parallax="" start-position-y="0" end-position-y="3.5" end-position-x="3.5" src="/resources/index/main-clouds-right.png">
-        <img smooth-parallax="" end-movement="0.1" end-position-y="0.4" start-position-x="-0.25" end-position-x="0" src="/resources/index/main-me.png">
+        <img smooth-parallax="" end-movement="0.3" end-position-y="3.5"
+            end-position-x="-3.5" src="/resources/index/main-clouds-left.png">
+        <img smooth-parallax="" end-movement="0.3" end-position-y="3.5"
+            end-position-x="3.5" src="/resources/index/main-clouds-right.png">
+        <img smooth-parallax="" end-movement="0.1" end-position-y="0.2" start-position-x="-1"
+            end-position-x="0" src="/resources/index/main-me.png">
+    </div>
+
+    <div class="background split-view">
+        <img src="/resources/index/main-bg.jpg">
+        <img smooth-parallax="" end-movement="0.5" start-position-y="-0.05" end-position-y="0.5"
+            start-position-x="0.25" end-position-x="-0.25" src="/resources/index/main-clouds-left.png">
+        <img smooth-parallax="" end-movement="0.5" end-position-y="0.5"
+            end-position-x="0.5" src="/resources/index/main-clouds-right.png">
+        <img smooth-parallax="" end-movement="1" end-position-y="3"end-position-x="-5" src="/resources/index/main-me.png">
     </div>
 
     <header>
-        <b>Dimitar Sotirov</b><br>
-        <b>A portfolio</b>
+        <span><b>Dimitar Sotirov</b><br></span>
+        <span><b>A portfolio</b></span>
     </header>
 
     <main>
+        <div class="arrow" smooth-parallax="" end-movement="0.3" start-position-y="0.8" end-position-y="-4">
+            <div class="arrow__vertical-line">
+                <span></span>
+            </div>
+            <div class="arrow__end"></div>
+            <div class="arrow__end"></div>
+        </div>
+
         <div class="introduction">
             <p>
                 <br>
@@ -62,12 +91,13 @@
             </p>
         </div>
 
-        <div class="arrow" smooth-parallax="" end-movement="0.4" start-position-y="0.8" end-position-y="-2">
+        <!-- Arrow for split view on larger screens -->
+        <div class="arrow split-view">
             <div class="arrow__vertical-line">
-                <span></span>
+                <span class="split-view"></span>
             </div>
-            <div class="arrow__end"></div>
-            <div class="arrow__end"></div>
+            <div class="arrow__end split-view"></div>
+            <div class="arrow__end split-view"></div>
         </div>
 
         <div class="hills-button">
@@ -83,13 +113,16 @@
         </div>
 
         <div class="social" id="contacts">
-            <span class="social__info">Click wormhole above for more.<br><br><br>If you want to chat, you can find me on:</span>
-
-            <span class="social__mail" style="overflow-wrap: break-word;"><a
-                    href="mailto: dsotirov@windowslive.com">dsotirov@windowslive.com</a></span>
+            <span class="social__info">Click on the wormhole above for more.<br><br><br>If you want to chat, you can find me
+                on:</span>
 
             <div class="social__icons">
                 <span class="social__icons__dashed"></span>
+                <span class="social__icons__icon">
+                    <a href="mailto: dsotirov@windowslive.com" target="_blank">
+                        <img src="/resources/index/mailbox.png" alt="">
+                    </a>
+                </span>
                 <span class="social__icons__icon">
                     <a href="https://www.linkedin.com/in/dimitar-sotirov-583303200" target="_blank">
                         <img src="/resources/index/linkedin.png" alt="">
@@ -125,16 +158,6 @@
             Gif owner: <a href="https://philiprugo.tumblr.com/" target="_blank">philiprugo.tumblr.com</a>.
         </span>
     </footer>
-
-    <script>
-        window.addEventListener("DOMContentLoaded", function () {
-            if (window.SmoothParallax) {
-                window.SmoothParallax.init({
-                    basePercentageOn: 'pageScroll',
-                });
-            }
-        });
-    </script>
 </body>
 
 </html>

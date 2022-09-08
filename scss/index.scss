@@ -22,9 +22,11 @@ html body {
     z-index: -100;
 
     width: 100%;
-    height: 100%;
+    height: 250vh;
 
     position: absolute;
+
+    overflow-y: hidden;
 
     img {
         position: absolute;
@@ -41,19 +43,34 @@ html body {
 
         // Clouds-left
         &:nth-of-type(2) {
-            top: 10vh;
+            top: 70px;
             left: -50px;
+            width: 60%;
         }
 
         // Clouds-right
         &:nth-of-type(3) {
-            top: 10vh;
+            top: 50px;
+            width: 60%;
+            right: 0;
         }
 
         // Me
         &:nth-of-type(4) {
-            margin-top: 10vh;
-            max-width: 900px;
+            top: 14rem;
+            width: 300px;
+        }
+    }
+
+    &.split-view {
+        visibility: hidden;
+    }
+
+    @include sm {
+        visibility: hidden;
+        
+        &.split-view {
+            visibility: visible;
         }
     }
 }
@@ -61,13 +78,13 @@ html body {
 $header-arrow-color: #ececec;
 
 header {
-    margin-top: 10vh;
+    margin-top: 5rem;
 
-    padding-top: 2rem;
+    max-width: 90%;
 
     color: $header-arrow-color;
 
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 700;
 
     text-align: center;
@@ -75,73 +92,69 @@ header {
 
     letter-spacing: 0.4rem;
 
-    line-height: 1.7;
+    span {
+        line-height: 2;
+
+        &:nth-of-type(1) {
+            line-height: 1;
+        }
+    }
 }
 
-$dash-width: 0.4rem;
+$dash-width: 5px;
 
 main {
-    display: grid;
-
-    margin-top: 7rem;
-
     min-height: 100vh;
 
-    @media only screen and (max-width: 500px) {
-        & {
-            grid-template-columns: 95vw;
-            grid-template-rows: 8rem auto auto auto;
-
-            grid-template-areas:
-                "arrow"
-                "introduction"
-                "hills-button"
-                "social";
-        }
-    }
-
-    // Split-view introduction for larger screens
-    @media only screen and (min-width: 501px) {
-        & {
-            grid-template-columns: 45vw 45vw;
-            grid-template-rows: auto 5rem auto auto;
-
-            grid-template-areas:
-                ". introduction"
-                "arrow arrow"
-                "hills-button hills-button"
-                "social social";
-        }
-    }
+    display: grid;
+    grid-template-columns: 95vw;
+    grid-template-rows: calc(40vw) 6rem auto auto auto;
 
     justify-items: center;
-    align-content: stretch;
+    align-items: center;
+
+    grid-template-areas:
+        "."
+        "arrow"
+        "introduction"
+        "hills-button"
+        "social";
+
+    // Change layout to :SplitView on large screens
+    @include sm {
+        grid-template-columns: 45vw 45vw;
+        grid-template-rows: 5rem auto auto auto auto;
+
+        grid-template-areas:
+            ". ."
+            ". introduction"
+            "arrow arrow"
+            "hills-button hills-button"
+            "social social";
+    }
 }
 
 .introduction {
     grid-area: introduction;
 
+    width: 95%;
     max-width: 27rem;
-
-    margin-top: 10rem;
-
-    padding: 0.5rem;
+    margin-top: calculate-clamp(0px, 80px, 220px, 120px);
 
     justify-self: center;
     text-align: center;
 
-    @media only screen and (min-width: 501px) {
-        & {
-            border: 0;
-            border-left: $dash-width dashed #ffffff;
+    // Change layout to :SplitView on large screens
+    @include sm {
+        border-left: $dash-width dashed white;
 
-            margin: 0;
-            padding: 0;
-            padding-left: 0.5rem;
+        margin: 0;
+        padding: 0;
 
-            justify-self: left;
-            text-align: left;
-        }
+        padding-left: 0.5rem;
+
+        justify-self: left;
+        text-align: left;
     }
 
     color: #ffffff;
@@ -154,6 +167,19 @@ main {
 .arrow {
     grid-area: arrow;
 
+    &.split-view {
+        visibility: hidden;
+    }
+
+    // Change layout to :SplitView on large screens
+    @include sm {
+        visibility: hidden;
+
+        &.split-view {
+            visibility: visible;
+        }
+    }
+
     align-self: stretch;
     justify-self: stretch;
 
@@ -163,8 +189,6 @@ main {
     grid-template-rows: repeat(3, auto);
 
     justify-content: center;
-
-    padding-bottom: 50px;
 
     &__vertical-line {
         grid-row: 1 / span 3;
@@ -180,6 +204,10 @@ main {
         span {
             min-height: 100%;
             border-left: $dash-width dashed $header-arrow-color;
+
+            &.split-view {
+                border-left: $dash-width dashed white;
+            }
         }
     }
 
@@ -189,6 +217,11 @@ main {
 
         border-bottom: $dash-width dashed $header-arrow-color;
 
+        &.split-view {
+            border-bottom: $dash-width dashed white;
+        }
+
+        // I don't know why this has to be "3"
         &:nth-of-type(3) {
             grid-row: 3;
             grid-column: 1;
@@ -216,14 +249,20 @@ main {
 .hills-button {
     grid-area: hills-button;
 
+    // Change layout to :SplitView on large screens
+    @include sm {
+        margin-top: 3rem;
+    }
+
     @include psycho-circle-button(10rem);
 }
-
 
 $washed-white-color: rgba(255, 255, 255, 0.762);
 
 .social {
     grid-area: social;
+
+    width: 95%;
 
     display: flex;
     align-items: center;
@@ -231,20 +270,6 @@ $washed-white-color: rgba(255, 255, 255, 0.762);
 
     margin-top: 5rem;
     margin-bottom: 2rem;
-
-    @media only screen and (max-width: 500px) {
-        & {
-            max-width: 95vw;
-            padding: 0.5rem;
-        }
-    }
-
-    @media only screen and (min-width: 501px) {
-        & {
-            max-width: 80vw;
-            padding: 0;
-        }
-    }
 
     &__info,
     &__mail {
@@ -290,28 +315,17 @@ $washed-white-color: rgba(255, 255, 255, 0.762);
             cursor: pointer;
 
             img {
-                width: 2.5rem;
+                width: 3rem;
             }
         }
     }
 }
 
 footer {
-    @media only screen and (max-width: 500px) {
-        & {
-            margin-top: 2rem;
-        }
-    }
-
-    @media only screen and (min-width: 501px) {
-        & {
-            margin-top: 10rem;
-        }
-    }
-
+    margin-top: 10rem;
     margin-bottom: 3rem;
 
-    width: 80vw;
+    width: 95%;
 
     display: flex;
     flex-direction: column;
@@ -336,8 +350,8 @@ footer {
 }
 
 .greet {
-    @include pixels-to-responsive-unit(font-size, 90px, 180px, 190px);
-    @include pixels-to-responsive-unit(line-height, 55px, 110px, 120px);
+    @include pixels-to-responsive-unit(font-size, 120px, 180px, 190px);
+    @include pixels-to-responsive-unit(line-height, 75px, 110px, 120px);
 
     color: #ffffff;
     text-shadow: 3px 3px 2px #92ffff, -3px -3px 2px #ff4bff;

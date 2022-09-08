@@ -492,8 +492,9 @@ html body {
 .background {
   z-index: -100;
   width: 100%;
-  height: 100%;
+  height: 250vh;
   position: absolute;
+  overflow-y: hidden;
 }
 .background img {
   position: absolute;
@@ -506,66 +507,79 @@ html body {
   height: auto;
 }
 .background img:nth-of-type(2) {
-  top: 10vh;
+  top: 70px;
   left: -50px;
+  width: 60%;
 }
 .background img:nth-of-type(3) {
-  top: 10vh;
+  top: 50px;
+  width: 60%;
+  right: 0;
 }
 .background img:nth-of-type(4) {
-  margin-top: 10vh;
-  max-width: 900px;
+  top: 14rem;
+  width: 300px;
+}
+.background.split-view {
+  visibility: hidden;
+}
+@media (min-width: 576px) {
+  .background {
+    visibility: hidden;
+  }
+  .background.split-view {
+    visibility: visible;
+  }
 }
 
 header {
-  margin-top: 10vh;
-  padding-top: 2rem;
+  margin-top: 5rem;
+  max-width: 90%;
   color: #ececec;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 700;
   text-align: center;
   text-shadow: 1px 1px 1px #70a1cc;
   letter-spacing: 0.4rem;
-  line-height: 1.7;
+}
+header span {
+  line-height: 2;
+}
+header span:nth-of-type(1) {
+  line-height: 1;
 }
 
 main {
-  display: grid;
-  margin-top: 7rem;
   min-height: 100vh;
+  display: grid;
+  grid-template-columns: 95vw;
+  grid-template-rows: 40vw 6rem auto auto auto;
   justify-items: center;
-  align-content: stretch;
+  align-items: center;
+  grid-template-areas: "." "arrow" "introduction" "hills-button" "social";
 }
-@media only screen and (max-width: 500px) {
-  main {
-    grid-template-columns: 95vw;
-    grid-template-rows: 8rem auto auto auto;
-    grid-template-areas: "arrow" "introduction" "hills-button" "social";
-  }
-}
-@media only screen and (min-width: 501px) {
+@media (min-width: 576px) {
   main {
     grid-template-columns: 45vw 45vw;
-    grid-template-rows: auto 5rem auto auto;
-    grid-template-areas: ". introduction" "arrow arrow" "hills-button hills-button" "social social";
+    grid-template-rows: 5rem auto auto auto auto;
+    grid-template-areas: ". ." ". introduction" "arrow arrow" "hills-button hills-button" "social social";
   }
 }
 
 .introduction {
   grid-area: introduction;
+  width: 95%;
   max-width: 27rem;
-  margin-top: 10rem;
-  padding: 0.5rem;
+  margin-top: clamp(0rem, 66.6666666667vw, 13.75rem);
   justify-self: center;
   text-align: center;
   color: #ffffff;
   text-shadow: 0px 0px 5px #8fa9c0;
   font-size: 1.5rem;
 }
-@media only screen and (min-width: 501px) {
+@media (min-width: 576px) {
   .introduction {
-    border: 0;
-    border-left: 0.4rem dashed #ffffff;
+    border-left: 5px dashed white;
     margin: 0;
     padding: 0;
     padding-left: 0.5rem;
@@ -582,7 +596,17 @@ main {
   grid-template-columns: repeat(2, 50%);
   grid-template-rows: repeat(3, auto);
   justify-content: center;
-  padding-bottom: 50px;
+}
+.arrow.split-view {
+  visibility: hidden;
+}
+@media (min-width: 576px) {
+  .arrow {
+    visibility: hidden;
+  }
+  .arrow.split-view {
+    visibility: visible;
+  }
 }
 .arrow__vertical-line {
   grid-row: 1/span 3;
@@ -590,17 +614,23 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 0.4rem;
-  margin-top: 0.4rem;
+  width: 5px;
+  margin-top: 5px;
 }
 .arrow__vertical-line span {
   min-height: 100%;
-  border-left: 0.4rem dashed #ececec;
+  border-left: 5px dashed #ececec;
+}
+.arrow__vertical-line span.split-view {
+  border-left: 5px dashed white;
 }
 .arrow__end {
-  width: 2rem;
-  min-height: 2rem;
-  border-bottom: 0.4rem dashed #ececec;
+  width: 25px;
+  min-height: 25px;
+  border-bottom: 5px dashed #ececec;
+}
+.arrow__end.split-view {
+  border-bottom: 5px dashed white;
 }
 .arrow__end:nth-of-type(3) {
   grid-row: 3;
@@ -608,7 +638,7 @@ main {
   justify-self: flex-end;
   align-self: flex-end;
   transform-origin: bottom right;
-  transform: translate(0.2rem, 0.2rem) rotate(45deg);
+  transform: translate(2.5px, 2.5px) rotate(45deg);
 }
 .arrow__end:nth-of-type(2) {
   grid-row: 3;
@@ -616,11 +646,16 @@ main {
   justify-self: flex-start;
   align-self: flex-end;
   transform-origin: bottom left;
-  transform: translate(0.2rem, 0.2rem) rotate(-45deg);
+  transform: translate(2.5px, 2.5px) rotate(-45deg);
 }
 
 .hills-button {
   grid-area: hills-button;
+}
+@media (min-width: 576px) {
+  .hills-button {
+    margin-top: 3rem;
+  }
 }
 .hills-button {
   height: 10rem;
@@ -674,23 +709,12 @@ main {
 
 .social {
   grid-area: social;
+  width: 95%;
   display: flex;
   align-items: center;
   flex-direction: column;
   margin-top: 5rem;
   margin-bottom: 2rem;
-}
-@media only screen and (max-width: 500px) {
-  .social {
-    max-width: 95vw;
-    padding: 0.5rem;
-  }
-}
-@media only screen and (min-width: 501px) {
-  .social {
-    max-width: 80vw;
-    padding: 0;
-  }
 }
 .social__info, .social__mail {
   width: min(100%, 40rem);
@@ -717,31 +741,22 @@ main {
 }
 .social__icons__dashed {
   width: 50%;
-  min-height: 0.2rem;
-  border-top: 0.4rem dashed rgba(255, 255, 255, 0.762);
+  min-height: 2.5px;
+  border-top: 5px dashed rgba(255, 255, 255, 0.762);
 }
 .social__icons__icon {
   cursor: pointer;
 }
 .social__icons__icon img {
-  width: 2.5rem;
+  width: 3rem;
 }
 
 footer {
+  margin-top: 10rem;
   margin-bottom: 3rem;
-  width: 80vw;
+  width: 95%;
   display: flex;
   flex-direction: column;
-}
-@media only screen and (max-width: 500px) {
-  footer {
-    margin-top: 2rem;
-  }
-}
-@media only screen and (min-width: 501px) {
-  footer {
-    margin-top: 10rem;
-  }
 }
 
 .copyright-and-greet {
@@ -760,8 +775,8 @@ footer {
 }
 
 .greet {
-  font-size: clamp(5.625rem, 18vw, 11.875rem);
-  line-height: clamp(3.4375rem, 11vw, 7.5rem);
+  font-size: clamp(7.5rem, 18vw, 11.875rem);
+  line-height: clamp(4.6875rem, 11vw, 7.5rem);
   color: #ffffff;
   text-shadow: 3px 3px 2px #92ffff, -3px -3px 2px #ff4bff;
 }
