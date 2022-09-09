@@ -30,6 +30,9 @@
     <link rel="icon" href="/resources/just_give_love.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/resources/just_give_love.ico" type="image/x-icon">
 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
     <script type="text/javascript" src="/js/vendor/smooth-parallax/smooth-parallax.min.js"></script>
     <script type="text/javascript">
         window.addEventListener("DOMContentLoaded", function () {
@@ -38,6 +41,7 @@
                     basePercentageOn: "pageScroll",
                 });
             }
+            $(".background").height($("body").height() + 50);
         });
     </script>
 
@@ -57,13 +61,13 @@
 
     <div class="background split-view">
         <img src="/resources/index/main-bg.jpg">
-        <img smooth-parallax="" end-movement="0.5" start-position-y="-0.05" end-position-y="0.5"
+        <img smooth-parallax="" end-movement="1" start-position-y="-0.05" end-position-y="0.4"
             start-position-x="0.25" end-position-x="-0.25" src="/resources/index/main-clouds-left.png">
-        <img smooth-parallax="" end-movement="0.5" end-position-y="0.5"
+        <img smooth-parallax="" end-movement="1" end-position-y="0.5"
             end-position-x="0.5" src="/resources/index/main-clouds-right.png">
-        <img smooth-parallax="" end-movement="1" end-position-y="3"end-position-x="-5" src="/resources/index/main-me.png">
+        <img smooth-parallax="" end-movement="0.5" end-position-y="3" end-position-x="-5" src="/resources/index/main-me.png">
     </div>
-
+    
     <header>
         <span><b>Dimitar Sotirov</b><br></span>
         <span><b>A portfolio</b></span>
@@ -81,12 +85,11 @@
         <div class="introduction">
             <p>
                 <br>
-                👋 I'm Dimitar, a Bulgarian thinker, low-level code wizard,
-                and a <b>game developer</b> by occupation.<br>
+                👋 hey<br>
                 <br>
-                When making things I'm an expert at
-                creating <b>more</b> from <i>less</i>.<br>
+                my name is <b>Dimitar</b>, but most people call me <b>Soti</b>.<br>
                 <br>
+                i'm you local Bulgarian code wizard 💅 and this is the stuff i make:<br>
                 <br>
             </p>
         </div>
@@ -113,7 +116,7 @@
         </div>
 
         <div class="social" id="contacts">
-            <span class="social__info">Click on the wormhole above for more.<br><br><br>If you want to chat, you can find me
+            <span class="social__info">click on the wormhole above for an adventure.<br><br><br>... and if you want to chat, you can find me
                 on:</span>
 
             <div class="social__icons">
@@ -154,8 +157,8 @@
             Icons - <a href="https://www.flaticon.com/free-icons">Flaticon</a>,
             <!--Github one created by Dave
             Gandy,<br>-->
-            LinkedIn one created by riajulislam, <br> Instagram - by Pixel perfect.<br><br>
-            Gif owner: <a href="https://philiprugo.tumblr.com/" target="_blank">philiprugo.tumblr.com</a>.
+            Mail one created by smalllikeart, <br> LinkedIn - by riajulislam, Instagram - by Pixel perfect.<br><br>
+            Hills gif owner: <a href="https://philiprugo.tumblr.com/" target="_blank">philiprugo.tumblr.com</a>.
         </span>
     </footer>
 </body>
