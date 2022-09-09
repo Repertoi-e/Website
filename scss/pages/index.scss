@@ -1,0 +1,369 @@
+@charset 'utf-8';
+
+@import "../vendor/_vendor-dir";
+@import "../base/_base-dir";
+@import "../abstracts/_abstracts-dir";
+@import "../components/psycho-circle";
+
+$washed-white: #ececec;
+$header-theme-color: #ececec;
+$text-shadow-color: rgba($theme-color, 0.2);
+$text-shadow-distance: 1px;
+
+$dash-width: 5px;
+
+html body {
+    width: 100%;
+
+    background-color: #b1c3cd;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    overflow-x: hidden;
+}
+
+.background {
+    z-index: -100;
+
+    width: 100%;
+    height: 250vh;
+
+    position: absolute;
+
+    overflow-y: hidden;
+
+    img {
+        position: absolute;
+
+        // Sky
+        &:nth-of-type(1) {
+            position: fixed;
+
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+        }
+
+        // Clouds-left
+        &:nth-of-type(2) {
+            top: 70px;
+            left: -50px;
+            width: 60%;
+        }
+
+        // Clouds-right
+        &:nth-of-type(3) {
+            top: 50px;
+            width: 60%;
+            right: 0;
+        }
+
+        // Me
+        &:nth-of-type(4) {
+            top: 14rem;
+            width: 300px;
+        }
+    }
+
+    &.split-view {
+        visibility: hidden;
+    }
+
+    @include sm {
+        visibility: hidden;
+        
+        &.split-view {
+            visibility: visible;
+        }
+    }
+}
+
+header {
+    margin-top: 5rem;
+
+    max-width: 90%;
+
+    color: $header-theme-color;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+
+    text-align: center;
+    text-shadow: 1px 1px $text-shadow-distance $text-shadow-color;
+
+    letter-spacing: 0.4rem;
+
+    span {
+        line-height: 2;
+
+        &:nth-of-type(1) {
+            line-height: 1;
+        }
+    }
+}
+
+main {
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-columns: 95vw;
+    grid-template-rows: calc(40vw) 6rem auto auto auto;
+
+    justify-items: center;
+    align-items: center;
+
+    grid-template-areas:
+        "."
+        "arrow"
+        "introduction"
+        "hills-button"
+        "social";
+
+    // Change layout to :SplitView on large screens
+    @include sm {
+        grid-template-columns: 45vw 45vw;
+        grid-template-rows: 5rem auto auto auto auto;
+
+        grid-template-areas:
+            ". ."
+            ". introduction"
+            "arrow arrow"
+            "hills-button hills-button"
+            "social social";
+    }
+}
+
+$arrow-color: white;
+
+.introduction {
+    grid-area: introduction;
+
+    width: 95%;
+    max-width: 27rem;
+    margin-top: calculate-clamp(0px, 80px, 220px, 120px);
+
+    justify-self: center;
+    text-align: center;
+
+    // Change layout to :SplitView on large screens
+    @include sm {
+        border-left: $dash-width dashed $arrow-color;
+
+        margin: 0;
+        padding: 0;
+
+        padding-left: 0.5rem;
+
+        justify-self: left;
+        text-align: left;
+    }
+
+    color: white;
+
+    font-size: 1.5rem;
+    text-shadow: 1px 1px $text-shadow-distance $text-shadow-color;
+}
+
+.arrow {
+    grid-area: arrow;
+
+    &.split-view {
+        visibility: hidden;
+    }
+
+    // Change layout to :SplitView on large screens
+    @include sm {
+        visibility: hidden;
+
+        &.split-view {
+            visibility: visible;
+        }
+    }
+
+    align-self: stretch;
+    justify-self: stretch;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(3, auto);
+
+    justify-content: center;
+
+    &__vertical-line {
+        grid-row: 1 / span 3;
+        grid-column: 2;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: $dash-width;
+        margin-top: $dash-width;
+
+        span {
+            min-height: 100%;
+            border-left: $dash-width dashed $header-theme-color;
+
+            &.split-view {
+                border-left: $dash-width dashed $arrow-color;
+            }
+        }
+    }
+
+    &__end {
+        width: $dash-width * 5;
+        min-height: $dash-width * 5;
+
+        border-bottom: $dash-width dashed $header-theme-color;
+
+        &.split-view {
+            border-bottom: $dash-width dashed $arrow-color;
+        }
+
+        // I don't know why this has to be "3"
+        &:nth-of-type(3) {
+            grid-row: 3;
+            grid-column: 1;
+
+            justify-self: flex-end;
+            align-self: flex-end;
+
+            @include transform-origin(bottom right);
+            @include transform(translate(calc($dash-width / 2), calc($dash-width / 2)) rotate(45deg));
+        }
+
+        &:nth-of-type(2) {
+            grid-row: 3;
+            grid-column: 2;
+
+            justify-self: flex-start;
+            align-self: flex-end;
+
+            @include transform-origin(bottom left);
+            @include transform(translate(calc($dash-width / 2), calc($dash-width / 2)) rotate(-45deg));
+        }
+    }
+}
+
+.hills-button {
+    grid-area: hills-button;
+
+    // Change layout to :SplitView on large screens
+    @include sm {
+        margin-top: 3rem;
+    }
+
+    @include psycho-circle-button(10rem);
+}
+
+.social {
+    grid-area: social;
+
+    width: 95%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+
+    &__info {
+        width: min(100%, 1rem * 40);
+
+        margin-bottom: 2rem;
+
+        color: $header-theme-color;
+
+        font-size: 2.5rem;
+        text-shadow: 1px 1px $text-shadow-distance $text-shadow-color;
+    }
+
+    &__icons {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+
+        span {
+            margin: 5px;
+        }
+
+        &__dashed {
+            width: 50%;
+            min-height: calc($dash-width / 2);
+
+            border-top: $dash-width dashed $header-theme-color;
+        }
+
+        &__icon {
+            cursor: pointer;
+
+            img {
+                width: 3rem;
+            }
+        }
+    }
+}
+
+footer {
+    margin-top: 10rem;
+    margin-bottom: 3rem;
+
+    width: 95%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.copyright-and-greet {
+    display: flex;
+    flex-direction: row;
+}
+
+.copyright {
+    writing-mode: vertical-rl;
+
+    @include pixels-to-responsive-unit(font-size, 10px, 12px, 14px);
+
+    font-weight: 700;
+    letter-spacing: 0.07rem;
+
+    color: #ffffff;
+
+    text-shadow: 1px 1px $text-shadow-distance $text-shadow-color;
+}
+
+.greet {
+    @include pixels-to-responsive-unit(font-size, 120px, 180px, 190px);
+    @include pixels-to-responsive-unit(line-height, 75px, 110px, 120px);
+
+    color: #ffffff;
+    text-shadow: 3px 3px 2px #92ffff, -3px -3px 2px #ff4bff;
+}
+
+.credits {
+    margin-top: 5rem;
+
+    font-size: 0.6em;
+    font-weight: 700;
+    letter-spacing: 0.07rem;
+
+    color: white;
+
+    text-shadow: 1px 1px $text-shadow-distance $text-shadow-color;
+
+    align-self: right;
+    text-align: right;
+
+    a {
+        color: $theme-color;
+        cursor: pointer;
+    }
+}

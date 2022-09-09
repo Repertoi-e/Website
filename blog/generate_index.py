@@ -26,21 +26,21 @@ def main(silent: bool = False):
             tags_html = ""
             for t in tags:
                 if len(t) == 0: continue
-                tags_html += f'<div class="tag"><span>{t}</span></div>\n'
+                tags_html += f'<div><span>{t}</span></div>\n'
 
-            html = f"""<div class="article_link">
-                <div class="title_and_tags">
-                    <div class="tags">
+            html = f"""<div class="article-links__link">
+                <div>
+                    <div class="article-links__link__tags">
                         {tags_html}
                     </div>
-                    <span class="title">
-                        <span class="title_arrow">⟶</span>
+                    <span class="article-links__link__title">
+                        <span>⟶</span>
                         <a href="./{d}/">
                             <h3>{title}</h3>
                         </a>
                     </span>
                 </div>
-                <span class="date">
+                <span>
                     <p>
                         {date}
                     </p>

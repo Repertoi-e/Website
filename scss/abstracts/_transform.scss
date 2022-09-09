@@ -1,0 +1,12 @@
+
+@mixin transform($values...) {
+    @each $var in $values {
+        @include prefixer(transform, #{$var}, ("webkit", "moz", "ms", "o"));
+    }
+}
+
+@mixin transform-origin($values...) {
+    @each $var in $values {
+        @include prefixer(transform-origin, #{$var}, ("webkit", "moz", "ms", "o"));
+    }
+}
