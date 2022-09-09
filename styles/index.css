@@ -539,7 +539,7 @@ header {
   font-size: 0.7rem;
   font-weight: 700;
   text-align: center;
-  text-shadow: 1px 1px 1px #70a1cc;
+  text-shadow: 1px 1px 1px rgba(65, 66, 136, 0.2);
   letter-spacing: 0.4rem;
 }
 header span {
@@ -573,9 +573,9 @@ main {
   margin-top: clamp(0rem, 66.6666666667vw, 13.75rem);
   justify-self: center;
   text-align: center;
-  color: #ffffff;
-  text-shadow: 0px 0px 5px #8fa9c0;
+  color: white;
   font-size: 1.5rem;
+  text-shadow: 1px 1px 1px rgba(65, 66, 136, 0.2);
 }
 @media (min-width: 576px) {
   .introduction {
@@ -716,19 +716,12 @@ main {
   margin-top: 5rem;
   margin-bottom: 2rem;
 }
-.social__info, .social__mail {
+.social__info {
   width: min(100%, 40rem);
   margin-bottom: 2rem;
+  color: #ececec;
   font-size: 2.5rem;
-  color: rgba(255, 255, 255, 0.762);
-}
-.social__info a, .social__mail a {
-  color: rgba(255, 255, 255, 0.762);
-  text-decoration: none;
-}
-.social__info a:hover, .social__mail a:hover {
-  color: rgba(255, 255, 255, 0.862);
-  text-decoration: underline;
+  text-shadow: 1px 1px 1px rgba(65, 66, 136, 0.2);
 }
 .social__icons {
   width: 100%;
@@ -742,7 +735,7 @@ main {
 .social__icons__dashed {
   width: 50%;
   min-height: 2.5px;
-  border-top: 5px dashed rgba(255, 255, 255, 0.762);
+  border-top: 5px dashed #ececec;
 }
 .social__icons__icon {
   cursor: pointer;
@@ -771,7 +764,7 @@ footer {
   font-weight: 700;
   letter-spacing: 0.07rem;
   color: #ffffff;
-  text-shadow: 0px 0px 2px #6c98b6;
+  text-shadow: 1px 1px 1px rgba(65, 66, 136, 0.2);
 }
 
 .greet {
@@ -786,12 +779,12 @@ footer {
   font-size: 0.6em;
   font-weight: 700;
   letter-spacing: 0.07rem;
-  color: #ffffff;
-  text-shadow: 0px 0px 2px #0b67a5;
+  color: white;
+  text-shadow: 1px 1px 1px rgba(65, 66, 136, 0.2);
   align-self: right;
   text-align: right;
 }
 .credits a {
-  color: #027780;
+  color: #414288;
   cursor: pointer;
 }/*# sourceMappingURL=index.css.map */

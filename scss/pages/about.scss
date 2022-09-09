@@ -1,0 +1,21 @@
+@charset 'utf-8';
+
+@import "../vendor/_vendor-dir";
+@import "../base/_base-dir";
+@import "../abstracts/_abstracts-dir";
+@import "../components/header";
+
+html body {
+    background-color: white;
+}
+
+main {
+    margin-top: 2rem;
+
+    padding: 2rem;
+
+    font-size: 5rem;
+    line-height: 5rem;
+
+    color: rgba(0, 0, 0, 0.31);
+}

@@ -1,9 +1,16 @@
 @charset 'utf-8';
 
-@import "vendor/_vendor-dir";
-@import "base/_base-dir";
-@import "abstracts/_abstracts-dir";
-@import "components/psycho-circle";
+@import "../vendor/_vendor-dir";
+@import "../base/_base-dir";
+@import "../abstracts/_abstracts-dir";
+@import "../components/psycho-circle";
+
+$washed-white: #ececec;
+$header-theme-color: #ececec;
+$text-shadow-color: rgba($theme-color, 0.2);
+$text-shadow-distance: 1px;
+
+$dash-width: 5px;
 
 html body {
     width: 100%;
@@ -75,20 +82,18 @@ html body {
     }
 }
 
-$header-arrow-color: #ececec;
-
 header {
     margin-top: 5rem;
 
     max-width: 90%;
 
-    color: $header-arrow-color;
+    color: $header-theme-color;
 
     font-size: 0.7rem;
     font-weight: 700;
 
     text-align: center;
-    text-shadow: 1px 1px 1px #70a1cc;
+    text-shadow: 1px 1px $text-shadow-distance $text-shadow-color;
 
     letter-spacing: 0.4rem;
 
@@ -100,8 +105,6 @@ header {
         }
     }
 }
-
-$dash-width: 5px;
 
 main {
     min-height: 100vh;
@@ -134,6 +137,8 @@ main {
     }
 }
 
+$arrow-color: white;
+
 .introduction {
     grid-area: introduction;
 
@@ -146,7 +151,7 @@ main {
 
     // Change layout to :SplitView on large screens
     @include sm {
-        border-left: $dash-width dashed white;
+        border-left: $dash-width dashed $arrow-color;
 
         margin: 0;
         padding: 0;
@@ -157,11 +162,10 @@ main {
         text-align: left;
     }
 
-    color: #ffffff;
-
-    text-shadow: 0px 0px 5px #8fa9c0;
+    color: white;
 
     font-size: 1.5rem;
+    text-shadow: 1px 1px $text-shadow-distance $text-shadow-color;
 }
 
 .arrow {
@@ -203,10 +207,10 @@ main {
 
         span {
             min-height: 100%;
-            border-left: $dash-width dashed $header-arrow-color;
+            border-left: $dash-width dashed $header-theme-color;
 
             &.split-view {
-                border-left: $dash-width dashed white;
+                border-left: $dash-width dashed $arrow-color;
             }
         }
     }
@@ -215,10 +219,10 @@ main {
         width: $dash-width * 5;
         min-height: $dash-width * 5;
 
-        border-bottom: $dash-width dashed $header-arrow-color;
+        border-bottom: $dash-width dashed $header-theme-color;
 
         &.split-view {
-            border-bottom: $dash-width dashed white;
+            border-bottom: $dash-width dashed $arrow-color;
         }
 
         // I don't know why this has to be "3"
@@ -257,8 +261,6 @@ main {
     @include psycho-circle-button(10rem);
 }
 
-$washed-white-color: rgba(255, 255, 255, 0.762);
-
 .social {
     grid-area: social;
 
@@ -271,26 +273,15 @@ $washed-white-color: rgba(255, 255, 255, 0.762);
     margin-top: 5rem;
     margin-bottom: 2rem;
 
-    &__info,
-    &__mail {
+    &__info {
         width: min(100%, 1rem * 40);
 
         margin-bottom: 2rem;
 
+        color: $header-theme-color;
+
         font-size: 2.5rem;
-        color: $washed-white-color;
-
-        a {
-            color: $washed-white-color;
-            text-decoration: none;
-
-            $less-washed-white-color: rgba(255, 255, 255, 0.862);
-
-            &:hover {
-                color: $less-washed-white-color;
-                text-decoration: underline;
-            }
-        }
+        text-shadow: 1px 1px $text-shadow-distance $text-shadow-color;
     }
 
     &__icons {
@@ -308,7 +299,7 @@ $washed-white-color: rgba(255, 255, 255, 0.762);
             width: 50%;
             min-height: calc($dash-width / 2);
 
-            border-top: $dash-width dashed $washed-white-color;
+            border-top: $dash-width dashed $header-theme-color;
         }
 
         &__icon {
@@ -346,7 +337,7 @@ footer {
 
     color: #ffffff;
 
-    text-shadow: 0px 0px 2px #6c98b6;
+    text-shadow: 1px 1px $text-shadow-distance $text-shadow-color;
 }
 
 .greet {
@@ -364,15 +355,15 @@ footer {
     font-weight: 700;
     letter-spacing: 0.07rem;
 
-    color: #ffffff;
+    color: white;
 
-    text-shadow: 0px 0px 2px #0b67a5;
+    text-shadow: 1px 1px $text-shadow-distance $text-shadow-color;
 
     align-self: right;
     text-align: right;
 
     a {
-        color: #027780;
+        color: $theme-color;
         cursor: pointer;
     }
 }
