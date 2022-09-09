@@ -1,3 +1,7 @@
+//
+// Blog annotations logic:
+//
+
 // Collapse all explanatory content initially
 $(".annotation_content").hide()
 

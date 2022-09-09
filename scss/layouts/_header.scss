@@ -35,12 +35,12 @@ header {
 
         padding-inline: 1rem;
 
-        color: $theme-color-darker;
+        color: $theme-color;
 
         a {
             margin-inline: 1rem;
 
-            color: $theme-color-darker;
+            color: $theme-color;
             text-decoration: none;
 
             &:hover {
@@ -64,10 +64,11 @@ header {
 
     &__img {
         width: 10rem;
+        height: 10rem;
+        
         margin-top: 1rem;
         border-radius: 100%;
     }
-
 
     &__title {
         display: block;

@@ -3,7 +3,8 @@
 @import "../vendor/_vendor-dir";
 @import "../base/_base-dir";
 @import "../abstracts/_abstracts-dir";
-@import "../components/header";
+@import "../layouts/header";
+@import "../layouts/footer";
 
 html body {
     background-color: white;
