@@ -570,8 +570,8 @@ main {
 }
 .windows .window__sizer,
 .windows .window {
-  height: 50vw;
-  width: 50vw;
+  width: 100vw;
+  height: 100vh;
 }
 @media (min-width: 768px) {
   .windows .window__sizer,

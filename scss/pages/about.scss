@@ -46,7 +46,8 @@ $text-colors: (
 
     .window__sizer,
     .window {
-        @include size(50vw);
+        width: 100vw;
+        height: 100vh;
 
         @include md {
             @include size(33.33333vw);
