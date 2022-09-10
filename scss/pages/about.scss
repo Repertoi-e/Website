@@ -1,5 +1,7 @@
 @charset 'utf-8';
 
+@use "sass:list";
+
 @import "../vendor/_vendor-dir";
 @import "../base/_base-dir";
 @import "../abstracts/_abstracts-dir";
@@ -13,10 +15,57 @@ html body {
 main {
     margin-top: 2rem;
 
-    padding: 2rem;
-
     font-size: 5rem;
     line-height: 5rem;
 
     color: rgba(0, 0, 0, 0.31);
+}
+
+$retro-colors: (
+    #77774F,
+    #DEEFB7,
+    #98DFAF,
+    #414288,
+    #682D63
+);
+
+$text-colors: (
+    white,
+    black,
+    black,
+    white,
+    white
+);
+
+.windows {
+    margin-top: 6rem;
+
+    overflow-x: hidden;
+
+    .window__sizer,
+    .window {
+        @include size(50vw);
+
+        @include md {
+            @include size(33.33333vw);
+        }
+
+        @include lg {
+            @include size(25vw);
+        }
+    }
+
+    .window {
+        @for $i from 1 through length($retro-colors) {
+            $c: nth($retro-colors, $i);
+            $tc: nth($text-colors, $i);
+            $j: $i - 1;
+
+            &:nth-of-type(5n + #{$j}) {
+                color: $tc;
+                background-color: $c;
+            }
+        }
+
+    }
 }

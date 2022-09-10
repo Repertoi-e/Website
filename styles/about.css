@@ -544,8 +544,51 @@ html body {
 
 main {
   margin-top: 2rem;
-  padding: 2rem;
   font-size: 5rem;
   line-height: 5rem;
   color: rgba(0, 0, 0, 0.31);
+}
+
+.windows {
+  margin-top: 6rem;
+  overflow-x: hidden;
+}
+.windows .window__sizer,
+.windows .window {
+  height: 50vw;
+  width: 50vw;
+}
+@media (min-width: 768px) {
+  .windows .window__sizer,
+.windows .window {
+    height: 33.33333vw;
+    width: 33.33333vw;
+  }
+}
+@media (min-width: 992px) {
+  .windows .window__sizer,
+.windows .window {
+    height: 25vw;
+    width: 25vw;
+  }
+}
+.windows .window:nth-of-type(5n + 0) {
+  color: white;
+  background-color: #77774F;
+}
+.windows .window:nth-of-type(5n + 1) {
+  color: black;
+  background-color: #DEEFB7;
+}
+.windows .window:nth-of-type(5n + 2) {
+  color: black;
+  background-color: #98DFAF;
+}
+.windows .window:nth-of-type(5n + 3) {
+  color: white;
+  background-color: #414288;
+}
+.windows .window:nth-of-type(5n + 4) {
+  color: white;
+  background-color: #682D63;
 }/*# sourceMappingURL=about.css.map */
