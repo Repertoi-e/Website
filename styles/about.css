@@ -703,6 +703,9 @@ main {
     padding-inline: 2rem;
   }
 }
+.about-me pre {
+  font-family: monospace;
+}
 .about-me pre > span {
   font-family: "FiraGo", sans-serif;
 }
