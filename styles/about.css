@@ -735,22 +735,25 @@ main {
 }
 .projects__windows__sizer, .projects__windows__window {
   width: 100vw;
-  height: 100vh;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 @media (min-width: 768px) {
   .projects__windows__sizer, .projects__windows__window {
-    height: 33.33333vw;
     width: 33.33333vw;
   }
 }
 @media (min-width: 992px) {
   .projects__windows__sizer, .projects__windows__window {
-    height: 25vw;
     width: 25vw;
   }
 }
 .projects__windows__sizer:hover, .projects__windows__window:hover {
   opacity: 0.8;
+}
+.projects__windows__sizer img, .projects__windows__window img {
+  width: 100%;
 }
 @media (min-width: 768px) {
   .projects__windows__sizer {

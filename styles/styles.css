@@ -2247,32 +2247,46 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 3rem;
+}
+.projects .section-header {
+  align-self: flex-start;
+  padding-inline: 1rem;
+}
+@media (min-width: 768px) {
+  .projects {
+    margin-top: 0;
+  }
+  .projects .section-header {
+    align-self: center;
+    padding-inline: 0;
+  }
 }
 
 .projects__windows {
   position: relative;
   width: 100%;
-  overflow-x: hidden;
-}
-@media (min-width: 768px) {
-  .projects__windows {
-    margin-top: 2rem;
-  }
+  margin-top: 2rem;
 }
 .projects__windows__sizer, .projects__windows__window {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vw;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 @media (min-width: 768px) {
   .projects__windows__sizer, .projects__windows__window {
     height: 33.33333vw;
     width: 33.33333vw;
+    min-height: 33.33333vw;
   }
 }
 @media (min-width: 992px) {
   .projects__windows__sizer, .projects__windows__window {
     height: 25vw;
     width: 25vw;
+    min-height: 25vw;
   }
 }
 .projects__windows__sizer:hover, .projects__windows__window:hover {

@@ -116,18 +116,23 @@ main {
     &__sizer,
     &__window {
         width: 100vw;
-        height: 100vh;
 
         @include md {
-            @include size(33.33333vw);
+            width: 33.33333vw;
         }
 
         @include lg {
-            @include size(25vw);
+            width: 25vw;
         }
+
+        height: fit-content;
 
         &:hover {
             opacity: 0.8;
+        }
+
+        img {
+            width: 100%;
         }
     }
 
