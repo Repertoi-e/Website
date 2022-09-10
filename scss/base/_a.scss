@@ -1,0 +1,11 @@
+$link-color: #98DFAF; // including annotations
+
+a {
+    color: inherit;
+    text-decoration-color: $link-color;
+    text-decoration-thickness: 0.1rem;
+
+    &:hover {
+        color: $link-color;
+    }
+}

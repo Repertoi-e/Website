@@ -9,7 +9,6 @@
 
 $header-color: #222222;
 $main-text-color: black;
-$link-color: #98DFAF; // including annotations
 
 html body {
     background-color: white;
@@ -27,16 +26,9 @@ footer {
     width: 90vw;
     max-width: 700px;
 
-    margin-top: 5rem;
-}
-
-a {
-    color: inherit;
-    text-decoration-color: $link-color;
-    text-decoration-thickness: 0.1rem;
-
-    &:hover {
-        color: $link-color;
+    margin-top: 2rem;
+    @include md {
+        margin-top: 5rem;
     }
 }
 

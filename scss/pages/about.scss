@@ -38,7 +38,9 @@ $text-colors: (
 );
 
 .windows {
-    margin-top: 6rem;
+    @include md {
+        margin-top: 6rem;
+    }
 
     overflow-x: hidden;
 

@@ -417,6 +417,16 @@ h6 {
   font-family: "Vollkorn", serif;
 }
 
+a {
+  color: inherit;
+  -webkit-text-decoration-color: #98DFAF;
+          text-decoration-color: #98DFAF;
+  text-decoration-thickness: 0.1rem;
+}
+a:hover {
+  color: #98DFAF;
+}
+
 @font-face {
   font-family: SofiaSans;
   font-style: normal;
@@ -462,7 +472,7 @@ header {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  margin-top: 1rem;
+  margin-top: 2rem;
   width: 100%;
 }
 @media (min-width: 768px) {
@@ -474,20 +484,21 @@ header {
 .header-links__link {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   font-size: 3rem;
   padding-inline: 1rem;
   color: #414288;
 }
-@media (min-width: 768px) {
-  .header-links__link {
-    justify-content: center;
-  }
-}
 .header-links__link a {
   margin-inline: 1rem;
   color: #414288;
-  text-decoration: none;
+  -webkit-text-decoration-color: #414288;
+          text-decoration-color: #414288;
+}
+@media (min-width: 768px) {
+  .header-links__link a {
+    text-decoration: none;
+  }
 }
 .header-links__link a:hover {
   text-decoration: underline;
@@ -550,8 +561,12 @@ main {
 }
 
 .windows {
-  margin-top: 6rem;
   overflow-x: hidden;
+}
+@media (min-width: 768px) {
+  .windows {
+    margin-top: 6rem;
+  }
 }
 .windows .window__sizer,
 .windows .window {

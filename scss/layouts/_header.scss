@@ -12,7 +12,7 @@ header {
     justify-content: space-around;
 
     flex-direction: column;
-    margin-top: 1rem;
+    margin-top: 2rem;
 
     @include md {
         flex-direction: row;
@@ -25,11 +25,7 @@ header {
         width: 100%;
 
         display: flex;
-        justify-content: space-around;
-
-        @include md {
-            justify-content: center;
-        }
+        justify-content: center;
 
         font-size: 3rem;
 
@@ -41,7 +37,11 @@ header {
             margin-inline: 1rem;
 
             color: $theme-color;
-            text-decoration: none;
+            text-decoration-color: $theme-color;
+
+            @include md {
+                text-decoration: none;
+            }
 
             &:hover {
                 text-decoration: underline;
@@ -65,7 +65,7 @@ header {
     &__img {
         width: 10rem;
         height: 10rem;
-        
+
         margin-top: 1rem;
         border-radius: 100%;
     }

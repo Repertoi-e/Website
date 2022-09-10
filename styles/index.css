@@ -417,6 +417,16 @@ h6 {
   font-family: "Vollkorn", serif;
 }
 
+a {
+  color: inherit;
+  -webkit-text-decoration-color: #98DFAF;
+          text-decoration-color: #98DFAF;
+  text-decoration-thickness: 0.1rem;
+}
+a:hover {
+  color: #98DFAF;
+}
+
 @font-face {
   font-family: SofiaSans;
   font-style: normal;
