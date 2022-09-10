@@ -1,0 +1,19 @@
+@import "../base/a";
+
+.directory {
+    font-size: 1rem;
+
+    color: $header-color;
+
+    a {
+        text-decoration: none;
+    }
+
+    .separator {
+        margin-inline: 0.3rem;
+
+        color: $link-color;
+        font-size: 1.3rem;
+        text-decoration: none;
+    }
+}

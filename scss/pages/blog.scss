@@ -3,12 +3,11 @@
 @import "../vendor/_vendor-dir";
 @import "../base/_base-dir";
 @import "../abstracts/_abstracts-dir";
+@import "../components/annotations";
+@import "../components/directory";
 @import "../layouts/header";
 @import "../layouts/messages";
 @import "../layouts/footer";
-
-$header-color: #222222;
-$main-text-color: black;
 
 html body {
     background-color: white;
@@ -145,26 +144,6 @@ footer {
 
         font-family: "SofiaSans";
 
-        .directory {
-            margin-top: 4rem;
-
-            font-size: 1rem;
-
-            color: $header-color;
-
-            a {
-                text-decoration: none;
-            }
-
-            .separator {
-                margin-inline: 0.3rem;
-
-                color: $link-color;
-                font-size: 1.3rem;
-                text-decoration: none;
-            }
-        }
-
         .title_and_author {
             margin-top: 2rem;
 
@@ -270,26 +249,6 @@ footer {
             max-width: 100%;
         }
 
-        .annotation {
-            padding-left: 0.2rem;
-
-            background-color: rgba($link-color, 0.2);
-
-            cursor: help;
-
-            .annotation_bracket {
-                color: $link-color;
-            }
-
-            sup {
-                font-size: 0.75em;
-            }
-        }
-
-        .annotation_hover {
-            background-color: rgba($link-color, 0.4);
-        }
-
         .note {
             color: gray;
 
@@ -312,72 +271,5 @@ footer {
 
             font-size: 0.9rem;
         }
-    }
-
-    .annotations {
-        width: 100%;
-
-        ul {
-            list-style-type: none;
-
-            margin-left: -2rem;
-
-            @include md {
-                margin-left: 0;
-            }
-        }
-
-        li {
-            display: flex;
-            margin-top: 0.7rem;
-        }
-
-        .annotation_number {
-            color: $link-color;
-            font-size: 1.1rem;
-
-            flex-grow: 0;
-            flex-shrink: 0;
-
-            width: 1rem;
-            margin-right: 1rem;
-        }
-    }
-
-    .annotation_preview {
-        position: fixed;
-
-        bottom: 2rem;
-        right: 1rem;
-
-        font-size: 0.9rem;
-
-        display: none;
-
-        width: 100%;
-        min-width: 10rem;
-        max-width: calc((100vw - 700px) / 2 - 2.5rem);
-
-        height: fit-content;
-
-        border: solid 4px $link-color;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        padding: 1em;
-
-        background-color: white;
-
-        visibility: hidden;
-
-        @include md {
-            visibility: visible;
-        }
-    }
-
-    .annotation_preview_number {
-        color: $link-color;
-    }
-
-    .annotation_preview_content {
-        margin-top: 0.5rem;
     }
 }

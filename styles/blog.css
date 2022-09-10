@@ -420,12 +420,12 @@ h6 {
 
 a {
   color: inherit;
-  -webkit-text-decoration-color: #98DFAF;
-          text-decoration-color: #98DFAF;
+  -webkit-text-decoration-color: #414288;
+          text-decoration-color: #414288;
   text-decoration-thickness: 0.1rem;
 }
 a:hover {
-  color: #98DFAF;
+  color: #414288;
 }
 
 @font-face {
@@ -463,6 +463,113 @@ a:hover {
   font-style: italic;
   src: url(../resources/fonts/Vollkorn-Italic.woff2) format("woff2"), url(../resources/fonts/Vollkorn-Italic.woff) format("woff");
 }
+a {
+  color: inherit;
+  -webkit-text-decoration-color: #414288;
+          text-decoration-color: #414288;
+  text-decoration-thickness: 0.1rem;
+}
+a:hover {
+  color: #414288;
+}
+
+.annotation {
+  padding-left: 0.2rem;
+  background-color: rgba(65, 66, 136, 0.05);
+  cursor: help;
+}
+.annotation .annotation_bracket {
+  color: #414288;
+}
+.annotation sup {
+  font-size: 0.75em;
+}
+
+.annotation_hover {
+  background-color: rgba(65, 66, 136, 0.2);
+}
+
+.annotations {
+  width: 100%;
+}
+.annotations ul {
+  list-style-type: none;
+  margin-left: -2rem;
+}
+@media (min-width: 768px) {
+  .annotations ul {
+    margin-left: 0;
+  }
+}
+.annotations li {
+  display: flex;
+  margin-top: 0.7rem;
+}
+.annotations .annotation_number {
+  color: #414288;
+  font-size: 1.1rem;
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 1rem;
+  margin-right: 1rem;
+}
+
+.annotation_preview {
+  position: fixed;
+  bottom: 2rem;
+  right: 1rem;
+  font-size: 0.9rem;
+  display: none;
+  width: 100%;
+  min-width: 10rem;
+  max-width: calc((100vw - 700px) / 2 - 2.5rem);
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: solid 4px #414288;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 1em;
+  background-color: white;
+  visibility: hidden;
+}
+@media (min-width: 768px) {
+  .annotation_preview {
+    visibility: visible;
+  }
+}
+
+.annotation_preview_number {
+  color: #414288;
+}
+
+.annotation_preview_content {
+  margin-top: 0.5rem;
+}
+
+a {
+  color: inherit;
+  -webkit-text-decoration-color: #414288;
+          text-decoration-color: #414288;
+  text-decoration-thickness: 0.1rem;
+}
+a:hover {
+  color: #414288;
+}
+
+.directory {
+  font-size: 1rem;
+  color: #222222;
+}
+.directory a {
+  text-decoration: none;
+}
+.directory .separator {
+  margin-inline: 0.3rem;
+  color: #414288;
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+
 header {
   display: flex;
   flex-direction: column;
@@ -719,20 +826,6 @@ footer {
   flex-direction: column;
   font-family: "SofiaSans";
 }
-.article .header .directory {
-  margin-top: 4rem;
-  font-size: 1rem;
-  color: #222222;
-}
-.article .header .directory a {
-  text-decoration: none;
-}
-.article .header .directory .separator {
-  margin-inline: 0.3rem;
-  color: #98DFAF;
-  font-size: 1.3rem;
-  text-decoration: none;
-}
 .article .header .title_and_author {
   margin-top: 2rem;
   display: flex;
@@ -795,7 +888,7 @@ footer {
   margin-top: 3rem;
 }
 .article .content h4 a {
-  color: #98DFAF;
+  color: #414288;
   font-size: 0.8rem;
   text-decoration: none;
 }
@@ -811,20 +904,6 @@ footer {
   color: #232323;
   max-width: 100%;
 }
-.article .content .annotation {
-  padding-left: 0.2rem;
-  background-color: rgba(152, 223, 175, 0.2);
-  cursor: help;
-}
-.article .content .annotation .annotation_bracket {
-  color: #98DFAF;
-}
-.article .content .annotation sup {
-  font-size: 0.75em;
-}
-.article .content .annotation_hover {
-  background-color: rgba(152, 223, 175, 0.4);
-}
 .article .content .note {
   color: gray;
   margin-top: 1rem;
@@ -839,57 +918,4 @@ footer {
   margin-top: 1rem;
   margin-right: 2rem;
   font-size: 0.9rem;
-}
-.article .annotations {
-  width: 100%;
-}
-.article .annotations ul {
-  list-style-type: none;
-  margin-left: -2rem;
-}
-@media (min-width: 768px) {
-  .article .annotations ul {
-    margin-left: 0;
-  }
-}
-.article .annotations li {
-  display: flex;
-  margin-top: 0.7rem;
-}
-.article .annotations .annotation_number {
-  color: #98DFAF;
-  font-size: 1.1rem;
-  flex-grow: 0;
-  flex-shrink: 0;
-  width: 1rem;
-  margin-right: 1rem;
-}
-.article .annotation_preview {
-  position: fixed;
-  bottom: 2rem;
-  right: 1rem;
-  font-size: 0.9rem;
-  display: none;
-  width: 100%;
-  min-width: 10rem;
-  max-width: calc((100vw - 700px) / 2 - 2.5rem);
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  border: solid 4px #98DFAF;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 1em;
-  background-color: white;
-  visibility: hidden;
-}
-@media (min-width: 768px) {
-  .article .annotation_preview {
-    visibility: visible;
-  }
-}
-.article .annotation_preview_number {
-  color: #98DFAF;
-}
-.article .annotation_preview_content {
-  margin-top: 0.5rem;
 }/*# sourceMappingURL=blog.css.map */

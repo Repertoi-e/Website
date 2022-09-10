@@ -37,29 +37,67 @@
         <div class="logo">
             <h4 class="logo__title"><span>DI</span>MITAR</h4>
             <h4 class="logo__title">SOTIROV</h4>
-            <img class="logo__img" alt="A gif with surreal rolling hills, dancing in the colors of cyan, magenta, and red" src="/resources/index/hills.gif" />
+            <img class="logo__img"
+                alt="A gif with surreal rolling hills, dancing in the colors of cyan, magenta, and red"
+                src="/resources/index/hills.gif" />
         </div>
 
         <div class="header-links">
-            <div class="header-links__link">⟵<a href="/#contacts">CONT.</a></div>
+            <div class="header-links__link">⟵<a href="/#contacts">CONTACT</a></div>
             <div class="header-links__divider"></div>
             <div class="header-links__link"><a href="/blog">BLOG</a>⟶</div>
         </div>
     </header>
 
     <main>
-        <section class="windows">
-            <div class="window__sizer window">Hello</div>
-            <div class="window">Sailor</div>
-            <div class="window">Hello</div>
-            <div class="window">Sailor</div>
-            <div class="window">Hello</div>
-            <div class="window">Sailor</div>
-            <div class="window">Hello</div>
-        </section>
+        <div class="about-me">
+            <h1 class="section-header">ABOUT ME</h1>
 
-        <article class="windows">
-        </article>
+            <p>
+                In a nutshell, I was...
+            <pre>
+┌── 2003 <span>...born.</span>
+|
+<span>Then I...</span>
+|
+├── 2017 ──┬ 🏫<span>Sofia H.S.</span>
+|          | <span>of Mathematics</span>
+|   ...    |  
+├── 2020 ──┼─┬ 🎓<span> Software</span>
+|          | | <span>University</span>
+├── 2021 ──┼─┴┐ 
+|          |  ├ 💼<span> Game Dev</span>
+├── 2022 ──┘  | <span>at <a href="https://www.gameloft.com/gameloft-studios/sofia" target="_blank">Gameloft</a></span>
+| *graduated* | 
+|             | 
+└──  <span>Bright future ahead. 🚀</span>
+                </pre>
+            If you care about the details, take a peek at <a href="https://www.linkedin.com/in/sotirov-dimitar/"
+                target="_blank">LinkedIn</a>.<br>
+            </p>
+        </div>
+
+        <div class="projects">
+            <h1 class="section-header">VAULT</h1>
+
+            <div class="directory">
+                Filter:&nbsp;&nbsp;&nbsp;&nbsp;<a href="./"><b>All</b></a> <span class="separator">/</span> <a
+                    href="./">Just Code</a> <span class="separator">/</span> <a href="./">Just Misc</a>
+            </div>
+
+            <div class="projects__windows">
+                <div class="projects__windows__stamp"></div>
+                <div class="projects__windows__stamp"></div>
+                <div class="projects__windows__sizer"></div>
+                <div class="projects__windows__window">Hello</div>
+                <div class="projects__windows__window">Sailor</div>
+                <div class="projects__windows__window">Hello</div>
+                <div class="projects__windows__window">Sailor</div>
+                <div class="projects__windows__window">Hello</div>
+                <div class="projects__windows__window">Sailor</div>
+                <div class="projects__windows__window">Hello</div>
+            </div>
+        </div>
     </main>
 
     <footer>
@@ -69,12 +107,16 @@
     </footer>
 
     <script>
-        $(".windows").masonry({
-            itemSelector: ".window",
-            ccolumnWidth: '.window__sizer',
-            percentPosition: true
+        $(".projects__windows").masonry({
+            itemSelector: ".projects__windows__window",
+            ccolumnWidth: ".projects__window__sizer",
+            stamp: ".projects__windows__stamp",
+            percentPosition: true,
+            originLeft: false
         });
     </script>
+
+    <script src="/js/annotations.js"></script>
 </body>
 
 </html>

@@ -419,12 +419,12 @@ h6 {
 
 a {
   color: inherit;
-  -webkit-text-decoration-color: #98DFAF;
-          text-decoration-color: #98DFAF;
+  -webkit-text-decoration-color: #414288;
+          text-decoration-color: #414288;
   text-decoration-thickness: 0.1rem;
 }
 a:hover {
-  color: #98DFAF;
+  color: #414288;
 }
 
 @font-face {

@@ -1,4 +1,7 @@
-$link-color: #98DFAF; // including annotations
+@import "../abstracts/breakpoints";
+@import "../abstracts/variables";
+
+$link-color: $theme-color; // including annotations
 
 a {
     color: inherit;
