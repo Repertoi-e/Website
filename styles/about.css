@@ -449,7 +449,6 @@ a:hover {
 }
 @font-face {
   font-family: FiraCode;
-  font-style: italic;
   src: url(../resources/fonts/FiraCode-VF.woff2) format("woff2"), url(../resources/fonts/FiraCode-VF.woff) format("woff");
 }
 @font-face {
@@ -741,6 +740,7 @@ main {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  display: grid;
 }
 @media (min-width: 768px) {
   .projects__windows__sizer, .projects__windows__window {
@@ -753,10 +753,55 @@ main {
   }
 }
 .projects__windows__sizer:hover, .projects__windows__window:hover {
-  opacity: 0.8;
+  cursor: pointer;
 }
 .projects__windows__sizer img, .projects__windows__window img {
   width: 100%;
+  z-index: -1;
+}
+.projects__windows__sizer img, .projects__windows__sizer__photo-info, .projects__windows__window img, .projects__windows__window__photo-info {
+  grid-row: 1;
+  grid-column: 1;
+}
+.projects__windows__sizer__photo-info, .projects__windows__window__photo-info {
+  align-self: flex-end;
+  padding-inline: 0.4rem;
+  padding-bottom: 0.2rem;
+  color: rgb(192, 192, 192);
+  text-align: right;
+  font-size: 0.8em;
+  text-shadow: 1px 1px 1px rgb(54, 54, 54);
+  opacity: 0.5;
+}
+@media (min-width: 768px) {
+  .projects__windows__sizer__content, .projects__windows__window__content {
+    grid-row: 1;
+    grid-column: 1;
+  }
+}
+.projects__windows__sizer__content, .projects__windows__window__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.projects__windows__sizer__content > h2, .projects__windows__window__content > h2 {
+  padding-inline: 0.3rem;
+  color: black;
+}
+@media (min-width: 768px) {
+  .projects__windows__sizer__content > h2, .projects__windows__window__content > h2 {
+    color: white;
+  }
+}
+.projects__windows__sizer__content > p, .projects__windows__window__content > p {
+  padding-inline: 1rem;
+  color: black;
+}
+@media (min-width: 768px) {
+  .projects__windows__sizer__content > p, .projects__windows__window__content > p {
+    color: white;
+    display: none;
+  }
 }
 .projects__windows__stamp {
   position: absolute;
@@ -774,24 +819,4 @@ main {
   .projects__windows__stamp:nth-of-type(2) {
     height: 40px;
   }
-}
-.projects__windows__window:nth-of-type(5n + 0) {
-  color: white;
-  background-color: #77774F;
-}
-.projects__windows__window:nth-of-type(5n + 1) {
-  color: black;
-  background-color: #DEEFB7;
-}
-.projects__windows__window:nth-of-type(5n + 2) {
-  color: black;
-  background-color: #98DFAF;
-}
-.projects__windows__window:nth-of-type(5n + 3) {
-  color: white;
-  background-color: #414288;
-}
-.projects__windows__window:nth-of-type(5n + 4) {
-  color: white;
-  background-color: #682D63;
 }/*# sourceMappingURL=about.css.map */

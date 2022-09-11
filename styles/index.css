@@ -449,7 +449,6 @@ a:hover {
 }
 @font-face {
   font-family: FiraCode;
-  font-style: italic;
   src: url(../resources/fonts/FiraCode-VF.woff2) format("woff2"), url(../resources/fonts/FiraCode-VF.woff) format("woff");
 }
 @font-face {

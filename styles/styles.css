@@ -450,7 +450,6 @@ a:hover {
 }
 @font-face {
   font-family: FiraCode;
-  font-style: italic;
   src: url(../resources/fonts/FiraCode-VF.woff2) format("woff2"), url(../resources/fonts/FiraCode-VF.woff) format("woff");
 }
 @font-face {
@@ -1197,7 +1196,6 @@ a:hover {
 }
 @font-face {
   font-family: FiraCode;
-  font-style: italic;
   src: url(../resources/fonts/FiraCode-VF.woff2) format("woff2"), url(../resources/fonts/FiraCode-VF.woff) format("woff");
 }
 @font-face {
@@ -1984,7 +1982,6 @@ a:hover {
 }
 @font-face {
   font-family: FiraCode;
-  font-style: italic;
   src: url(../resources/fonts/FiraCode-VF.woff2) format("woff2"), url(../resources/fonts/FiraCode-VF.woff) format("woff");
 }
 @font-face {
@@ -2225,18 +2222,21 @@ main {
 }
 @media (min-width: 768px) {
   .about-me {
-    max-width: calc(33.33333vw - 20px);
+    max-width: 33.33333vw;
   }
 }
 @media (min-width: 992px) {
   .about-me {
-    max-width: calc(25vw - 20px);
+    max-width: 25vw;
   }
 }
 @media (min-width: 768px) {
   .about-me {
     padding-inline: 2rem;
   }
+}
+.about-me pre {
+  font-family: monospace;
 }
 .about-me pre > span {
   font-family: "FiraGo", sans-serif;
@@ -2269,37 +2269,71 @@ main {
   margin-top: 2rem;
 }
 .projects__windows__sizer, .projects__windows__window {
-  width: 100vw;
-  min-height: 100vw;
+  width: 100%;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  display: grid;
 }
 @media (min-width: 768px) {
   .projects__windows__sizer, .projects__windows__window {
-    height: 33.33333vw;
-    width: 33.33333vw;
-    min-height: 33.33333vw;
+    width: 50%;
   }
 }
 @media (min-width: 992px) {
   .projects__windows__sizer, .projects__windows__window {
-    height: 25vw;
-    width: 25vw;
-    min-height: 25vw;
+    width: 33.33333%;
   }
 }
 .projects__windows__sizer:hover, .projects__windows__window:hover {
-  opacity: 0.8;
+  cursor: pointer;
+}
+.projects__windows__sizer img, .projects__windows__window img {
+  width: 100%;
+  z-index: -1;
+}
+.projects__windows__sizer img, .projects__windows__sizer__photo-info, .projects__windows__window img, .projects__windows__window__photo-info {
+  grid-row: 1;
+  grid-column: 1;
+}
+.projects__windows__sizer__photo-info, .projects__windows__window__photo-info {
+  align-self: flex-end;
+  padding-inline: 0.4rem;
+  padding-bottom: 0.2rem;
+  color: rgb(192, 192, 192);
+  text-align: right;
+  font-size: 0.8em;
+  text-shadow: 1px 1px 1px rgb(54, 54, 54);
+  opacity: 0.5;
 }
 @media (min-width: 768px) {
-  .projects__windows__sizer {
-    width: calc(33.33333vw + 10px);
+  .projects__windows__sizer__content, .projects__windows__window__content {
+    grid-row: 1;
+    grid-column: 1;
   }
 }
-@media (min-width: 992px) {
-  .projects__windows__sizer {
-    width: calc(25vw + 10px);
+.projects__windows__sizer__content, .projects__windows__window__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.projects__windows__sizer__content > h2, .projects__windows__window__content > h2 {
+  padding-inline: 0.3rem;
+  color: black;
+}
+@media (min-width: 768px) {
+  .projects__windows__sizer__content > h2, .projects__windows__window__content > h2 {
+    color: white;
+  }
+}
+.projects__windows__sizer__content > p, .projects__windows__window__content > p {
+  padding-inline: 1rem;
+  color: black;
+}
+@media (min-width: 768px) {
+  .projects__windows__sizer__content > p, .projects__windows__window__content > p {
+    color: white;
+    display: none;
   }
 }
 .projects__windows__stamp {
@@ -2318,26 +2352,6 @@ main {
   .projects__windows__stamp:nth-of-type(2) {
     height: 40px;
   }
-}
-.projects__windows__window:nth-of-type(5n + 0) {
-  color: white;
-  background-color: #77774F;
-}
-.projects__windows__window:nth-of-type(5n + 1) {
-  color: black;
-  background-color: #DEEFB7;
-}
-.projects__windows__window:nth-of-type(5n + 2) {
-  color: black;
-  background-color: #98DFAF;
-}
-.projects__windows__window:nth-of-type(5n + 3) {
-  color: white;
-  background-color: #414288;
-}
-.projects__windows__window:nth-of-type(5n + 4) {
-  color: white;
-  background-color: #682D63;
 }
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -2791,7 +2805,6 @@ a:hover {
 }
 @font-face {
   font-family: FiraCode;
-  font-style: italic;
   src: url(../resources/fonts/FiraCode-VF.woff2) format("woff2"), url(../resources/fonts/FiraCode-VF.woff) format("woff");
 }
 @font-face {

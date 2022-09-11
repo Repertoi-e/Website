@@ -131,12 +131,70 @@ main {
 
         height: fit-content;
 
+        display: grid;
+
         &:hover {
-            opacity: 0.8;
+            cursor: pointer;
         }
 
         img {
             width: 100%;
+            z-index: -1;
+        }
+
+        img,
+        &__photo-info {
+            grid-row: 1;
+            grid-column: 1;
+        }
+
+        &__photo-info {
+            align-self: flex-end;
+
+            padding-inline: 0.4rem;
+            padding-bottom: 0.2rem;
+
+            color: rgb(192, 192, 192);
+
+            text-align: right;
+            font-size: 0.8em;
+            text-shadow: 1px 1px 1px rgb(54, 54, 54);
+
+            opacity: 0.5;
+        }
+
+        @include md {
+            &__content {
+                grid-row: 1;
+                grid-column: 1;
+            }
+        }
+
+        &__content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            &>h2 {
+                padding-inline: 0.3rem;
+
+                color: black;
+
+                @include md {
+                    color: white;
+                }
+            }
+
+            &>p {
+                padding-inline: 1rem;
+
+                color: black;
+
+                @include md {
+                    color: white;
+                    display: none;
+                }
+            }
         }
     }
 
@@ -159,17 +217,17 @@ main {
         }
     }
 
-    &__window {
-        @for $i from 1 through length($retro-colors) {
-            $c: nth($retro-colors, $i);
-            $tc: nth($text-colors, $i);
-            $j: $i - 1;
 
-            &:nth-of-type(5n + #{$j}) {
-                color: $tc;
-                background-color: $c;
-            }
-        }
-
-    }
+    //    &__window {
+    //      @for $i from 1 through length($retro-colors) {
+    //        $c: nth($retro-colors, $i);
+    //      $tc: nth($text-colors, $i);
+    //    $j: $i - 1;
+    //
+    //          &:nth-of-type(5n + #{$j}) {
+    //            color: $tc;
+    //          background-color: $c;
+    //    }
+    //}
+    //}*/
 }
