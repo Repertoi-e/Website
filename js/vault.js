@@ -15,7 +15,7 @@ $grid.imagesLoaded().progress(function () {
 $(window).resize(function () {
     // Must match $screen-md-min: 768px;  in scss/abstracts/_breakpoints.scss
     if ($(window).width() >= 768) {
-        $(".projects__windows__window").find("p").slideUp(100, function () { });
+        $(".projects__windows__window").find("p").hide();
     } else {
         $(".projects__windows__window").find("p").show();
     }
