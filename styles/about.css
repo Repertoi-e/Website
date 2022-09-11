@@ -703,7 +703,7 @@ main {
   }
 }
 .about-me pre {
-  font-family: monospace;
+  font-family: "FiraCode", monospace;
 }
 .about-me pre > span {
   font-family: "FiraGo", sans-serif;
