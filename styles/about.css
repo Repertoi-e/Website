@@ -731,7 +731,6 @@ main {
 }
 
 .projects__windows {
-  position: relative;
   width: 100%;
   margin-top: 2rem;
 }
@@ -744,12 +743,12 @@ main {
 }
 @media (min-width: 768px) {
   .projects__windows__sizer, .projects__windows__window {
-    width: 50%;
+    max-width: 50%;
   }
 }
 @media (min-width: 992px) {
   .projects__windows__sizer, .projects__windows__window {
-    width: 33.33333%;
+    max-width: 33.33333%;
   }
 }
 .projects__windows__sizer:hover, .projects__windows__window:hover {
@@ -783,19 +782,34 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  box-shadow: 1px 1px 5px gray;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  .projects__windows__sizer__content, .projects__windows__window__content {
+    box-shadow: inherit;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
 }
 .projects__windows__sizer__content > h2, .projects__windows__window__content > h2 {
-  padding-inline: 0.3rem;
+  padding: 1rem;
+  font-size: 1rem;
   color: black;
 }
 @media (min-width: 768px) {
   .projects__windows__sizer__content > h2, .projects__windows__window__content > h2 {
+    font-size: inherit;
+    font-style: italic;
     color: white;
+    padding: 0;
+    padding-inline: 0.3rem;
   }
 }
 .projects__windows__sizer__content > p, .projects__windows__window__content > p {
   padding-inline: 1rem;
-  color: black;
+  color: gray;
 }
 @media (min-width: 768px) {
   .projects__windows__sizer__content > p, .projects__windows__window__content > p {
@@ -805,6 +819,7 @@ main {
 }
 .projects__windows__stamp {
   position: absolute;
+  height: 0;
 }
 @media (min-width: 768px) {
   .projects__windows__stamp {

@@ -112,7 +112,6 @@ main {
 }
 
 .projects__windows {
-    position: relative;
     width: 100%;
 
     margin-top: 2rem;
@@ -122,11 +121,11 @@ main {
         width: 100%;
 
         @include md {
-            width: 50%;
+            max-width: 50%;
         }
 
         @include lg {
-            width: 33.33333%;
+            max-width: 33.33333%;
         }
 
         height: fit-content;
@@ -175,20 +174,36 @@ main {
             flex-direction: column;
             justify-content: flex-end;
 
+            box-shadow: 1px 1px 5px gray;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+
+            @include md {
+                box-shadow: inherit;
+                padding-bottom: 0;
+                margin-bottom: 0;
+            }
+
             &>h2 {
-                padding-inline: 0.3rem;
+                padding: 1rem;
+                font-size: 1rem;
 
                 color: black;
 
                 @include md {
+                    font-size: inherit;
+                    font-style: italic;
                     color: white;
+
+                    padding: 0;
+                    padding-inline: 0.3rem;
                 }
             }
 
             &>p {
                 padding-inline: 1rem;
 
-                color: black;
+                color: gray;
 
                 @include md {
                     color: white;
@@ -201,6 +216,7 @@ main {
     &__stamp {
         position: absolute;
 
+        height: 0;
         // border: 1px solid red;
 
         @include md {
@@ -216,18 +232,4 @@ main {
             }
         }
     }
-
-
-    //    &__window {
-    //      @for $i from 1 through length($retro-colors) {
-    //        $c: nth($retro-colors, $i);
-    //      $tc: nth($text-colors, $i);
-    //    $j: $i - 1;
-    //
-    //          &:nth-of-type(5n + #{$j}) {
-    //            color: $tc;
-    //          background-color: $c;
-    //    }
-    //}
-    //}*/
 }
