@@ -63,11 +63,11 @@ main {
     width: 100%;
 
     @include md {
-        max-width: calc(33.33333vw - 20px);
+        max-width: 33.33333vw;
     }
 
     @include lg {
-        max-width: calc(25vw - 20px);
+        max-width: 25vw;
     }
 
     padding-inline: 1rem;
@@ -119,14 +119,14 @@ main {
 
     &__sizer,
     &__window {
-        width: 100vw;
+        width: 100%;
 
         @include md {
-            width: 33.33333vw;
+            width: 50%;
         }
 
         @include lg {
-            width: 25vw;
+            width: 33.33333%;
         }
 
         height: fit-content;
@@ -137,16 +137,6 @@ main {
 
         img {
             width: 100%;
-        }
-    }
-
-    &__sizer {
-        @include md {
-            width: calc(33.33333vw + 10px);
-        }
-
-        @include lg {
-            width: calc(25vw + 10px);
         }
     }
 

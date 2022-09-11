@@ -690,12 +690,12 @@ main {
 }
 @media (min-width: 768px) {
   .about-me {
-    max-width: calc(33.33333vw - 20px);
+    max-width: 33.33333vw;
   }
 }
 @media (min-width: 992px) {
   .about-me {
-    max-width: calc(25vw - 20px);
+    max-width: 25vw;
   }
 }
 @media (min-width: 768px) {
@@ -737,19 +737,19 @@ main {
   margin-top: 2rem;
 }
 .projects__windows__sizer, .projects__windows__window {
-  width: 100vw;
+  width: 100%;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
 }
 @media (min-width: 768px) {
   .projects__windows__sizer, .projects__windows__window {
-    width: 33.33333vw;
+    width: 50%;
   }
 }
 @media (min-width: 992px) {
   .projects__windows__sizer, .projects__windows__window {
-    width: 25vw;
+    width: 33.33333%;
   }
 }
 .projects__windows__sizer:hover, .projects__windows__window:hover {
@@ -757,16 +757,6 @@ main {
 }
 .projects__windows__sizer img, .projects__windows__window img {
   width: 100%;
-}
-@media (min-width: 768px) {
-  .projects__windows__sizer {
-    width: calc(33.33333vw + 10px);
-  }
-}
-@media (min-width: 992px) {
-  .projects__windows__sizer {
-    width: calc(25vw + 10px);
-  }
 }
 .projects__windows__stamp {
   position: absolute;
