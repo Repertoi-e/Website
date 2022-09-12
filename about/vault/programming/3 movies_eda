@@ -1,0 +1,14 @@
+@v1
+
+@category programming
+
+@img /resources/about/vault/shave.jpg
+@title Data Science on Movies Set
+
+@lang en
+@desc Exploratory Data Analysis. Showing my thought process as I work through a giant set of data, creating visualizations, preformulating hypothesis and using ANOVA and p-test to calculate their statistical plausibility...
+
+@tags Jupyter Notebook, Python
+
+@end_meta
+

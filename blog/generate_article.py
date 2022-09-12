@@ -514,7 +514,7 @@ def try_parse_next() -> bool:
 
 
 def main():
-    global lines, line_number, windows
+    global lines, line_number
 
     if len(sys.argv) < 2:
         print("Enter content file name, pleas :)")

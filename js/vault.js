@@ -1,5 +1,7 @@
 // Handle the projects view in the about page
 
+$(".projects__windows__window").find("p").hide();
+
 var $grid = $(".projects__windows").masonry({
     itemSelector: ".projects__windows__window",
     ccolumnWidth: ".projects__window__sizer",

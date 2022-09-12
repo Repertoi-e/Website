@@ -719,6 +719,7 @@ main {
 .projects .section-header {
   align-self: flex-start;
   padding-inline: 1rem;
+  margin-top: 6rem;
 }
 @media (min-width: 768px) {
   .projects {
@@ -768,6 +769,7 @@ main {
   padding-bottom: 0.2rem;
   color: rgb(192, 192, 192);
   text-align: right;
+  font-family: "FiraCode", monospace;
   font-size: 0.8em;
   text-shadow: 1px 1px 1px rgb(54, 54, 54);
   opacity: 0.5;
@@ -814,7 +816,20 @@ main {
 @media (min-width: 768px) {
   .projects__windows__sizer__content > p, .projects__windows__window__content > p {
     color: white;
-    display: none;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  @supports (-webkit-line-clamp: 5) {
+    .projects__windows__sizer__content > p, .projects__windows__window__content > p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: initial;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+    }
   }
 }
 .projects__windows__stamp {
