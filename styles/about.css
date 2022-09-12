@@ -721,6 +721,9 @@ main {
   padding-inline: 1rem;
   margin-top: 6rem;
 }
+.projects .section-header:nth-of-type(1) {
+  margin-top: 0;
+}
 @media (min-width: 768px) {
   .projects {
     margin-top: 0;
@@ -757,7 +760,7 @@ main {
 }
 .projects__windows__sizer img, .projects__windows__window img {
   width: 100%;
-  z-index: -1;
+  z-index: -2;
 }
 .projects__windows__sizer img, .projects__windows__sizer__photo-info, .projects__windows__window img, .projects__windows__window__photo-info {
   grid-row: 1;
@@ -798,16 +801,45 @@ main {
 .projects__windows__sizer__content > h2, .projects__windows__window__content > h2 {
   padding: 1rem;
   font-size: 1rem;
+  margin-bottom: 0.1rem;
   color: black;
+  display: flex;
+  flex-wrap: wrap;
 }
 @media (min-width: 768px) {
   .projects__windows__sizer__content > h2, .projects__windows__window__content > h2 {
     font-size: inherit;
-    font-style: italic;
     color: white;
     padding: 0;
     padding-inline: 0.3rem;
   }
+}
+.projects__windows__sizer__content > h2 > span, .projects__windows__window__content > h2 > span {
+  margin-bottom: 0.3rem;
+}
+.projects__windows__sizer__content > h2 div + div, .projects__windows__window__content > h2 div + div {
+  margin-left: 8px;
+}
+.projects__windows__sizer__content > h2 div, .projects__windows__window__content > h2 div {
+  background-color: #414288;
+  border-radius: 4px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.1rem 0.1rem;
+  margin: 0.3rem;
+  margin-top: -2px;
+}
+.projects__windows__sizer__content > h2 div span, .projects__windows__window__content > h2 div span {
+  color: white;
+  margin: 6px;
+  font-size: 0.9rem;
+}
+.projects__windows__sizer__content > h2 div a, .projects__windows__window__content > h2 div a {
+  color: white;
 }
 .projects__windows__sizer__content > p, .projects__windows__window__content > p {
   padding-inline: 1rem;
@@ -831,6 +863,13 @@ main {
       -webkit-box-orient: vertical;
     }
   }
+}
+.projects__windows__sizer__overlay, .projects__windows__window__overlay {
+  grid-row: 1;
+  grid-column: 1;
+  background-color: black;
+  opacity: 0;
+  z-index: -1;
 }
 .projects__windows__stamp {
   position: absolute;

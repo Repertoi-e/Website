@@ -1,6 +1,8 @@
-from typing import Any, Callable
+from typing import Any, Callable, OrderedDict
 
 from enum import Enum
+
+from collections import OrderedDict
 
 import os
 
@@ -68,7 +70,6 @@ def try_parse_version() -> bool:
         return False
 
     version = int(rest)
-    print(f"Parsed version number: {version}")
     return True
 
 
@@ -150,7 +151,7 @@ def try_parse_meta_directive() -> bool:
     meta[directive] = meta_directives[directive](rest)
     return True
 
-html_gen: dict[str, str] = {}
+html_gen: OrderedDict[str, str] = OrderedDict()
 
 def try_parse_next() -> bool:
     global vault_html
@@ -165,10 +166,13 @@ def try_parse_next() -> bool:
 
 
 def get_vault_entry_html_from_meta(m: dict[str, Any]) -> str:
+    tags = [f"<div><span>{x.strip()}</span></div>" for x in m.get("tags", "").split(",") if len(x) > 0]
+
     html = f"""                <div class="projects__windows__window {m.get("css_class", "")}">
                     <img src="{m["img"]}">
+                    <div class="projects__windows__window__overlay"></div>
                     <div class="projects__windows__window__content">
-                        <h2>{m.get("title", "")}</h2>
+                        <h2><span>{m.get("title", "")}</span> {"".join(tags)}</h2>
                         <p>{m.get("desc", "")}</p>
                     </div>
                     <div class="projects__windows__window__photo-info">
@@ -198,19 +202,17 @@ def handle_file(p: str):
 
     doing_meta: bool = True
 
-    print("Begin")
-
     while True:
         if doing_meta:
             if try_parse_meta_directive():
                 continue
             else:
                 doing_meta = False
-                report(
-                    f"Stopped doing meta directives on this line. Any further ones will get ignored.", True)
-                print("Parsed meta:")
-                for k, v in meta.items():
-                    print(k, "=", v)
+                #report(
+                #    f"Stopped doing meta directives on this line. Any further ones will get ignored.", True)
+                #print("Parsed meta:")
+                #for k, v in meta.items():
+                #    print(k, "=", v)
                 required_meta = [ "lang", "category", "img"]
                 for r in required_meta:
                     if r not in meta:
@@ -234,6 +236,7 @@ def main():
             _, ext = os.path.splitext(p)
             if ext == ".ignore":
                 continue
+            print(p)
             handle_file(p)
 
     template_path = f"index_template.html"
@@ -241,13 +244,13 @@ def main():
         content = template.read()
 
     html_final = ""
-    for title in ["programming", "misc"]:
+    for title, html in html_gen.items():
         html_final += f"""<h1 class="section-header">{title.upper()}</h1>
             <div class="projects__windows">
                 <div class="projects__windows__stamp"></div>
                 <div class="projects__windows__stamp"></div>
                 <div class="projects__windows__sizer"></div>
-                {html_gen[title]}
+                {html}
             </div>
             """
     content = content.replace("@VAULT", html_final)

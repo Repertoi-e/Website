@@ -100,8 +100,12 @@ main {
         align-self: flex-start;
         padding-inline: 1rem;
         margin-top: 6rem;
+
+        &:nth-of-type(1) {
+            margin-top: 0;
+        }
     }
-    
+
 
     @include md {
         margin-top: 0;
@@ -140,7 +144,7 @@ main {
 
         img {
             width: 100%;
-            z-index: -1;
+            z-index: -2;
         }
 
         img,
@@ -187,22 +191,61 @@ main {
                 margin-bottom: 0;
             }
 
+            // Title
             &>h2 {
                 padding: 1rem;
                 font-size: 1rem;
+
+                margin-bottom: 0.1rem;
 
                 color: black;
 
                 @include md {
                     font-size: inherit;
-                    font-style: italic;
                     color: white;
 
                     padding: 0;
                     padding-inline: 0.3rem;
                 }
+
+                display: flex;
+                flex-wrap: wrap;
+
+                // Title text:
+                &>span {
+                    margin-bottom: 0.3rem;
+                }
+
+                // Tags:
+                div+div {
+                    margin-left: 8px;
+                }
+
+                div {
+                    background-color: $theme-color;
+                    border-radius: 4px;
+
+                    height: fit-content;
+                    width: fit-content;
+                    padding: 0.1rem 0.1rem;
+
+                    margin: 0.3rem;
+                    margin-top: -2px;
+
+                    span {
+                        color: white;
+                        margin: 6px;
+
+                        font-size: 0.9rem;
+                    }
+
+                    a {
+                        color: white;
+                    }
+                }
             }
 
+            // Desc
             &>p {
                 padding-inline: 1rem;
 
@@ -226,6 +269,15 @@ main {
                     }
                 }
             }
+        }
+
+        &__overlay {
+            grid-row: 1;
+            grid-column: 1;
+            background-color: black;
+            opacity: 0;
+
+            z-index: -1;
         }
     }
 

@@ -27,11 +27,10 @@ $(window).resize(function () {
 
 $(document).ready(function () {
     $(".projects__windows__window").hover(function () {
-        $(this).find("img").css("opacity", "0.8");
+        $(this).find(".projects__windows__window__overlay").fadeTo(100, 0.5);
         $(this).find("p").slideDown(100, function () { });
     }, function () {
-        $(this).find("img").css("opacity", "1");
-
+        $(this).find(".projects__windows__window__overlay").fadeTo(100, 0);
         // Must match $screen-md-min: 768px;  in scss/abstracts/_breakpoints.scss
         if ($(window).width() >= 768) {
             $(this).find("p").slideUp(100, function () { });
