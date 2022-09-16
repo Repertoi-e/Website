@@ -2236,7 +2236,7 @@ main {
   }
 }
 .about-me pre {
-  font-family: monospace;
+  font-family: "FiraCode", monospace;
 }
 .about-me pre > span {
   font-family: "FiraGo", sans-serif;
@@ -2252,6 +2252,10 @@ main {
 .projects .section-header {
   align-self: flex-start;
   padding-inline: 1rem;
+  margin-top: 6rem;
+}
+.projects .section-header:nth-of-type(1) {
+  margin-top: 0;
 }
 @media (min-width: 768px) {
   .projects {
@@ -2264,7 +2268,6 @@ main {
 }
 
 .projects__windows {
-  position: relative;
   width: 100%;
   margin-top: 2rem;
 }
@@ -2277,12 +2280,12 @@ main {
 }
 @media (min-width: 768px) {
   .projects__windows__sizer, .projects__windows__window {
-    width: 50%;
+    max-width: 50%;
   }
 }
 @media (min-width: 992px) {
   .projects__windows__sizer, .projects__windows__window {
-    width: 33.33333%;
+    max-width: 33.33333%;
   }
 }
 .projects__windows__sizer:hover, .projects__windows__window:hover {
@@ -2290,7 +2293,7 @@ main {
 }
 .projects__windows__sizer img, .projects__windows__window img {
   width: 100%;
-  z-index: -1;
+  z-index: -2;
 }
 .projects__windows__sizer img, .projects__windows__sizer__photo-info, .projects__windows__window img, .projects__windows__window__photo-info {
   grid-row: 1;
@@ -2302,6 +2305,7 @@ main {
   padding-bottom: 0.2rem;
   color: rgb(192, 192, 192);
   text-align: right;
+  font-family: "FiraCode", monospace;
   font-size: 0.8em;
   text-shadow: 1px 1px 1px rgb(54, 54, 54);
   opacity: 0.5;
@@ -2316,28 +2320,93 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  box-shadow: 1px 1px 5px gray;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  .projects__windows__sizer__content, .projects__windows__window__content {
+    box-shadow: inherit;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
 }
 .projects__windows__sizer__content > h2, .projects__windows__window__content > h2 {
-  padding-inline: 0.3rem;
+  padding: 1rem;
+  font-size: 1rem;
+  margin-bottom: 0.1rem;
   color: black;
+  display: flex;
+  flex-wrap: wrap;
 }
 @media (min-width: 768px) {
   .projects__windows__sizer__content > h2, .projects__windows__window__content > h2 {
+    font-size: inherit;
     color: white;
+    padding: 0;
+    padding-inline: 0.3rem;
   }
+}
+.projects__windows__sizer__content > h2 > span, .projects__windows__window__content > h2 > span {
+  margin-bottom: 0.3rem;
+}
+.projects__windows__sizer__content > h2 div + div, .projects__windows__window__content > h2 div + div {
+  margin-left: 8px;
+}
+.projects__windows__sizer__content > h2 div, .projects__windows__window__content > h2 div {
+  background-color: #414288;
+  border-radius: 4px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.1rem 0.1rem;
+  margin: 0.3rem;
+  margin-top: -2px;
+}
+.projects__windows__sizer__content > h2 div span, .projects__windows__window__content > h2 div span {
+  color: white;
+  margin: 6px;
+  font-size: 0.9rem;
+}
+.projects__windows__sizer__content > h2 div a, .projects__windows__window__content > h2 div a {
+  color: white;
 }
 .projects__windows__sizer__content > p, .projects__windows__window__content > p {
   padding-inline: 1rem;
-  color: black;
+  color: gray;
 }
 @media (min-width: 768px) {
   .projects__windows__sizer__content > p, .projects__windows__window__content > p {
     color: white;
-    display: none;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
+  @supports (-webkit-line-clamp: 5) {
+    .projects__windows__sizer__content > p, .projects__windows__window__content > p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: initial;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+    }
+  }
+}
+.projects__windows__sizer__overlay, .projects__windows__window__overlay {
+  grid-row: 1;
+  grid-column: 1;
+  background-color: black;
+  opacity: 0;
+  z-index: -1;
 }
 .projects__windows__stamp {
   position: absolute;
+  height: 0;
 }
 @media (min-width: 768px) {
   .projects__windows__stamp {
@@ -3252,7 +3321,7 @@ footer {
   background-color: #dbdbdb;
   padding: 4px;
 }
-.article .content pre {
+.article .content > pre {
   font-size: 0.8rem;
   background-color: white;
   color: #232323;

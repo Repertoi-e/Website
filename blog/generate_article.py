@@ -111,6 +111,7 @@ def get_localized_last_edit_str(d_str: str) -> str:
 def get_localized_author_me_str() -> str:
     return "by Dimitar Sotirov" if meta["lang"] == Language.ENGLISH else "- Димитър Сотиров"
 
+
 def get_localized_html_lang_meta_str() -> str:
     return '<html lang="en-GB">' if meta["lang"] == Language.ENGLISH else '<html lang="bg">'
 
@@ -119,6 +120,8 @@ class HTMLGen():
     src: list[str] = []
 
     current_message_sender: MessageSender = MessageSender.NOBODY
+
+    raw: bool = False
 
     def set_message_sender(self, message_sender: MessageSender):
         if self.current_message_sender == message_sender:
@@ -155,6 +158,11 @@ class HTMLGen():
         return self.current_message_sender != MessageSender.NOBODY
 
     def insert_text(self, content: str):
+        if self.raw:
+            self.src.append(content)
+            self.src.append("\n")
+            return
+
         if self.is_doing_messages():
             if self.current_message_sender == MessageSender.SOTI:
                 self.src.append('<span class="message_soti">')
@@ -203,7 +211,7 @@ def expect_eat_until(rest_of_this_line: str, stop: str, joiner: str = "\n", code
     lines: list[str] = []
 
     l = rest_of_this_line
-    
+
     escaped_stops = "".join(["\\" + x for x in stop])
     search_pattern = f"(?<!\\\\)(?:\\\\\\\\)*({escaped_stops})"
 
@@ -253,7 +261,8 @@ def try_parse_meta_directive() -> bool:
         "keywords": lambda rest: eat_lines_until_next_meta_directive(rest, ""),
         "tags": lambda rest: eat_lines_until_next_meta_directive(rest, ""),
         "extra_html_head": lambda rest: eat_lines_until_next_meta_directive(rest, "\n", code=True),
-        "extra_html_body": lambda rest: eat_lines_until_next_meta_directive(rest, "\n", code=True)
+        "extra_html_body": lambda rest: eat_lines_until_next_meta_directive(rest, "\n", code=True),
+        "content-jupyter": lambda rest: rest,
     }
 
     rest: str
@@ -279,7 +288,7 @@ def try_parse_meta_directive() -> bool:
     return True
 
 
-article_sections: OrderedDict[str, str] = OrderedDict()
+article_headers: OrderedDict[str, tuple[int, str]] = OrderedDict()
 
 
 def str_to_ident(x: str) -> str:
@@ -287,13 +296,13 @@ def str_to_ident(x: str) -> str:
     return x.strip("_")
 
 
-def get_article_section_html_and_save_record(x: str) -> str:
+def get_header_html_and_save_record(x: str, level: int = 2) -> str:
     ident = str_to_ident(x)
 
     conditional_arrow_str = "<a href=\"#table_of_contents\"><sup>↑</sup></a>" if "index" in meta else ""
-    result = f'<h4 id="{ident}">{x} {conditional_arrow_str}</h4>'
+    result = f'<h{level} id="{ident}">{x} {conditional_arrow_str}</h{level}>'
 
-    article_sections[ident] = x
+    article_headers[ident] = (level, x)
     return result
 
 
@@ -317,14 +326,17 @@ def handle_multiline_code(rest: str) -> tuple[str, str, bool]:
 
 
 def handle_simple_inline(rest: str, stop: str, format: str) -> tuple[str, str, bool]:
-    eaten, rest, status = expect_eat_until(rest, stop, new_lines=False, escapable=True)
+    eaten, rest, status = expect_eat_until(
+        rest, stop, new_lines=False, escapable=True)
     if not status:
         report(f'Error: Unmatched "{stop}"" in inline formatting', True)
         return "", "", False
     result = format.format(eaten)
     return result, rest, True
 
+
 annotations: list[str] = []
+
 
 def handle_note(rest: str) -> tuple[str, str, bool]:
     display, rest, status = handle_simple_inline(rest, stop="]", format="{}")
@@ -333,7 +345,8 @@ def handle_note(rest: str) -> tuple[str, str, bool]:
 
     rest, status = expect_eat(rest, "(")
     if not status:
-        report(f"Error: Expected a () group for note, which would contain the display text, e.g.: #note[content](display)", True)
+        report(
+            f"Error: Expected a () group for note, which would contain the display text, e.g.: #note[content](display)", True)
         return "", "", False
 
     content, rest, status = handle_simple_inline(rest, stop=")", format="{}")
@@ -352,7 +365,7 @@ def handle_note(rest: str) -> tuple[str, str, bool]:
                         <span class="annotation_bracket">]</span>
                     </span>
                 </span>"""
-   
+
     return result, rest, True
 
 
@@ -373,7 +386,7 @@ def handle_note_link(rest: str) -> tuple[str, str, bool]:
                         <span class="annotation_bracket">]</span>
                     </span>
                 </span>"""
-   
+
     return result, rest, True
 
 # List of inline formattings and what they do:
@@ -381,13 +394,18 @@ def handle_note_link(rest: str) -> tuple[str, str, bool]:
 # The lambda should return the resulting HTML,
 # the rest of the last line read and a status flag.
 
-# Order here matters, because e.g. just a single ` could 
+
+# Order here matters, because e.g. just a single ` could
 # get caught too early without checking for ```.
-formattings: OrderedDict[str, Callable[[str], tuple[str, str, bool]]] = OrderedDict()
+formattings: OrderedDict[str, Callable[[str],
+                                       tuple[str, str, bool]]] = OrderedDict()
 formattings["```"] = handle_multiline_code
-formattings["`"] = lambda rest: handle_simple_inline(rest, stop='`', format="<code>{}</code>")
-formattings["#bold("] = lambda rest: handle_simple_inline(rest, stop=')', format="<b>{}</b>")
-formattings["#italic("] = lambda rest: handle_simple_inline(rest, stop=')', format="<em>{}</em>")
+formattings["`"] = lambda rest: handle_simple_inline(
+    rest, stop='`', format="<code>{}</code>")
+formattings["#bold("] = lambda rest: handle_simple_inline(
+    rest, stop=')', format="<b>{}</b>")
+formattings["#italic("] = lambda rest: handle_simple_inline(
+    rest, stop=')', format="<em>{}</em>")
 formattings["#note["] = lambda rest: handle_note(rest)
 formattings["#note_link["] = lambda rest: handle_note_link(rest)
 # "#note": lambda x: x,
@@ -427,7 +445,7 @@ def handle_inline_formatting(l: str) -> tuple[str, bool]:
                 break
 
         if not done:
-            # False alarm... matched formatting first 
+            # False alarm... matched formatting first
             # symbol without it being something we recognize.
             lines.append(rest[0])
             l = rest[1:]
@@ -438,6 +456,16 @@ def handle_inline_formatting(l: str) -> tuple[str, bool]:
     if len(l) != 0:
         lines.append(l)
     return "".join(lines), True
+
+
+def turn_on_raw() -> str:
+    html_gen.raw = True
+    return ""
+
+
+def turn_off_raw() -> str:
+    html_gen.raw = False
+    return ""
 
 
 def try_parse_next() -> bool:
@@ -486,11 +514,18 @@ def try_parse_next() -> bool:
 
     # Lists of directives and the html they generate:
     directives: dict[str, Callable[[str], Any]] = {
-        "section_header": lambda x: get_article_section_html_and_save_record(x),
+        "section_header": lambda x: get_header_html_and_save_record(x, level=1),
+        "header": lambda x: get_header_html_and_save_record(x, level=2),
+        "sub_header": lambda x: get_header_html_and_save_record(x, level=3),
+        "sub_sub_header": lambda x: get_header_html_and_save_record(x, level=4),
+        "sub_sub_sub_header": lambda x: get_header_html_and_save_record(x, level=5),
+        "sub_sub_sub_sub_header": lambda x: get_header_html_and_save_record(x, level=6),
         "note": lambda x: f'<span class="note">{x}</span>',
         "center": lambda x: f'<p class="centered">{x}</p>',
         "index": lambda x: f'@INDEX',
         "author": lambda x: f'@AUTHOR',
+        "raw": lambda x: turn_on_raw(),
+        "no_raw": lambda x: turn_off_raw(),
     }
 
     status: bool
@@ -620,12 +655,30 @@ def main():
 
     index_html = ""
     if "index" in meta:
-        index_html = '<div class="index"><h4 id="table_of_contents">Table of Contents</h4><ul>'
-        for section_ident, section in article_sections.items():
-            index_html += f'<li><a href="#{section_ident}">{section}</a></li>'
-        index_html += "</ul></div>"
+        index_html = '<div class="index"><h1 id="table_of_contents">Table of Contents</h1><ul>'
+
+        last_level: int = 0
+        for header_ident, (level, header) in article_headers.items():
+            if level > last_level:
+                # Push
+                index_html += "<ul><li>" * max(0, level - last_level - 1)
+                index_html += "<ul>"
+            else:
+                # Pop as needed (may be 0 pops)
+                index_html += "</li></ul>" * (last_level - level)
+
+                index_html += "</li>"
+
+            index_html += f'<li><a href="#{header_ident}">{header}</a>'
+            last_level = level
+
+        index_html += "</li></ul></div>"
 
     content = content.replace("@CONTENT", html_gen.get_baked_src())
+    if "content-jupyter" in meta:
+        content = content.replace(
+            '<div class="content">', '<div class="content-jupyter">')
+
     content = content.replace("@INDEX", index_html)
     content = content.replace("@EXTRA_HEAD", meta.get("extra_html_head", ""))
     content = content.replace("@EXTRA_BODY", meta.get("extra_html_body", ""))
