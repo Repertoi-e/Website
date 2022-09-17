@@ -390,27 +390,27 @@ select {
 }
 
 h1 {
-  font-size: 129.6157203121%;
+  font-size: 236.8593037%;
 }
 
 h2 {
-  font-size: 121.4767763%;
+  font-size: 177.6889%;
 }
 
 h3 {
-  font-size: 113.8489%;
+  font-size: 133.3%;
 }
 
 h4 {
-  font-size: 106.7%;
-}
-
-h5 {
   font-size: 100%;
 }
 
+h5 {
+  font-size: 75.0187546887%;
+}
+
 h6 {
-  font-size: 93.7207122774%;
+  font-size: 56.2781355504%;
 }
 
 :root {

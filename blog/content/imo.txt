@@ -52,7 +52,7 @@ The idea here is not simply for me to present you #italic(a) solution, but rathe
 
 #index
 
-#section_header The Story
+#header The Story
 
 It's... about problem 6 from the 1988 <a href="https://www.imo-official.org/" target="_blank">IMO</a>. I got obsessed over it a few days ago when Numberphile uploaded a video, featuring #note[Zvezdelina Stankova](Btw, both Zvezdelina and Emanouil are Bulgarians, so this resonates with me on even one more dimension :\)), the only girl to solve the problem at the competition, who shares #note_link[Emanouil Atanassov]'s solution, for which he won a special brilliancy award.
 
@@ -60,7 +60,7 @@ It's... about problem 6 from the 1988 <a href="https://www.imo-official.org/" ta
 
 Watching the original video first is not #note[mandatory](I will still give an overview of the solution Zvezda talks about!), since here I'll focus more on the problem-solving strategy.
 
-#section_header The Statement
+#header The Statement
 
 Let $a$ and $b$ be natural numbers, such that $1 + ab$ divides $a^2 + b^2$.
 Prove that 
@@ -106,7 +106,7 @@ $$r = \frac{a^2 + b^2}{1 + ab} = \frac{b^2 + a^2}{1 + ba}$$
 Before and after - it's the same statement. So that implies that any solution we find also has a twin. So from the earlier example $(a, b) = (30, 112),\ r = 4$ is also a solution.
 
 
-#section_header Constraints
+#header Constraints
 
 There are #bold(3) unknowns here, so you might get stumbled and think - there's nothing much to do with rearranging #bold(one) equation without having more information beforehand - without having something to constrain it.
 
@@ -121,7 +121,7 @@ Don't worry, we are not going to solve this monster. That's not important here. 
 Now we can solve for either $x$ or $y$ (eliminating one more variable), and then use the second line to finally arrive at a solution. After that we back-track to all the relationships till we get a triplet $(x, y, z)$, which is a solution to the whole system. We might get 0 solutions, infinitely many, or a couple, but the method is the same. Not every equation can have one its variables isolated on one side-though, so this can sometimes fail, just be wary!
 
 
-#section_header ...constants, parameters and variables?
+#header ...constants, parameters and variables?
 
 This however, is not the route we're going to take with the IMO problem. 
 
@@ -140,7 +140,7 @@ I hope you've seen how "wavy" and almost artificial the definition of parameters
 In the context of Machine Learning we can even talk about hyper-parameters, which are another level "up" the hierarchy of "variability". But that's just a note that there can be more than three levels (there can be even hyper-hyper-parameters).
 
 
-#section_header First Insight: Promote $r$ to a parameter
+#header First Insight: Promote $r$ to a parameter
 
 As Zvezda says in the video, doing this is something non-trivial. You don't just casually go around in problems, fixing one of the variables to a parameter. But in this case it just so happens this is a really productive way to crack the problem.
 
@@ -192,7 +192,7 @@ Hold on. What did we just do? We used the original fraction, transformed it into
 Overall, if we have a pair $(a, b)$ for which we know is a solution. Then we've shown that $(rb - a, b)$ must also be a solution, where $rb - a$ can potentially be zero (and that's what we'll tackle now).
 
 
-#section_header Second Insight: Can 0 be a solution?
+#header Second Insight: Can 0 be a solution?
 
 If you were especially thoughtful in the beginning when searching for a pair $(a, b)$ for which $r$ is a perfect square, you might have wondered, what if one of the numbers is zero?
 
@@ -227,7 +227,7 @@ In this case we got a whole family of solutions: $...$, $(30, 112)$, $(30, 8)$, 
 The green plot is #italic(all) of the solutions to the IMO statement (even non-integer) for a fixed $r = 4$. It's symmetric because $a$ and $b$ are interchangable (where the axes here represent $a$ and $b$). With blue points I've marked the first two integer solutions. You can see how all solution pairs sort of "jump" between each other (remember how we transformed the expression earlier into a quadratic equation with two solutions). In general it appears that you can continue jumping by choosing either $a$ and $b$ - there are always two ways to go - except when you are at $0$.
 
 
-#section_header Releasing $r$
+#header Releasing $r$
 
 But... the implications here are even larger. Let's go in the other direction - start by not knowing $r$. We can start with ANY pair $(a, b)$, and by choosing the lower number #italic(it seems like) we will eventually reach $0$. When we do, the equation becomes in the form:
 
@@ -245,7 +245,7 @@ You might wonder what will happen if after taking a step, one of the numbers goe
 
 Also go back to appreciate what we did with $r$. We fixed it as a parameter in order to be able to look at concrete fixed "sub-problem", but still let ourselves a backdoor of sorts - now, when the time came, we reasoned about $r$ as if we didn't know it's value at all!
 
-#section_header Third Insight: The Power of Induction &#10024;
+#header Third Insight: The Power of Induction &#10024;
 
 The elephant in the room of the first paragraph of the previous section is: "...#italic(it seems like) you will eventually reach $0$". Well, when doing technical proofs "it seems like" is not really enough. We have to formalize it. Here we'll take time to think about how we use #italic(induction) to wrap the solution into a more rigorous package.
 
@@ -333,7 +333,7 @@ We can continue this discussion until infinity. The point here to take is that w
 ... let's just go back to our land of familiar math. One that is logical and seems to makes sense for most of our daily lives. Where addition and multiplication is commutative, induction is intuitive. We still have an Olympiad problem to wrap up!
 
 
-#section_header Wrapping up our proof
+#header Wrapping Up Our Proof
 
 There is another variation of induction - finite induction. In our case we have to show that eventually in a pair $(a, b)$ one of the terms will go down to zero (without loss of generality it doesn't matter which, it's symmetric).
 
@@ -346,7 +346,7 @@ In any case, once this is settled, we're essentially done. For any whole numbere
 Phew.
 
 
-#section_header Conclusion
+#header Conclusion
 
 I hope I've shown you how 3 clever insights can work together to create a beautiful solution to the question which still holds reputation of being one of the hardest ever set on the IMO. It's one of few times competitive mathematics has sparked research into a topic now known as proof by <a href="https://brilliant.org/wiki/vieta-root-jumping/" target="_blank">Vieta jumping</a>, if you want to explore it more.
 
@@ -359,7 +359,7 @@ Anyways, hope you enjoyed, bye for now <3.
 #author
 
 
-#section_header Some videos which made this possible
+#header Some Videos Which Made This Possible
 
 1. <a href="https://www.youtube.com/watch?v=NcaYEaVTA4g" target="_blank">Original Numberphile video</a> which inspired this post (also found at the beginning).
 

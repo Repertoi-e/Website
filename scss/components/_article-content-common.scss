@@ -1,0 +1,103 @@
+
+@mixin article-content-common() {
+    & {
+        iframe {
+            margin-top: 10px;
+        }
+
+        .index {
+            width: 100%;
+
+            &>ul>ul {
+                list-style-type: none;
+            }
+
+            &>ul {
+                padding-inline-start: 0;
+            }
+
+            &>ul>ul>li::before {
+                content: '\27F6';
+                margin-right: 0.2rem;
+
+                margin-left: -2rem;
+
+                @include md {
+                    margin-left: 0;
+                }
+            }
+
+            a {
+                text-decoration: none;
+            }
+        }
+
+        p {
+            width: 100%;
+
+            &.centered {
+                text-align: center;
+            }
+
+            margin-top: 1rem;
+        }
+
+        .note {
+            color: gray;
+
+            margin-top: 1rem;
+
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+
+            font-size: 0.9rem;
+
+            text-align: center;
+        }
+
+        .author {
+            text-align: right;
+
+            width: 100%;
+
+            margin-top: 1rem;
+            margin-right: 2rem;
+
+            font-size: 0.9rem;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            align-self: flex-start;
+            
+            a {
+                color: $link-color;
+
+                font-size: 0.65em;
+                text-decoration: none;
+            }
+        }
+
+        h1, h2 {
+            margin-top: 3rem;
+        }
+
+        h3, h4, h5, h6 {
+            margin-top: 2rem;
+
+            padding-left: 0.5rem;
+            color: #7c7c7c;
+        }
+
+        h4, h5, h6 {
+            padding-left: 1rem;
+
+            color: #444444;
+            font-style: italic;
+        }
+        
+        h5, h6 {
+            margin-bottom: -1em;
+        }
+    }
+}

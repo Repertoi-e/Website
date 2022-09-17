@@ -295,7 +295,6 @@ def str_to_ident(x: str) -> str:
     x = re.sub(r'\W+|^(?=\d)', '_', x.lower())
     return x.strip("_")
 
-
 def get_header_html_and_save_record(x: str, level: int = 2) -> str:
     ident = str_to_ident(x)
 
@@ -346,7 +345,7 @@ def handle_note(rest: str) -> tuple[str, str, bool]:
     rest, status = expect_eat(rest, "(")
     if not status:
         report(
-            f"Error: Expected a () group for note, which would contain the display text, e.g.: #note[content](display)", True)
+            f"Error: Expected a () group for note, which would contain the content, e.g.: #note[display](content)", True)
         return "", "", False
 
     content, rest, status = handle_simple_inline(rest, stop=")", format="{}")
@@ -389,6 +388,25 @@ def handle_note_link(rest: str) -> tuple[str, str, bool]:
 
     return result, rest, True
 
+def handle_ext_link(rest: str) -> tuple[str, str, bool]:
+    display, rest, status = handle_simple_inline(rest, stop="]", format="{}")
+    if not status:
+        return "", "", False
+
+    rest, status = expect_eat(rest, "(")
+    if not status:
+        report(
+            f"Error: Expected a () group for external link, which would contain the href, e.g.: #ext_link[display](href)", True)
+        return "", "", False
+
+    href, rest, status = handle_simple_inline(rest, stop=")", format="{}")
+    if not status:
+        return "", "", False
+
+    result = f'<a href="{href}" target="_blank">{display}</a>'
+    return result, rest, True
+
+
 # List of inline formattings and what they do:
 
 # The lambda should return the resulting HTML,
@@ -408,6 +426,8 @@ formattings["#italic("] = lambda rest: handle_simple_inline(
     rest, stop=')', format="<em>{}</em>")
 formattings["#note["] = lambda rest: handle_note(rest)
 formattings["#note_link["] = lambda rest: handle_note_link(rest)
+formattings["#ext_link["] = lambda rest: handle_ext_link(rest)
+
 # "#note": lambda x: x,
 # "#note_link": lambda x: x,
 
@@ -514,7 +534,7 @@ def try_parse_next() -> bool:
 
     # Lists of directives and the html they generate:
     directives: dict[str, Callable[[str], Any]] = {
-        "section_header": lambda x: get_header_html_and_save_record(x, level=1),
+        "big_header": lambda x: f"<h1>{x}</h1>",
         "header": lambda x: get_header_html_and_save_record(x, level=2),
         "sub_header": lambda x: get_header_html_and_save_record(x, level=3),
         "sub_sub_header": lambda x: get_header_html_and_save_record(x, level=4),
@@ -537,7 +557,7 @@ def try_parse_next() -> bool:
     rest = rest.strip()
 
     if not status:
-        report(f'Expected directive. Unknown one encountered: "#{l}"')
+        report(f'Expected directive. Unknown one encountered: "{l}"')
         report(
             f'Here is a list known ones: #{", #".join(directives.keys())}')
         return False
@@ -655,9 +675,9 @@ def main():
 
     index_html = ""
     if "index" in meta:
-        index_html = '<div class="index"><h1 id="table_of_contents">Table of Contents</h1><ul>'
+        index_html = '<div class="index"><h3 id="table_of_contents">Table of Contents</h3><ul>'
 
-        last_level: int = 0
+        last_level: int = 1
         for header_ident, (level, header) in article_headers.items():
             if level > last_level:
                 # Push

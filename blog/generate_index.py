@@ -2,12 +2,14 @@ import os
 
 import re
 
+from datetime import datetime
+
 def main(silent: bool = False):
     template_path = f"index_template.html"
     with open(template_path, "rt", encoding="utf-8") as template:
         content = template.read()
 
-    article_links_html = ""
+    articles: list[tuple[str, str, str, str]] = []
 
     for subdir, dirs, _ in os.walk("./"):
         for d in dirs:
@@ -28,14 +30,23 @@ def main(silent: bool = False):
                 if len(t) == 0: continue
                 tags_html += f'<div><span>{t}</span></div>\n'
 
-            html = f"""<div class="article-links__link">
+            articles.append((tags_html, d, title, date))
+
+    article_links_html = ""
+
+    def get_int_from_time(x: str):
+        d = datetime.strptime(x, "%d.%m.%Y")
+        return int(d.strftime("%Y%m%d"))
+
+    for tags_html, link, title, date in sorted(articles, key=lambda x: get_int_from_time(x[3])):
+        html = f"""<div class="article-links__link">
                 <div>
                     <div class="article-links__link__tags">
                         {tags_html}
                     </div>
                     <span class="article-links__link__title">
                         <span>⟶</span>
-                        <a href="./{d}/">
+                        <a href="./{link}/">
                             <h3>{title}</h3>
                         </a>
                     </span>
@@ -48,7 +59,7 @@ def main(silent: bool = False):
             </div>
             """
 
-            article_links_html += html
+        article_links_html += html
 
     content = content.replace("@ARTICLE_LINKS", article_links_html) 
 

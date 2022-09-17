@@ -391,27 +391,27 @@ select {
 }
 
 h1 {
-  font-size: 129.6157203121%;
+  font-size: 236.8593037%;
 }
 
 h2 {
-  font-size: 121.4767763%;
+  font-size: 177.6889%;
 }
 
 h3 {
-  font-size: 113.8489%;
+  font-size: 133.3%;
 }
 
 h4 {
-  font-size: 106.7%;
-}
-
-h5 {
   font-size: 100%;
 }
 
+h5 {
+  font-size: 75.0187546887%;
+}
+
 h6 {
-  font-size: 93.7207122774%;
+  font-size: 56.2781355504%;
 }
 
 :root {
@@ -462,58 +462,6 @@ a:hover {
   font-style: italic;
   src: url(../resources/fonts/Vollkorn-Italic.woff2) format("woff2"), url(../resources/fonts/Vollkorn-Italic.woff) format("woff");
 }
-@-webkit-keyframes psycho-circle-anim {
-  0% {
-    transform: rotate(0deg) scale(1) translate(0, 0);
-  }
-  33% {
-    transform: rotate(360deg) scale(1) translate(3px, 3px);
-  }
-  66% {
-    transform: rotate(720deg) scale(1) translate(-3px, -3px);
-  }
-  100% {
-    transform: rotate(1080deg) scale(1) translate(0, 0);
-  }
-}
-@keyframes psycho-circle-anim {
-  0% {
-    transform: rotate(0deg) scale(1) translate(0, 0);
-  }
-  33% {
-    transform: rotate(360deg) scale(1) translate(3px, 3px);
-  }
-  66% {
-    transform: rotate(720deg) scale(1) translate(-3px, -3px);
-  }
-  100% {
-    transform: rotate(1080deg) scale(1) translate(0, 0);
-  }
-}
-a {
-  color: inherit;
-  -webkit-text-decoration-color: #414288;
-          text-decoration-color: #414288;
-  text-decoration-thickness: 0.1rem;
-}
-a:hover {
-  color: #414288;
-}
-
-.directory {
-  font-size: 1rem;
-  color: #222222;
-}
-.directory a {
-  text-decoration: none;
-}
-.directory .separator {
-  margin-inline: 0.3rem;
-  color: #414288;
-  font-size: 1.3rem;
-  text-decoration: none;
-}
-
 a {
   color: inherit;
   -webkit-text-decoration-color: #414288;
@@ -597,6 +545,59 @@ a:hover {
   margin-top: 0.5rem;
 }
 
+a {
+  color: inherit;
+  -webkit-text-decoration-color: #414288;
+          text-decoration-color: #414288;
+  text-decoration-thickness: 0.1rem;
+}
+a:hover {
+  color: #414288;
+}
+
+.directory {
+  font-size: 1rem;
+  color: #222222;
+}
+.directory a {
+  text-decoration: none;
+}
+.directory .separator {
+  margin-inline: 0.3rem;
+  color: #414288;
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+
+@-webkit-keyframes psycho-circle-anim {
+  0% {
+    transform: rotate(0deg) scale(1) translate(0, 0);
+  }
+  33% {
+    transform: rotate(360deg) scale(1) translate(3px, 3px);
+  }
+  66% {
+    transform: rotate(720deg) scale(1) translate(-3px, -3px);
+  }
+  100% {
+    transform: rotate(1080deg) scale(1) translate(0, 0);
+  }
+}
+
+@keyframes psycho-circle-anim {
+  0% {
+    transform: rotate(0deg) scale(1) translate(0, 0);
+  }
+  33% {
+    transform: rotate(360deg) scale(1) translate(3px, 3px);
+  }
+  66% {
+    transform: rotate(720deg) scale(1) translate(-3px, -3px);
+  }
+  100% {
+    transform: rotate(1080deg) scale(1) translate(0, 0);
+  }
+}
 header {
   display: flex;
   flex-direction: column;
@@ -617,7 +618,6 @@ header {
   }
 }
 .header-links__link {
-  width: 100%;
   display: flex;
   justify-content: center;
   font-size: 3rem;
@@ -1137,27 +1137,27 @@ select {
 }
 
 h1 {
-  font-size: 129.6157203121%;
+  font-size: 236.8593037%;
 }
 
 h2 {
-  font-size: 121.4767763%;
+  font-size: 177.6889%;
 }
 
 h3 {
-  font-size: 113.8489%;
+  font-size: 133.3%;
 }
 
 h4 {
-  font-size: 106.7%;
-}
-
-h5 {
   font-size: 100%;
 }
 
+h5 {
+  font-size: 75.0187546887%;
+}
+
 h6 {
-  font-size: 93.7207122774%;
+  font-size: 56.2781355504%;
 }
 
 :root {
@@ -1923,27 +1923,27 @@ select {
 }
 
 h1 {
-  font-size: 129.6157203121%;
+  font-size: 236.8593037%;
 }
 
 h2 {
-  font-size: 121.4767763%;
+  font-size: 177.6889%;
 }
 
 h3 {
-  font-size: 113.8489%;
+  font-size: 133.3%;
 }
 
 h4 {
-  font-size: 106.7%;
-}
-
-h5 {
   font-size: 100%;
 }
 
+h5 {
+  font-size: 75.0187546887%;
+}
+
 h6 {
-  font-size: 93.7207122774%;
+  font-size: 56.2781355504%;
 }
 
 :root {
@@ -2121,7 +2121,6 @@ header {
   }
 }
 .header-links__link {
-  width: 100%;
   display: flex;
   justify-content: center;
   font-size: 3rem;
@@ -2815,27 +2814,27 @@ select {
 }
 
 h1 {
-  font-size: 129.6157203121%;
+  font-size: 236.8593037%;
 }
 
 h2 {
-  font-size: 121.4767763%;
+  font-size: 177.6889%;
 }
 
 h3 {
-  font-size: 113.8489%;
+  font-size: 133.3%;
 }
 
 h4 {
-  font-size: 106.7%;
-}
-
-h5 {
   font-size: 100%;
 }
 
+h5 {
+  font-size: 75.0187546887%;
+}
+
 h6 {
-  font-size: 93.7207122774%;
+  font-size: 56.2781355504%;
 }
 
 :root {
@@ -3013,7 +3012,6 @@ header {
   }
 }
 .header-links__link {
-  width: 100%;
   display: flex;
   justify-content: center;
   font-size: 3rem;
@@ -3145,6 +3143,7 @@ html body {
   background-color: white;
   display: flex;
   flex-direction: column;
+  padding: 0;
 }
 
 main,
@@ -3254,7 +3253,7 @@ footer {
   display: flex;
   flex-direction: column;
 }
-.article .header .title_and_author .title {
+.article .header .title_and_author .title h2 {
   font-size: 2rem;
   line-height: 2rem;
   color: #222222;
@@ -3276,24 +3275,129 @@ footer {
   font-size: 0.8rem;
   color: #232323;
 }
-.article .content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.article .content-jupyter {
+  margin-left: -2rem;
 }
-.article .content .index {
+.article .content-jupyter iframe {
+  margin-top: 10px;
+}
+.article .content-jupyter .index {
   width: 100%;
 }
-.article .content .index ul {
+.article .content-jupyter .index > ul > ul {
   list-style-type: none;
 }
-.article .content .index li::before {
+.article .content-jupyter .index > ul {
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
+}
+.article .content-jupyter .index > ul > ul > li::before {
   content: "⟶";
   margin-right: 0.2rem;
   margin-left: -2rem;
 }
 @media (min-width: 768px) {
-  .article .content .index li::before {
+  .article .content-jupyter .index > ul > ul > li::before {
+    margin-left: 0;
+  }
+}
+.article .content-jupyter .index a {
+  text-decoration: none;
+}
+.article .content-jupyter p {
+  width: 100%;
+  margin-top: 1rem;
+}
+.article .content-jupyter p.centered {
+  text-align: center;
+}
+.article .content-jupyter .note {
+  color: gray;
+  margin-top: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.article .content-jupyter .author {
+  text-align: right;
+  width: 100%;
+  margin-top: 1rem;
+  margin-right: 2rem;
+  font-size: 0.9rem;
+}
+.article .content-jupyter h1, .article .content-jupyter h2, .article .content-jupyter h3, .article .content-jupyter h4, .article .content-jupyter h5, .article .content-jupyter h6 {
+  align-self: flex-start;
+}
+.article .content-jupyter h1 a, .article .content-jupyter h2 a, .article .content-jupyter h3 a, .article .content-jupyter h4 a, .article .content-jupyter h5 a, .article .content-jupyter h6 a {
+  color: #414288;
+  font-size: 0.65em;
+  text-decoration: none;
+}
+.article .content-jupyter h1, .article .content-jupyter h2 {
+  margin-top: 3rem;
+}
+.article .content-jupyter h3, .article .content-jupyter h4, .article .content-jupyter h5, .article .content-jupyter h6 {
+  margin-top: 2rem;
+  padding-left: 0.5rem;
+  color: #7c7c7c;
+}
+.article .content-jupyter h4, .article .content-jupyter h5, .article .content-jupyter h6 {
+  padding-left: 1rem;
+  color: #444444;
+  font-style: italic;
+}
+.article .content-jupyter h5, .article .content-jupyter h6 {
+  margin-bottom: -1em;
+}
+@media (min-width: 768px) {
+  .article .content-jupyter {
+    margin-left: -5.1rem;
+  }
+}
+.article .content-jupyter pre {
+  overflow-x: auto;
+}
+.article .content-jupyter .highlight > pre {
+  font-size: 0.9em;
+}
+.article .content-jupyter h1 a, .article .content-jupyter h2 a, .article .content-jupyter h3 a, .article .content-jupyter h4 a, .article .content-jupyter h5 a, .article .content-jupyter h6 a {
+  color: #414288;
+  font-size: 0.65em;
+  text-decoration: none;
+}
+.article .content-jupyter h2 {
+  margin-top: 1rem;
+}
+.article .content-jupyter h3, .article .content-jupyter h4, .article .content-jupyter h5, .article .content-jupyter h6 {
+  margin-top: 0;
+}
+.article .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.article .content iframe {
+  margin-top: 10px;
+}
+.article .content .index {
+  width: 100%;
+}
+.article .content .index > ul > ul {
+  list-style-type: none;
+}
+.article .content .index > ul {
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
+}
+.article .content .index > ul > ul > li::before {
+  content: "⟶";
+  margin-right: 0.2rem;
+  margin-left: -2rem;
+}
+@media (min-width: 768px) {
+  .article .content .index > ul > ul > li::before {
     margin-left: 0;
   }
 }
@@ -3307,26 +3411,6 @@ footer {
 .article .content p.centered {
   text-align: center;
 }
-.article .content h4 {
-  margin-top: 3rem;
-}
-.article .content h4 a {
-  color: #414288;
-  font-size: 0.8rem;
-  text-decoration: none;
-}
-.article .content code {
-  font-family: "FiraCode";
-  font-size: 0.9rem;
-  background-color: #dbdbdb;
-  padding: 4px;
-}
-.article .content > pre {
-  font-size: 0.8rem;
-  background-color: white;
-  color: #232323;
-  max-width: 100%;
-}
 .article .content .note {
   color: gray;
   margin-top: 1rem;
@@ -3337,8 +3421,45 @@ footer {
   text-align: center;
 }
 .article .content .author {
-  align-self: flex-end;
+  text-align: right;
+  width: 100%;
   margin-top: 1rem;
   margin-right: 2rem;
   font-size: 0.9rem;
+}
+.article .content h1, .article .content h2, .article .content h3, .article .content h4, .article .content h5, .article .content h6 {
+  align-self: flex-start;
+}
+.article .content h1 a, .article .content h2 a, .article .content h3 a, .article .content h4 a, .article .content h5 a, .article .content h6 a {
+  color: #414288;
+  font-size: 0.65em;
+  text-decoration: none;
+}
+.article .content h1, .article .content h2 {
+  margin-top: 3rem;
+}
+.article .content h3, .article .content h4, .article .content h5, .article .content h6 {
+  margin-top: 2rem;
+  padding-left: 0.5rem;
+  color: #7c7c7c;
+}
+.article .content h4, .article .content h5, .article .content h6 {
+  padding-left: 1rem;
+  color: #444444;
+  font-style: italic;
+}
+.article .content h5, .article .content h6 {
+  margin-bottom: -1em;
+}
+.article .content code {
+  font-family: "FiraCode";
+  font-size: 0.9rem;
+  background-color: #dbdbdb;
+  padding: 4px;
+}
+.article .content pre {
+  font-size: 0.8rem;
+  background-color: white;
+  color: #232323;
+  max-width: 100%;
 }/*# sourceMappingURL=styles.css.map */

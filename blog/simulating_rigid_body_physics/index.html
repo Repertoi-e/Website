@@ -108,7 +108,7 @@ init_mathjax();
                     </div>
 
                     <div class="edit_date">
-                        <p>Last edited 16.09.2022</p>
+                        <p>Last edited 17.09.2022</p>
                     </div>
                 </div>
             </div>
@@ -116,7 +116,7 @@ init_mathjax();
             <div class="divider"></div>
 
             <div class="content-jupyter">
-                <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+                <div class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -165,7 +165,15 @@ init_mathjax();
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Want to know how to do a full-blown physics simulation of rigid bodies and collisions between them? In this in-depth tutorial I share the knowledge I gained from the time I wondered the same...</p>
+<p>Want to know how to do a full-blown physics simulation of <span class="annotation annotation_1">
+                    <span class="annotation_inline" id="annotation_inline_1">rigid bodies</span>
+                    <sup><a class="annotation_link" href="#annotation_1" style="display:none">01</a></sup>
+                    <span class="annotation_content" style="display:none">
+                        <span class="annotation_bracket">[</span>
+                        <span class="annotation_content_raw">Bodies that does not deform on contact. A completely rigid body doesn't exist in real life since all bodies break under high enough pressure. For the purpose of simulation we assume they are unbreakable.</span>
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span> and collisions between them? In this in-depth tutorial I share the knowledge I gained from the time I wondered the same...</p>
 <p>When simulating physics we show graphically the interaction between objects, trying to model real-life phenomena - mass, acceleration/velocity, forces, fluids, heat, soft/rigid bodies, etc. This is very useful and has enormous practical applications for engineering, physics, chemistry and of course for games and entertainment!</p>
 <p>Here we'll explore how you can take equations of motion from physics and apply them to bodies, the math behind checking for intersecting objects, different types of collision handling. Are you up for the challenge?</p>
 <p>I'll assume you have basic knowledge of Classical Mechanics though - forces, Newton's laws, torque.. so I won't take time to fully explain every detail. If you are struggling with the formulas, though, I suggest quickly looking through some materials, e.g. <a href="https://www.khanacademy.org/science/physics#forces-newtons-laws">Khan Academy</a> has a good course on Physics! :)</p>
@@ -179,15 +187,16 @@ init_mathjax();
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="visualization">Visualization <a href="#table_of_contents"><sup>↑</sup></a></h1><ul>
+<h2 id="visualization">Visualization <a href="#table_of_contents"><sup>↑</sup></a></h2><ul>
 <li><p><em>At first I tried making a 60 fps interactive application in Jupyter notebook, but that, as intuition should've told me, didn't go well. I decided to use a graphics library I've been working on and just interface C++ with Python. So the resulting physics code is entirely written in Python while the graphics is sent to C++ and rendered with DirectX.</em></p>
 </li>
 <li><p>The demos which you can run (including the source code for the entire physics engine) is available in <a href="./Simulating-Rigid-Body-Physics.zip">the zip</a>.</p>
 </li>
 </ul>
 <p>In case you are not on Windows, I'm very sorry I can't provide a port to you, but you can see the final result in the video below and follow along with a graphics library of your choice (<a href="https://www.pygame.org/news">PyGame</a> is a good option).</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/-HBv0UTiBwU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<span class="note">When you extract the .zip. All of the engine's source code is available in <code>data/scripts</code>. In the scripts you'll see that we are using a custom <code>lstdgraphics</code> Python module that is built from the C++ side, and which enables us to call drawing functions:</span><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lstdgraphics</span> <span class="k">as</span> <span class="nn">g</span>
+<iframe width="100%" height="350px" src="https://www.youtube.com/embed/-HBv0UTiBwU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>When you extract the .zip. All of the engine's source code is available in <code>data/scripts</code>. In the scripts you'll see that we are using a custom <code>lstdgraphics</code> Python module that is built from the C++ side, and which enables us to call drawing functions:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lstdgraphics</span> <span class="k">as</span> <span class="nn">g</span>
 <span class="k">def</span> <span class="nf">frame</span><span class="p">():</span>
     <span class="n">g</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span> <span class="n">thickness</span> <span class="o">=</span> <span class="o">...</span><span class="p">)</span>
 </pre></div>
@@ -204,7 +213,7 @@ init_mathjax();
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<div class="index"><h1 id="table_of_contents">Table of Contents</h1><ul><ul><li><a href="#visualization">Visualization</a></li><li><a href="#shapes">Shapes</a></li><li><a href="#bodies">Bodies</a><ul><li><a href="#model_matrix">Model Matrix</a></li><li><a href="#mass">Mass</a></li><li><a href="#centroid">Centroid</a></li><li><a href="#rotational_inertia">Rotational Inertia</a></li></ul></li><li><a href="#forces_and_impulses">Forces and Impulses</a><ul><li><a href="#using_forces_in_a_demo">Using Forces in a Demo</a><ul><li><a href="#point_vs_shape_intersection">Point vs. Shape Intersection</a></li><li><a href="#grabbing_bodies_with_the_mouse">Grabbing Bodies with the Mouse</a></li><li><a href="#air_drag">Air Drag</a></li></ul></li></ul></li><li><a href="#discrete_collision_detection">Discrete Collision Detection</a><ul><li><a href="#intersection">Intersection</a><ul><li><a href="#circle_vs_circle">Circle vs. Circle</a></li><li><a href="#polygon_vs_polygon">Polygon vs. Polygon</a></li><li><a href="#polygon_vs_circle">Polygon vs. Circle</a></li></ul></li><li><a href="#response">Response</a><ul><li><a href="#collision_contact_points">Collision Contact Points</a><ul><li><a href="#failed_first_try">Failed (?) first try</a></li><li><a href="#the_better_method">The better method</a></li><li><a href="#quick_word_about_circles">Quick word about circles</a></li></ul></li><li><a href="#impulse_based_collision_resolution">Impulse Based Collision Resolution</a></li><li><a href="#iterations">Iterations</a></li><li><a href="#friction">Friction</a></li></ul></li><li><a href="#continuous_collision_detection">Continuous Collision Detection</a></li></ul></li><li><a href="#practical_applications">Practical applications</a></li><li><a href="#further_reading">Further Reading</a></li><li><a href="#references">References</a></li></ul></div></div>
+<div class="index"><h3 id="table_of_contents">Table of Contents</h3><ul><ul><li><a href="#visualization">Visualization</a></li><li><a href="#shapes">Shapes</a></li><li><a href="#bodies">Bodies</a><ul><li><a href="#model_matrix">Model Matrix</a></li><li><a href="#mass">Mass</a></li><li><a href="#centroid">Centroid</a></li><li><a href="#rotational_inertia">Rotational Inertia</a></li></ul></li><li><a href="#forces_and_impulses">Forces and Impulses</a><ul><li><a href="#using_forces_in_a_demo">Using Forces in a Demo</a><ul><li><a href="#point_vs_shape_intersection">Point vs. Shape Intersection</a></li><li><a href="#grabbing_bodies_with_the_mouse">Grabbing Bodies with the Mouse</a></li><li><a href="#air_drag">Air Drag</a></li></ul></li></ul></li><li><a href="#discrete_collision_detection">Discrete Collision Detection</a><ul><li><a href="#intersection">Intersection</a><ul><li><a href="#circle_vs_circle">Circle vs. Circle</a></li><li><a href="#polygon_vs_polygon">Polygon vs. Polygon</a></li><li><a href="#polygon_vs_circle">Polygon vs. Circle</a></li></ul></li><li><a href="#response">Response</a><ul><li><a href="#collision_contact_points">Collision Contact Points</a><ul><li><a href="#failed_first_try">Failed (?) first try</a></li><li><a href="#the_better_method">The better method</a></li><li><a href="#quick_word_about_circles">Quick word about circles</a></li></ul></li><li><a href="#impulse_based_collision_resolution">Impulse Based Collision Resolution</a></li><li><a href="#iterations">Iterations</a></li><li><a href="#friction">Friction</a></li></ul></li><li><a href="#continuous_collision_detection">Continuous Collision Detection</a></li></ul></li><li><a href="#practical_applications">Practical applications</a></li><li><a href="#further_reading">Further Reading</a></li><li><a href="#some_references_which_made_this_possible">Some References Which Made This Possible</a></li></ul></div></div>
 </div>
 </div>
 </div>
@@ -214,53 +223,24 @@ init_mathjax();
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-section_header Terminology
-<p><em>Feel free to look back at these if you get lost.</em></p>
-<ul>
-<li>Rigid body - a body that does not deform on contact. A completely rigid body doesn't exist in real life since all bodies break under high enough pressure. For the purpose of simulation we assume they are unbreakable.</li>
-</ul>
-<ul>
-<li>Shape - the volume of space that a body occupies.</li>
-</ul>
-<ul>
-<li>Body - an object that has a shape and several physical properties - position, rotation, velocity, angular velocity, mass, inertia, etc.</li>
-</ul>
-<ul>
-<li>Global space - a space which all bodies get placed in when drawing, you may also call it world space.</li>
-</ul>
-<ul>
-<li>Local space - we say that each invididual body has it's own origin (0, 0) in which vertices are placed, moving/rotating the object doesn't affect this space.</li>
-</ul>
-<ul>
-<li>Normal/orthogonal/perpendicular vector - a vector which forms a 90 degree angle (clockwise or counter-clockwise) with another vector.</li>
-</ul>
-<ul>
-<li>Normalized vector <em>(different from "normal vector")</em> - a vector which has a length of 1.</li>
-</ul>
-<ul>
-<li>Magnitude of a vector - the length of a vector.</li>
-</ul>
-<ul>
-<li>MTV (minimum translation vector) - the vector with the least magnitude that is required to seperate two overlapping shapes. Used for collision testing and response.</li>
-</ul>
-<ul>
-<li>Triangulate a polygon - divide a polygon up into smaller triangles.</li>
-</ul>
-<ul>
-<li>Regular polygon -  a polygon of which all angles are equal in measure and all sides have the same length (very symmetric).</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="shapes">Shapes <a href="#table_of_contents"><sup>↑</sup></a></h1><p>The first essential thing we need to look at is shapes. Shapes represent the volume which an object occupies (2D or 3D) and can be really simple (circles) or really complex (many polygons linked together).</p>
-<p>The vertices that are part of the shape of our body are in <strong>local space</strong>. That means that we imagine the object's global position to be the origin of our local space and vertices are kinda like "offsets" from that. That allows us to use 1 shape for many objects and those objects can have different positions and rotations.</p>
+<h2 id="shapes">Shapes <a href="#table_of_contents"><sup>↑</sup></a></h2><p>The first essential thing we need to look at is shapes. Shapes represent the volume which an object occupies (2D or 3D) and can be really simple (circles) or really complex (many polygons linked together).</p>
+<p>The vertices that are part of the shape of our body are in <span class="annotation annotation_2">
+                    <span class="annotation_inline" id="annotation_inline_2">local space</span>
+                    <sup><a class="annotation_link" href="#annotation_2" style="display:none">02</a></sup>
+                    <span class="annotation_content" style="display:none">
+                        <span class="annotation_bracket">[</span>
+                        <span class="annotation_content_raw">Each invididual body has it's own virtual origin (0, 0) in which vertices are placed relative to. This is called local space. Moving/rotating the object doesn't affect it.</span>
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span>. We imagine the object's <span class="annotation annotation_3">
+                    <span class="annotation_inline" id="annotation_inline_3">global</span>
+                    <sup><a class="annotation_link" href="#annotation_3" style="display:none">03</a></sup>
+                    <span class="annotation_content" style="display:none">
+                        <span class="annotation_bracket">[</span>
+                        <span class="annotation_content_raw">The space in which all bodies get placed in when drawing is called global space (or world space).</span>
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span> position to be the same as the origin of our local space and so vertices become "offsets" from that. This allows us to use 1 shape for many objects and those objects can have different positions and rotations.</p>
 <p>We define the shape's space origin to be at <code>(0,0)</code>, although it's geometric center (centroid) may not lie on the origin (we later see how we can correct that).</p>
 <div>
 <img src="data/local-space-global-space.png" width="600"/>
@@ -275,7 +255,15 @@ section_header Terminology
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>We define two kinds of shapes in the engine: <strong>circles</strong> and <strong>convex polygons</strong>. Convex means that there are no angles bigger than 180 inside of the polygon - this assumption is very common in physics engines, because the calculations we do rely on convex polygons. Note that a concave shape can be represented with a bunch of convex polygons.</p>
+<p>We define two kinds of shapes in the engine: circles and <a href="https://mathworld.wolfram.com/ConvexPolygon.html" target="_blank">convex polygons</a>. Convex means that there are no angles bigger than 180 inside of the polygon - this assumption is very common in physics engines, because the calculations we do rely <span class="annotation annotation_4">
+                    <span class="annotation_inline" id="annotation_inline_4">on that being the case</span>
+                    <sup><a class="annotation_link" href="#annotation_4" style="display:none">04</a></sup>
+                    <span class="annotation_content" style="display:none">
+                        <span class="annotation_bracket">[</span>
+                        <span class="annotation_content_raw">Note that as a workaround, a concave shape can be represented with a bunch of convex polygons.</span>
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span>.</p>
 </div>
 </div>
 </div>
@@ -286,7 +274,15 @@ section_header Terminology
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>For polygons we cache the <strong>edges</strong> and also their <strong>normal</strong> (perpendicular) vectors. These are often used, so pre-calculating them makes sense. The convention we use is that the polygon's vertices are <strong>ordered counter-clockwise</strong>. The <code>edges</code> and <code>normals</code> arrays contain the edge/normal between vertex <code>i</code> and vertex <code>i + 1</code> in the <code>i</code>th slot.</p>
+<p>For polygons we cache the <em>edges</em> and also their <span class="annotation annotation_5">
+                    <span class="annotation_inline" id="annotation_inline_5">normal vectors</span>
+                    <sup><a class="annotation_link" href="#annotation_5" style="display:none">05</a></sup>
+                    <span class="annotation_content" style="display:none">
+                        <span class="annotation_bracket">[</span>
+                        <span class="annotation_content_raw">A normal/orthogonal/perpendicular vector is a vector which forms a 90 degree angle (clockwise or counter-clockwise according to convention) with another vector.</span>
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span>. These are often used, so pre-calculating them makes sense. The convention we use is that the polygon's vertices are ordered <em>counter-clockwise</em>. The <code>edges</code> and <code>normals</code> arrays contain the edge/normal between vertex <code>i</code> and vertex <code>i + 1</code> in the <code>i</code>th slot.</p>
 </div>
 </div>
 </div>
@@ -406,15 +402,21 @@ jp-needs-light-background
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Since the vertices are ordered in counter-clockwise fashion, for each edge we choose the clockwise (<code>[y, -x]</code>) vector (it points outwards from the shape). Here is the algorithm:</p>
+<p>Since the vertices are ordered in counter-clockwise fashion, for each edge we choose the clockwise (<code>[y, -x]</code>) vector (it points outwards from the shape) and <span class="annotation annotation_6">
+                    <span class="annotation_inline" id="annotation_inline_6">normalize it</span>
+                    <sup><a class="annotation_link" href="#annotation_6" style="display:none">06</a></sup>
+                    <span class="annotation_content" style="display:none">
+                        <span class="annotation_bracket">[</span>
+                        <span class="annotation_content_raw">Normalizing a vector just means dividing by its length. The resulting vector has length exactly 1 ($x^2 + y^2 = 1$).</span>
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span>. Here is the algorithm:</p>
 <div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">normals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">normalized</span><span class="p">(</span><span class="n">orthogonal</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 </pre></div>
 <div>
 <img src="data/normals.png" width="600"/>
-</div><ul>
-<li><em>Normalizing a vector just means dividing by its length. The resulting vector has length exactly 1 ($x^2 + y^2 = 1$)</em>.</li>
-</ul>
+</div>
 </div>
 </div>
 </div>
@@ -453,18 +455,20 @@ jp-needs-light-background
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="bodies">Bodies <a href="#table_of_contents"><sup>↑</sup></a></h1><p>Shapes were the first part in describing the bodies in our engine! However each body needs to have certain other properties. First of all, each body has a position and rotation in space.</p>
-<ul>
-<li><em>This is a good place to mention that although everything we do is in 2D, it's not much more different in 3D. (Rotation is one thing that gets very complicated in 3D though). The important thing is to understand the basics principles of a physics simulation which are the same in 2D, 3D or whatever-D.</em></li>
-</ul>
-<p>For the sake of simplicity when creating a body we specify it's shape and uniform density. Bodies with different density in different areas exist in real life but in our simulation we assume it is is evenly spread out.</p>
-<ul>
-<li><em>I hope you can see how complicated you can create your engine. Sure, you can add support for non-uniform density and if not, you can create joints between bodies with different densities to create a large body that approximates your real-life example but our aim is not to create the perfect most general physics engine (because that can easily require an ungodly amount of work)</em></li>
-</ul>
-<h2 id="model_matrix">Model Matrix <a href="#table_of_contents"><sup>↑</sup></a></h2><p>When drawing our bodies they shouldn't appear at the same place. When we talked about shapes we said that our bodies have position and rotation, and the shape's vertices get transformed. How do we do that?</p>
-<p>Well probably the most convinient way is by using matrices.</p>
-<p>For 2D <strong>linear transformations</strong> we need 2x2 matrices. We can't describe translation in a 2x2 matrix (it's <strong>not</strong> a linear transformation because it moves the origin).</p>
-<p>So a clever way to encode translation is by using a third column:</p>
+<h2 id="bodies">Bodies <a href="#table_of_contents"><sup>↑</sup></a></h2><p>Shapes were the first part in describing the bodies in our engine! However each body needs to have certain other properties. First of all, each body has a position and rotation in space.</p>
+<p>This is a good place to mention that, although everything we do is in 2D, it's not much more different in 3D. (Rotation is one thing that gets very complicated in 3D though). The important thing here is to understand the basics principles of a physics simulation which are the same in 2D, 3D or whatever-D.</p>
+<p>For the sake of simplicity when creating a body we specify it's shape and uniform density. Bodies with different density in different areas exist in real life but in our simulation we <span class="annotation annotation_7">
+                    <span class="annotation_inline" id="annotation_inline_7">assume it is is evenly spread out</span>
+                    <sup><a class="annotation_link" href="#annotation_7" style="display:none">07</a></sup>
+                    <span class="annotation_content" style="display:none">
+                        <span class="annotation_bracket">[</span>
+                        <span class="annotation_content_raw">I hope you can see how complicated you can create your engine: you can add support for mapping a non-uniform density, or you can create joints between bodies with different densities to create a large body that approximates your real-life example. However, our aim is not to create the perfect most general physics engine (because that can easily require an ungodly amount of work).</span>
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span>.</p>
+<h3 id="model_matrix">Model Matrix <a href="#table_of_contents"><sup>↑</sup></a></h3><p>When drawing our bodies they shouldn't appear at the same place. When we talked about shapes we said that our bodies have position and rotation, and the shape's vertices get transformed. How do we do that?</p>
+<p>Well probably the most convinient way is by using matrices. For 2D <em>linear transformations</em> we need 2x2 matrices. We can't describe translation in a 2x2 matrix (translation is not a linear transformation because it moves the origin).</p>
+<p>But we can encode it by using a third column:</p>
 $$
 T =
 \begin{bmatrix}
@@ -472,7 +476,7 @@ T =
 0 &amp; 1 &amp; v_y \\
 0 &amp; 0 &amp; 1 \\
 \end{bmatrix}
-$$<p>When multiplying by our 2D coordinates we add a third component which is equal to one. For example if we want to multiply the position <code>[1.4, 8]</code> by our matrix, we represent it like: <code>[1.4, 8, 1]</code> and do the dot product.</p>
+$$<p>When multiplying by our 2D coordinates for the vertex we add a third component which is equal to one. For example if we want to multiply the vertex position $(1.4, 8)$ by our matrix, we represent it like: $(1.4, 8, 1)$ and do the dot product:</p>
 $$
 P =
 \begin{bmatrix}
@@ -496,7 +500,7 @@ R =
 $$</p>
 <p>If you want to see how to derive this, there are great <a href="https://www.youtube.com/watch?v=NNWeu3dNFWA&amp;feature=emb_title">videos</a>/articles on the internet.</p>
 <p>So our final transformation for every body is just $M = TR$. We first rotate and then we translate (remember that in computer graphics we multiply matrices right to left). A good rule of thumb is that to get the proper final transformation we SRT - scale, rotate, translate, because we usually want scaling to happen along the axis of the object and rotation about the center of the object. In our engine we don't support scaling for the sake of simplicity.</p>
-<h2 id="mass">Mass <a href="#table_of_contents"><sup>↑</sup></a></h2><p>We have a shape and density. How can we calculate the mass of our object? Well, we need to find its <strong>area</strong> (volume in 3D).</p>
+<h3 id="mass">Mass <a href="#table_of_contents"><sup>↑</sup></a></h3><p>We have a shape and density. How can we calculate the mass of our object? Well, we need to find its area (volume in 3D).</p>
 <p>A circle's area is really simple to find - it's just $ \pi r^2 $.</p>
 <p>For polygons we're going to use the <a href="https://en.wikipedia.org/wiki/Shoelace_formula">Shoelace formula</a>. To explain the formula let's write a quick method to plot polygons in a coordinate plane.</p>
 </div>
@@ -577,8 +581,8 @@ jp-needs-light-background
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The algorithm of the <strong>Shoelace formula</strong> is as follows: for every edge, take a look at the triangle formed by it and the origin. To find the area of that triangle we use the cross product of the vertices (we imagine the vertices as vectors from the origin). The cross product gives us the area of a parallelogram which we need to divide by two. We sum up all the areas of all these triangles and in the end we take the absolute value.</p>
-<p>The negative cross products cancels out with the overlapping area and gives us just the area of the polygon. It works like magic. You can see it's proof on the wikipedia page.</p>
+<p>The algorithm of the <em>Shoelace formula</em> is as follows: for every edge, take a look at the triangle formed by it and the origin. To find the area of that triangle we use the cross product of the vertices (we imagine the vertices as vectors from the origin). The cross product gives us the area of a parallelogram which we need to divide by two. We sum up all the areas of all these triangles and in the end we take the absolute value.</p>
+<p>The negative cross products cancels out with the overlapping area and gives us just the area of the polygon. It works like magic.</p>
 </div>
 </div>
 </div>
@@ -625,10 +629,7 @@ jp-needs-light-background
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li><em>Notice that every time the origin and the two vertices are ordered counter-clockwise - the cross product will be positive. And everytime they are ordered clockwise - negative.</em></li>
-</ul>
-</div>
+<span class="note">Notice that every time the origin and the two vertices are ordered counter-clockwise - the cross product will be positive. And every time they are ordered clockwise - negative.</span></div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -736,7 +737,15 @@ jp-needs-light-background
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="centroid">Centroid <a href="#table_of_contents"><sup>↑</sup></a></h2><p>When we define a shape, each vertex's coordinates are relative to the origin of the local space of the body. It's going to be really nice for calculations if that origin is also the centroid (or <strong>center of mass</strong>) of the shape!</p>
+<h3 id="centroid">Centroid <a href="#table_of_contents"><sup>↑</sup></a></h3><p>When we define a shape, each vertex's coordinates are relative to the origin of the local space of the body. It's going to be really nice for calculations if that origin is also the <span class="annotation annotation_8">
+                    <span class="annotation_inline" id="annotation_inline_8">centroid</span>
+                    <sup><a class="annotation_link" href="#annotation_8" style="display:none">08</a></sup>
+                    <span class="annotation_content" style="display:none">
+                        <span class="annotation_bracket">[</span>
+                        <span class="annotation_content_raw">center of mass</span>
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span> of the shape!</p>
 <p>To do that we need to find the coordinates of the centroid and shift every vertex so the centroid of the shape essentially overlaps with the origin.</p>
 <p>For example, here is a pentagon which has a different center of mass than the origin. The blue figure is the result after we translate each vertex by the centroid. The green dot is now both the origin of the local space and the center of mass of the shape.</p>
 </div>
@@ -796,8 +805,16 @@ jp-needs-light-background
 <p>The centroid of a triangle ABC (its barycenter) is the average of each point's coordinates:
 $$ G = (\frac{x_a + x_b + x_c}{3}; \frac{y_a + y_b + y_c}{3})$$</p>
 <p>You can see this is true if you add the vectors from the vertices to G and see that their sum is zero: $ \vec{GA} + \vec{GB} + \vec{GC} = 0 $</p>
-<p>Regular polygons also have this property of getting the center by just taking the average of the coordinates, however that's not true for any convex polygon. The mass of a polygon is <strong>uniformly distributed over its entire surface</strong>, not only at the vertices. Note that for simple shapes, such as triangles or regular polygons, <strong>the mass being evenly distributed over the surface is equivalent to the mass being at the vertices only</strong>.</p>
-<p>When calculating the centroid for a polygon we need to <strong>triangulate</strong> it and take the <strong>weighted</strong> average of the triangle's centroids. As visualized in the figure below, the area of the triangle measures how much of the entire mass of the polygon is contained in the triangle, thus by how much the barycenter of that triangle influences the location of the centroid of the polygon.</p>
+<p>Regular polygons also have this property of getting the center by just taking the average of the coordinates, however that's not true for any convex polygon. The mass of a polygon is uniformly distributed over its entire surface, not only at the vertices. Note that for simple shapes, such as triangles or regular polygons, the mass being evenly distributed over the surface is equivalent to the mass being at the vertices only.</p>
+<p>When calculating the centroid for a polygon we need to <span class="annotation annotation_9">
+                    <span class="annotation_inline" id="annotation_inline_9">triangulate</span>
+                    <sup><a class="annotation_link" href="#annotation_9" style="display:none">09</a></sup>
+                    <span class="annotation_content" style="display:none">
+                        <span class="annotation_bracket">[</span>
+                        <span class="annotation_content_raw">divide a polygon up into smaller triangles</span>
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span> it and take the <em>weighted</em> average of the triangle's centroids. As visualized in the figure below, the area of the triangle measures how much of the entire mass of the polygon is contained in the triangle, thus by how much the barycenter of that triangle influences the location of the centroid of the polygon.</p>
 </div>
 </div>
 </div>
@@ -953,7 +970,7 @@ where $$ A = A_1 + A_2 + \dots + A_n $$</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="rotational_inertia">Rotational Inertia <a href="#table_of_contents"><sup>↑</sup></a></h2><p>Rotational intertia is analogous to mass in that it is a measure of the resistance a body offers to torque or rotational motion. Like mass, inertia is additive and the inertia of any shape can be calculated by summing the inertia of smaller shapes that form it.</p>
+<h3 id="rotational_inertia">Rotational Inertia <a href="#table_of_contents"><sup>↑</sup></a></h3><p>Rotational intertia is analogous to mass in that it is a measure of the resistance a body offers to torque or rotational motion. Like mass, inertia is additive and the inertia of any shape can be calculated by summing the inertia of smaller shapes that form it.</p>
 <p>The inertia of a circle about a perpendicular axis passing through its center is $\frac{1}{2}mr^2$</p>
 <p>The inertia of an arbitrary convex polygon does not have a fixed formula, but like mass we can compute the inertia by subdividing the polygon into triangles with a vertex at the origin and finding their inertia.</p>
 <p>The inertia of a triangle with a vertex at the origin and side vectors $a$ and $b$ about a perpendicular axis passing through the origin is given by:
@@ -1103,9 +1120,7 @@ The derivation of this formula is non-trivial and it will not be included here f
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li><strong>Big note</strong>: <em>The above code is not exactly what we use in our demos. The reason for that is performance! For example <code>isinstance</code> is very slow in Python by nature so instead we use an enum for the shape type (makes the code a little bit longer). We also cache a model matrix and a transformed shape with each body so we don't do unnecessary computations during the time step. If you want to look at those things, take a look at the source code!</em></li>
-</ul>
+<p><strong>Big note</strong>: The above code is not exactly what we use in our demos. The reason for that is performance! For example <code>isinstance</code> is very slow in Python by nature so instead we use an enum for the shape type (makes the code a little bit longer). We also cache a model matrix and a transformed shape with each body so we don't do unnecessary computations during the time step. If you want to look at those things, take a look at the source code!</p>
 </div>
 </div>
 </div>
@@ -1116,10 +1131,7 @@ The derivation of this formula is non-trivial and it will not be included here f
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li><em>This class above is not the final definition of our body by all means! We can always add more properties to our objects. For example, restitution - how much do objects bounce. Another useful thing many physics engines do is add a <code>sleep</code> property. If an object is at rest on the ground for example, we set it's <code>sleep</code> to true and skip calculations in our time step. This can lead to huge performance gains depending on the situtation. For the sake of simplicity we will not be implementing such a system.</em></li>
-</ul>
-</div>
+<span class="note">This class above is not the final definition of our body by all means! We can always add more properties to our objects. For example, restitution - how much do objects bounce. Another useful thing many physics engines do is add a <code>sleep</code> property. If an object is at rest on the ground for example, we set it's <code>sleep</code> to true and skip calculations in our time step. This can lead to huge performance gains depending on the situation. For the sake of simplicity we will not be implementing such a system.</span></div>
 </div>
 </div>
 </div>
@@ -1129,7 +1141,7 @@ The derivation of this formula is non-trivial and it will not be included here f
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="forces_and_impulses">Forces and Impulses <a href="#table_of_contents"><sup>↑</sup></a></h1><p>The main interaction mechanism with a body is going to be through forces (and indirectly torque). All forces are applied per time step. That's how forces in our universe work too! (If we imagine that the time steps in real life are infinetely small). We say a force is continuous as long as it's acting on a object. If we want a continuous force to act on an object in our engine, we apply it every frame until we want it to stop.</p>
+<h2 id="forces_and_impulses">Forces and Impulses <a href="#table_of_contents"><sup>↑</sup></a></h2><p>The main interaction mechanism with a body is going to be through forces (and indirectly torque). All forces are applied per time step. That's how forces in our universe work too! (If we imagine that the time steps in real life are infinetely small). We say a force is continuous as long as it's acting on a object. If we want a continuous force to act on an object in our engine, we apply it every frame until we want it to stop.</p>
 <p>The definition of torque is: $ \vec{\tau} = \vec{r} \times \vec{F} $. That means that if a force is applied at the center of mass, the torque generated is zero. If we apply it anywhere else though, we need to find the cross product - where $\vec{r}$ is the vector from the center to the point where the force is applied.</p>
 <p>Impulses are large forces applied over very short periods. However, we will consider them as momentum changes and directly modify the linear and angular velocities:</p>
 </div>
@@ -1191,7 +1203,7 @@ $$\vec{a} = \frac{\vec{F}}{m}$$</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="using_forces_in_a_demo">Using Forces in a Demo <a href="#table_of_contents"><sup>↑</sup></a></h2><p>Now that we have a way to apply forces. Let's test it with something.. fun? (if you can call it that).
+<h3 id="using_forces_in_a_demo">Using Forces in a Demo <a href="#table_of_contents"><sup>↑</sup></a></h3><p>Now that we have a way to apply forces. Let's test it with something.. fun? (if you can call it that).
 We want to make a demo where you can grab objects with your mouse and throw them around.</p>
 <p>Getting information about mouse input is handled by C++ and passed to us by functions:</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mouse_click</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rightButton</span><span class="p">):</span> <span class="k">pass</span>
@@ -1199,7 +1211,7 @@ We want to make a demo where you can grab objects with your mouse and throw them
 <span class="k">def</span> <span class="nf">mouse_move</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> <span class="k">pass</span>
 </pre></div>
 <p>The coordinates have been automatically converted to world space.</p>
-<h3 id="point_vs_shape_intersection">Point vs. Shape Intersection <a href="#table_of_contents"><sup>↑</sup></a></h3><p>Here comes the first challenge. How do we determine whether we clicked a body?
+<h4 id="point_vs_shape_intersection">Point vs. Shape Intersection <a href="#table_of_contents"><sup>↑</sup></a></h4><p>Here comes the first challenge. How do we determine whether we clicked a body?
 We need a way to determine if a point is inside a shape.</p>
 </div>
 </div>
@@ -1250,7 +1262,15 @@ jp-needs-light-background
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The circle case is trivial. Just check if the vector from the center to the point has a magnitude less than the radius. Here only the green segment has length less than the radius, so it is inside.</p>
+<p>The circle case is trivial. Just check if the vector from the center to the point has a <span class="annotation annotation_10">
+                    <span class="annotation_inline" id="annotation_inline_10">magnitude</span>
+                    <sup><a class="annotation_link" href="#annotation_10" style="display:none">10</a></sup>
+                    <span class="annotation_content" style="display:none">
+                        <span class="annotation_bracket">[</span>
+                        <span class="annotation_content_raw">length of a vector</span>
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span> less than the radius. Here only the green segment has length less than the radius, so it is inside.</p>
 </div>
 </div>
 </div>
@@ -1329,7 +1349,7 @@ jp-needs-light-background
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>This <a href="https://en.wikipedia.org/wiki/Point_in_polygon">Ray casting algorithm</a> is one really clever algorithm to determine if a point is inside a polygon. You test how many times a ray, starting from the point and going in any fixed direction, intersects the edges of the polygon. If the point is on the outside of the polygon the ray will intersect its edge an even number of times. If the point is on the inside of the polygon then it will intersect the edge an odd number of times.</p>
+<p>This <a href="https://en.wikipedia.org/wiki/Point_in_polygon" target="_blank">Ray casting algorithm</a> is one really clever algorithm to determine if a point is inside a polygon. You test how many times a ray, starting from the point and going in any fixed direction, intersects the edges of the polygon. If the point is on the outside of the polygon the ray will intersect its edge an even number of times. If the point is on the inside of the polygon then it will intersect the edge an odd number of times.</p>
 <p><img src="data/point-in-polygon.png" width="700"/></p>
 <p>If even works both for convex and concave polygons!</p>
 <p>This works on theory, but in our case - not so much. I had a lot of trouble with edge cases. After implementing it I tested it thoroughly and it didn't work properly when we looked at a point on the same y-level as a vertex. I tried a lot of work-around and different implementations but none of them worked...</p>
@@ -1693,7 +1713,7 @@ jp-needs-light-background
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>As you can see, there are some points which are clearly outside but pass the test. Adding cases, rethinking everything, extending the segments just by a little bit - nothing worked and there were still some false positives.</p>
 <p>After giving up on this algorithm I came up with my own method. If you rememeber earlier when we calculated the area of a polygon by summing up the cross product of the vectors from the origin to the ends of each edge. We can use that here. That method of finding the area relied that sometimes the area of these triangles was positive and sometimes "negative".</p>
-<p>Our vertices are ordered <strong>counter-clockwise</strong>. So if a point is inside a polygon, going through every edge, the area will always be <strong>positive</strong> (it will always be negative if the vertices were clockwise).</p>
+<p>Our vertices are ordered <em>counter-clockwise</em>. So if a point is inside a polygon, going through every edge, the area will always be <em>positive</em> (it will always be negative if the vertices were clockwise).</p>
 <p>So our test simply becomes:</p>
 </div>
 </div>
@@ -1853,7 +1873,7 @@ Cross product average:  0.005345704820421007 s
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="grabbing_bodies_with_the_mouse">Grabbing Bodies with the Mouse <a href="#table_of_contents"><sup>↑</sup></a></h3><p>When we click on the screen we need to check every body and see if any contain the mouse.</p>
+<h4 id="grabbing_bodies_with_the_mouse">Grabbing Bodies with the Mouse <a href="#table_of_contents"><sup>↑</sup></a></h4><p>When we click on the screen we need to check every body and see if any contain the mouse.</p>
 <ul>
 <li><em>We need to search through every body and if there are thousands of bodies this can get really slow. There are many optimization tricks for those scenarios but we won't bother since it's not a problem for now.</em></li>
 </ul>
@@ -1907,7 +1927,7 @@ The force direction is calculated using the last two mouse positions (which mean
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="air_drag">Air Drag <a href="#table_of_contents"><sup>↑</sup></a></h3><p>If you play around with the demo you will see that the object feels like they it is in space. That's because we don't simulate air drag. In the real life air drag depends on the shape, surface area of an object, etc.</p>
+<h4 id="air_drag">Air Drag <a href="#table_of_contents"><sup>↑</sup></a></h4><p>If you play around with the demo you will see that the object feels like they it is in space. That's because we don't simulate air drag. In the real life air drag depends on the shape, surface area of an object, etc.</p>
 <p>For simplicity we can just reduce the velocity by a little bit if going slow and a lot if going fast ($1\frac{m}{s}$) and not more than that.</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clamp_magnitude</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1940,10 +1960,10 @@ The force direction is calculated using the last two mouse positions (which mean
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="discrete_collision_detection">Discrete Collision Detection <a href="#table_of_contents"><sup>↑</sup></a></h1><p>Bodies that fly around with some force, completely ignoring each other, is cool and all, but let's take things a step further. We will detect if any two bodies <strong>intersect</strong> and if they do, we'll apply some type of <strong>collision response</strong>.</p>
+<h2 id="discrete_collision_detection">Discrete Collision Detection <a href="#table_of_contents"><sup>↑</sup></a></h2><p>Bodies that fly around with some force, completely ignoring each other, is cool and all, but let's take things a step further. We will detect if any two bodies <em>intersect</em> and if they do, we'll apply some type of <em>collision response</em>.</p>
 <p>That's what we need to do! First figure out if two bodies intersect (and preferably by how much) and then somehow separate them.</p>
-<h2 id="intersection">Intersection <a href="#table_of_contents"><sup>↑</sup></a></h2><p>We have two types of shapes: circles and convex polygons. Let's look at each case for intersection:</p>
-<h3 id="circle_vs_circle">Circle vs. Circle <a href="#table_of_contents"><sup>↑</sup></a></h3></div>
+<h3 id="intersection">Intersection <a href="#table_of_contents"><sup>↑</sup></a></h3><p>We have two types of shapes: circles and convex polygons. Let's look at each case for intersection:</p>
+<h4 id="circle_vs_circle">Circle vs. Circle <a href="#table_of_contents"><sup>↑</sup></a></h4></div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -1998,9 +2018,17 @@ jp-needs-light-background
 <div class="highlight"><pre><span></span><span class="n">a_to_b</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">r</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="k">if</span> <span class="n">sqr_magnitude</span><span class="p">(</span><span class="n">a_to_b</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">r</span> <span class="o">**</span> <span class="mi">2</span><span class="p">:</span>
-    <span class="c1"># The distance is larger, they definetely don&#39;t intersect</span>
+    <span class="c1"># The distance is larger, they definitely don&#39;t intersect</span>
 </pre></div>
-<p>If the comparison fails then they are colliding. Now we get the real distance and return the vector of minimum translation (the amount which one of the circles has to move in order to get out of the other).</p>
+<p>If the comparison fails then they are colliding. Now we get the real distance and return the <span class="annotation annotation_11">
+                    <span class="annotation_inline" id="annotation_inline_11">vector of minimum translation</span>
+                    <sup><a class="annotation_link" href="#annotation_11" style="display:none">11</a></sup>
+                    <span class="annotation_content" style="display:none">
+                        <span class="annotation_bracket">[</span>
+                        <span class="annotation_content_raw">The vector with the least magnitude that is required to separate two overlapping shapes.</span>
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span>.</p>
 <div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">magnitude</span><span class="p">(</span><span class="n">a_to_b</span><span class="p">)</span>
 <span class="k">return</span> <span class="n">a_to_b</span> <span class="o">/</span> <span class="n">d</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">d</span><span class="p">)</span>
 </pre></div>
@@ -2190,8 +2218,8 @@ jp-needs-light-background
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="polygon_vs_polygon">Polygon vs. Polygon <a href="#table_of_contents"><sup>↑</sup></a></h3><p>Polygons are a LOT more complex than circles. Let's just appreciate we are not dealing with concave ones.
-<a href="https://en.wikipedia.org/wiki/Hyperplane_separation_theorem">Seperating Axis Theorem</a> is a popular way to handle the polygon vs polygon case so let's not try to reinvent the wheel. It's fast and it's really accurate. The idea is simple. If we can find an <strong>axis of separation</strong> between the polygons then they are not ovelapping.</p>
+<h4 id="polygon_vs_polygon">Polygon vs. Polygon <a href="#table_of_contents"><sup>↑</sup></a></h4><p>Polygons are a LOT more complex than circles. Let's just appreciate we are not dealing with concave ones.
+<a href="https://en.wikipedia.org/wiki/Hyperplane_separation_theorem" target="_blank">Separating Axis Theorem</a> is a popular way to handle the polygon vs polygon case so let's not try to reinvent the wheel. It's fast and it's really accurate. The idea is simple. If we can find an <em>axis of separation</em> between the polygons then they are not overlapping.</p>
 </div>
 </div>
 </div>
@@ -2240,8 +2268,8 @@ jp-needs-light-background
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The yellow line goes between the two polygons - it's called a <strong>separating line</strong>. The blue line is called the <strong>seperation axis</strong> (it's the line that is perpendicular to the separating line). The theorem states that if we can find at least one of these, then the polygons are not overlapping. I mean that's kind of intuitive, right? But how do we do it in code?</p>
-<p>We need to decide which axes we will need to test. We can't test all infinitely many directions and positions.. And here is where <strong>projection</strong> saves the day! We turn the 2D problem into a couple of 1D problems.</p>
+<p>The yellow line goes between the two polygons - it's called a <em>separating line</em>. The blue line is called the <em>separation axis</em> (it's the line that is perpendicular to the separating line). The theorem states that if we can find at least one of these, then the polygons are not overlapping. I mean that's kind of intuitive, right? But how do we do it in code?</p>
+<p>We need to decide which axes we will need to test. We can't test all infinitely many directions and positions.. And here is where <em>projection</em> saves the day! We turn the 2D problem into a couple of 1D problems.</p>
 </div>
 </div>
 </div>
@@ -2294,7 +2322,7 @@ jp-needs-light-background
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>You can see how we project the shapes into their "shadows" (these are also called their <strong>orthogonal projections</strong>) on the blue line. You may think that we lose information this way - and you are right. The shadows overlap in this example, but the shapes don't. We solve this problem by testing more axes:</p>
+<p>You can see how we project the shapes into their "shadows" (these are also called their <em>orthogonal projections</em>) on the blue line. You may think that we lose information this way - and you are right. The shadows overlap in this example, but the shapes don't. We solve this problem by testing more axes:</p>
 </div>
 </div>
 </div>
@@ -2347,7 +2375,7 @@ jp-needs-light-background
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Here we can draw a perpendicular line in that small gap between their shadows. That line will pass between the two polygons - so they definitely aren't colliding. If the algorithm doesn't find such an axis then they are definetely colliding.</p>
+<p>Here we can draw a perpendicular line in that small gap between their shadows. That line will pass between the two polygons - so they definitely aren't colliding. If the algorithm doesn't find such an axis then they are definitely colliding.</p>
 <p>Now we need to choose a set of axes which we need to test. For 2D shapes it turns out it's enough to test each normal of each edge of the shapes. Remember that the normal is the vectors perpendicular to an edge and pointing outwards.</p>
 </div>
 </div>
@@ -2697,7 +2725,7 @@ jp-needs-light-background
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="polygon_vs_circle">Polygon vs. Circle <a href="#table_of_contents"><sup>↑</sup></a></h3><p>The last case is polygon vs circle. This one is really easy because we can use the same separating axis technique and reuse a lot of the code.</p>
+<h4 id="polygon_vs_circle">Polygon vs. Circle <a href="#table_of_contents"><sup>↑</sup></a></h4><p>The last case is polygon vs circle. This one is really easy because we can use the same separating axis technique and reuse a lot of the code.</p>
 <p>There are two things to consider. Firstly, circles don't have edges (or you can think about them having infinitely many edges and in that case infinitely many normals). We <em>arbitrarily</em> choose the vector described by the circle's center and the closest vertex of the polygon to it (chosing the second vertex as the polygon's center is not the most appropriate because of the strange shapes polygons can have).</p>
 </div>
 </div>
@@ -2892,10 +2920,10 @@ jp-needs-light-background
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="response">Response <a href="#table_of_contents"><sup>↑</sup></a></h2><p>One way to handle response is just by moving the shapes directly. This is quite unnatural and very very buggy. If you launch <code>demo_collision.py</code> and uncheck <code>Impulse based resolution</code> from the side bar you can see how that looks. Since it's so bad I won't even try to make it work properly (sometimes shapes even fall through the floor).</p>
+<h3 id="response">Response <a href="#table_of_contents"><sup>↑</sup></a></h3><p>One way to handle response is just by moving the shapes directly. This is quite unnatural and very very buggy. If you launch <code>demo_collision.py</code> and uncheck <code>Impulse based resolution</code> from the side bar you can see how that looks. Since it's so bad I won't even try to make it work properly (sometimes shapes even fall through the floor).</p>
 <p>We will instead use a more physical approach. For that, we will need a list of contact points - the points at which the objects (approximately) touched before intersecting.</p>
-<h3 id="collision_contact_points">Collision Contact Points <a href="#table_of_contents"><sup>↑</sup></a></h3><p>In order to apply the impulse at the proper location, we need to calculate the points at which the collision happened. Generating good contact points is <em>crucial</em> to predictable and life-like iteractions between bodies.</p>
-<h4 id="failed_first_try">Failed (?) first try <a href="#table_of_contents"><sup>↑</sup></a></h4><p>At the beginning I thought about just projecting each vertex to the minimum translation vector and choosing the <em>two points with the largest projection</em> (the points that are the furthest "stuck" in the other body). If they are close together (by a given tolerance) though, the edge they form is almost perpendicular to the translation vector and we take their average (midpoint of the edge), otherwise we return the maximum point:</p>
+<h4 id="collision_contact_points">Collision Contact Points <a href="#table_of_contents"><sup>↑</sup></a></h4><p>In order to apply the impulse at the proper location, we need to calculate the points at which the collision happened. Generating good contact points is <em>crucial</em> to predictable and life-like iteractions between bodies.</p>
+<h5 id="failed_first_try">Failed (?) first try <a href="#table_of_contents"><sup>↑</sup></a></h5><p>At the beginning I thought about just projecting each vertex to the minimum translation vector and choosing the <em>two points with the largest projection</em> (the points that are the furthest "stuck" in the other body). If they are close together (by a given tolerance) though, the edge they form is almost perpendicular to the translation vector and we take their average (midpoint of the edge), otherwise we return the maximum point:</p>
 <p><img src="data/contact-point.png" width = 760/></p>
 <p>The implementation is really simple (after all I didn't put much thought into making an accurate algorithm :D):</p>
 <div class="highlight"><pre><span></span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;-Inf&quot;</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;-Inf&quot;</span><span class="p">)</span>
@@ -2950,7 +2978,7 @@ jp-needs-light-background
 </pre></div>
 <p>This is because the way we have set it up it's impossible to tell if a circle is rotating :D (we don't draw any reference points). So this is a very big hack but since I thought this algorithm wouldn't be at all sufficient I didn't bother making it work for circles.</p>
 <p>After writing it up with impulses and everything and testing it, the results were horrible (I even tried returning both points individually instead of taking the average but it was still too bad). I instantly concluded my algorithm was way too inaccurate.</p>
-<h4 id="the_better_method">The better method <a href="#table_of_contents"><sup>↑</sup></a></h4><p>So now let's instead explore a popular way to calculate the contact points using the clipping method. The good thing is shares some parts with the algorithm above but it also introduces the concept of incident and reference edges.</p>
+<h5 id="the_better_method">The better method <a href="#table_of_contents"><sup>↑</sup></a></h5><p>So now let's instead explore a popular way to calculate the contact points using the clipping method. The good thing is shares some parts with the algorithm above but it also introduces the concept of incident and reference edges.</p>
 <p>The first step is to identify the two edges that are the most involved in the collision - we determine that by calculating which edge is most perpendicular to the collision normal.</p>
 <p>We start by finding the farthest vertex in the shape. Then we look at the adjacent two edges:</p>
 </div>
@@ -3403,7 +3431,7 @@ jp-needs-light-background
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="quick_word_about_circles">Quick word about circles <a href="#table_of_contents"><sup>↑</sup></a></h4><p>Curved shapes are easy to handle! Just calculate the point furthest along the <code>mtv</code> by multiplying the normalized version by the radius. In that case we don't need to do any clipping, just bail out and return the point. Our final <code>collide</code> method with everything combined neatly looks like this:</p>
+<h5 id="quick_word_about_circles">Quick word about circles <a href="#table_of_contents"><sup>↑</sup></a></h5><p>Curved shapes are easy to handle! Just calculate the point furthest along the <code>mtv</code> by multiplying the normalized version by the radius. In that case we don't need to do any clipping, just bail out and return the point. Our final <code>collide</code> method with everything combined neatly looks like this:</p>
 </div>
 </div>
 </div>
@@ -3455,7 +3483,15 @@ jp-needs-light-background
         <span class="k">return</span> <span class="n">contacts</span>
     <span class="k">return</span> <span class="p">[]</span>
 </pre></div>
-<p>We haven't taken a look at <code>minimum_translation_vector</code> but it's just a method which looks at the shapes and based on their type runs the algorithms for the MTV we described earlier!</p>
+<p>We haven't taken a look at <code>minimum_translation_vector</code> but it's just a method which looks at the shapes and based on their type runs the algorithms for the <span class="annotation annotation_11">
+                    <span class="annotation_inline" id="annotation_inline_11">MTV</span>
+                    <sup><a class="annotation_link" href="#annotation_11" style="display:none">11</a></sup>
+                    <span class="annotation_content" style="display:none">
+                        <span class="annotation_bracket">[</span>
+                        <span class="annotation_content_raw">The vector with the least magnitude that is required to separate two overlapping shapes.</span>
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span> we described earlier!</p>
 <p>Now we have all needed information!!! :D</p>
 </div>
 </div>
@@ -3467,7 +3503,7 @@ jp-needs-light-background
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="impulse_based_collision_resolution">Impulse Based Collision Resolution <a href="#table_of_contents"><sup>↑</sup></a></h3><p>This is kinda the boring part, because this is just physics. We have the formulas and we need to write them in code. No problems to solve except if you got a minus wrong or some constant is messed up...</p>
+<h4 id="impulse_based_collision_resolution">Impulse Based Collision Resolution <a href="#table_of_contents"><sup>↑</sup></a></h4><p>This is kinda the boring part, because this is just physics. We have the formulas and we need to write them in code. No problems to solve except if you got a minus wrong or some constant is messed up...</p>
 <p>So the way we separate objects is by applying an impulse at every contact point. Impulse, remember, is an instantaneous change in velocity. Modifying acceleration or applying a force becomes too sloppy for the simulation.</p>
 <p>First, we need to know the relative velocity at that contact point of the two objects (from A to B), which must be expressed in terms of the collision normal $\vec{n}$:
 $$ \Delta \vec{V} \cdot \vec{n} = (\vec{V_{B}} + \omega \times \vec{r_{2}} - \vec{V_{A}} - \omega \times \vec{r_{1}}) \cdot \vec{n} $$</p>
@@ -3510,9 +3546,8 @@ $$ J = max(\frac{- \Delta \vec{V} \cdot \vec{n} + \text{bias}}{k_n}, 0) \cdot \v
 </pre></div>
 <p>Here we use <code>inv_mass</code> (and <code>inv_rot_inertia</code>) which is pre-calculated (<code>1 / mass</code>) when we create a body. For static bodies <code>mass</code>, <code>inv_mass</code>, <code>rot_inertia</code>, and <code>inv_rot_inertia</code> are $0$ so we don't need an extra case for them here. The impulse they receive is automatically zero.</p>
 <p>The demo is <code>demo_collision.py</code>.</p>
-<h3 id="iterations">Iterations <a href="#table_of_contents"><sup>↑</sup></a></h3><p>You can increase the number of times you run the code and calculate and apply the impulse (this doesn't blow up because everytime you apply an impulse the relative velocity changes but we just don't move the objects yet). With each iteration we get closer to the true impulse (accuracy at the cost of performace). You can play with this in the demo in the side bar option.</p>
-<h3 id="friction">Friction <a href="#table_of_contents"><sup>↑</sup></a></h3><p>The shapes in the demo feel really slippery :D. That's because we don't simulate friction. If you want you can incorporate that into the engine by calculating the tangent normal for each contact point and applying a <em>friction impulse</em> using the friction coefficient for both bodies.</p>
-<p>Anyway, that's about it. We now have a functional collision system with rigid bodies. This is the basis but it can easily be expanded upon, tweaked and modified to suit any use case.</p>
+<h4 id="iterations">Iterations <a href="#table_of_contents"><sup>↑</sup></a></h4><p>You can increase the number of times you run the code and calculate and apply the impulse (this doesn't blow up because everytime you apply an impulse the relative velocity changes but we just don't move the objects yet). With each iteration we get closer to the true impulse (accuracy at the cost of performace). You can play with this in the demo in the side bar option.</p>
+<h4 id="friction">Friction <a href="#table_of_contents"><sup>↑</sup></a></h4><p>The shapes in the demo feel really slippery :D. That's because we don't simulate friction. If you want you can incorporate that into the engine by calculating the tangent normal for each contact point and applying a <em>friction impulse</em> using the friction coefficient for both bodies.</p>
 </div>
 </div>
 </div>
@@ -3523,9 +3558,17 @@ $$ J = max(\frac{- \Delta \vec{V} \cdot \vec{n} + \text{bias}}{k_n}, 0) \cdot \v
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="continuous_collision_detection">Continuous Collision Detection <a href="#table_of_contents"><sup>↑</sup></a></h2><p>If you run <code>demo_tunneling.py</code> you will see a problem with our engine. Stuff that's moving fast can go through objects. This is not a bug in our code but instead a flaw in our <em>entire</em> design! It happens because we are calculating in <strong>discrete</strong> time steps.</p>
-<p>That means that if a thing has a high enough velocity it can go straight through other objects and we can't possibly detect if the objects collided - they have already passed each other. You can increase the number of time steps but that comes with a <strong>huge</strong> cost of performace - you have to be a bit smarter.</p>
-<p>There are methods to solve this. We won't be implementing a <em>continuous collision solver</em> here but here's a great talk by a Blizzard game developer at GDC about a robust solution to this problem: <a href="https://www.youtube.com/watch?v=7_nKOET6zwI">https://www.youtube.com/watch?v=7_nKOET6zwI</a></p>
+<h3 id="continuous_collision_detection">Continuous Collision Detection <a href="#table_of_contents"><sup>↑</sup></a></h3><p>If you run <code>demo_tunneling.py</code> you will see a problem with our engine. Stuff that's moving fast can go through objects. This is not a bug in our code but instead a flaw in our <em>entire</em> design! It happens because we are calculating in <em>discrete</em> time steps.</p>
+<p>That means that if a thing has a high enough velocity it can go straight through other objects and we can't possibly detect if the objects collided - they have already passed each other. You can increase the number of time steps but that comes with a <em>huge</em> cost of performance - you have to be a bit smarter.</p>
+<p>There are methods to solve this. We <span class="annotation annotation_12">
+                    <span class="annotation_inline" id="annotation_inline_12">won't be implementing a continuous collision solver here</span>
+                    <sup><a class="annotation_link" href="#annotation_12" style="display:none">12</a></sup>
+                    <span class="annotation_content" style="display:none">
+                        <span class="annotation_bracket">[</span>
+                        <span class="annotation_content_raw">I actually really want to extend the demos and this article with an implementation, so stay tuned!</span>
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span> but there's a great talk by a <a href="https://www.youtube.com/watch?v=7_nKOET6zwI" target="_blank">Blizzard game developer at GDC</a> about a robust solution to this problem. There is also an <a href="https://caseymuratori.com/blog_0003" target="_blank">article by Casey Muratori's blog</a> on how to implement the GJK algorithm.</p>
 </div>
 </div>
 </div>
@@ -3536,10 +3579,10 @@ $$ J = max(\frac{- \Delta \vec{V} \cdot \vec{n} + \text{bias}}{k_n}, 0) \cdot \v
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="practical_applications">Practical applications <a href="#table_of_contents"><sup>↑</sup></a></h1><p>So we've successfully looked at the beginning of an implementation of a physics engine. What do people use them for?</p>
+<h2 id="practical_applications">Practical applications <a href="#table_of_contents"><sup>↑</sup></a></h2><p>So we've successfully looked at the beginning of an implementation of a physics engine. What do people use them for?</p>
 <ul>
-<li><p>Firstly, extending the thing we've built to 3D is not that hard actually. An extra coordinate everywhere doesn't change the idea of the math. After all, <strong>linear algebra</strong> works the same even with vectors of infinite dimension :P.</p>
-<p>One part becomes a lot harder though and that's rotations - in 3D we use <strong>quaternions</strong> (4D numbers) to represent orientations. It turns out that quaternions are the most robust and convenient way but also the most confusing and most rarely fully understood (just because we can't have an intuition for 4D objects).</p>
+<li><p>Firstly, extending the thing we've built to 3D is not that hard actually. An extra coordinate everywhere doesn't change the idea of the math. After all, <em>linear algebra</em> works the same even with vectors of infinite dimension :P</p>
+<p>One part becomes a lot harder though and that's rotations - in 3D we use <em>quaternions</em> (4D numbers) to represent orientations. It turns out that quaternions are the most robust and convenient way but also the most confusing and most rarely fully understood (just because we can't have an intuition for 4D objects). Nevertheless <a href="https://www.youtube.com/watch?v=d4EgbgTm0Bg&ab_channel=3Blue1Brown" target="_blank">3blue1brown has a great series</a> on a 3D perspective on visualizing quaternions.</p>
 </li>
 </ul>
 <ul>
@@ -3549,7 +3592,7 @@ $$ J = max(\frac{- \Delta \vec{V} \cdot \vec{n} + \text{bias}}{k_n}, 0) \cdot \v
 <li>Engineers use computer simulations to build aircraft, bridges, buildings, .. almost everything basically. It's super useful (and cheap) to test things in a simulation before building them in the real world.</li>
 </ul>
 <ul>
-<li>Physicists and chemists use simulations to study the structure of molecules and predict how certain compounds would react with each other. Definetely one of the more interesting areas. </li>
+<li>Physicists and chemists use simulations to study the structure of molecules and predict how certain compounds would react with each other. Definitely one of the more interesting areas. </li>
 </ul>
 </div>
 </div>
@@ -3573,7 +3616,7 @@ $$ J = max(\frac{- \Delta \vec{V} \cdot \vec{n} + \text{bias}}{k_n}, 0) \cdot \v
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="further_reading">Further Reading <a href="#table_of_contents"><sup>↑</sup></a></h1><p>Here are a couple of links for more stuff related to simulating physics that's outside the scope of rigid body dynamics.</p>
+<h2 id="further_reading">Further Reading <a href="#table_of_contents"><sup>↑</sup></a></h2><p>Here are a couple of links for more stuff related to simulating physics that's outside the scope of rigid body dynamics.</p>
 <ul>
 <li>Two Minute Papers, Training an AI to compute physics much faster than traditional methods: <a href="https://www.youtube.com/watch?v=atcKO15YVD8">https://www.youtube.com/watch?v=atcKO15YVD8</a></li>
 </ul>
@@ -3596,28 +3639,100 @@ $$ J = max(\frac{- \Delta \vec{V} \cdot \vec{n} + \text{bias}}{k_n}, 0) \cdot \v
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="references">References <a href="#table_of_contents"><sup>↑</sup></a></h1><ul>
-<li>Arav Singhal, Making a 2D Physics Engine, 2018 - <a href="https://www.codeproject.com/Articles/1214829/Making-a-D-Physics-Engine-Shapes-Worlds-and-Integr">https://www.codeproject.com/Articles/1214829/Making-a-D-Physics-Engine-Shapes-Worlds-and-Integr</a></li>
-<li>Gilles Bellot, The Centroid of Convex Polygons, 2019 - <a href="https://bell0bytes.eu/centroid-convex/">https://bell0bytes.eu/centroid-convex/</a></li>
-<li>Concise Tutorial for SAT (Separating Axis Theorem), 2017 - <a href="https://hackmd.io/@US4ofdv7Sq2GRdxti381_A/ryFmIZrsl?type=view">https://hackmd.io/@US4ofdv7Sq2GRdxti381_A/ryFmIZrsl?type=view</a></li>
-<li>Orthogonal Projection onto a Line - <a href="https://en.wikibooks.org/wiki/Linear_Algebra/Orthogonal_Projection_Onto_a_Line">https://en.wikibooks.org/wiki/Linear_Algebra/Orthogonal_Projection_Onto_a_Line</a></li>
-<li>Proving the Vector Projection Formula - <a href="https://www.youtube.com/watch?v=MdfArHlKWZc">https://www.youtube.com/watch?v=MdfArHlKWZc</a></li>
-<li>Randy Gaul, How to Create a Custom 2D Physics Engine: The Basics and Impulse Resolution, 2013 - <a href="https://gamedevelopment.tutsplus.com/tutorials/how-to-create-a-custom-2d-physics-engine-the-basics-and-impulse-resolution--gamedev-6331">https://gamedevelopment.tutsplus.com/tutorials/how-to-create-a-custom-2d-physics-engine-the-basics-and-impulse-resolution--gamedev-6331</a></li>
-<li>Contact Points Using Clipping, 2011 - <a href="http://www.dyn4j.org/2011/11/contact-points-using-clipping/">http://www.dyn4j.org/2011/11/contact-points-using-clipping/</a></li>
-<li>Erin Catto and Crystal Dynamics, Fast and Simple Physics using Sequential Impulses, 2006 - <a href="https://github.com/erincatto/box2d-lite/blob/master/docs/GDC2006_Catto_Erin_PhysicsTutorial.pdf">https://github.com/erincatto/box2d-lite/blob/master/docs/GDC2006_Catto_Erin_PhysicsTutorial.pdf</a></li>
+<h3 class="author">by Dimitar Sotirov</h3><h2 id="some_references_which_made_this_possible">Some References Which Made This Possible <a href="#table_of_contents"><sup>↑</sup></a></h2><ul>
+<li>Arav Singhal, Making a 2D Physics Engine, 2018, <a href="https://www.codeproject.com/Articles/1214829/Making-a-D-Physics-Engine-Shapes-Worlds-and-Integr" target="_blank">link</a></li>
+<li>Erin Catto, Crystal Dynamics, Fast and Simple Physics using Sequential Impulses, 2006, <a href="https://github.com/erincatto/box2d-lite/blob/master/docs/GDC2006_Catto_Erin_PhysicsTutorial.pdf" target="_blank">link</a></li>
+<li>Gilles Bellot, The Centroid of Convex Polygons, 2019, <a href="https://bell0bytes.eu/centroid-convex/" target="_blank">link</a></li>
+<li>Randy Gaul, How to Create a Custom 2D Physics Engine: The Basics and Impulse Resolution, 2013, <a href="https://gamedevelopment.tutsplus.com/tutorials/how-to-create-a-custom-2d-physics-engine-the-basics-and-impulse-resolution--gamedev-6331" target="_blank">link</a></li>
+<li>Contact Points Using Clipping, 2011, <a href="http://www.dyn4j.org/2011/11/contact-points-using-clipping/" target="_blank">link</a></li>
+<li>Concise Tutorial for SAT (Separating Axis Theorem), 2017, <a href="https://hackmd.io/@US4ofdv7Sq2GRdxti381_A/ryFmIZrsl?type=view" target="_blank">link</a></li>
+<li>Orthogonal Projection onto a Line, <a href="https://en.wikibooks.org/wiki/Linear_Algebra/Orthogonal_Projection_Onto_a_Line" target="_blank">link</a></li>
+<li>YouTube, Mathispower4u, Proving the Vector Projection Formula, <a href="https://www.youtube.com/watch?v=MdfArHlKWZc" target="_blank">link</a></li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-</body>
-<h3 class="author">by Dimitar Sotirov</h3>
+</div>
+
             </div>
 
             <div class="divider"></div>
 
             <div class="annotations">
-                <ul></ul>
+                <ul><li>
+                        <span class="annotation_number" id="annotation_1">01</span>
+                        <span class="annotation_expanded_content">Bodies that does not deform on contact. A completely rigid body doesn't exist in real life since all bodies break under high enough pressure. For the purpose of simulation we assume they are unbreakable. 
+                            <a href="#annotation_inline_1">↑</a>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="annotation_number" id="annotation_2">02</span>
+                        <span class="annotation_expanded_content">Each invididual body has it's own virtual origin (0, 0) in which vertices are placed relative to. This is called local space. Moving/rotating the object doesn't affect it. 
+                            <a href="#annotation_inline_2">↑</a>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="annotation_number" id="annotation_3">03</span>
+                        <span class="annotation_expanded_content">The space in which all bodies get placed in when drawing is called global space (or world space). 
+                            <a href="#annotation_inline_3">↑</a>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="annotation_number" id="annotation_4">04</span>
+                        <span class="annotation_expanded_content">Note that as a workaround, a concave shape can be represented with a bunch of convex polygons. 
+                            <a href="#annotation_inline_4">↑</a>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="annotation_number" id="annotation_5">05</span>
+                        <span class="annotation_expanded_content">A normal/orthogonal/perpendicular vector is a vector which forms a 90 degree angle (clockwise or counter-clockwise according to convention) with another vector. 
+                            <a href="#annotation_inline_5">↑</a>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="annotation_number" id="annotation_6">06</span>
+                        <span class="annotation_expanded_content">Normalizing a vector just means dividing by its length. The resulting vector has length exactly 1 ($x^2 + y^2 = 1$). 
+                            <a href="#annotation_inline_6">↑</a>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="annotation_number" id="annotation_7">07</span>
+                        <span class="annotation_expanded_content">I hope you can see how complicated you can create your engine: you can add support for mapping a non-uniform density, or you can create joints between bodies with different densities to create a large body that approximates your real-life example. However, our aim is not to create the perfect most general physics engine (because that can easily require an ungodly amount of work). 
+                            <a href="#annotation_inline_7">↑</a>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="annotation_number" id="annotation_8">08</span>
+                        <span class="annotation_expanded_content">center of mass 
+                            <a href="#annotation_inline_8">↑</a>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="annotation_number" id="annotation_9">09</span>
+                        <span class="annotation_expanded_content">divide a polygon up into smaller triangles 
+                            <a href="#annotation_inline_9">↑</a>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="annotation_number" id="annotation_10">10</span>
+                        <span class="annotation_expanded_content">length of a vector 
+                            <a href="#annotation_inline_10">↑</a>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="annotation_number" id="annotation_11">11</span>
+                        <span class="annotation_expanded_content">The vector with the least magnitude that is required to separate two overlapping shapes. 
+                            <a href="#annotation_inline_11">↑</a>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="annotation_number" id="annotation_12">12</span>
+                        <span class="annotation_expanded_content">I actually really want to extend the demos and this article with an implementation, so stay tuned! 
+                            <a href="#annotation_inline_12">↑</a>
+                        </span>
+                    </li>
+                    </ul>
             </div>
 
             <div class="annotation_preview">

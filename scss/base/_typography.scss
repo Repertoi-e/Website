@@ -7,15 +7,15 @@
 $mod_1: 1.067;
 $mod_2: 1.333;
 
-$h5-font-size: 100%;
-$h4-font-size: $mod_1 * $h5-font-size;
-$h3-font-size: $mod_1 * $h4-font-size;
-$h2-font-size: $mod_1 * $h3-font-size;
-$h1-font-size: $mod_1 * $h2-font-size;
-$h6-font-size: calc($h5-font-size / $mod_1);
+$h4-font-size: 100%;
+$h3-font-size: $mod_2 * $h4-font-size;
+$h2-font-size: $mod_2 * $h3-font-size;
+$h1-font-size: $mod_2 * $h2-font-size;
+$h5-font-size: calc($h4-font-size / $mod_2);
+$h6-font-size: calc($h5-font-size / $mod_2);
 
 :root {
-    font-size: $h5-font-size;
+    font-size: $h4-font-size;
 }
 
 h1 {

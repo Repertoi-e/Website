@@ -1,10 +1,14 @@
 @charset 'utf-8';
 
 @import "../vendor/_vendor-dir";
+
 @import "../base/_base-dir";
 @import "../abstracts/_abstracts-dir";
+
 @import "../components/annotations";
 @import "../components/directory";
+@import "../components/article-content-common";
+
 @import "../layouts/header";
 @import "../layouts/messages";
 @import "../layouts/footer";
@@ -14,6 +18,8 @@ html body {
 
     display: flex;
     flex-direction: column;
+
+    padding: 0;
 }
 
 main,
@@ -150,7 +156,7 @@ footer {
             display: flex;
             flex-direction: column;
 
-            .title {
+            .title h2 {
                 font-size: 2rem;
                 line-height: 2rem;
                 color: #222222;
@@ -183,54 +189,29 @@ footer {
         }
     }
 
+    .content-jupyter {
+        @include article-content-common();
+
+        margin-left: -2rem;
+        @include md {
+            margin-left: -5.1rem;
+        }
+
+        pre {
+            overflow-x: auto;
+        }
+
+        .highlight > pre {
+            font-size: 0.9em;
+        }
+    }
+
     .content {
         display: flex;
         flex-direction: column;
         align-items: center;
 
-        .index {
-            width: 100%;
-
-            ul {
-                list-style-type: none;
-            }
-
-            li::before {
-                content: '\27F6';
-                margin-right: 0.2rem;
-
-                margin-left: -2rem;
-
-                @include md {
-                    margin-left: 0;
-                }
-            }
-
-            a {
-                text-decoration: none;
-            }
-        }
-
-        p {
-            width: 100%;
-
-            &.centered {
-                text-align: center;
-            }
-
-            margin-top: 1rem;
-        }
-
-        h4 {
-            margin-top: 3rem;
-
-            a {
-                color: $link-color;
-
-                font-size: 0.8rem;
-                text-decoration: none;
-            }
-        }
+        @include article-content-common();
 
         code {
             font-family: "FiraCode";
@@ -247,29 +228,6 @@ footer {
             color: #232323;
 
             max-width: 100%;
-        }
-
-        .note {
-            color: gray;
-
-            margin-top: 1rem;
-
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-
-            font-size: 0.9rem;
-
-            text-align: center;
-        }
-
-        .author {
-            align-self: flex-end;
-
-            margin-top: 1rem;
-            margin-right: 2rem;
-
-            font-size: 0.9rem;
         }
     }
 }
