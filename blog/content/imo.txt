@@ -359,7 +359,7 @@ Anyways, hope you enjoyed, bye for now <3.
 #author
 
 
-#header Some Videos Which Made This Possible
+#header Some Videos Which Made this Possible
 
 1. <a href="https://www.youtube.com/watch?v=NcaYEaVTA4g" target="_blank">Original Numberphile video</a> which inspired this post (also found at the beginning).
 

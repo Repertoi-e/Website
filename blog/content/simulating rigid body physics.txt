@@ -7,7 +7,7 @@
 
 @lang en
 @desc Want to know how to do a full-blown physics simulation of rigid bodies and collisions between them? In this in-depth tutorial I share the knowledge I gained from the time I wondered the same...
-@keywords math, phyiscs, notebook, visualization, rigid, body, simulation, physics engine, engine, mathematics
+@keywords math, physics, notebook, visualization, rigid, body, simulation, physics engine, engine, mathematics
 
 @content-jupyter
 
@@ -175,7 +175,7 @@ init_mathjax();
 #header Shapes 
 
 <p>The first essential thing we need to look at is shapes. Shapes represent the volume which an object occupies (2D or 3D) and can be really simple (circles) or really complex (many polygons linked together).</p>
-<p>The vertices that are part of the shape of our body are in #note[local space](Each invididual body has it's own virtual origin (0, 0\) in which vertices are placed relative to. This is called local space. Moving/rotating the object doesn't affect it.). We imagine the object's #note[global](The space in which all bodies get placed in when drawing is called global space (or world space\).) position to be the same as the origin of our local space and so vertices become "offsets" from that. This allows us to use 1 shape for many objects and those objects can have different positions and rotations.</p>
+<p>The vertices that are part of the shape of our body are in #note[local space](Each individual body has it's own virtual origin (0, 0\) in which vertices are placed relative to. This is called local space. Moving/rotating the object doesn't affect it.). We imagine the object's #note[global](The space in which all bodies get placed in when drawing is called global space (or world space\).) position to be the same as the origin of our local space and so vertices become "offsets" from that. This allows us to use 1 shape for many objects and those objects can have different positions and rotations.</p>
 <p>We define the shape's space origin to be at <code>(0,0)</code>, although it's geometric center (centroid) may not lie on the origin (we later see how we can correct that).</p>
 <div>
 <img src="data/local-space-global-space.png" width="600"/>
@@ -413,7 +413,7 @@ jp-needs-light-background
 #sub_header Model Matrix
 
 <p>When drawing our bodies they shouldn't appear at the same place. When we talked about shapes we said that our bodies have position and rotation, and the shape's vertices get transformed. How do we do that?</p>
-<p>Well probably the most convinient way is by using matrices. For 2D <em>linear transformations</em> we need 2x2 matrices. We can't describe translation in a 2x2 matrix (translation is not a linear transformation because it moves the origin).</p>
+<p>Well probably the most convenient way is by using matrices. For 2D <em>linear transformations</em> we need 2x2 matrices. We can't describe translation in a 2x2 matrix (translation is not a linear transformation because it moves the origin).</p>
 <p>But we can encode it by using a third column:</p>
 $$
 T = 
@@ -754,7 +754,7 @@ jp-needs-light-background
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The correct answer is indeed $4.5$ (base is 3and height is 3, so $ A = \frac{3 \cdot 3}{2} = 4.5 $).</p>
+<p>The correct answer is indeed $4.5$ (base is $3$ and height is $3$, so $ A = \frac{3 \cdot 3}{2} = 4.5 $).</p>
 <p>Now that we have methods of finding the area of our shapes, the mass of a body is simply $m = A\rho$ (area times density).</p>
 
 </div>
@@ -4327,7 +4327,7 @@ $$ J = max(\frac{- \Delta \vec{V} \cdot \vec{n} + \text{bias}}{k_n}, 0) \cdot \v
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 
-#header Practical applications 
+#header Practical Applications 
 
 <p>So we've successfully looked at the beginning of an implementation of a physics engine. What do people use them for?</p>
 <ul>
@@ -4354,7 +4354,7 @@ $$ J = max(\frac{- \Delta \vec{V} \cdot \vec{n} + \text{bias}}{k_n}, 0) \cdot \v
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>I hope I've given you some basic understading of how to implement a simulation yourself. I learned a whole bunch doing this project and I really enjoyed doing it and sharing the knowledge. Before this I've never been able to implement a working collision system.</p>
+<p>I hope I've given you some basic understanding of how to implement a simulation yourself. I learned a whole bunch doing this project and I really enjoyed doing it and sharing the knowledge. Before this I've never been able to implement a working collision system.</p>
 <p>I wrote the physics code in Python so it can be easily understood and ported to another language.</p>
 
 </div>
@@ -4397,7 +4397,7 @@ $$ J = max(\frac{- \Delta \vec{V} \cdot \vec{n} + \text{bias}}{k_n}, 0) \cdot \v
 
 #author
 
-#header Some References Which Made This Possible 
+#header Some References Which Made this Possible 
 
 <ul>
 <li>Arav Singhal, Making a 2D Physics Engine, 2018, #ext_link[link](https://www.codeproject.com/Articles/1214829/Making-a-D-Physics-Engine-Shapes-Worlds-and-Integr)</li>

@@ -789,6 +789,7 @@ main {
   box-shadow: 1px 1px 5px gray;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
+  text-decoration: none;
 }
 @media (min-width: 768px) {
   .projects__windows__sizer__content, .projects__windows__window__content {

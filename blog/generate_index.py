@@ -38,7 +38,7 @@ def main(silent: bool = False):
         d = datetime.strptime(x, "%d.%m.%Y")
         return int(d.strftime("%Y%m%d"))
 
-    for tags_html, link, title, date in sorted(articles, key=lambda x: get_int_from_time(x[3])):
+    for tags_html, link, title, date in sorted(articles, key=lambda x: get_int_from_time(x[3]), reverse=True):
         html = f"""<div class="article-links__link">
                 <div>
                     <div class="article-links__link__tags">

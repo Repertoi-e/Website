@@ -185,6 +185,8 @@ main {
             padding-bottom: 1rem;
             margin-bottom: 1rem;
 
+            text-decoration: none;
+
             @include md {
                 box-shadow: inherit;
                 padding-bottom: 0;

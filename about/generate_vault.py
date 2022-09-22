@@ -124,6 +124,7 @@ def try_parse_meta_directive() -> bool:
         "css_class": lambda rest: rest,
         "img": lambda rest: rest,
         "title": lambda rest: rest,
+        "url": lambda rest: rest,
         "photo_info": lambda rest: rest,
         "desc": lambda rest: eat_lines_until_next_meta_directive(rest, "<br><br>"),
         "tags": lambda rest: eat_lines_until_next_meta_directive(rest, ""),
@@ -168,13 +169,16 @@ def try_parse_next() -> bool:
 def get_vault_entry_html_from_meta(m: dict[str, Any]) -> str:
     tags = [f"<div><span>{x.strip()}</span></div>" for x in m.get("tags", "").split(",") if len(x) > 0]
 
+    url = m.get("url", "")
+    href = f"href={url}" if len(url) != 0 else ""
+
     html = f"""                <div class="projects__windows__window {m.get("css_class", "")}">
                     <img src="{m["img"]}">
                     <div class="projects__windows__window__overlay"></div>
-                    <div class="projects__windows__window__content">
+                    <a class="projects__windows__window__content" target="_blank" {href}>
                         <h2><span>{m.get("title", "")}</span> {"".join(tags)}</h2>
                         <p>{m.get("desc", "")}</p>
-                    </div>
+                    </a>
                     <div class="projects__windows__window__photo-info">
                         {m.get("photo_info", "")}
                     </div>
