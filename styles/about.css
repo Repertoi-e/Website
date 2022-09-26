@@ -795,7 +795,6 @@ main {
   .projects__windows__sizer__content, .projects__windows__window__content {
     box-shadow: inherit;
     padding-bottom: 0;
-    margin-bottom: 0;
   }
 }
 .projects__windows__sizer__content > h2, .projects__windows__window__content > h2 {
