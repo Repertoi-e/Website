@@ -83,6 +83,45 @@ main {
     pre>span {
         font-family: "FiraGo", sans-serif;
     }
+
+    &__description {
+        display: none;
+        @include md {
+            display: inherit;
+        }
+
+        &__show-more, &__show-less {
+            text-decoration-line: underline;
+            text-decoration-thickness: 0.1rem;
+
+            @include md {
+                display: none;
+            }
+        }
+
+        &__show-less {
+            display: none;
+        }
+    }
+
+    &__social {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        margin-inline: 2rem;
+        margin-bottom: 2rem;
+
+        @include md {
+            flex-direction: column;
+
+            margin-inline: 0;
+
+            h3 {
+                margin-bottom: 1.5rem;
+            }
+        }
+    }
 }
 
 

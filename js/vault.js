@@ -37,6 +37,20 @@ $(document).ready(function () {
     });
 });
 
+
+
+$(".about-me__description__show-more").click(function() {
+    $(".about-me__description").show()
+    $(".about-me__description__show-more").hide()
+    $(".about-me__description__show-less").show()
+});
+
+$(".about-me__description__show-less").click(function() {
+    $(".about-me__description").hide()
+    $(".about-me__description__show-less").hide()
+    $(".about-me__description__show-more").show()
+});
+
 var selected = "#vault-game-dev"
 
 function update_directory() {

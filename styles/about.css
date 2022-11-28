@@ -707,6 +707,43 @@ main {
 .about-me pre > span {
   font-family: "FiraGo", sans-serif;
 }
+.about-me__description {
+  display: none;
+}
+@media (min-width: 768px) {
+  .about-me__description {
+    display: inherit;
+  }
+}
+.about-me__description__show-more, .about-me__description__show-less {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+  text-decoration-thickness: 0.1rem;
+}
+@media (min-width: 768px) {
+  .about-me__description__show-more, .about-me__description__show-less {
+    display: none;
+  }
+}
+.about-me__description__show-less {
+  display: none;
+}
+.about-me__social {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-inline: 2rem;
+  margin-bottom: 2rem;
+}
+@media (min-width: 768px) {
+  .about-me__social {
+    flex-direction: column;
+    margin-inline: 0;
+  }
+  .about-me__social h3 {
+    margin-bottom: 1.5rem;
+  }
+}
 
 .projects {
   width: 100%;
