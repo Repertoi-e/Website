@@ -797,29 +797,27 @@ main {
     padding-bottom: 0;
   }
 }
-.projects__windows__sizer__content > h2, .projects__windows__window__content > h2 {
+.projects__windows__sizer__content h2, .projects__windows__window__content h2 {
   padding: 1rem;
-  font-size: 1rem;
+  font-size: 2rem;
   margin-bottom: 0.1rem;
   color: black;
   display: flex;
   flex-wrap: wrap;
 }
 @media (min-width: 768px) {
-  .projects__windows__sizer__content > h2, .projects__windows__window__content > h2 {
+  .projects__windows__sizer__content h2, .projects__windows__window__content h2 {
     font-size: inherit;
     color: white;
     padding: 0;
-    padding-inline: 0.3rem;
+    padding-inline: 1rem;
   }
 }
-.projects__windows__sizer__content > h2 > span, .projects__windows__window__content > h2 > span {
+.projects__windows__sizer__content h2 > span, .projects__windows__window__content h2 > span {
   margin-bottom: 0.3rem;
+  margin-right: 8px;
 }
-.projects__windows__sizer__content > h2 div + div, .projects__windows__window__content > h2 div + div {
-  margin-left: 8px;
-}
-.projects__windows__sizer__content > h2 div, .projects__windows__window__content > h2 div {
+.projects__windows__sizer__content h2 div, .projects__windows__window__content h2 div {
   background-color: #414288;
   border-radius: 4px;
   height: -webkit-fit-content;
@@ -829,15 +827,15 @@ main {
   width: -moz-fit-content;
   width: fit-content;
   padding: 0.1rem 0.1rem;
-  margin: 0.3rem;
+  margin-right: 8px;
   margin-top: -2px;
 }
-.projects__windows__sizer__content > h2 div span, .projects__windows__window__content > h2 div span {
+.projects__windows__sizer__content h2 div span, .projects__windows__window__content h2 div span {
   color: white;
   margin: 6px;
   font-size: 0.9rem;
 }
-.projects__windows__sizer__content > h2 div a, .projects__windows__window__content > h2 div a {
+.projects__windows__sizer__content h2 div a, .projects__windows__window__content h2 div a {
   color: white;
 }
 .projects__windows__sizer__content > p, .projects__windows__window__content > p {

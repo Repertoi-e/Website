@@ -249,7 +249,14 @@ def main():
 
     html_final = ""
     for title, html in html_gen.items():
+        html_dir = """<div class="directory" style="margin-top: 1rem">
+                        <a class="vault-programming-option" id="vault-game-dev">Game Dev</a><span class="separator">/</span>
+                        <a class="vault-programming-option" id="vault-math-ml">Math and ML</a><span class="separator">/</span>
+                        <a class="vault-programming-option" id="vault-cpp">C++</a>
+                    </div>""" if title == "programming" else ""
+            
         html_final += f"""<h1 class="section-header">{title.upper()}</h1>
+            {html_dir}
             <div class="projects__windows">
                 <div class="projects__windows__stamp"></div>
                 <div class="projects__windows__stamp"></div>

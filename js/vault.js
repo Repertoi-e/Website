@@ -22,7 +22,6 @@ $(window).resize(function () {
         $(".projects__windows__window").find("p").show();
     }
     $grid.masonry("layout");
-
 });
 
 $(document).ready(function () {
@@ -37,3 +36,30 @@ $(document).ready(function () {
         }
     });
 });
+
+var selected = "#vault-game-dev"
+
+function update_directory() {
+    $(".vault-programming-option").css("text-decoration", "none")
+    $(".vault-programming-option").css("font-weight", "normal")
+    $(selected).css("text-decoration", "underline")
+    $(selected).css("font-weight", "bold")
+}
+
+$("#vault-game-dev").click(function() {
+    selected ="#vault-game-dev"
+    update_directory()
+});
+
+$("#vault-math-ml").click(function() {
+    selected = "#vault-math-ml"
+    update_directory()
+});
+
+$("#vault-cpp").click(function() {
+    selected = "#vault-cpp"
+    update_directory()
+});
+
+update_directory()
+

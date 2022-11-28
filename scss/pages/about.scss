@@ -193,9 +193,9 @@ main {
             }
 
             // Title
-            &>h2 {
+            & h2 {
                 padding: 1rem;
-                font-size: 1rem;
+                font-size: 2rem;
 
                 margin-bottom: 0.1rem;
 
@@ -206,7 +206,7 @@ main {
                     color: white;
 
                     padding: 0;
-                    padding-inline: 0.3rem;
+                    padding-inline: 1rem;
                 }
 
                 display: flex;
@@ -215,13 +215,10 @@ main {
                 // Title text:
                 &>span {
                     margin-bottom: 0.3rem;
+                    margin-right: 8px;
                 }
 
                 // Tags:
-                div+div {
-                    margin-left: 8px;
-                }
-
                 div {
                     background-color: $theme-color;
                     border-radius: 4px;
@@ -230,7 +227,7 @@ main {
                     width: fit-content;
                     padding: 0.1rem 0.1rem;
 
-                    margin: 0.3rem;
+                    margin-right: 8px;
                     margin-top: -2px;
 
                     span {
