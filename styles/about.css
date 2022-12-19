@@ -666,13 +666,11 @@ footer {
 main {
   display: flex;
   flex-direction: column;
-  margin-top: 3rem;
   position: relative;
 }
 @media (min-width: 768px) {
   main {
     flex-direction: row;
-    margin-top: 6rem;
   }
 }
 
@@ -684,7 +682,25 @@ main {
 
 .about-me {
   width: 100%;
+  margin-top: 3rem;
   padding-inline: 1rem;
+}
+.about-me .logo {
+  font-family: "Vollkorn";
+  margin-left: 2.2rem;
+}
+@media (min-width: 768px) {
+  .about-me {
+    margin-top: 6rem;
+  }
+}
+.about-me h1 {
+  font-family: "Vollkorn";
+  font-size: 3em;
+}
+.about-me hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 @media (min-width: 768px) {
   .about-me {
@@ -740,7 +756,7 @@ main {
     flex-direction: column;
     margin-inline: 0;
   }
-  .about-me__social h3 {
+  .about-me__social h2 {
     margin-bottom: 1.5rem;
   }
 }
@@ -750,15 +766,11 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 3rem;
 }
 .projects .section-header {
   align-self: flex-start;
   padding-inline: 1rem;
   margin-top: 6rem;
-}
-.projects .section-header:nth-of-type(1) {
-  margin-top: 0;
 }
 @media (min-width: 768px) {
   .projects {
@@ -772,7 +784,6 @@ main {
 
 .projects__windows {
   width: 100%;
-  margin-top: 2rem;
 }
 .projects__windows__sizer, .projects__windows__window {
   width: 100%;

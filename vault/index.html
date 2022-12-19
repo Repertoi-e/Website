@@ -34,61 +34,108 @@
 </head>
 
 <body>
+    <header>
+        <div class="logo">
+            <h4 class="logo__title"><span>DI</span>MITAR</h4>
+            <h4 class="logo__title">SOTIROV</h4>
+            <img class="logo__img"
+                alt="A gif with surreal rolling hills, dancing in the colors of cyan, magenta, and red"
+                src="/resources/index/hills.gif" />
+        </div>
+
+        <div class="header-links">
+            <div class="header-links__link">⟵<a href="/#contacts">CONTACT</a></div>
+            <div class="header-links__divider"></div>
+            <div class="header-links__link"><a href="/blog">BLOG</a>⟶</div>
+        </div>
+    </header>
+
     <main>
         <div class="about-me">
-            <div class="logo">
-                <h4 class="logo__title"><span>DI</span>MITAR</h4>
-                <h4 class="logo__title">SOTIROV</h4>
-                <img class="logo__img"
-                    alt="A gif with surreal rolling hills, dancing in the colors of cyan, magenta, and red"
-                    src="/resources/index/hills.gif" />
-            </div>
+            <h1 class="section-header">ABOUT</h1>
 
-            <hr>
             <p>
-            I'm a future student, currently taking a gap year.
-            I graduated high-school in 2022:<br>
-            <br>
-            <a href="/resources/about/diploma.pdf" target="_blank">diploma.</a>
-            <img class="hs-signature" src="/resources/about/hs.jpg"/>
-            <br>
-            <br>
-            Game programming is my hobby since
-            childhood and I've been working professionally as a game programmer
-            for a year now.<br>
-            <br>
-            However, I also do other stuff.
+                Briefly, I...
+            <pre>
+┌── 2003 <span>...was born.</span>
+|
+<span>Then I...</span>
+|
+├── 2017 ──┬ <span>Sofia H.S.</span>
+|          | <span>of Mathematics</span>
+|   ...    |  
+├── 2020 ──┼─┬ <span><a href="https://softuni.bg/" target="_blank">Software</a></span>
+|          | | <span><a href="https://softuni.bg/" target="_blank">University</a>, Sofia</span>
+├── 2021 ──┼─┴┐ 
+|          |  ├ <span>Game Dev</span>
+├── 2022 ──┘  | <span>at <a href="https://www.gameloft.com/gameloft-studios/sofia" target="_blank">Gameloft</a></span>
+| *graduated*─├┐ 
+|             ||   
+|             || 
+└─────────────<span>🚀</span>
+                </pre>
             </p>
-            <hr>
-            <a href="./vault"><h2>Vault (projects)</h2></a>
-            <hr>
-            Bulgarian is my mother tongue, but I also know English:<br><br>
-            <a href="/resources/about/c2_english.pdf" target="_blank">certificate.</a>
-            <img class="english-signature" src="/resources/about/english.jpg"/>
+            <p class="about-me__description__show-more">
+                <a>Show more.</a>
+            </p>
+
+            <p class="about-me__description">
+                I firmly believe that enduring software in the age of computing should be a top priority,
+                and it shouldn't be slow, have bugs, be undocumented, or be hard to fix.<br>
+                <br>
+                The most satisfying parts of my job are:                
+            </p>
+            <ul class="about-me__description">
+                <li>Measuring a performance gain (even of a few milliseconds), even after going insane launching a program 10s of times;</li>
+                <li>Commiting a change that deletes a bunch of old crufty code;</li>
+                <li>Pouring my heart out in code comments, discussing the philosophy and *why* of the logic—what worked, what didn't, trade-offs and benefits, and so on;</li>
+                <li>Starting a new project with control in mind and minimizing dependencies;</li>
+            </ul>
+            <p class="about-me__description">
+                Growing up without access to a fast computer, I found myself tinkering with low-level programming: game engines, embedded software, and eventually a kernel from scratch for the Raspberry PI.<br> 
+                <br>
+                My gurus are industry people like
+                <a href="https://twitter.com/thecherno?lang=en" target="_blank">Yan Chernikov</a>, <a href="https://twitter.com/jonathan_blow" target="_blank">Jonathan Blow</a>, <a href="https://twitter.com/cmuratori" target="_blank">Casey Muratori</a>, 
+                whom I follow regularly and who have taught me a large part of the craft of software engineering.<br>
+                <br>
+                I like Casey's philosophy of seeing our modern day programmers job more as <em>code explorers</em> than "telling the computer what to do strictly confined by the possibility space of hardware" programmer per se. Our job should be to get our hands dirty and try many different strategies for solving problems in order to find the optimal one (or a very good one). So how do we judge that? In the wild jungle, our map and compass are <b>data-oriented design</b> (ultimately the most important thing at the end of the day is what goes in and out of a computer) and <b>measurable performance metrics</b>.<br>
+                <br>
+            </p>
+
+            <p class="about-me__description__show-less">
+                <a>Show less.</a>
+            </p>
+
             <br>
-            I'm in the process of learning German and French.
-            <hr>
-            
+            <br>
+
             <div class="about-me__social">
-                <a href="https://www.instagram.com/soti.and.friends/"
-            target="_blank"><h2>Instagram</h2></a>
                 <a href="https://github.com/Repertoi-e/"
-            target="_blank"><h2>GitHub</h2></a>
+            target="_blank"><h3>GITHUB</h3></a>
                 <a href="https://www.linkedin.com/in/sotirov-dimitar/"
-            target="_blank"><h2>LinkedIn</h2></a>
+            target="_blank"><h3>LINKEDIN</h3></a>
+                <a href="https://www.instagram.com/soti.and.friends/"
+            target="_blank"><h3>INSTAGRAM</h3></a>
             </div>
         </div>
 
         <div class="projects">
-            
-        <div class="projects__windows">
-            <div class="projects__windows__sizer"></div>
-                            <div class="projects__windows__window ">
+            <h1 class="section-header">PROGRAMMING</h1>
+            <div class="directory" style="margin-top: 1rem">
+                        <a class="vault-programming-option" id="vault-game-dev">Game Dev</a><span class="separator">/</span>
+                        <a class="vault-programming-option" id="vault-math-ml">Math and ML</a><span class="separator">/</span>
+                        <a class="vault-programming-option" id="vault-cpp">C++</a>
+                    </div>
+            <div class="projects__windows">
+                <div class="projects__windows__stamp"></div>
+                <div class="projects__windows__stamp"></div>
+                <div class="projects__windows__sizer"></div>
+                                <div class="projects__windows__window ">
                     <img src="/resources/about/vault/partien_dom.jpg">
                     <div class="projects__windows__window__overlay"></div>
-                    <a class="projects__windows__window__content" target="_blank" >
-                        <h2><span></span> </h2>
-                        <p></p>
+                    <a class="projects__windows__window__content" target="_blank" href=https://repertoire.itch.io/res-publica>
+                        <h2><span>Video Game "Res Publica"</span> <div><span>python</span></div><div><span>game dev</span></div></h2>
+                        <p>A video game to put you in the shoes of the Bulgarian prime minister. As a team we won 3rd place at the National Civil Education Competition...</p>
                     </a>
                     <div class="projects__windows__window__photo-info">
                         
@@ -98,9 +145,9 @@
                 <div class="projects__windows__window ">
                     <img src="/resources/about/vault/billiard.jpg">
                     <div class="projects__windows__window__overlay"></div>
-                    <a class="projects__windows__window__content" target="_blank" >
-                        <h2><span></span> </h2>
-                        <p></p>
+                    <a class="projects__windows__window__content" target="_blank" href=/blog/simulating_rigid_body_physics/>
+                        <h2><span>Simulating Rigid Body Physics</span> <div><span>python</span></div><div><span>notebook</span></div><div><span>tutorial+demo</span></div></h2>
+                        <p>Want to know how to do a full-blown physics simulation of rigid bodies and collisions between them? In this in-depth tutorial I share my knowledge when I wondered the same...</p>
                     </a>
                     <div class="projects__windows__window__photo-info">
                         
@@ -111,15 +158,23 @@
                     <img src="/resources/about/vault/shave.jpg">
                     <div class="projects__windows__window__overlay"></div>
                     <a class="projects__windows__window__content" target="_blank" >
-                        <h2><span></span> </h2>
-                        <p></p>
+                        <h2><span>Example Analysis on a Movies Dataset</span> <div><span>python</span></div><div><span>data science</span></div><div><span>notebook</span></div></h2>
+                        <p>Exploratory Data Analysis. Showing my thought process as I work through a giant set of data, creating visualizations, preformulating hypothesis and testing their statistical plausibility...</p>
                     </a>
                     <div class="projects__windows__window__photo-info">
                         
                     </div>
                 </div>
     
-                <div class="projects__windows__window ">
+
+            </div>
+            <h1 class="section-header">MISC</h1>
+            
+            <div class="projects__windows">
+                <div class="projects__windows__stamp"></div>
+                <div class="projects__windows__stamp"></div>
+                <div class="projects__windows__sizer"></div>
+                                <div class="projects__windows__window ">
                     <img src="/resources/about/vault/moon.jpg">
                     <div class="projects__windows__window__overlay"></div>
                     <a class="projects__windows__window__content" target="_blank" >
@@ -171,7 +226,7 @@
                     <img src="/resources/about/vault/graduation.jpg">
                     <div class="projects__windows__window__overlay"></div>
                     <a class="projects__windows__window__content" target="_blank" >
-                        <h2><span></span> </h2>
+                        <h2><span>Graduation</span> </h2>
                         <p></p>
                     </a>
                     <div class="projects__windows__window__photo-info">
@@ -183,7 +238,7 @@
                     <img src="/resources/about/vault/ball.jpg">
                     <div class="projects__windows__window__overlay"></div>
                     <a class="projects__windows__window__content" target="_blank" >
-                        <h2><span></span> </h2>
+                        <h2><span>Prom</span> </h2>
                         <p></p>
                     </a>
                     <div class="projects__windows__window__photo-info">
@@ -192,8 +247,8 @@
                 </div>
     
 
-        </div>
-        
+            </div>
+            
 
             <h1 class="section-header">REBLOG</h1>
 
@@ -210,6 +265,8 @@
     </main>
 
     <footer>
+        Header hills animation found on gifer:
+        <a href="https://i.gifer.com/HAgJ.gif" target="_blank">i.gifer.com</a><br><br>
         Marble statue glitch gifs, credit -
         <a href="https://artoftheglitch.tumblr.com/" target="_blank">artoftheglitch.tumblr.com</a><br><br>
         © 2022 – Dimitar Sotirov

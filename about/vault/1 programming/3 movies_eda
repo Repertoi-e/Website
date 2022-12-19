@@ -1,14 +1,8 @@
 @v1
 
-@category programming
-
 @img /resources/about/vault/shave.jpg
-@title Example Analysis on a Movies Dataset
 
 @lang en
-@desc Exploratory Data Analysis. Showing my thought process as I work through a giant set of data, creating visualizations, preformulating hypothesis and testing their statistical plausibility...
-
-@tags python, data science, notebook
 
 @end_meta
 
