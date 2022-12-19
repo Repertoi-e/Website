@@ -54,10 +54,13 @@ $(".about-me__description__show-less").click(function() {
 var selected = "#vault-game-dev"
 
 function update_directory() {
+    $(".vault-programming-option").css("cursor", "pointer")
     $(".vault-programming-option").css("text-decoration", "none")
-    $(".vault-programming-option").css("font-weight", "normal")
-    $(selected).css("text-decoration", "underline")
-    $(selected).css("font-weight", "bold")
+    $(".vault-programming-option").css("color", "black")
+    $(selected).css("text-decoration-line", "underline")
+    $(selected).css("text-decoration-thickness", "0.1em")
+    $(selected).css("text-decoration-color", "#414288")
+    $(selected).css("color", "#414288")
 }
 
 $("#vault-game-dev").click(function() {
