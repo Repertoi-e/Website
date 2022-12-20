@@ -2229,11 +2229,21 @@ main {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-.about-me__vault-link, .about-me p {
+.about-me__link {
   max-width: 80vw;
+  margin-left: 3.5rem;
+}
+@media (min-width: 768px) {
+  .about-me__link {
+    margin-left: 0;
+  }
+}
+.about-me p {
+  max-width: 80vw;
+  width: 100%;
   margin-inline: auto;
 }
-.about-me img {
+.about-me__hs-signature, .about-me__english-signature {
   width: 20rem;
   align-self: center;
 }
@@ -2286,7 +2296,7 @@ main {
 .about-me__social {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-inline: 2rem;
   margin-bottom: 2rem;
 }
@@ -2295,7 +2305,7 @@ main {
     flex-direction: column;
     margin-inline: 0;
   }
-  .about-me__social h2 {
+  .about-me__social h3 {
     margin-bottom: 1.5rem;
   }
 }
@@ -2362,91 +2372,6 @@ main {
   font-size: 0.8em;
   text-shadow: 1px 1px 1px rgb(54, 54, 54);
   opacity: 0.5;
-}
-@media (min-width: 768px) {
-  .projects__windows__sizer__content, .projects__windows__window__content {
-    grid-row: 1;
-    grid-column: 1;
-  }
-}
-.projects__windows__sizer__content, .projects__windows__window__content {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  box-shadow: 1px 1px 5px gray;
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
-  text-decoration: none;
-}
-@media (min-width: 768px) {
-  .projects__windows__sizer__content, .projects__windows__window__content {
-    box-shadow: inherit;
-    padding-bottom: 0;
-  }
-}
-.projects__windows__sizer__content h2, .projects__windows__window__content h2 {
-  padding: 1rem;
-  font-size: 2rem;
-  margin-bottom: 0.1rem;
-  color: black;
-  display: flex;
-  flex-wrap: wrap;
-}
-@media (min-width: 768px) {
-  .projects__windows__sizer__content h2, .projects__windows__window__content h2 {
-    font-size: inherit;
-    color: white;
-    padding: 0;
-    padding-inline: 1rem;
-  }
-}
-.projects__windows__sizer__content h2 > span, .projects__windows__window__content h2 > span {
-  margin-bottom: 0.3rem;
-  margin-right: 8px;
-}
-.projects__windows__sizer__content h2 div, .projects__windows__window__content h2 div {
-  background-color: #414288;
-  border-radius: 4px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 0.1rem 0.1rem;
-  margin-right: 8px;
-  margin-top: -2px;
-}
-.projects__windows__sizer__content h2 div span, .projects__windows__window__content h2 div span {
-  color: white;
-  margin: 6px;
-  font-size: 0.9rem;
-}
-.projects__windows__sizer__content h2 div a, .projects__windows__window__content h2 div a {
-  color: white;
-}
-.projects__windows__sizer__content > p, .projects__windows__window__content > p {
-  padding-inline: 1rem;
-  color: gray;
-}
-@media (min-width: 768px) {
-  .projects__windows__sizer__content > p, .projects__windows__window__content > p {
-    color: white;
-    text-shadow: 1px 1px 2px rgb(0, 0, 0);
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
-  @supports (-webkit-line-clamp: 5) {
-    .projects__windows__sizer__content > p, .projects__windows__window__content > p {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: initial;
-      display: -webkit-box;
-      -webkit-line-clamp: 5;
-      -webkit-box-orient: vertical;
-    }
-  }
 }
 .projects__windows__sizer__overlay, .projects__windows__window__overlay {
   grid-row: 1;
@@ -3227,7 +3152,7 @@ footer {
   display: flex;
   flex-direction: column;
   font-family: "SofiaSans";
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 .article-links__link > div {
   display: flex;
@@ -3239,6 +3164,7 @@ footer {
           text-decoration-color: white;
 }
 .article-links__link__tags {
+  margin-bottom: 5px;
   display: flex;
 }
 .article-links__link__tags div + div {
@@ -3265,9 +3191,9 @@ footer {
 }
 .article-links__link__title {
   margin-top: 0.2rem;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.6rem;
   font-size: 1.1rem;
-  line-height: 1rem;
+  line-height: 1.2rem;
   margin-right: 8px;
 }
 .article-links__link__title a {
