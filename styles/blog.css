@@ -752,7 +752,7 @@ footer {
   display: flex;
   flex-direction: column;
   font-family: "SofiaSans";
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 .article-links__link > div {
   display: flex;
@@ -764,6 +764,7 @@ footer {
           text-decoration-color: white;
 }
 .article-links__link__tags {
+  margin-bottom: 5px;
   display: flex;
 }
 .article-links__link__tags div + div {
@@ -790,9 +791,9 @@ footer {
 }
 .article-links__link__title {
   margin-top: 0.2rem;
-  margin-bottom: 0.4rem;
+  margin-bottom: 1rem;
   font-size: 1.1rem;
-  line-height: 1rem;
+  line-height: 1.2rem;
   margin-right: 8px;
 }
 .article-links__link__title a {

@@ -696,8 +696,18 @@ main {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-.about-me__vault-link, .about-me p {
+.about-me__link {
   max-width: 80vw;
+  margin-left: 3.5rem;
+}
+@media (min-width: 768px) {
+  .about-me__link {
+    margin-left: 0;
+  }
+}
+.about-me p {
+  max-width: 80vw;
+  width: 100%;
   margin-inline: auto;
 }
 .about-me__hs-signature, .about-me__english-signature {

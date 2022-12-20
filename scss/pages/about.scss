@@ -75,8 +75,20 @@ main {
         margin-bottom: 2rem;
     }
 
-    &__vault-link, p {
+    &__link {
         max-width: 80vw;
+        margin-left: 3.5rem;
+    }
+
+    @include md {
+        &__link {
+            margin-left: 0;
+        }
+    }
+
+    p {
+        max-width: 80vw;
+        width: 100%;
         margin-inline: auto;
     }
 
