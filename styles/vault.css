@@ -666,11 +666,13 @@ footer {
 main {
   display: flex;
   flex-direction: column;
+  margin-top: 3rem;
   position: relative;
 }
 @media (min-width: 768px) {
   main {
     flex-direction: row;
+    margin-top: 6rem;
   }
 }
 
@@ -682,35 +684,11 @@ main {
 
 .about-me {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin-top: 3rem;
   padding-inline: 1rem;
-}
-.about-me .logo {
-  font-family: "Vollkorn";
-  align-self: center;
-}
-.about-me hr {
-  width: 100%;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-.about-me__vault-link, .about-me p {
-  max-width: 80vw;
-  margin-inline: auto;
-}
-.about-me__hs-signature, .about-me__english-signature {
-  width: 20rem;
-  align-self: center;
 }
 @media (min-width: 768px) {
   .about-me {
     max-width: 33.33333vw;
-    margin-top: 6rem;
-  }
-  .about-me img {
-    width: initial;
   }
 }
 @media (min-width: 992px) {
@@ -753,7 +731,7 @@ main {
 .about-me__social {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-inline: 2rem;
   margin-bottom: 2rem;
 }
@@ -772,11 +750,15 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 3rem;
 }
 .projects .section-header {
   align-self: flex-start;
   padding-inline: 1rem;
   margin-top: 6rem;
+}
+.projects .section-header:nth-of-type(1) {
+  margin-top: 0;
 }
 @media (min-width: 768px) {
   .projects {
@@ -790,6 +772,7 @@ main {
 
 .projects__windows {
   width: 100%;
+  margin-top: 2rem;
 }
 .projects__windows__sizer, .projects__windows__window {
   width: 100%;
@@ -811,11 +794,11 @@ main {
 .projects__windows__sizer:hover, .projects__windows__window:hover {
   cursor: pointer;
 }
-.projects__windows__sizer img, .projects__windows__sizer video, .projects__windows__window img, .projects__windows__window video {
+.projects__windows__sizer img, .projects__windows__window img {
   width: 100%;
   z-index: -2;
 }
-.projects__windows__sizer img, .projects__windows__sizer video, .projects__windows__sizer__photo-info, .projects__windows__window img, .projects__windows__window video, .projects__windows__window__photo-info {
+.projects__windows__sizer img, .projects__windows__sizer__photo-info, .projects__windows__window img, .projects__windows__window__photo-info {
   grid-row: 1;
   grid-column: 1;
 }
@@ -939,4 +922,4 @@ main {
   .projects__windows__stamp:nth-of-type(2) {
     height: 40px;
   }
-}/*# sourceMappingURL=about.css.map */
+}/*# sourceMappingURL=vault.css.map */

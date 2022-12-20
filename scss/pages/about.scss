@@ -80,7 +80,7 @@ main {
         margin-inline: auto;
     }
 
-    img {
+    &__hs-signature, &__english-signature {
         width: 20rem;
         align-self: center;
     }
@@ -136,7 +136,7 @@ main {
     &__social {
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-between;
 
         margin-inline: 2rem;
         margin-bottom: 2rem;
@@ -146,7 +146,7 @@ main {
 
             margin-inline: 0;
 
-            h2 {
+            h3 {
                 margin-bottom: 1.5rem;
             }
         }
