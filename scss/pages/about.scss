@@ -58,29 +58,41 @@ main {
 .about-me {
     width: 100%;
 
+    display: flex;
+    flex-direction: column;
+
     margin-top: 3rem;
 
     .logo {
         font-family: "Vollkorn";
-        margin-left: 2.2rem;
-    }
-
-    @include md {
-        margin-top: 6rem;
-    }
-
-    h1 {
-        font-family: "Vollkorn";
-        font-size: 3em;
+        align-self: center;
     }
 
     hr {
+        width: 100%;
+
         margin-top: 2rem;
         margin-bottom: 2rem;
     }
 
+    &__vault-link, p {
+        max-width: 80vw;
+        margin-inline: auto;
+    }
+
+    img {
+        width: 20rem;
+        align-self: center;
+    }
+
     @include md {
         max-width: 33.33333vw;
+
+        margin-top: 6rem;
+
+        img {
+            width: initial;
+        }
     }
 
     @include lg {
@@ -190,12 +202,12 @@ main {
             cursor: pointer;
         }
 
-        img {
+        img, video {
             width: 100%;
             z-index: -2;
         }
 
-        img,
+        img, video,
         &__photo-info {
             grid-row: 1;
             grid-column: 1;

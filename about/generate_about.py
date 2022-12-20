@@ -123,6 +123,7 @@ def try_parse_meta_directive() -> bool:
         "category": lambda rest: rest,
         "css_class": lambda rest: rest,
         "img": lambda rest: rest,
+        "video": lambda rest: rest,
         "title": lambda rest: rest,
         "url": lambda rest: rest,
         "photo_info": lambda rest: rest,
@@ -171,8 +172,10 @@ def get_vault_entry_html_from_meta(m: dict[str, Any]) -> str:
     url = m.get("url", "")
     href = f"href={url}" if len(url) != 0 else ""
 
+    src_html = f"""<img src="{m["img"]}">""" if "img" in m else f"""<video autoplay muted><source src="{m["video"]}" type="video/mp4"></video>"""
+
     html = f"""                <div class="projects__windows__window {m.get("css_class", "")}">
-                    <img src="{m["img"]}">
+                    {src_html}
                     <div class="projects__windows__window__overlay"></div>
                     <a class="projects__windows__window__content" target="_blank" {href}>
                         <h2><span>{m.get("title", "")}</span> {"".join(tags)}</h2>
@@ -216,12 +219,16 @@ def handle_file(p: str):
                 #print("Parsed meta:")
                 #for k, v in meta.items():
                 #    print(k, "=", v)
-                required_meta = [ "lang", "img"]
+                required_meta = [ "lang"]
                 for r in required_meta:
                     if r not in meta:
                         print(
                             f'Error: Required meta "@{r}" was not set. Stopping parsing.')
                         return
+                if "img" not in meta and "video" not in meta:
+                    print(
+                            f'Error: Required meta "@img" or "@video" was not set. Stopping parsing.')
+                    return
 
                 gen = get_vault_entry_html_from_meta(meta)
                 html_gen = html_gen + gen + "\n"

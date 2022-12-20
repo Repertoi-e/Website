@@ -682,29 +682,35 @@ main {
 
 .about-me {
   width: 100%;
+  display: flex;
+  flex-direction: column;
   margin-top: 3rem;
   padding-inline: 1rem;
 }
 .about-me .logo {
   font-family: "Vollkorn";
-  margin-left: 2.2rem;
-}
-@media (min-width: 768px) {
-  .about-me {
-    margin-top: 6rem;
-  }
-}
-.about-me h1 {
-  font-family: "Vollkorn";
-  font-size: 3em;
+  align-self: center;
 }
 .about-me hr {
+  width: 100%;
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+.about-me__vault-link, .about-me p {
+  max-width: 80vw;
+  margin-inline: auto;
+}
+.about-me img {
+  width: 20rem;
+  align-self: center;
 }
 @media (min-width: 768px) {
   .about-me {
     max-width: 33.33333vw;
+    margin-top: 6rem;
+  }
+  .about-me img {
+    width: initial;
   }
 }
 @media (min-width: 992px) {
@@ -805,11 +811,11 @@ main {
 .projects__windows__sizer:hover, .projects__windows__window:hover {
   cursor: pointer;
 }
-.projects__windows__sizer img, .projects__windows__window img {
+.projects__windows__sizer img, .projects__windows__sizer video, .projects__windows__window img, .projects__windows__window video {
   width: 100%;
   z-index: -2;
 }
-.projects__windows__sizer img, .projects__windows__sizer__photo-info, .projects__windows__window img, .projects__windows__window__photo-info {
+.projects__windows__sizer img, .projects__windows__sizer video, .projects__windows__sizer__photo-info, .projects__windows__window img, .projects__windows__window video, .projects__windows__window__photo-info {
   grid-row: 1;
   grid-column: 1;
 }
