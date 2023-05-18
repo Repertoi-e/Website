@@ -365,12 +365,10 @@ select {
     scroll-behavior: auto;
   }
   *,
-*::before,
-*::after {
-    -webkit-animation-duration: 0.01ms !important;
-            animation-duration: 0.01ms !important;
-    -webkit-animation-iteration-count: 1 !important;
-            animation-iteration-count: 1 !important;
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
@@ -419,8 +417,7 @@ h6 {
 
 a {
   color: inherit;
-  -webkit-text-decoration-color: #414288;
-          text-decoration-color: #414288;
+  text-decoration-color: #414288;
   text-decoration-thickness: 0.1rem;
 }
 a:hover {
@@ -463,8 +460,7 @@ a:hover {
 }
 a {
   color: inherit;
-  -webkit-text-decoration-color: #414288;
-          text-decoration-color: #414288;
+  text-decoration-color: #414288;
   text-decoration-thickness: 0.1rem;
 }
 a:hover {
@@ -521,7 +517,6 @@ a:hover {
   width: 100%;
   min-width: 10rem;
   max-width: calc((100vw - 700px) / 2 - 2.5rem);
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   border: solid 4px #414288;
@@ -546,8 +541,7 @@ a:hover {
 
 a {
   color: inherit;
-  -webkit-text-decoration-color: #414288;
-          text-decoration-color: #414288;
+  text-decoration-color: #414288;
   text-decoration-thickness: 0.1rem;
 }
 a:hover {
@@ -597,8 +591,7 @@ header {
 .header-links__link a {
   margin-inline: 1rem;
   color: #414288;
-  -webkit-text-decoration-color: #414288;
-          text-decoration-color: #414288;
+  text-decoration-color: #414288;
 }
 @media (min-width: 768px) {
   .header-links__link a {
@@ -748,8 +741,7 @@ main {
   }
 }
 .about-me__description__show-more, .about-me__description__show-less {
-  -webkit-text-decoration-line: underline;
-          text-decoration-line: underline;
+  text-decoration-line: underline;
   text-decoration-thickness: 0.1rem;
 }
 @media (min-width: 768px) {
@@ -777,59 +769,61 @@ main {
   }
 }
 
-.projects {
+.content {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.projects .section-header {
+.content .section-header {
   align-self: flex-start;
   padding-inline: 1rem;
   margin-top: 6rem;
 }
 @media (min-width: 768px) {
-  .projects {
+  .content {
     margin-top: 0;
   }
-  .projects .section-header {
+  .content .section-header {
     align-self: center;
     padding-inline: 0;
   }
 }
 
-.projects__windows {
+.content {
   width: 100%;
 }
-.projects__windows__sizer, .projects__windows__window {
+.content .content__block {
   width: 100%;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   display: grid;
 }
 @media (min-width: 768px) {
-  .projects__windows__sizer, .projects__windows__window {
+  .content .content__block {
     max-width: 50%;
   }
 }
 @media (min-width: 992px) {
-  .projects__windows__sizer, .projects__windows__window {
+  .content .content__block {
     max-width: 33.33333%;
   }
 }
-.projects__windows__sizer:hover, .projects__windows__window:hover {
+.content .content__block:hover {
   cursor: pointer;
 }
-.projects__windows__sizer img, .projects__windows__sizer video, .projects__windows__window img, .projects__windows__window video {
+.content .content__block img,
+.content .content__block video {
   width: 100%;
   z-index: -2;
 }
-.projects__windows__sizer img, .projects__windows__sizer video, .projects__windows__sizer__photo-info, .projects__windows__window img, .projects__windows__window video, .projects__windows__window__photo-info {
+.content .content__block img,
+.content .content__block video,
+.content .content__block .photo-info {
   grid-row: 1;
   grid-column: 1;
 }
-.projects__windows__sizer__photo-info, .projects__windows__window__photo-info {
+.content .content__block .photo-info {
   align-self: flex-end;
   padding-inline: 0.4rem;
   padding-bottom: 0.2rem;
@@ -840,28 +834,10 @@ main {
   text-shadow: 1px 1px 1px rgb(54, 54, 54);
   opacity: 0.5;
 }
-.projects__windows__sizer__overlay, .projects__windows__window__overlay {
+.content .content__block .overlay {
   grid-row: 1;
   grid-column: 1;
   background-color: black;
   opacity: 0;
   z-index: -1;
-}
-.projects__windows__stamp {
-  position: absolute;
-  height: 0;
-}
-@media (min-width: 768px) {
-  .projects__windows__stamp {
-    width: 20px;
-    height: 20px;
-  }
-}
-.projects__windows__stamp:nth-of-type(2) {
-  right: 0;
-}
-@media (min-width: 768px) {
-  .projects__windows__stamp:nth-of-type(2) {
-    height: 40px;
-  }
 }/*# sourceMappingURL=about.css.map */

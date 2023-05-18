@@ -1,0 +1,107 @@
+[
+    {
+        "order": 10,
+        "type": "video",
+        "src": "/resources/about/vault/kremikovci.mp4",
+        "lang": "en"
+    },
+    {
+        "order": 11,
+        "type": "img",
+        "src": "/resources/about/vault/bershka.gif",
+        "lang": "en"
+    },
+    {
+        "order": 12,
+        "type": "img",
+        "src": "/resources/about/vault/ladder.gif",
+        "lang": "en"
+    },
+    {
+        "order": 103,
+        "type": "img",
+        "src": "/resources/about/vault/white_hair.gif",
+        "lang": "en"
+    },
+    {
+        "order": 14,
+        "type": "img",
+        "src": "/resources/about/vault/light.gif",
+        "lang": "en"
+    },
+    {
+        "order": 20,
+        "type": "img",
+        "src": "/resources/about/vault/DSC_3875.jpg",
+        "lang": "en"
+    },
+    {
+        "order": 30,
+        "type": "img",
+        "src": "/resources/about/vault/post_3.jpg",
+        "lang": "en"
+    },
+    {
+        "order": 40,
+        "type": "video",
+        "src": "/resources/about/vault/rosizalec.mp4",
+        "lang": "en"
+    },
+    {
+        "order": 50,
+        "type": "img",
+        "src": "/resources/about/vault/shave.jpg",
+        "lang": "en"
+    },
+    {
+        "order": 60,
+        "type": "img",
+        "src": "/resources/about/vault/me.gif",
+        "lang": "en"
+    },
+    {
+        "order": 70,
+        "type": "img",
+        "src": "/resources/about/vault/starsjuly.jpg",
+        "photo_info": "Lozenets, Bulgaria<br>28 mm, 10 min, f/5",
+        "lang": "en"
+    },
+    {
+        "order": 80,
+        "type": "img",
+        "src": "/resources/about/vault/venicestars.jpg",
+        "photo_info": "Venice, Italy<br>22 mm, 10 min, f/14",
+        "lang": "en"
+    },
+    {
+        "order": 90,
+        "type": "img",
+        "src": "/resources/about/vault/moon.jpg",
+        "photo_info": "Sofia, Bulgaria<br>50 mm, 1/60 sec, f/20",
+        "lang": "en"
+    },
+    {
+        "order": 110,
+        "type": "img",
+        "src": "/resources/about/vault/exhaust.jpg",
+        "lang": "en"
+    },
+    {
+        "order": 120,
+        "type": "img",
+        "src": "/resources/about/vault/ball.jpg",
+        "lang": "en"
+    },
+    {
+        "order": 140,
+        "type": "video",
+        "src": "/resources/about/vault/guitar.mp4",
+        "lang": "en"
+    },
+    {
+        "order": 160,
+        "type": "img",
+        "src": "/resources/about/vault/graduation.jpg",
+        "lang": "en"
+    }
+]

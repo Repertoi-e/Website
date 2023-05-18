@@ -365,12 +365,10 @@ select {
     scroll-behavior: auto;
   }
   *,
-*::before,
-*::after {
-    -webkit-animation-duration: 0.01ms !important;
-            animation-duration: 0.01ms !important;
-    -webkit-animation-iteration-count: 1 !important;
-            animation-iteration-count: 1 !important;
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
@@ -419,8 +417,7 @@ h6 {
 
 a {
   color: inherit;
-  -webkit-text-decoration-color: #414288;
-          text-decoration-color: #414288;
+  text-decoration-color: #414288;
   text-decoration-thickness: 0.1rem;
 }
 a:hover {
@@ -460,20 +457,6 @@ a:hover {
   font-family: Vollkorn;
   font-style: italic;
   src: url(../resources/fonts/Vollkorn-Italic.woff2) format("woff2"), url(../resources/fonts/Vollkorn-Italic.woff) format("woff");
-}
-@-webkit-keyframes psycho-circle-anim {
-  0% {
-    transform: rotate(0deg) scale(1) translate(0, 0);
-  }
-  33% {
-    transform: rotate(360deg) scale(1) translate(3px, 3px);
-  }
-  66% {
-    transform: rotate(720deg) scale(1) translate(-3px, -3px);
-  }
-  100% {
-    transform: rotate(1080deg) scale(1) translate(0, 0);
-  }
 }
 @keyframes psycho-circle-anim {
   0% {
@@ -702,18 +685,15 @@ main {
 }
 .hills-button__border span:nth-of-type(2) {
   box-shadow: 0 0.1em 0 0 rgba(64, 0, 192, 0.25), -0.1em 0 0 rgba(192, 0, 64, 0.25), 0.1em 0 0 0 rgba(64, 0, 192, 0.25), -0.1em 0 0 0 rgba(192, 0, 64, 0.25), 0em 0 0 rgba(128, 0, 128, 0.5), -0.1em 0.1em 0 0 rgba(128, 0, 128, 0.5), 0.1em 0.1em 0 0 rgba(0, 0, 255, 0.75), -0.2em 0 0 rgba(255, 0, 0, 0.75);
-  -webkit-animation: psycho-circle-anim 3s linear infinite;
-          animation: psycho-circle-anim 3s linear infinite;
+  animation: psycho-circle-anim 3s linear infinite;
 }
 .hills-button__border span:nth-of-type(3) {
   box-shadow: 0 0.1em 0 0 rgba(64, 255, 192, 0.25), -0.1em 0 0 rgba(192, 255, 64, 0.25), 0.1em 0 0 0 rgba(64, 255, 192, 0.25), -0.1em 0 0 0 rgba(192, 255, 64, 0.25), 0em 0 0 rgba(128, 255, 128, 0.5), -0.1em 0.1em 0 0 rgba(128, 255, 128, 0.5), 0.1em 0.1em 0 0 rgba(0, 255, 255, 0.75), -0.2em 0 0 rgba(255, 255, 0, 0.75);
-  -webkit-animation: psycho-circle-anim 3s linear 0.1s infinite;
-          animation: psycho-circle-anim 3s linear 0.1s infinite;
+  animation: psycho-circle-anim 3s linear 0.1s infinite;
 }
 .hills-button__border span:nth-of-type(4) {
   box-shadow: 0 0.1em 0 0 rgba(64, 192, 64, 0.25), -0.1em 0 0 rgba(192, 64, 192, 0.25), 0.1em 0 0 0 rgba(64, 192, 64, 0.25), -0.1em 0 0 0 rgba(192, 64, 192, 0.25), 0em 0 0 rgba(128, 128, 128, 0.5), -0.1em 0.1em 0 0 rgba(128, 128, 128, 0.5), 0.1em 0.1em 0 0 rgba(0, 255, 0, 0.75), -0.2em 0 0 rgba(255, 0, 255, 0.75);
-  -webkit-animation: psycho-circle-anim 3s linear 0.2s infinite;
-          animation: psycho-circle-anim 3s linear 0.2s infinite;
+  animation: psycho-circle-anim 3s linear 0.2s infinite;
 }
 
 .social {
@@ -767,8 +747,7 @@ footer {
 }
 
 .copyright {
-  -ms-writing-mode: tb-rl;
-      writing-mode: vertical-rl;
+  writing-mode: vertical-rl;
   font-size: clamp(0.625rem, 1.2vw, 0.875rem);
   font-weight: 700;
   letter-spacing: 0.07rem;

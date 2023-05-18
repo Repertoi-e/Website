@@ -366,12 +366,10 @@ select {
     scroll-behavior: auto;
   }
   *,
-*::before,
-*::after {
-    -webkit-animation-duration: 0.01ms !important;
-            animation-duration: 0.01ms !important;
-    -webkit-animation-iteration-count: 1 !important;
-            animation-iteration-count: 1 !important;
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
@@ -420,8 +418,7 @@ h6 {
 
 a {
   color: inherit;
-  -webkit-text-decoration-color: #414288;
-          text-decoration-color: #414288;
+  text-decoration-color: #414288;
   text-decoration-thickness: 0.1rem;
 }
 a:hover {
@@ -464,8 +461,7 @@ a:hover {
 }
 a {
   color: inherit;
-  -webkit-text-decoration-color: #414288;
-          text-decoration-color: #414288;
+  text-decoration-color: #414288;
   text-decoration-thickness: 0.1rem;
 }
 a:hover {
@@ -522,7 +518,6 @@ a:hover {
   width: 100%;
   min-width: 10rem;
   max-width: calc((100vw - 700px) / 2 - 2.5rem);
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   border: solid 4px #414288;
@@ -547,8 +542,7 @@ a:hover {
 
 a {
   color: inherit;
-  -webkit-text-decoration-color: #414288;
-          text-decoration-color: #414288;
+  text-decoration-color: #414288;
   text-decoration-thickness: 0.1rem;
 }
 a:hover {
@@ -598,8 +592,7 @@ header {
 .header-links__link a {
   margin-inline: 1rem;
   color: #414288;
-  -webkit-text-decoration-color: #414288;
-          text-decoration-color: #414288;
+  text-decoration-color: #414288;
 }
 @media (min-width: 768px) {
   .header-links__link a {
@@ -677,10 +670,8 @@ header {
 }
 .message_section .message_bebka,
 .message_section .message_soti {
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   padding: 0.5rem 1rem;
@@ -733,7 +724,7 @@ footer {
 }
 @media (min-width: 768px) {
   main,
-footer {
+  footer {
     margin-top: 5rem;
   }
 }
@@ -760,8 +751,7 @@ footer {
   flex-wrap: wrap;
 }
 .article-links__link > div a {
-  -webkit-text-decoration-color: white;
-          text-decoration-color: white;
+  text-decoration-color: white;
 }
 .article-links__link__tags {
   margin-bottom: 5px;
@@ -773,10 +763,8 @@ footer {
 .article-links__link__tags div {
   background-color: #414288;
   border-radius: 4px;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   padding: 0.1rem 0.1rem;
