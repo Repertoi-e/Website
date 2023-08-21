@@ -7,3 +7,4 @@ package-lock.json
 .vscode/*
 blog/__pycache__/generate_article_v1.cpython-39.pyc
 blog/__pycache__/generate_index.cpython-39.pyc
+*.DS_Store

@@ -19,5 +19,11 @@
         "src": "/resources/about/vault/moon.jpg",
         "photo_info": "Sofia, Bulgaria<br>50 mm, 1/60 sec, f/20",
         "lang": "en"
+    },
+    {
+        "order": 100,
+        "type": "img",
+        "src": "/resources/about/vault/enduro.png",
+        "lang": "en"
     }
 ]

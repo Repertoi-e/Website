@@ -20,7 +20,7 @@
     {
         "order": 14,
         "type": "img",
-        "src": "/resources/about/vault/light.gif",
+        "src": "/resources/about/vault/light.jpg",
         "lang": "en"
     },
     {
@@ -36,19 +36,31 @@
         "lang": "en"
     },
     {
+        "order": 35,
+        "type": "img",
+        "src": "/resources/about/vault/shave.gif",
+        "lang": "en"
+    },
+    {
         "order": 40,
+        "type": "img",
+        "src": "/resources/about/vault/beach.gif",
+        "lang": "en"
+    },
+    {
+        "order": 37,
+        "type": "img",
+        "src": "/resources/about/vault/ball.jpg",
+        "lang": "en"
+    },
+    {
+        "order": 103,
         "type": "video",
         "src": "/resources/about/vault/rosizalec.mp4",
         "lang": "en"
     },
     {
-        "order": 50,
-        "type": "img",
-        "src": "/resources/about/vault/time.jpg",
-        "lang": "en"
-    },
-    {
-        "order": 103,
+        "order": 140,
         "type": "img",
         "src": "/resources/about/vault/white_hair.gif",
         "lang": "en"
@@ -56,23 +68,11 @@
     {
         "order": 110,
         "type": "img",
-        "src": "/resources/about/vault/ball.jpg",
-        "lang": "en"
-    },
-    {
-        "order": 55,
-        "type": "img",
-        "src": "/resources/about/vault/dark_ladder.jpg",
-        "lang": "en"
-    },
-    {
-        "order": 160,
-        "type": "img",
         "src": "/resources/about/vault/graduation.jpg",
         "lang": "en"
     },
     {
-        "order": 140,
+        "order": 160,
         "type": "video",
         "src": "/resources/about/vault/guitar.mp4",
         "lang": "en"

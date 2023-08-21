@@ -54,4 +54,4 @@ for item in data:
 start_comment.insert_after(new_blocks)
 
 with open('index.html', 'w') as html_file:
-    html_file.write(str(soup.prettify()))
+    html_file.write(str(soup))
