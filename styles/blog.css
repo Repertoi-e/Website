@@ -854,8 +854,7 @@ footer {
   list-style-type: none;
 }
 .article .content-jupyter .index > ul {
-  -webkit-padding-start: 0;
-          padding-inline-start: 0;
+  padding-inline-start: 0;
 }
 .article .content-jupyter .index > ul > ul > li::before {
   content: "⟶";
@@ -943,8 +942,7 @@ footer {
   list-style-type: none;
 }
 .article .content .index > ul {
-  -webkit-padding-start: 0;
-          padding-inline-start: 0;
+  padding-inline-start: 0;
 }
 .article .content .index > ul > ul > li::before {
   content: "⟶";

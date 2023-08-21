@@ -2292,42 +2292,39 @@ main {
   }
 }
 
-.content__blocks {
+.content {
   width: 100%;
 }
-.content__blocks .content__block {
+.content .content__block {
   width: 100%;
-  height: -moz-fit-content;
-  height: fit-content;
+  height: 50px;
   display: grid;
 }
 @media (min-width: 768px) {
-  .content__blocks .content__block {
-    width: 50%;
+  .content .content__block {
+    max-width: 50%;
   }
 }
 @media (min-width: 992px) {
-  .content__blocks .content__block {
-    width: 33.33333%;
+  .content .content__block {
+    max-width: 33.33333%;
   }
 }
-.content__blocks .content__block:hover {
+.content .content__block:hover {
   cursor: pointer;
 }
-.content__blocks .content__block img,
-.content__blocks .content__block video {
+.content .content__block img,
+.content .content__block video {
   width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
   z-index: -2;
 }
-.content__blocks .content__block img,
-.content__blocks .content__block video,
-.content__blocks .content__block .photo-info {
+.content .content__block img,
+.content .content__block video,
+.content .content__block .photo-info {
   grid-row: 1;
   grid-column: 1;
 }
-.content__blocks .content__block .photo-info {
+.content .content__block .photo-info {
   align-self: flex-end;
   padding-inline: 0.4rem;
   padding-bottom: 0.2rem;
@@ -2338,7 +2335,7 @@ main {
   text-shadow: 1px 1px 1px rgb(54, 54, 54);
   opacity: 0.5;
 }
-.content__blocks .content__block .overlay {
+.content .content__block .overlay {
   grid-row: 1;
   grid-column: 1;
   background-color: black;
@@ -3201,8 +3198,7 @@ footer {
   list-style-type: none;
 }
 .article .content-jupyter .index > ul {
-  -webkit-padding-start: 0;
-          padding-inline-start: 0;
+  padding-inline-start: 0;
 }
 .article .content-jupyter .index > ul > ul > li::before {
   content: "⟶";
@@ -3290,8 +3286,7 @@ footer {
   list-style-type: none;
 }
 .article .content .index > ul {
-  -webkit-padding-start: 0;
-          padding-inline-start: 0;
+  padding-inline-start: 0;
 }
 .article .content .index > ul > ul > li::before {
   content: "⟶";

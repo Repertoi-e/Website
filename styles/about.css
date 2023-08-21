@@ -795,8 +795,6 @@ main {
 }
 .content .content__block {
   width: 100%;
-  height: -moz-fit-content;
-  height: fit-content;
   display: grid;
 }
 @media (min-width: 768px) {

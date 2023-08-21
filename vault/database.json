@@ -48,27 +48,6 @@
         "lang": "en"
     },
     {
-        "order": 70,
-        "type": "img",
-        "src": "/resources/about/vault/starsjuly.jpg",
-        "photo_info": "Lozenets, Bulgaria<br>28 mm, 10 min, f/5",
-        "lang": "en"
-    },
-    {
-        "order": 80,
-        "type": "img",
-        "src": "/resources/about/vault/venicestars.jpg",
-        "photo_info": "Venice, Italy<br>22 mm, 10 min, f/14",
-        "lang": "en"
-    },
-    {
-        "order": 90,
-        "type": "img",
-        "src": "/resources/about/vault/moon.jpg",
-        "photo_info": "Sofia, Bulgaria<br>50 mm, 1/60 sec, f/20",
-        "lang": "en"
-    },
-    {
         "order": 103,
         "type": "img",
         "src": "/resources/about/vault/white_hair.gif",
