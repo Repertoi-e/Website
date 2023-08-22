@@ -36,25 +36,25 @@
         "lang": "en"
     },
     {
-        "order": 35,
+        "order": 33,
         "type": "img",
-        "src": "/resources/about/vault/shave.gif",
-        "lang": "en"
-    },
-    {
-        "order": 40,
-        "type": "img",
-        "src": "/resources/about/vault/beach.gif",
+        "src": "/resources/about/vault/riding.jpg",
         "lang": "en"
     },
     {
         "order": 103,
         "type": "img",
+        "src": "/resources/about/vault/beach.gif",
+        "lang": "en"
+    },
+    {
+        "order": 40,
+        "type": "img",
         "src": "/resources/about/vault/ball.jpg",
         "lang": "en"
     },
     {
-        "order": 110,
+        "order": 35,
         "type": "video",
         "src": "/resources/about/vault/rosizalec.mp4",
         "lang": "en"

@@ -25,5 +25,23 @@
         "type": "img",
         "src": "/resources/about/vault/enduro.png",
         "lang": "en"
+    },
+    {
+        "order": 110,
+        "type": "video",
+        "src": "/resources/about/vault/DSC_4616.mp4",
+        "lang": "en"
+    },
+    {
+        "order": 120,
+        "type": "video",
+        "src": "/resources/about/vault/DSC_4622.mp4",
+        "lang": "en"
+    },
+    {
+        "order": 130,
+        "type": "video",
+        "src": "/resources/about/vault/DSC_4625.mp4",
+        "lang": "en"
     }
 ]
