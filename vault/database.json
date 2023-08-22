@@ -36,27 +36,57 @@
         "lang": "en"
     },
     {
-        "order": 33,
-        "type": "img",
-        "src": "/resources/about/vault/riding.jpg",
+        "order": 34,
+        "type": "video",
+        "src": "/resources/about/vault/hair.mov",
         "lang": "en"
     },
     {
-        "order": 103,
-        "type": "img",
-        "src": "/resources/about/vault/beach.gif",
+        "order": 60,
+        "type": "video",
+        "src": "/resources/about/vault/rosizalec.mp4",
         "lang": "en"
     },
     {
-        "order": 40,
+        "order": 70,
+        "type": "video",
+        "src": "/resources/about/vault/guitar.mp4",
+        "lang": "en"
+    },
+    {
+        "order": 60,
         "type": "img",
         "src": "/resources/about/vault/ball.jpg",
         "lang": "en"
     },
     {
+        "order": 40,
+        "type": "img",
+        "src": "/resources/about/vault/shave.gif",
+        "lang": "en"
+    },
+    {
+        "order": 33,
+        "type": "img",
+        "src": "/resources/about/vault/gay.jpg",
+        "lang": "en"
+    },
+    {
+        "order": 50,
+        "type": "img",
+        "src": "/resources/about/vault/mirror.jpg",
+        "lang": "en"
+    },
+    {
+        "order": 37,
+        "type": "img",
+        "src": "/resources/about/vault/spicy.jpg",
+        "lang": "en"
+    },
+    {
         "order": 35,
-        "type": "video",
-        "src": "/resources/about/vault/rosizalec.mp4",
+        "type": "img",
+        "src": "/resources/about/vault/dark_ladder.jpg",
         "lang": "en"
     },
     {
@@ -69,12 +99,6 @@
         "order": 160,
         "type": "img",
         "src": "/resources/about/vault/graduation.jpg",
-        "lang": "en"
-    },
-    {
-        "order": 37,
-        "type": "video",
-        "src": "/resources/about/vault/guitar.mp4",
         "lang": "en"
     }
 ]
