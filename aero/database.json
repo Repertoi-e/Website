@@ -27,6 +27,13 @@
         "lang": "en"
     },
     {
+        "order": 105,
+        "type": "img",
+        "src": "/resources/about/vault/EJW.jpg",
+        "photo_info": "De Mortel, North Brabant<br>22 mm, 60 sec, f/3.5",
+        "lang": "en"
+    },
+    {
         "order": 110,
         "type": "video",
         "src": "/resources/about/vault/DSC_4616.mp4",

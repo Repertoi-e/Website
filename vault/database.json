@@ -42,12 +42,6 @@
         "lang": "en"
     },
     {
-        "order": 60,
-        "type": "video",
-        "src": "/resources/about/vault/rosizalec.mp4",
-        "lang": "en"
-    },
-    {
         "order": 70,
         "type": "video",
         "src": "/resources/about/vault/guitar.mp4",
