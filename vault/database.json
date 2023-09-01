@@ -32,7 +32,7 @@
     {
         "order": 30,
         "type": "img",
-        "src": "/resources/about/vault/post_3.jpg",
+        "src": "/resources/about/vault/david.jpg",
         "lang": "en"
     },
     {
@@ -81,12 +81,6 @@
         "order": 37,
         "type": "img",
         "src": "/resources/about/vault/spicy.jpg",
-        "lang": "en"
-    },
-    {
-        "order": 35,
-        "type": "img",
-        "src": "/resources/about/vault/dark_ladder.jpg",
         "lang": "en"
     },
     {
