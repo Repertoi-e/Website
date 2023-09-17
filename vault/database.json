@@ -1,92 +1,110 @@
 [
-    {
-        "order": 10,
-        "type": "video",
-        "src": "/resources/about/vault/kremikovci.mp4",
-        "lang": "en"
-    },
-    {
-        "order": 11,
-        "type": "img",
-        "src": "/resources/about/vault/bershka.gif",
-        "lang": "en"
-    },
-    {
-        "order": 12,
-        "type": "img",
-        "src": "/resources/about/vault/ladder.gif",
-        "lang": "en"
-    },
-    {
-        "order": 14,
-        "type": "img",
-        "src": "/resources/about/vault/light.jpg",
-        "lang": "en"
-    },
-    {
-        "order": 20,
-        "type": "img",
-        "src": "/resources/about/vault/DSC_3875.jpg",
-        "lang": "en"
-    },
-    {
-        "order": 30,
-        "type": "img",
-        "src": "/resources/about/vault/david.jpg",
-        "lang": "en"
-    },
-    {
-        "order": 34,
-        "type": "video",
-        "src": "/resources/about/vault/hair.mov",
-        "lang": "en"
-    },
-    {
-        "order": 70,
-        "type": "video",
-        "src": "/resources/about/vault/guitar.mp4",
-        "lang": "en"
-    },
-    {
-        "order": 60,
-        "type": "img",
-        "src": "/resources/about/vault/ball.jpg",
-        "lang": "en"
-    },
-    {
-        "order": 40,
-        "type": "img",
-        "src": "/resources/about/vault/shave.gif",
-        "lang": "en"
-    },
-    {
-        "order": 33,
-        "type": "img",
-        "src": "/resources/about/vault/gay.jpg",
-        "lang": "en"
-    },
-    {
-        "order": 50,
-        "type": "img",
-        "src": "/resources/about/vault/mirror.jpg",
-        "lang": "en"
-    },
-    {
-        "order": 37,
-        "type": "img",
-        "src": "/resources/about/vault/spicy.jpg",
-        "lang": "en"
-    },
-    {
-        "order": 140,
-        "type": "img",
-        "src": "/resources/about/vault/white_hair.gif",
-        "lang": "en"
-    },
-    {
-        "order": 160,
-        "type": "img",
-        "src": "/resources/about/vault/graduation.jpg",
-        "lang": "en"
-    }
+	{
+		"order": 2,
+		"type": "video",
+		"src": "/resources/about/vault/kremikovci.mp4",
+		"lang": "en"
+	},
+	{
+		"order": 5,
+		"type": "img",
+		"src": "/resources/about/vault/ChairShirtless.gif",
+		"lang": "en"
+	},
+	{
+		"order": 6,
+		"type": "img",
+		"src": "/resources/about/vault/ladder.gif",
+		"lang": "en"
+	},
+	{
+		"order": 11,
+		"type": "img",
+		"src": "/resources/about/vault/light.jpg",
+		"lang": "en"
+	},
+	{
+		"order": 12,
+		"type": "img",
+		"src": "/resources/about/vault/Chair.gif",
+		"lang": "en"
+	},
+	{
+		"order": 14,
+		"type": "img",
+		"src": "/resources/about/vault/bershka.gif",
+		"lang": "en"
+	},
+	{
+		"order": 20,
+		"type": "img",
+		"src": "/resources/about/vault/DSC_3875.jpg",
+		"lang": "en"
+	},
+	{
+		"order": 30,
+		"type": "img",
+		"src": "/resources/about/vault/dark_ladder.jpg",
+		"lang": "en"
+	},
+	{
+		"order": 33,
+		"type": "img",
+		"src": "/resources/about/vault/david.jpg",
+		"lang": "en"
+	},
+	{
+		"order": 34,
+		"type": "video",
+		"src": "/resources/about/vault/hair.mov",
+		"lang": "en"
+	},
+	{
+		"order": 35,
+		"type": "img",
+		"src": "/resources/about/vault/shave.gif",
+		"lang": "en"
+	},
+	{
+		"order": 37,
+		"type": "img",
+		"src": "/resources/about/vault/spicy.jpg",
+		"lang": "en"
+	},
+	{
+		"order": 40,
+		"type": "img",
+		"src": "/resources/about/vault/gay.jpg",
+		"lang": "en"
+	},
+	{
+		"order": 50,
+		"type": "img",
+		"src": "/resources/about/vault/mirror.jpg",
+		"lang": "en"
+	},
+	{
+		"order": 60,
+		"type": "img",
+		"src": "/resources/about/vault/ball.jpg",
+		"lang": "en"
+	},
+	{
+		"order": 70,
+		"type": "video",
+		"src": "/resources/about/vault/guitar.mp4",
+		"lang": "en"
+	},
+	{
+		"order": 140,
+		"type": "img",
+		"src": "/resources/about/vault/white_hair.gif",
+		"lang": "en"
+	},
+	{
+		"order": 160,
+		"type": "img",
+		"src": "/resources/about/vault/graduation.jpg",
+		"lang": "en"
+	}
 ]
