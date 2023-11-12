@@ -639,40 +639,6 @@ header {
   left: 0.2rem;
 }
 
-footer {
-  margin-top: 5rem;
-  width: 100%;
-  padding: 10px;
-  color: rgb(146, 146, 146);
-  text-align: center;
-}
-
-html body {
-  background-color: white;
-}
-
-main,
-footer {
-  font-family: "FiraGo", sans-serif;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-@media (min-width: 768px) {
-  main {
-    flex-direction: row;
-  }
-}
-
-.section-header {
-  font-family: "Vollkorn";
-  font-size: 2.6350715729rem;
-  color: #414288;
-}
-
 .about-me {
   width: 100%;
   display: flex;
@@ -702,10 +668,6 @@ main {
   max-width: 80vw;
   width: 100%;
   margin-inline: auto;
-}
-.about-me__hs-signature, .about-me__english-signature {
-  width: 20rem;
-  align-self: center;
 }
 @media (min-width: 768px) {
   .about-me {
@@ -740,18 +702,6 @@ main {
     display: inherit;
   }
 }
-.about-me__description__show-more, .about-me__description__show-less {
-  text-decoration-line: underline;
-  text-decoration-thickness: 0.1rem;
-}
-@media (min-width: 768px) {
-  .about-me__description__show-more, .about-me__description__show-less {
-    display: none;
-  }
-}
-.about-me__description__show-less {
-  display: none;
-}
 .about-me__social {
   display: flex;
   flex-direction: row;
@@ -775,26 +725,14 @@ main {
   flex-direction: column;
   align-items: center;
 }
-.content .section-header {
-  align-self: flex-start;
-  padding-inline: 1rem;
-  margin-top: 6rem;
-}
 @media (min-width: 768px) {
   .content {
     margin-top: 0;
   }
-  .content .section-header {
-    align-self: center;
-    padding-inline: 0;
-  }
-}
-
-.content {
-  width: 100%;
 }
 .content .content__block {
   width: 100%;
+  max-width: 33.33333%;
   display: grid;
 }
 @media (min-width: 768px) {
@@ -838,4 +776,37 @@ main {
   background-color: black;
   opacity: 0;
   z-index: -1;
-}/*# sourceMappingURL=about.css.map */
+}
+
+footer {
+  margin-top: 5rem;
+  width: 100%;
+  padding: 10px;
+  color: rgb(146, 146, 146);
+  text-align: center;
+}
+
+html body {
+  background-color: white;
+}
+
+main,
+footer {
+  font-family: "FiraGo", sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+@media (min-width: 768px) {
+  main {
+    flex-direction: row;
+  }
+}
+
+.about-me__hs-signature, .about-me__english-signature {
+  width: 20rem;
+  align-self: center;
+}/*# sourceMappingURL=aero.css.map */

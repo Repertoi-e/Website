@@ -32,3 +32,10 @@ main {
     position: relative;
 }
 
+.about-me {
+    &__hs-signature,
+    &__english-signature {
+        width: 20rem;
+        align-self: center;
+    }
+}

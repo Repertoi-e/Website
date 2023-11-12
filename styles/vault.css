@@ -639,49 +639,43 @@ header {
   left: 0.2rem;
 }
 
-footer {
-  margin-top: 5rem;
+.about-me {
   width: 100%;
-  padding: 10px;
-  color: rgb(146, 146, 146);
-  text-align: center;
-}
-
-html body {
-  background-color: white;
-}
-
-main,
-footer {
-  font-family: "FiraGo", sans-serif;
-}
-
-main {
   display: flex;
   flex-direction: column;
   margin-top: 3rem;
-  position: relative;
+  padding-inline: 1rem;
+}
+.about-me .logo {
+  font-family: "Vollkorn";
+  align-self: center;
+}
+.about-me hr {
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.about-me__link {
+  max-width: 80vw;
+  margin-left: 3.5rem;
 }
 @media (min-width: 768px) {
-  main {
-    flex-direction: row;
-    margin-top: 6rem;
+  .about-me__link {
+    margin-left: 0;
   }
 }
-
-.section-header {
-  font-family: "Vollkorn";
-  font-size: 2.6350715729rem;
-  color: #414288;
-}
-
-.about-me {
+.about-me p {
+  max-width: 80vw;
   width: 100%;
-  padding-inline: 1rem;
+  margin-inline: auto;
 }
 @media (min-width: 768px) {
   .about-me {
     max-width: 33.33333vw;
+    margin-top: 6rem;
+  }
+  .about-me img {
+    width: initial;
   }
 }
 @media (min-width: 992px) {
@@ -708,22 +702,10 @@ main {
     display: inherit;
   }
 }
-.about-me__description__show-more, .about-me__description__show-less {
-  text-decoration-line: underline;
-  text-decoration-thickness: 0.1rem;
-}
-@media (min-width: 768px) {
-  .about-me__description__show-more, .about-me__description__show-less {
-    display: none;
-  }
-}
-.about-me__description__show-less {
-  display: none;
-}
 .about-me__social {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-inline: 2rem;
   margin-bottom: 2rem;
 }
@@ -737,63 +719,47 @@ main {
   }
 }
 
-.projects {
+.content {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 3rem;
-}
-.projects .section-header {
-  align-self: flex-start;
-  padding-inline: 1rem;
-  margin-top: 6rem;
-}
-.projects .section-header:nth-of-type(1) {
-  margin-top: 0;
 }
 @media (min-width: 768px) {
-  .projects {
+  .content {
     margin-top: 0;
   }
-  .projects .section-header {
-    align-self: center;
-    padding-inline: 0;
-  }
 }
-
-.projects__windows {
+.content .content__block {
   width: 100%;
-  margin-top: 2rem;
-}
-.projects__windows__sizer, .projects__windows__window {
-  width: 100%;
-  height: -moz-fit-content;
-  height: fit-content;
+  max-width: 33.33333%;
   display: grid;
 }
 @media (min-width: 768px) {
-  .projects__windows__sizer, .projects__windows__window {
+  .content .content__block {
     max-width: 50%;
   }
 }
 @media (min-width: 992px) {
-  .projects__windows__sizer, .projects__windows__window {
+  .content .content__block {
     max-width: 33.33333%;
   }
 }
-.projects__windows__sizer:hover, .projects__windows__window:hover {
+.content .content__block:hover {
   cursor: pointer;
 }
-.projects__windows__sizer img, .projects__windows__window img {
+.content .content__block img,
+.content .content__block video {
   width: 100%;
   z-index: -2;
 }
-.projects__windows__sizer img, .projects__windows__sizer__photo-info, .projects__windows__window img, .projects__windows__window__photo-info {
+.content .content__block img,
+.content .content__block video,
+.content .content__block .photo-info {
   grid-row: 1;
   grid-column: 1;
 }
-.projects__windows__sizer__photo-info, .projects__windows__window__photo-info {
+.content .content__block .photo-info {
   align-self: flex-end;
   padding-inline: 0.4rem;
   padding-bottom: 0.2rem;
@@ -804,111 +770,38 @@ main {
   text-shadow: 1px 1px 1px rgb(54, 54, 54);
   opacity: 0.5;
 }
-@media (min-width: 768px) {
-  .projects__windows__sizer__content, .projects__windows__window__content {
-    grid-row: 1;
-    grid-column: 1;
-  }
-}
-.projects__windows__sizer__content, .projects__windows__window__content {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  box-shadow: 1px 1px 5px gray;
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
-  text-decoration: none;
-}
-@media (min-width: 768px) {
-  .projects__windows__sizer__content, .projects__windows__window__content {
-    box-shadow: inherit;
-    padding-bottom: 0;
-  }
-}
-.projects__windows__sizer__content h2, .projects__windows__window__content h2 {
-  padding: 1rem;
-  font-size: 2rem;
-  margin-bottom: 0.1rem;
-  color: black;
-  display: flex;
-  flex-wrap: wrap;
-}
-@media (min-width: 768px) {
-  .projects__windows__sizer__content h2, .projects__windows__window__content h2 {
-    font-size: inherit;
-    color: white;
-    padding: 0;
-    padding-inline: 1rem;
-  }
-}
-.projects__windows__sizer__content h2 > span, .projects__windows__window__content h2 > span {
-  margin-bottom: 0.3rem;
-  margin-right: 8px;
-}
-.projects__windows__sizer__content h2 div, .projects__windows__window__content h2 div {
-  background-color: #414288;
-  border-radius: 4px;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 0.1rem 0.1rem;
-  margin-right: 8px;
-  margin-top: -2px;
-}
-.projects__windows__sizer__content h2 div span, .projects__windows__window__content h2 div span {
-  color: white;
-  margin: 6px;
-  font-size: 0.9rem;
-}
-.projects__windows__sizer__content h2 div a, .projects__windows__window__content h2 div a {
-  color: white;
-}
-.projects__windows__sizer__content > p, .projects__windows__window__content > p {
-  padding-inline: 1rem;
-  color: gray;
-}
-@media (min-width: 768px) {
-  .projects__windows__sizer__content > p, .projects__windows__window__content > p {
-    color: white;
-    text-shadow: 1px 1px 2px rgb(0, 0, 0);
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
-  @supports (-webkit-line-clamp: 5) {
-    .projects__windows__sizer__content > p, .projects__windows__window__content > p {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: initial;
-      display: -webkit-box;
-      -webkit-line-clamp: 5;
-      -webkit-box-orient: vertical;
-    }
-  }
-}
-.projects__windows__sizer__overlay, .projects__windows__window__overlay {
+.content .content__block .overlay {
   grid-row: 1;
   grid-column: 1;
   background-color: black;
   opacity: 0;
   z-index: -1;
 }
-.projects__windows__stamp {
-  position: absolute;
-  height: 0;
+
+footer {
+  margin-top: 5rem;
+  width: 100%;
+  padding: 10px;
+  color: rgb(146, 146, 146);
+  text-align: center;
+}
+
+html body {
+  background-color: white;
+}
+
+main,
+footer {
+  font-family: "FiraGo", sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 @media (min-width: 768px) {
-  .projects__windows__stamp {
-    width: 20px;
-    height: 20px;
-  }
-}
-.projects__windows__stamp:nth-of-type(2) {
-  right: 0;
-}
-@media (min-width: 768px) {
-  .projects__windows__stamp:nth-of-type(2) {
-    height: 40px;
+  main {
+    flex-direction: row;
   }
 }/*# sourceMappingURL=vault.css.map */

@@ -681,18 +681,18 @@ main {
   height: 10rem;
 }
 .hills-button__border span:nth-of-type(1) {
-  box-shadow: 0 0.15em 0 0 rgba(28, 72, 249, 0.25), -0.15em 0 0 rgba(50, 132, 237, 0.25), 0.15em 0 0 0 rgba(28, 72, 249, 0.25), -0.15em 0 0 0 rgba(50, 132, 237, 0.25), 0em 0 0 rgba(39, 102, 243, 0.5), -0.15em 0.15em 0 0 rgba(39, 102, 243, 0.5), 0.15em 0.15em 0 0 rgba(17, 41, 255, 0.75), -0.3em 0 0 rgba(61, 162, 230, 0.75);
+  box-shadow: 0 0.15em 0 0 rgba(28, 72, 249, 0.25), 0 -0.15em 0 0 rgba(50, 132, 237, 0.25), 0.15em 0 0 0 rgba(28, 72, 249, 0.25), -0.15em 0 0 0 rgba(50, 132, 237, 0.25), 0.15em -0.15em 0 0 rgba(39, 102, 243, 0.5), -0.15em 0.15em 0 0 rgba(39, 102, 243, 0.5), 0.15em 0.15em 0 0 rgba(17, 41, 255, 0.75), -0.15em -0.15em 0 0 rgba(61, 162, 230, 0.75);
 }
 .hills-button__border span:nth-of-type(2) {
-  box-shadow: 0 0.1em 0 0 rgba(64, 0, 192, 0.25), -0.1em 0 0 rgba(192, 0, 64, 0.25), 0.1em 0 0 0 rgba(64, 0, 192, 0.25), -0.1em 0 0 0 rgba(192, 0, 64, 0.25), 0em 0 0 rgba(128, 0, 128, 0.5), -0.1em 0.1em 0 0 rgba(128, 0, 128, 0.5), 0.1em 0.1em 0 0 rgba(0, 0, 255, 0.75), -0.2em 0 0 rgba(255, 0, 0, 0.75);
+  box-shadow: 0 0.1em 0 0 rgba(64, 0, 192, 0.25), 0 -0.1em 0 0 rgba(192, 0, 64, 0.25), 0.1em 0 0 0 rgba(64, 0, 192, 0.25), -0.1em 0 0 0 rgba(192, 0, 64, 0.25), 0.1em -0.1em 0 0 rgba(128, 0, 128, 0.5), -0.1em 0.1em 0 0 rgba(128, 0, 128, 0.5), 0.1em 0.1em 0 0 rgba(0, 0, 255, 0.75), -0.1em -0.1em 0 0 rgba(255, 0, 0, 0.75);
   animation: psycho-circle-anim 3s linear infinite;
 }
 .hills-button__border span:nth-of-type(3) {
-  box-shadow: 0 0.1em 0 0 rgba(64, 255, 192, 0.25), -0.1em 0 0 rgba(192, 255, 64, 0.25), 0.1em 0 0 0 rgba(64, 255, 192, 0.25), -0.1em 0 0 0 rgba(192, 255, 64, 0.25), 0em 0 0 rgba(128, 255, 128, 0.5), -0.1em 0.1em 0 0 rgba(128, 255, 128, 0.5), 0.1em 0.1em 0 0 rgba(0, 255, 255, 0.75), -0.2em 0 0 rgba(255, 255, 0, 0.75);
+  box-shadow: 0 0.1em 0 0 rgba(64, 255, 192, 0.25), 0 -0.1em 0 0 rgba(192, 255, 64, 0.25), 0.1em 0 0 0 rgba(64, 255, 192, 0.25), -0.1em 0 0 0 rgba(192, 255, 64, 0.25), 0.1em -0.1em 0 0 rgba(128, 255, 128, 0.5), -0.1em 0.1em 0 0 rgba(128, 255, 128, 0.5), 0.1em 0.1em 0 0 rgba(0, 255, 255, 0.75), -0.1em -0.1em 0 0 rgba(255, 255, 0, 0.75);
   animation: psycho-circle-anim 3s linear 0.1s infinite;
 }
 .hills-button__border span:nth-of-type(4) {
-  box-shadow: 0 0.1em 0 0 rgba(64, 192, 64, 0.25), -0.1em 0 0 rgba(192, 64, 192, 0.25), 0.1em 0 0 0 rgba(64, 192, 64, 0.25), -0.1em 0 0 0 rgba(192, 64, 192, 0.25), 0em 0 0 rgba(128, 128, 128, 0.5), -0.1em 0.1em 0 0 rgba(128, 128, 128, 0.5), 0.1em 0.1em 0 0 rgba(0, 255, 0, 0.75), -0.2em 0 0 rgba(255, 0, 255, 0.75);
+  box-shadow: 0 0.1em 0 0 rgba(64, 192, 64, 0.25), 0 -0.1em 0 0 rgba(192, 64, 192, 0.25), 0.1em 0 0 0 rgba(64, 192, 64, 0.25), -0.1em 0 0 0 rgba(192, 64, 192, 0.25), 0.1em -0.1em 0 0 rgba(128, 128, 128, 0.5), -0.1em 0.1em 0 0 rgba(128, 128, 128, 0.5), 0.1em 0.1em 0 0 rgba(0, 255, 0, 0.75), -0.1em -0.1em 0 0 rgba(255, 0, 255, 0.75);
   animation: psycho-circle-anim 3s linear 0.2s infinite;
 }
 

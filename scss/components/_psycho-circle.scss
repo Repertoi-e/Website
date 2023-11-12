@@ -3,10 +3,10 @@
     $mix-sub-from: mix($mix-main, $from);
     $mix-sub-to: mix($mix-main, $to);
 
-    box-shadow: 0 $thickness 0 $weight rgba($mix-sub-to, 0.25), 0 -$thickness 0 $weight rgba($mix-sub-from, 0.25),
-        $thickness 0 0 $weight rgba($mix-sub-to, 0.25), -$thickness 0 0 $weight rgba($mix-sub-from, 0.25),
-        $thickness -$thickness 0 $weight rgba($mix-main, 0.5), -$thickness $thickness 0 $weight rgba($mix-main, 0.5),
-        $thickness $thickness 0 $weight rgba($to, 0.75), -$thickness -$thickness 0 $weight rgba($from, 0.75);
+    box-shadow: 0 $thickness 0 $weight rgba($mix-sub-to, 0.25), 0 (-$thickness) 0 $weight rgba($mix-sub-from, 0.25),
+        $thickness 0 0 $weight rgba($mix-sub-to, 0.25), (-$thickness) 0 0 $weight rgba($mix-sub-from, 0.25),
+        $thickness (-$thickness) 0 $weight rgba($mix-main, 0.5), (-$thickness) $thickness 0 $weight rgba($mix-main, 0.5),
+        $thickness $thickness 0 $weight rgba($to, 0.75), (-$thickness) (-$thickness) 0 $weight rgba($from, 0.75);
 }
 
 @mixin psycho-circle($size) {
