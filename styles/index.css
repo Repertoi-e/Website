@@ -553,7 +553,7 @@ main {
 @media (min-width: 576px) {
   main {
     grid-template-columns: 45vw 45vw;
-    grid-template-rows: 5rem auto auto auto auto;
+    grid-template-rows: 5rem 18.9rem auto auto auto;
     grid-template-areas: ". ." ". introduction" "arrow arrow" "hills-button hills-button" "social social";
   }
 }

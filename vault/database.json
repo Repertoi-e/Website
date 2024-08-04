@@ -6,12 +6,6 @@
 		"lang": "en"
 	},
 	{
-		"order": 5,
-		"type": "img",
-		"src": "/resources/about/vault/ChairShirtless.gif",
-		"lang": "en"
-	},
-	{
 		"order": 6,
 		"type": "img",
 		"src": "/resources/about/vault/ladder.gif",
@@ -24,25 +18,19 @@
 		"lang": "en"
 	},
 	{
-		"order": 12,
-		"type": "img",
-		"src": "/resources/about/vault/Chair.gif",
-		"lang": "en"
-	},
-	{
-		"order": 14,
+		"order": 30,
 		"type": "img",
 		"src": "/resources/about/vault/bershka.gif",
 		"lang": "en"
 	},
 	{
-		"order": 20,
+		"order": 14,
 		"type": "img",
 		"src": "/resources/about/vault/DSC_3875.jpg",
 		"lang": "en"
 	},
 	{
-		"order": 30,
+		"order": 20,
 		"type": "img",
 		"src": "/resources/about/vault/dark_ladder.jpg",
 		"lang": "en"
@@ -57,12 +45,6 @@
 		"order": 34,
 		"type": "video",
 		"src": "/resources/about/vault/hair.mov",
-		"lang": "en"
-	},
-	{
-		"order": 35,
-		"type": "img",
-		"src": "/resources/about/vault/shave.gif",
 		"lang": "en"
 	},
 	{

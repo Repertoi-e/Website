@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="I'm your local Bulgarian code wizard and photographer and here is a bit from me." name="description"/>
-<meta content="portfolio, game developer, camp, dimitar sotirov, soti, dimitar, sotirov, C++, developer, programmer, student, looking for job, hire me, job, hiring, HR" name="keywords"/>
+<meta content="portfolio, aerospace, engineer, camp, dimitar sotirov, soti, dimitar, sotirov, C++, developer, programmer, student, looking for job, hire me, job, hiring, HR" name="keywords"/>
 <meta content="About | Dimitar Sotirov" name="author"/>
 <meta content="About | Dimitar Sotirov" property="og:title"/>
 <meta content="I'm your local Bulgarian code wizard and photographer and here is a bit from me." property="og:description"/>
@@ -17,10 +17,11 @@
 <meta content="I'm your local Bulgarian code wizard and photographer and here is a bit from me." name="twitter:description"/>
 <meta content="/resources/index/hand.gif" name="twitter:image"/>
 <link href="/styles/vault.css" rel="stylesheet"/>
+<link href="/styles/vendor/photoswipe.css" rel="stylesheet"/>
 <link href="/resources/just_give_love.ico" rel="icon" type="image/x-icon"/>
 <link href="/resources/just_give_love.ico" rel="shortcut icon" type="image/x-icon"/>
 <title>
-   About | Dimitar Sotirov
+   Vault | Dimitar Sotirov
   </title>
 <script src="/js/vendor/jquery-3.7.0.min.js">
 </script>
@@ -30,6 +31,31 @@
 </script>
 <script src="/js/content.js">
 </script>
+<script type="module">
+      import PhotoSwipeLightbox from '/js/vendor/photoswipe-lightbox.esm.min.js';
+      import PhotoSwipeVideoPlugin from '/js/vendor/photoswipe-video-plugin.esm.min.js';
+
+      const lightbox = new PhotoSwipeLightbox({
+            gallery: '#vault-gal',
+            children: 'a',
+            initialZoomLevel: 0.5,
+            imageClickAction: 'close',
+            tapAction: 'close',
+
+            // tap delay is removed if set to false
+            doubleTapAction: false,
+            zoom: false,
+            counter: false,
+            pswpModule: () => import('/js/vendor/photoswipe.esm.min.js')
+      });
+      
+      const videoPlugin = new PhotoSwipeVideoPlugin(lightbox, {
+        // options
+      });
+
+      lightbox.init();
+      
+      </script>
 </head>
 <body>
 <main>
@@ -46,12 +72,10 @@
 </div>
 <p>
 <hr/>
-
-<img src="/resources/about/vault/Snap1.jpg"/>
+<img src="/resources/about/vault/black_and_white.jpg"/>
 <hr/>
-
 <div class="about-me__social">
-      Follow me:
+      Follow me on
       <a href="https://www.instagram.com/soti.and.friends/" target="_blank">
 <h3>
         Instagram
@@ -60,8 +84,8 @@
 </div>
 </p>
 </div>
-<div class="content">
-<!--BEGIN CONTENT BLOCKS--><div><div class="content__block"><video autoplay="True" loop="True" muted="True"><source src="/resources/about/vault/kremikovci.mp4" type="video/mp4"/></video><div class="overlay"></div><a class="content__block__content" target="_blank"><h2><span></span></h2><p></p></a><div class="photo-info"></div></div><div class="content__block"><img src="/resources/about/vault/ChairShirtless.gif"/><div class="overlay"></div><a class="content__block__content" target="_blank"><h2><span></span></h2><p></p></a><div class="photo-info"></div></div><div class="content__block"><img src="/resources/about/vault/ladder.gif"/><div class="overlay"></div><a class="content__block__content" target="_blank"><h2><span></span></h2><p></p></a><div class="photo-info"></div></div><div class="content__block"><img src="/resources/about/vault/light.jpg"/><div class="overlay"></div><a class="content__block__content" target="_blank"><h2><span></span></h2><p></p></a><div class="photo-info"></div></div><div class="content__block"><img src="/resources/about/vault/Chair.gif"/><div class="overlay"></div><a class="content__block__content" target="_blank"><h2><span></span></h2><p></p></a><div class="photo-info"></div></div><div class="content__block"><img src="/resources/about/vault/bershka.gif"/><div class="overlay"></div><a class="content__block__content" target="_blank"><h2><span></span></h2><p></p></a><div class="photo-info"></div></div><div class="content__block"><img src="/resources/about/vault/DSC_3875.jpg"/><div class="overlay"></div><a class="content__block__content" target="_blank"><h2><span></span></h2><p></p></a><div class="photo-info"></div></div><div class="content__block"><img src="/resources/about/vault/dark_ladder.jpg"/><div class="overlay"></div><a class="content__block__content" target="_blank"><h2><span></span></h2><p></p></a><div class="photo-info"></div></div><div class="content__block"><img src="/resources/about/vault/david.jpg"/><div class="overlay"></div><a class="content__block__content" target="_blank"><h2><span></span></h2><p></p></a><div class="photo-info"></div></div><div class="content__block"><video autoplay="True" loop="True" muted="True"><source src="/resources/about/vault/hair.mov" type="video/mp4"/></video><div class="overlay"></div><a class="content__block__content" target="_blank"><h2><span></span></h2><p></p></a><div class="photo-info"></div></div><div class="content__block"><img src="/resources/about/vault/shave.gif"/><div class="overlay"></div><a class="content__block__content" target="_blank"><h2><span></span></h2><p></p></a><div class="photo-info"></div></div><div class="content__block"><img src="/resources/about/vault/spicy.jpg"/><div class="overlay"></div><a class="content__block__content" target="_blank"><h2><span></span></h2><p></p></a><div class="photo-info"></div></div><div class="content__block"><img src="/resources/about/vault/gay.jpg"/><div class="overlay"></div><a class="content__block__content" target="_blank"><h2><span></span></h2><p></p></a><div class="photo-info"></div></div><div class="content__block"><img src="/resources/about/vault/mirror.jpg"/><div class="overlay"></div><a class="content__block__content" target="_blank"><h2><span></span></h2><p></p></a><div class="photo-info"></div></div><div class="content__block"><img src="/resources/about/vault/ball.jpg"/><div class="overlay"></div><a class="content__block__content" target="_blank"><h2><span></span></h2><p></p></a><div class="photo-info"></div></div><div class="content__block"><video autoplay="True" loop="True" muted="True"><source src="/resources/about/vault/guitar.mp4" type="video/mp4"/></video><div class="overlay"></div><a class="content__block__content" target="_blank"><h2><span></span></h2><p></p></a><div class="photo-info"></div></div><div class="content__block"><img src="/resources/about/vault/white_hair.gif"/><div class="overlay"></div><a class="content__block__content" target="_blank"><h2><span></span></h2><p></p></a><div class="photo-info"></div></div><div class="content__block"><img src="/resources/about/vault/graduation.jpg"/><div class="overlay"></div><a class="content__block__content" target="_blank"><h2><span></span></h2><p></p></a><div class="photo-info"></div></div></div>
+<div class="content" id="vault-gal">
+<!--BEGIN CONTENT BLOCKS--><div><a class="content__block" data-pswp-height="1000" data-pswp-width="1000" href="/resources/about/vault/light.jpg" target="_blank"><img src="/resources/about/vault/light.jpg"/><div class="overlay"></div><div target="_blank"><h2><span></span></h2><p></p></div><div class="photo-info"></div></a><a class="content__block" data-pswp-height="999" data-pswp-width="1000" href="/resources/about/vault/ladder.gif" target="_blank"><img src="/resources/about/vault/ladder.gif"/><div class="overlay"></div><div target="_blank"><h2><span></span></h2><p></p></div><div class="photo-info"></div></a><a class="content__block" data-pswp-height="1000" data-pswp-type="video" data-pswp-width="1000" href="/resources/about/vault/kremikovci.mp4" target="_blank"><video autoplay="True" loop="True" muted="True"><source src="/resources/about/vault/kremikovci.mp4" type="video/mp4"/></video><div class="overlay"></div><div target="_blank"><h2><span></span></h2><p></p></div><div class="photo-info"></div></a><a class="content__block" data-pswp-height="1000" data-pswp-width="1000" href="/resources/about/vault/bershka.gif" target="_blank"><img src="/resources/about/vault/bershka.gif"/><div class="overlay"></div><div target="_blank"><h2><span></span></h2><p></p></div><div class="photo-info"></div></a><a class="content__block" data-pswp-height="1000" data-pswp-width="1000" href="/resources/about/vault/dark_ladder.jpg" target="_blank"><img src="/resources/about/vault/dark_ladder.jpg"/><div class="overlay"></div><div target="_blank"><h2><span></span></h2><p></p></div><div class="photo-info"></div></a><a class="content__block" data-pswp-height="999" data-pswp-width="999" href="/resources/about/vault/DSC_3875.jpg" target="_blank"><img src="/resources/about/vault/DSC_3875.jpg"/><div class="overlay"></div><div target="_blank"><h2><span></span></h2><p></p></div><div class="photo-info"></div></a><a class="content__block" data-pswp-height="1000" data-pswp-width="800" href="/resources/about/vault/spicy.jpg" target="_blank"><img src="/resources/about/vault/spicy.jpg"/><div class="overlay"></div><div target="_blank"><h2><span></span></h2><p></p></div><div class="photo-info"></div></a><a class="content__block" data-pswp-height="1000" data-pswp-type="video" data-pswp-width="750" href="/resources/about/vault/hair.mov" target="_blank"><video autoplay="True" loop="True" muted="True"><source src="/resources/about/vault/hair.mov" type="video/mp4"/></video><div class="overlay"></div><div target="_blank"><h2><span></span></h2><p></p></div><div class="photo-info"></div></a><a class="content__block" data-pswp-height="1000" data-pswp-width="1000" href="/resources/about/vault/david.jpg" target="_blank"><img src="/resources/about/vault/david.jpg"/><div class="overlay"></div><div target="_blank"><h2><span></span></h2><p></p></div><div class="photo-info"></div></a><a class="content__block" data-pswp-height="1000" data-pswp-width="1000" href="/resources/about/vault/ball.jpg" target="_blank"><img src="/resources/about/vault/ball.jpg"/><div class="overlay"></div><div target="_blank"><h2><span></span></h2><p></p></div><div class="photo-info"></div></a><a class="content__block" data-pswp-height="1000" data-pswp-width="1000" href="/resources/about/vault/mirror.jpg" target="_blank"><img src="/resources/about/vault/mirror.jpg"/><div class="overlay"></div><div target="_blank"><h2><span></span></h2><p></p></div><div class="photo-info"></div></a><a class="content__block" data-pswp-height="999" data-pswp-width="1000" href="/resources/about/vault/gay.jpg" target="_blank"><img src="/resources/about/vault/gay.jpg"/><div class="overlay"></div><div target="_blank"><h2><span></span></h2><p></p></div><div class="photo-info"></div></a><a class="content__block" data-pswp-height="1000" data-pswp-width="749" href="/resources/about/vault/graduation.jpg" target="_blank"><img src="/resources/about/vault/graduation.jpg"/><div class="overlay"></div><div target="_blank"><h2><span></span></h2><p></p></div><div class="photo-info"></div></a><a class="content__block" data-pswp-height="1000" data-pswp-width="751" href="/resources/about/vault/white_hair.gif" target="_blank"><img src="/resources/about/vault/white_hair.gif"/><div class="overlay"></div><div target="_blank"><h2><span></span></h2><p></p></div><div class="photo-info"></div></a><a class="content__block" data-pswp-height="1000" data-pswp-type="video" data-pswp-width="1000" href="/resources/about/vault/guitar.mp4" target="_blank"><video autoplay="True" loop="True" muted="True"><source src="/resources/about/vault/guitar.mp4" type="video/mp4"/></video><div class="overlay"></div><div target="_blank"><h2><span></span></h2><p></p></div><div class="photo-info"></div></a></div>
 <!--END CONTENT BLOCKS-->
 </div>
 </main>

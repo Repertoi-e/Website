@@ -5,7 +5,7 @@ $(document).ready(function () {
         itemSelector: ".content__block",
         columnWidth: ".content__block",
         percentPosition: true,
-        originLeft: false
+        originLeft: true
     }); 
 
     $grid.imagesLoaded().progress(function () {

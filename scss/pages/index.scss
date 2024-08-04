@@ -126,7 +126,7 @@ main {
     // Change layout to :SplitView on large screens
     @include sm {
         grid-template-columns: 45vw 45vw;
-        grid-template-rows: 5rem auto auto auto auto;
+        grid-template-rows: 5rem 18.9rem auto auto auto;
 
         grid-template-areas:
             ". ."

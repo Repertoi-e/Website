@@ -4314,7 +4314,7 @@ $$ J = max(\frac{- \Delta \vec{V} \cdot \vec{n} + \text{bias}}{k_n}, 0) \cdot \v
 
 <p>If you run <code>demo_tunneling.py</code> you will see a problem with our engine. Stuff that's moving fast can go through objects. This is not a bug in our code but instead a flaw in our <em>entire</em> design! It happens because we are calculating in <em>discrete</em> time steps.</p>
 <p>That means that if a thing has a high enough velocity it can go straight through other objects and we can't possibly detect if the objects collided - they have already passed each other. You can increase the number of time steps but that comes with a <em>huge</em> cost of performance - you have to be a bit smarter.</p>
-<p>There are methods to solve this. We #note[won't be implementing a continuous collision solver here](I actually really want to extend the demos and this article with an implementation, so stay tuned!) but there's a great talk by a #ext_link[Blizzard game developer at GDC](https://www.youtube.com/watch?v=7_nKOET6zwI) about a robust solution to this problem. There is also an #ext_link[article by Casey Muratori's blog](https://caseymuratori.com/blog_0003) on how to implement the GJK algorithm.</p>
+<p>There are methods to solve this. We #note[won't be implementing a continuous collision solver here](I actually really want to extend the demos and this article with an implementation, so stay tuned!) but there's a great talk by a #ext_link[Blizzard aerospace, engineer at GDC](https://www.youtube.com/watch?v=7_nKOET6zwI) about a robust solution to this problem. There is also an #ext_link[article by Casey Muratori's blog](https://caseymuratori.com/blog_0003) on how to implement the GJK algorithm.</p>
 
 </div>
 </div>

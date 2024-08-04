@@ -745,9 +745,6 @@ header {
     max-width: 33.33333%;
   }
 }
-.content .content__block:hover {
-  cursor: pointer;
-}
 .content .content__block img,
 .content .content__block video {
   width: 100%;

@@ -683,9 +683,6 @@ a:hover {
     max-width: 33.33333%;
   }
 }
-.content .content__block:hover {
-  cursor: pointer;
-}
 .content .content__block img,
 .content .content__block video {
   width: 100%;
@@ -2385,9 +2382,6 @@ header {
   .content .content__block {
     max-width: 33.33333%;
   }
-}
-.content .content__block:hover {
-  cursor: pointer;
 }
 .content .content__block img,
 .content .content__block video {
@@ -4216,9 +4210,6 @@ header {
   .content .content__block {
     max-width: 33.33333%;
   }
-}
-.content .content__block:hover {
-  cursor: pointer;
 }
 .content .content__block img,
 .content .content__block video {
