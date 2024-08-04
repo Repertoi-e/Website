@@ -3,7 +3,7 @@
 @url simulating_rigid_body_physics
 @title Simulating Rigid Body Physics
 
-@tags python, notebook, tutorial+demo
+@tags python, tutorial
 
 @lang en
 @desc Want to know how to do a full-blown physics simulation of rigid bodies and collisions between them? In this in-depth tutorial I share the knowledge I gained from the time I wondered the same...

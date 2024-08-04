@@ -9,7 +9,7 @@
 
     <meta name="description" content="Want to know how to do a full-blown physics simulation of rigid bodies and collisions between them? In this in-depth tutorial I share the knowledge I gained from the time I wondered the same...">
     <meta name="keywords"
-        content="portfolio, aerospace, engineer, camp, dimitar sotirov, soti, dimitar, sotirov, C++, developer, programmer, student, looking for job, hire me, job, hiring, HR, math, phyiscs, notebook, visualization, rigid, body, simulation, physics engine, engine, mathematics">
+        content="portfolio, aerospace, engineer, camp, dimitar sotirov, soti, dimitar, sotirov, C++, developer, programmer, student, looking for job, hire me, job, hiring, HR, math, physics, notebook, visualization, rigid, body, simulation, physics engine, engine, mathematics">
     <meta name="author" content="Dimitar Sotirov">
 
     <meta property="og:title" content="Simulating Rigid Body Physics | Soti's Blog">
@@ -92,8 +92,8 @@ init_mathjax();
         <div class="article">
             <div class="header">
                 <div class="directory">
-                    <!-- TAGS_CLEAN: python, notebook, tutorial+demo -->
-                    <a href="/blog">Blog</a><span class="separator">/</span> <a href="../">python</a>, <a href="../">notebook</a>, <a href="../">tutorial+demo</a>
+                    <!-- TAGS_CLEAN: python, tutorial -->
+                    <a href="/blog">Blog</a><span class="separator">/</span> <a href="../">python</a>, <a href="../">tutorial</a>
                 </div>
 
                 <div class="title_and_author">
@@ -108,7 +108,7 @@ init_mathjax();
                     </div>
 
                     <div class="edit_date">
-                        <p>Last edited 18.09.2022</p>
+                        <p>Last edited 04.08.2024</p>
                     </div>
                 </div>
             </div>
@@ -213,7 +213,7 @@ init_mathjax();
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<div class="index"><h3 id="table_of_contents">Table of Contents</h3><ul><ul><li><a href="#visualization">Visualization</a></li><li><a href="#shapes">Shapes</a></li><li><a href="#bodies">Bodies</a><ul><li><a href="#model_matrix">Model Matrix</a></li><li><a href="#mass">Mass</a></li><li><a href="#centroid">Centroid</a></li><li><a href="#rotational_inertia">Rotational Inertia</a></li></ul></li><li><a href="#forces_and_impulses">Forces and Impulses</a><ul><li><a href="#using_forces_in_a_demo">Using Forces in a Demo</a><ul><li><a href="#point_vs_shape_intersection">Point vs. Shape Intersection</a></li><li><a href="#grabbing_bodies_with_the_mouse">Grabbing Bodies with the Mouse</a></li><li><a href="#air_drag">Air Drag</a></li></ul></li></ul></li><li><a href="#discrete_collision_detection">Discrete Collision Detection</a><ul><li><a href="#intersection">Intersection</a><ul><li><a href="#circle_vs_circle">Circle vs. Circle</a></li><li><a href="#polygon_vs_polygon">Polygon vs. Polygon</a></li><li><a href="#polygon_vs_circle">Polygon vs. Circle</a></li></ul></li><li><a href="#response">Response</a><ul><li><a href="#collision_contact_points">Collision Contact Points</a><ul><li><a href="#failed_first_try">Failed (?) first try</a></li><li><a href="#the_better_method">The better method</a></li><li><a href="#quick_word_about_circles">Quick word about circles</a></li></ul></li><li><a href="#impulse_based_collision_resolution">Impulse Based Collision Resolution</a></li><li><a href="#iterations">Iterations</a></li><li><a href="#friction">Friction</a></li></ul></li><li><a href="#continuous_collision_detection">Continuous Collision Detection</a></li></ul></li><li><a href="#practical_applications">Practical applications</a></li><li><a href="#further_reading">Further Reading</a></li><li><a href="#some_references_which_made_this_possible">Some References Which Made this Possible</a></li></ul></div></div>
+<div class="index"><h3 id="table_of_contents">Table of Contents</h3><ul><ul><li><a href="#visualization">Visualization</a></li><li><a href="#shapes">Shapes</a></li><li><a href="#bodies">Bodies</a><ul><li><a href="#model_matrix">Model Matrix</a></li><li><a href="#mass">Mass</a></li><li><a href="#centroid">Centroid</a></li><li><a href="#rotational_inertia">Rotational Inertia</a></li></ul></li><li><a href="#forces_and_impulses">Forces and Impulses</a><ul><li><a href="#using_forces_in_a_demo">Using Forces in a Demo</a><ul><li><a href="#point_vs_shape_intersection">Point vs. Shape Intersection</a></li><li><a href="#grabbing_bodies_with_the_mouse">Grabbing Bodies with the Mouse</a></li><li><a href="#air_drag">Air Drag</a></li></ul></li></ul></li><li><a href="#discrete_collision_detection">Discrete Collision Detection</a><ul><li><a href="#intersection">Intersection</a><ul><li><a href="#circle_vs_circle">Circle vs. Circle</a></li><li><a href="#polygon_vs_polygon">Polygon vs. Polygon</a></li><li><a href="#polygon_vs_circle">Polygon vs. Circle</a></li></ul></li><li><a href="#response">Response</a><ul><li><a href="#collision_contact_points">Collision Contact Points</a><ul><li><a href="#failed_first_try">Failed (?) first try</a></li><li><a href="#the_better_method">The better method</a></li><li><a href="#quick_word_about_circles">Quick word about circles</a></li></ul></li><li><a href="#impulse_based_collision_resolution">Impulse Based Collision Resolution</a></li><li><a href="#iterations">Iterations</a></li><li><a href="#friction">Friction</a></li></ul></li><li><a href="#continuous_collision_detection">Continuous Collision Detection</a></li></ul></li><li><a href="#practical_applications">Practical Applications</a></li><li><a href="#further_reading">Further Reading</a></li><li><a href="#some_references_which_made_this_possible">Some References Which Made this Possible</a></li></ul></div></div>
 </div>
 </div>
 </div>
@@ -229,7 +229,7 @@ init_mathjax();
                     <sup><a class="annotation_link" href="#annotation_2" style="display:none">02</a></sup>
                     <span class="annotation_content" style="display:none">
                         <span class="annotation_bracket">[</span>
-                        <span class="annotation_content_raw">Each invididual body has it's own virtual origin (0, 0) in which vertices are placed relative to. This is called local space. Moving/rotating the object doesn't affect it.</span>
+                        <span class="annotation_content_raw">Each individual body has it's own virtual origin (0, 0) in which vertices are placed relative to. This is called local space. Moving/rotating the object doesn't affect it.</span>
                         <span class="annotation_bracket">]</span>
                     </span>
                 </span>. We imagine the object's <span class="annotation annotation_3">
@@ -467,7 +467,7 @@ jp-needs-light-background
                     </span>
                 </span>.</p>
 <h3 id="model_matrix">Model Matrix <a href="#table_of_contents"><sup>↑</sup></a></h3><p>When drawing our bodies they shouldn't appear at the same place. When we talked about shapes we said that our bodies have position and rotation, and the shape's vertices get transformed. How do we do that?</p>
-<p>Well probably the most convinient way is by using matrices. For 2D <em>linear transformations</em> we need 2x2 matrices. We can't describe translation in a 2x2 matrix (translation is not a linear transformation because it moves the origin).</p>
+<p>Well probably the most convenient way is by using matrices. For 2D <em>linear transformations</em> we need 2x2 matrices. We can't describe translation in a 2x2 matrix (translation is not a linear transformation because it moves the origin).</p>
 <p>But we can encode it by using a third column:</p>
 $$
 T =
@@ -725,7 +725,7 @@ jp-needs-light-background
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The correct answer is indeed $4.5$ (base is 3and height is 3, so $ A = \frac{3 \cdot 3}{2} = 4.5 $).</p>
+<p>The correct answer is indeed $4.5$ (base is $3$ and height is $3$, so $ A = \frac{3 \cdot 3}{2} = 4.5 $).</p>
 <p>Now that we have methods of finding the area of our shapes, the mass of a body is simply $m = A\rho$ (area times density).</p>
 </div>
 </div>
@@ -3579,7 +3579,7 @@ $$ J = max(\frac{- \Delta \vec{V} \cdot \vec{n} + \text{bias}}{k_n}, 0) \cdot \v
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="practical_applications">Practical applications <a href="#table_of_contents"><sup>↑</sup></a></h2><p>So we've successfully looked at the beginning of an implementation of a physics engine. What do people use them for?</p>
+<h2 id="practical_applications">Practical Applications <a href="#table_of_contents"><sup>↑</sup></a></h2><p>So we've successfully looked at the beginning of an implementation of a physics engine. What do people use them for?</p>
 <ul>
 <li><p>Firstly, extending the thing we've built to 3D is not that hard actually. An extra coordinate everywhere doesn't change the idea of the math. After all, <em>linear algebra</em> works the same even with vectors of infinite dimension :P</p>
 <p>One part becomes a lot harder though and that's rotations - in 3D we use <em>quaternions</em> (4D numbers) to represent orientations. It turns out that quaternions are the most robust and convenient way but also the most confusing and most rarely fully understood (just because we can't have an intuition for 4D objects). Nevertheless <a href="https://www.youtube.com/watch?v=d4EgbgTm0Bg&ab_channel=3Blue1Brown" target="_blank">3blue1brown has a great series</a> on a 3D perspective on visualizing quaternions.</p>
@@ -3604,7 +3604,7 @@ $$ J = max(\frac{- \Delta \vec{V} \cdot \vec{n} + \text{bias}}{k_n}, 0) \cdot \v
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>I hope I've given you some basic understading of how to implement a simulation yourself. I learned a whole bunch doing this project and I really enjoyed doing it and sharing the knowledge. Before this I've never been able to implement a working collision system.</p>
+<p>I hope I've given you some basic understanding of how to implement a simulation yourself. I learned a whole bunch doing this project and I really enjoyed doing it and sharing the knowledge. Before this I've never been able to implement a working collision system.</p>
 <p>I wrote the physics code in Python so it can be easily understood and ported to another language.</p>
 </div>
 </div>
@@ -3668,7 +3668,7 @@ $$ J = max(\frac{- \Delta \vec{V} \cdot \vec{n} + \text{bias}}{k_n}, 0) \cdot \v
                     </li>
                     <li>
                         <span class="annotation_number" id="annotation_2">02</span>
-                        <span class="annotation_expanded_content">Each invididual body has it's own virtual origin (0, 0) in which vertices are placed relative to. This is called local space. Moving/rotating the object doesn't affect it. 
+                        <span class="annotation_expanded_content">Each individual body has it's own virtual origin (0, 0) in which vertices are placed relative to. This is called local space. Moving/rotating the object doesn't affect it. 
                             <a href="#annotation_inline_2">↑</a>
                         </span>
                     </li>
@@ -3747,8 +3747,6 @@ $$ J = max(\frac{- \Delta \vec{V} \cdot \vec{n} + \text{bias}}{k_n}, 0) \cdot \v
     </main>
 
     <footer>
-        Hand gif in header, credit -
-        <a href="https://pleasurepromenade.tumblr.com/post/111041041343" target="_blank">pleasurepromenade.tumblr.com</a><br><br>
         © 2024 – Dimitar Sotirov
     </footer>
 
