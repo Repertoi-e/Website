@@ -6,6 +6,7 @@ from enum import Enum
 from datetime import date
 
 import re
+import os
 import os.path
 
 from collections import OrderedDict
@@ -720,6 +721,7 @@ def main():
 
     content = content.replace("@ANNOTATIONS", annotations_html)
 
+    os.makedirs(f"./{ident}/", exist_ok=True)
     with open(target_path, "w+", encoding="utf-8") as target:
         target.write(content)
 

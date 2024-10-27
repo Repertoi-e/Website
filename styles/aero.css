@@ -706,12 +706,14 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   margin-inline: 2rem;
   margin-bottom: 2rem;
 }
 @media (min-width: 768px) {
   .about-me__social {
     flex-direction: column;
+    align-items: start;
     margin-inline: 0;
   }
   .about-me__social h3 {

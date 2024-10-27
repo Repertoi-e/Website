@@ -54,7 +54,7 @@ The idea here is not simply for me to present you #italic(a) solution, but rathe
 
 #header The Story
 
-It's... about problem 6 from the 1988 <a href="https://www.imo-official.org/" target="_blank">IMO</a>. I got obsessed over it a few days ago when Numberphile uploaded a video, featuring #note[Zvezdelina Stankova](Btw, both Zvezdelina and Emanouil are Bulgarians, so this resonates with me on even one more dimension :\)), the only girl to solve the problem at the competition, who shares #note_link[Emanouil Atanassov]'s solution, for which he won a special brilliancy award.
+It's... about problem 6 from the 1988 <a href="https://www.imo-official.org/" target="_blank">IMO</a>. I got obsessed over it a few days ago when Numberphile uploaded a video, featuring Zvezdelina Stankova, the only girl to solve the problem at the competition, who shares Emanouil Atanassov's solution, for which he won a special brilliancy award.
 
 <iframe width="100%" height="350px" src="https://www.youtube-nocookie.com/embed/NcaYEaVTA4g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -355,8 +355,6 @@ The key takeaway here is not the solution to the problem itself. What I found mo
 By thinking about it conceptually I'd bet you can apply them to real life as well. (Who says math is all amount scribbles on paper!)
 
 Anyways, hope you enjoyed, bye for now <3.
-
-#author
 
 
 #header Some Videos Which Made this Possible

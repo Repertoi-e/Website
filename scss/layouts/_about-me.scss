@@ -77,12 +77,14 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
 
         margin-inline: 2rem;
         margin-bottom: 2rem;
 
         @include md {
             flex-direction: column;
+            align-items: start;
 
             margin-inline: 0;
 

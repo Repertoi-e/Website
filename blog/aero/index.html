@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="en-GB">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Summary of TU Delft's undergraduate aerodynamics course.">
+    <meta name="keywords"
+        content="portfolio, aerospace, engineer, camp, dimitar sotirov, soti, dimitar, sotirov, C++, developer, programmer, student, looking for job, hire me, job, hiring, HR, aerodynamics, differential equations, integral equations">
+    <meta name="author" content="Dimitar Sotirov">
+
+    <meta property="og:title" content="Aerodynamics Summary | Soti's Blog">
+    <meta property="og:description" content="Summary of TU Delft's undergraduate aerodynamics course.">
+    <meta property="og:image" content="/resources/index/hand.gif">
+    <meta property="og:url" content="soti.camp">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Aerodynamics Summary | Soti's Blog">
+    <meta name="twitter:description" content="Summary of TU Delft's undergraduate aerodynamics course.">
+    <meta name="twitter:image" content="/resources/index/hand.gif">
+
+    <link rel="stylesheet" href="/styles/blog.css">
+
+    <link rel="icon" href="/resources/just_give_love.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/resources/just_give_love.ico" type="image/x-icon">
+
+    <title>Aerodynamics Summary | Soti's Blog</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ extensions: ["tex2jax.js"], jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true }, "HTML-CSS": { availableFonts: ["TeX"] } });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
+<script src="https://www.geogebra.org/apps/deployggb.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css">
+
+<style>
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
+<script>
+    window.klipse_settings = {
+        selector_pyodide: '.language-klipse-pyodide', 
+        editor_type: 'html'
+    };
+</script>
+
+</head>
+
+
+<body>
+    <header>
+        <div class="logo">
+            <h4 class="logo__title">&nbsp;&nbsp;&nbsp;<span>S</span>OTI'S</h4>
+            <h4 class="logo__title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BLOG</h4>
+            <img class="logo__img" src="/resources/index/hand.gif" alt="A gif of a surreal floating hand that rotates with a cyan and magenta glitch effect">
+        </div>
+        
+        <div class="header-links">
+            <div class="header-links__link">⟵<a href="/blog">BLOG</a></div>
+            <div class="header-links__divider"></div>
+            <div class="header-links__link"></div>
+        </div>
+    </header>
+
+    <main>
+        <div class="article">
+            <div class="header">
+                <div class="directory">
+                    <!-- TAGS_CLEAN: aerodynamics -->
+                    <a href="/blog">Blog</a><span class="separator">/</span> <a href="../">aerodynamics</a>
+                </div>
+
+                <div class="title_and_author">
+                    <div class="title">
+                        <h2>Aerodynamics Summary</h2>
+                    </div>
+                </div>
+
+                <div class="dates">
+                    <div class="date">
+                        <p>27.10.2024</p>
+                    </div>
+
+                    <div class="edit_date">
+                        <p>Last edited 27.10.2024</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="content">
+                <p>The goal of aerodynamics is to predict the flow around bodies and the forces the bodies experience. The only way for nature to communicate an <b>aerodynamic force</b> is through the <em>pressure distribution over the body</em>, and the <em>shear stress distribution over the body</em>.</p><p><img src="/resources/blog/pressuredist.png"/></p><p>Predicting this is done by mixing theory, empirical data, and computer simulations (CFD).</p><div class="index"><h3 id="table_of_contents">Table of Contents</h3><ul><ul><li><a href="#flow_types">Flow Types</a></li><li><a href="#boundary_layer">Boundary Layer</a></li><li><a href="#force_coefficients">Force Coefficients</a></li><li><a href="#juicy_vector_calculus">Juicy Vector Calculus</a></li><li><a href="#divergence_of_velocity">Divergence of Velocity</a></li><li><a href="#mass_can_be_neither_created_nor_destroyed">Mass can be neither created nor destroyed.</a></li></ul></div><h2 id="flow_types">Flow Types <a href="#table_of_contents"><sup>↑</sup></a></h2><p>For most cases, <b>continuum flow</b> is investigated, in which the scalars pressure $p$, density $\rho$, temperature $T$, and vector velocity $\mathbf{V}$ are defined infinitesimally for each point in space. It's a good approximation, as long as the mean distance between molecules <span class="annotation annotation_1">
+                    <span class="annotation_inline" id="annotation_inline_1">is small enough</span>
+                    <sup><a class="annotation_link" href="#annotation_1" style="display:none">01</a></sup>
+                    <span class="annotation_content" style="display:none">
+                        <span class="annotation_bracket">[</span>
+                        <span class="annotation_content_raw">For spacecraft reentry, the upper atmosphere is so sparse that it has to be modelled as individual seperate molecules hitting the body.</span>
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span>.</p><p><b>Inviscid flow</b> is an approximation that assumes no "transport" phenomena - no flow friction, no mass diffusion, and no thermal conduction. In reality, these effects exist for for <em>all</em> flow, but for low viscosity fluids, like air, the effect is negligible, except for a thin region around a body - the <b>boundary layer</b>.</p><p>Flow can also be approximated as <b>incompressible</b> ($\rho = const$). Compressibility effects are less than 5% for Mach numbers of $M < 0.3$.</p><p>The local <b>Mach number</b> describes whether the flow in that region is subsonic $M < 1$, sonic $M=1$ or supersonic $M > 1$. Flows with a mix of subsonic and supersonic flow are called <b>transonic</b>. In subsonic flow, a <span class="annotation annotation_2">
+                    <span class="annotation_inline" id="annotation_inline_2">disturbance propagates and can be felt in the entire flow field</span>
+                    <sup><a class="annotation_link" href="#annotation_2" style="display:none">02</a></sup>
+                    <span class="annotation_content" style="display:none">
+                        <span class="annotation_bracket">[</span>
+                        <span class="annotation_content_raw">For example: extending flaps.</span>
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span>. In regions of supersonic flow, the disturbance can only go downstream.</p><p><img src="/resources/blog/sonic.jpeg" width="350px"/></p><span class="note">The speed of sound is the maximum speed in which "information about the flow" can travel, therefore an object that breaks the sound barrier creates a shock wave - a discontinuity in the flow field.</span><h2 id="boundary_layer">Boundary Layer <a href="#table_of_contents"><sup>↑</sup></a></h2><p><b>Friction</b> in flow is the internal shear stress that <em>causes</em> a velocity gradient.</p><p>The <b>boundary layer</b> is where the velocity <b>rapidly reduces</b> from the free stream value $V_\infty$ to 0, due to the <span class="annotation annotation_3">
+                    <span class="annotation_inline" id="annotation_inline_3">no-slip condition</span>
+                    <sup><a class="annotation_link" href="#annotation_3" style="display:none">03</a></sup>
+                    <span class="annotation_content" style="display:none">
+                        <span class="annotation_bracket">[</span>
+                        <span class="annotation_content_raw">The no-slip condition states that the flow velocity is 0 at the surface of the object, due to friction. It's been observed to be true.</span>
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span>.</p><p><img src="https://www.grc.nasa.gov/www/k-12/BGP/Images/boundlay.gif" width="500px"/></p><p>Prandtl's boundary layer theory revolutionized aerodynamics. He separated the flow into two parts - the approximately inviscid flow <span class="annotation annotation_4">
+                    <span class="annotation_inline" id="annotation_inline_4">far away from the body</span>
+                    <sup><a class="annotation_link" href="#annotation_4" style="display:none">04</a></sup>
+                    <span class="annotation_content" style="display:none">
+                        <span class="annotation_bracket">[</span>
+                        <span class="annotation_content_raw">"Far away" can be defined to mean the region in which the velocity gradient still isn't noticable.</span>
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span>, and the thin, viscous <span class="annotation annotation_5">
+                    <span class="annotation_inline" id="annotation_inline_5">boundary layer</span>
+                    <sup><a class="annotation_link" href="#annotation_5" style="display:none">05</a></sup>
+                    <span class="annotation_content" style="display:none">
+                        <span class="annotation_bracket">[</span>
+                        <span class="annotation_content_raw">Even though the boundary layer is thin, it is responsible for almost the entirety of the drag of slender bodies at subsonic speeds, such as airplanes.</span>
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span>.</p><p>There's a peculiar effect that allows ignoring the boundary layer in certain cases. If the <span class="annotation annotation_6">
+                    <span class="annotation_inline" id="annotation_inline_6">flow is attached</span>
+                    <sup><a class="annotation_link" href="#annotation_6" style="display:none">06</a></sup>
+                    <span class="annotation_content" style="display:none">
+                        <span class="annotation_bracket">[</span>
+                        <span class="annotation_content_raw">Flow separation can only be predicted with viscous theory. It happens when a blunt body configuration creates a large adverse pressure gradient, that is accompanied with a large increase in drag.</span>
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span>, imagine virtually extending the body, encompasing it's boundary layer, and solving for the inviscid flow. Then the pressure at the edge of the boundary layer (point $b$) is precisely equal (in theory and in practice) to the pressure at the real boundary of the body (point $a$):</p><p><img src="/resources/blog/bondlay.jpg" width="350px"/></p><span class="note">Question: How is this useful in a wind tunnel test?</span><h2 id="force_coefficients">Force Coefficients <a href="#table_of_contents"><sup>↑</sup></a></h2><p>By definition, <b>lift</b> $\mathbf{L}$ is the force that the body experiences perpendicular to $V_\infty$, and drag $\mathbf{D}$, parallel to $V_\infty$. The resulting force $\mathbf{R}$ = $\mathbf{L}$ + $\mathbf{D}$ can also be split into normal $\mathbf{N}$ and axial $\mathbf{A}$ components, normal to the chord $c$, and parallel to it respectively.</p><p><img src="https://aerospaceweb.org/question/aerodynamics/systems/airfoil.jpg" width="400px"/></p><p>$$ \begin{aligned} L = N \cos \alpha - A \sin \alpha \\ D = N \sin \alpha + A \cos \alpha \end{aligned}$$</p><p>It's useful to define dimensionless coefficients, independent of the size of the body, and the dynamic pressure of the flow $q_\infty = 1/2 \rho V_\infty^2$, for example</p><p>$$ C_L = \frac{L}{q_\infty S} \quad ..., $$</p><p>where $S$ is any common reference area, <span class="annotation annotation_7">
+                    <span class="annotation_inline" id="annotation_inline_7">depending on the use case</span>
+                    <sup><a class="annotation_link" href="#annotation_7" style="display:none">07</a></sup>
+                    <span class="annotation_content" style="display:none">
+                        <span class="annotation_bracket">[</span>
+                        <span class="annotation_content_raw">For example the reference area for a plane is the wing planform.</span>
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span>.</p><p>Lowercase letters are used in 2D cases when the force is viewed per unit span (1 m): $c_l = L'/q_\infty S, \quad ...$</p><span class="note">To practice, use Anderson's book, find how to calculate $c_l$ and $c_d$, using 2D pressure and shear stress distributions, and solve Example 1.1.</span><p>The coefficients are dependent on other flow properties as well, notably the Reynolds number $Re$ and $M$. $Re$ is a scale parameter related to the ratio of inertial to viscous forces of the flow, and roughly predicts when the transition between laminar and turbulent flow occurs. $M$ is related to the compressibility effects that notacibly occur at $M > 0.3$.</p><span class="note">Question: How do laminar and turbulent flow differ? Is laminar flow always better? Why do airplane wings have vortex generators, that intentionally create turbulent flow over part of the wing?</span><p>When heat transfer is involved, other dimensionless parameters affect the coefficients, such as the ratio of specific heats $\gamma$, ratio of wall to freestream temperature $T_w/T_\infty$, and the Prandtl number $Pr = \mu_\infty c_p / k_\infty$, where $k_\infty$ is the thermal conductivitiy of the freestream.</p><p>In short, besides the body geometry, all of the above similarity parameters have to be equal in order to make comparison of aerodynamic characteristics meaningful.</p><span class="note">Question: Which of the similarity parameters are important when building a wind tunnel scale model of a passenger aircraft? Can they be practically achieved at the same time?</span><h2 id="juicy_vector_calculus">Juicy Vector Calculus <a href="#table_of_contents"><sup>↑</sup></a></h2><p>The del operator $\nabla \circ$ is simply syntactic sugar for</p><p>$$\frac{\partial \circ}{\partial_x} + \frac{\partial \circ}{\partial_y} + \frac{\partial \circ}{\partial_z}, $$</p><p>where Cartesian 3D coordinates are assumed, but in principle it can be defined as <span class="annotation annotation_8">
+                    <span class="annotation_inline" id="annotation_inline_8">the sum of partial derivatives in each direction in any coordinate system</span>
+                    <sup><a class="annotation_link" href="#annotation_8" style="display:none">08</a></sup>
+                    <span class="annotation_content" style="display:none">
+                        <span class="annotation_bracket">[</span>
+                        <span class="annotation_content_raw">Take a look at the course <a href="/resources/blog/summary-chapter2.pdf" target="_blank">summary formula sheet</a> for other calculus definitions, including del in different coordinate systems.</span>
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span>.</p><p>The circles denote that these are <em>operators</em>, therefore, they haven't acted on anything yet. Something should be there to fill them in. Whatever is put to the right of them is what they're eventually going to "eat". For example, for a vector field $\mathbf{A}$ this is the difference between</p><p>$$\nabla \circ \cdot \mathbf{A} \quad \text{and} \quad \mathbf{A} \cdot \nabla \circ $$</p><p>In the first case, the dot product expands to</p><p>$$ \frac{\partial A_x}{\partial_x} + \frac{\partial A_y}{\partial_y} + \frac{\partial A_z}{\partial_z} $$</p><p>and del has taken up the components of $\mathbf{A}$ to act on, therefore the result of this operation is a scalar. The second dot product expands to</p><p>$$A_x \frac{\partial \circ}{\partial_x} + A_y \frac{\partial \circ}{\partial_y} + A_z \frac{\partial \circ}{\partial_z}, $$</p><p>which is a sum of operators, like the original del, still waiting for something to eat.</p><p>Later on the <b>substantial derivative</b> is used, which uses the same principle:</p><p>$$ \frac{D \circ}{Dt} = \frac{\partial \circ}{\partial t} + \mathbf{V} \cdot \nabla \circ$$</p><h2 id="divergence_of_velocity">Divergence of Velocity <a href="#table_of_contents"><sup>↑</sup></a></h2><p><em>... is the time rate of change of the volume of a moving fluid element, per unit volume</em>. This is a mouthful, but if you look at the voodoo derivation in Anderson's book, the result is that</p><p>$$ \nabla \cdot \mathbf{V} = \frac{1}{\delta \mathcal{V}} \frac{D (\delta \mathcal{V})}{Dt}, $$</p><p>which says intuitively that the divergence of the <span class="annotation annotation_9">
+                    <span class="annotation_inline" id="annotation_inline_9">velocity field</span>
+                    <sup><a class="annotation_link" href="#annotation_9" style="display:none">09</a></sup>
+                    <span class="annotation_content" style="display:none">
+                        <span class="annotation_bracket">[</span>
+                        <span class="annotation_content_raw">I.e. the field which exactly governs how and where particles move.</span>
+                        <span class="annotation_bracket">]</span>
+                    </span>
+                </span>, measures how much a starting volume of particles grows/shrinks in size in time, per unit volume.</p><span class="note">Question: The unit of $\nabla \cdot \mathbf{V}$ are $1/s$, check if the derivatives make sense with the units.</span><p>Take $\nabla \cdot \mathbf{V} = -0.7327 /s$ at a point in a flow. A volume passing through that point would shrink 73 percent in 1 second. At that point compression occurs and density increases.</p><span class="note">Question: Do the full Example 2.1 in Anderson's book for a more in-depth look.</span><h2 id="mass_can_be_neither_created_nor_destroyed">Mass can be neither created nor destroyed. <a href="#table_of_contents"><sup>↑</sup></a></h2><p>For a given area the mass flow can be defined as:</p><p>$$\dot{m} = \rho V A.$$</p><p>Also, it's always nice to remember that $\rho V$ denotes mass flux in the direction of $V$:</p><p>$$\text{Mass flux} = \dot{m} / A = \rho V_.$$</p><p>If a control volume is taken, conservation of mass means that <em>the mass decrease inside the volume</em> is equal to <em>the mass leaving the volume through it's surface</em>:</p><p>$$ - \frac{\partial}{\partial t} \iiint_\mathcal{V} \rho d\mathcal{V} = \iint_S \rho \mathbf{V} \cdot d\mathbf{S}$$</p><span class="note">Question: What does the sign of the dot product $\rho \mathbf{V} \cdot d\mathbf{S}$ tell about outflow/inflow at that local surface?</span><p>This is called the <b>continuity equation</b>, and expressed in integral form it's very powerful. It's not concerned with exactly what's happening in the flow, but over a <em>finite space</em>. If a certain <em>point</em> of the flow is of interest, then the differential formulation is more useful:</p><p>$$\frac{ \partial \rho }{\partial t} + \nabla \cdot (\rho \mathbf{V}) = 0$$</p><p>Remember how in electrodynamics the integral formulation of Maxwell's equation is more useful (when looking at circuits as a whole) and when the differential formulation is (when deriving electromagnetic waves at points in space).</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="annotations">
+                <ul><li>
+                        <span class="annotation_number" id="annotation_1">01</span>
+                        <span class="annotation_expanded_content">For spacecraft reentry, the upper atmosphere is so sparse that it has to be modelled as individual seperate molecules hitting the body. 
+                            <a href="#annotation_inline_1">↑</a>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="annotation_number" id="annotation_2">02</span>
+                        <span class="annotation_expanded_content">For example: extending flaps. 
+                            <a href="#annotation_inline_2">↑</a>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="annotation_number" id="annotation_3">03</span>
+                        <span class="annotation_expanded_content">The no-slip condition states that the flow velocity is 0 at the surface of the object, due to friction. It's been observed to be true. 
+                            <a href="#annotation_inline_3">↑</a>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="annotation_number" id="annotation_4">04</span>
+                        <span class="annotation_expanded_content">"Far away" can be defined to mean the region in which the velocity gradient still isn't noticable. 
+                            <a href="#annotation_inline_4">↑</a>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="annotation_number" id="annotation_5">05</span>
+                        <span class="annotation_expanded_content">Even though the boundary layer is thin, it is responsible for almost the entirety of the drag of slender bodies at subsonic speeds, such as airplanes. 
+                            <a href="#annotation_inline_5">↑</a>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="annotation_number" id="annotation_6">06</span>
+                        <span class="annotation_expanded_content">Flow separation can only be predicted with viscous theory. It happens when a blunt body configuration creates a large adverse pressure gradient, that is accompanied with a large increase in drag. 
+                            <a href="#annotation_inline_6">↑</a>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="annotation_number" id="annotation_7">07</span>
+                        <span class="annotation_expanded_content">For example the reference area for a plane is the wing planform. 
+                            <a href="#annotation_inline_7">↑</a>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="annotation_number" id="annotation_8">08</span>
+                        <span class="annotation_expanded_content">Take a look at the course <a href="/resources/blog/summary-chapter2.pdf" target="_blank">summary formula sheet</a> for other calculus definitions, including del in different coordinate systems. 
+                            <a href="#annotation_inline_8">↑</a>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="annotation_number" id="annotation_9">09</span>
+                        <span class="annotation_expanded_content">I.e. the field which exactly governs how and where particles move. 
+                            <a href="#annotation_inline_9">↑</a>
+                        </span>
+                    </li>
+                    </ul>
+            </div>
+
+            <div class="annotation_preview">
+                <div class="annotation_preview_number">
+                    01
+                </div>
+                <div class="annotation_preview_content">
+                    ALPHA BETA
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        © 2024 – Dimitar Sotirov
+    </footer>
+
+    <script src="/js/annotations.js"></script>
+
+    
+</body>
+
+</html>

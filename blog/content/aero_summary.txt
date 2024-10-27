@@ -1,0 +1,168 @@
+@v2
+
+@url aero
+@title Aerodynamics Summary
+
+@tags aerodynamics
+
+@index yes
+
+@lang en
+@desc Summary of TU Delft's undergraduate aerodynamics course.
+@keywords aerodynamics, differential equations, integral equations
+
+@extra_html_head
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ extensions: ["tex2jax.js"], jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true }, "HTML-CSS": { availableFonts: ["TeX"] } });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
+<script src="https://www.geogebra.org/apps/deployggb.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css">
+
+<style>
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
+<script>
+    window.klipse_settings = {
+        selector_pyodide: '.language-klipse-pyodide', 
+        editor_type: 'html'
+    };
+</script>
+
+@end_meta
+
+The goal of aerodynamics is to predict the flow around bodies and the forces the bodies experience. The only way for nature to communicate an #bold(aerodynamic force) is through the #italic(pressure distribution over the body), and the #italic(shear stress distribution over the body).
+
+<img src="/resources/blog/pressuredist.png"/>
+
+Predicting this is done by mixing theory, empirical data, and computer simulations (CFD).
+
+#index
+
+#header Flow Types
+
+For most cases, #bold(continuum flow) is investigated, in which the scalars pressure $p$, density $\rho$, temperature $T$, and vector velocity $\mathbf{V}$ are defined infinitesimally for each point in space. It's a good approximation, as long as the mean distance between molecules #note[is small enough](For spacecraft reentry, the upper atmosphere is so sparse that it has to be modelled as individual seperate molecules hitting the body.).
+
+#bold(Inviscid flow) is an approximation that assumes no "transport" phenomena - no flow friction, no mass diffusion, and no thermal conduction. In reality, these effects exist for for #italic(all) flow, but for low viscosity fluids, like air, the effect is negligible, except for a thin region around a body - the #bold(boundary layer).
+
+Flow can also be approximated as #bold(incompressible) ($\rho = const$). Compressibility effects are less than 5% for Mach numbers of $M < 0.3$.
+
+The local #bold(Mach number) describes whether the flow in that region is subsonic $M < 1$, sonic $M=1$ or supersonic $M > 1$. Flows with a mix of subsonic and supersonic flow are called #bold(transonic). In subsonic flow, a #note[disturbance propagates and can be felt in the entire flow field](For example: extending flaps.). In regions of supersonic flow, the disturbance can only go downstream. 
+
+<img src="/resources/blog/sonic.jpeg" width="350px"/>
+
+#note The speed of sound is the maximum speed in which "information about the flow" can travel, therefore an object that breaks the sound barrier creates a shock wave - a discontinuity in the flow field.
+
+#header Boundary Layer 
+
+#bold(Friction) in flow is the internal shear stress that #italic(causes) a velocity gradient. 
+
+The #bold(boundary layer) is where the velocity #bold(rapidly reduces) from the free stream value $V_\infty$ to 0, due to the #note[no-slip condition](The no-slip condition states that the flow velocity is 0 at the surface of the object, due to friction. It's been observed to be true.). 
+
+<img src="https://www.grc.nasa.gov/www/k-12/BGP/Images/boundlay.gif" width="500px"/>
+
+Prandtl's boundary layer theory revolutionized aerodynamics. He separated the flow into two parts - the approximately inviscid flow #note[far away from the body]("Far away" can be defined to mean the region in which the velocity gradient still isn't noticable.), and the thin, viscous #note[boundary layer](Even though the boundary layer is thin, it is responsible for almost the entirety of the drag of slender bodies at subsonic speeds, such as airplanes.). 
+
+There's a peculiar effect that allows ignoring the boundary layer in certain cases. If the #note[flow is attached](Flow separation can only be predicted with viscous theory. It happens when a blunt body configuration creates a large adverse pressure gradient, that is accompanied with a large increase in drag.), imagine virtually extending the body, encompasing it's boundary layer, and solving for the inviscid flow. Then the pressure at the edge of the boundary layer (point $b$) is precisely equal (in theory and in practice) to the pressure at the real boundary of the body (point $a$):
+
+<img src="/resources/blog/bondlay.jpg" width="350px"/>
+
+#note Question: How is this useful in a wind tunnel test?
+
+#header Force Coefficients
+
+By definition, #bold(lift) $\mathbf{L}$ is the force that the body experiences perpendicular to $V_\infty$, and drag $\mathbf{D}$, parallel to $V_\infty$. The resulting force $\mathbf{R}$ = $\mathbf{L}$ + $\mathbf{D}$ can also be split into normal $\mathbf{N}$ and axial $\mathbf{A}$ components, normal to the chord $c$, and parallel to it respectively.
+
+<img src="https://aerospaceweb.org/question/aerodynamics/systems/airfoil.jpg" width="400px"/>
+
+$$ \begin{aligned} L = N \cos \alpha - A \sin \alpha \\ D = N \sin \alpha + A \cos \alpha \end{aligned}$$
+
+It's useful to define dimensionless coefficients, independent of the size of the body, and the dynamic pressure of the flow $q_\infty = 1/2 \rho V_\infty^2$, for example
+
+$$ C_L = \frac{L}{q_\infty S} \quad ..., $$
+
+where $S$ is any common reference area, #note[depending on the use case](For example the reference area for a plane is the wing planform.).
+
+Lowercase letters are used in 2D cases when the force is viewed per unit span (1 m): $c_l = L'/q_\infty S, \quad ...$
+
+#note To practice, use Anderson's book, find how to calculate $c_l$ and $c_d$, using 2D pressure and shear stress distributions, and solve Example 1.1.
+
+The coefficients are dependent on other flow properties as well, notably the Reynolds number $Re$ and $M$. $Re$ is a scale parameter related to the ratio of inertial to viscous forces of the flow, and roughly predicts when the transition between laminar and turbulent flow occurs. $M$ is related to the compressibility effects that notacibly occur at $M > 0.3$. 
+
+#note Question: How do laminar and turbulent flow differ? Is laminar flow always better? Why do airplane wings have vortex generators, that intentionally create turbulent flow over part of the wing?
+
+When heat transfer is involved, other dimensionless parameters affect the coefficients, such as the ratio of specific heats $\gamma$, ratio of wall to freestream temperature $T_w/T_\infty$, and the Prandtl number $Pr = \mu_\infty c_p / k_\infty$, where $k_\infty$ is the thermal conductivitiy of the freestream.
+
+In short, besides the body geometry, all of the above similarity parameters have to be equal in order to make comparison of aerodynamic characteristics meaningful.
+
+#note Question: Which of the similarity parameters are important when building a wind tunnel scale model of a passenger aircraft? Can they be practically achieved at the same time?
+
+#header Juicy Vector Calculus
+
+The del operator $\nabla \circ$ is simply syntactic sugar for
+$$\frac{\partial \circ}{\partial_x} + \frac{\partial \circ}{\partial_y} + \frac{\partial \circ}{\partial_z}, $$
+where Cartesian 3D coordinates are assumed, but in principle it can be defined as #note[the sum of partial derivatives in each direction in any coordinate system](Take a look at the course <a href="/resources/blog/summary-chapter2.pdf" target="_blank">summary formula sheet</a> for other calculus definitions, including del in different coordinate systems.).
+
+The circles denote that these are #italic(operators), therefore, they haven't acted on anything yet. Something should be there to fill them in. Whatever is put to the right of them is what they're eventually going to "eat". For example, for a vector field $\mathbf{A}$ this is the difference between 
+
+$$\nabla \circ \cdot \mathbf{A} \quad \text{and} \quad \mathbf{A} \cdot \nabla \circ $$
+
+In the first case, the dot product expands to
+
+$$ \frac{\partial A_x}{\partial_x} + \frac{\partial A_y}{\partial_y} + \frac{\partial A_z}{\partial_z} $$
+
+and del has taken up the components of $\mathbf{A}$ to act on, therefore the result of this operation is a scalar. The second dot product expands to
+
+$$A_x \frac{\partial \circ}{\partial_x} + A_y \frac{\partial \circ}{\partial_y} + A_z \frac{\partial \circ}{\partial_z}, $$
+
+which is a sum of operators, like the original del, still waiting for something to eat.
+
+Later on the #bold(substantial derivative) is used, which uses the same principle:
+
+$$ \frac{D \circ}{Dt} = \frac{\partial \circ}{\partial t} + \mathbf{V} \cdot \nabla \circ$$
+
+#header Divergence of Velocity 
+
+#italic(... is the time rate of change of the volume of a moving fluid element, per unit volume). This is a mouthful, but if you look at the voodoo derivation in Anderson's book, the result is that
+
+$$ \nabla \cdot \mathbf{V} = \frac{1}{\delta \mathcal{V}} \frac{D (\delta \mathcal{V})}{Dt}, $$
+
+which says intuitively that the divergence of the #note[velocity field](I.e. the field which exactly governs how and where particles move.), measures how much a starting volume of particles grows/shrinks in size in time, per unit volume.
+
+#note Question: The unit of $\nabla \cdot \mathbf{V}$ are $1/s$, check if the derivatives make sense with the units.
+
+Take $\nabla \cdot \mathbf{V} = -0.7327 /s$ at a point in a flow. A volume passing through that point would shrink 73 percent in 1 second. At that point compression occurs and density increases.
+
+#note Question: Do the full Example 2.1 in Anderson's book for a more in-depth look. 
+
+
+#header Mass can be neither created nor destroyed.
+
+For a given area the mass flow can be defined as:
+
+$$\dot{m} = \rho V A.$$ 
+
+Also, it's always nice to remember that $\rho V$ denotes mass flux in the direction of $V$:
+
+$$\text{Mass flux} = \dot{m} / A = \rho V.$$ 
+
+If a control volume is taken, conservation of mass means that #italic(the mass decrease inside the volume) is equal to #italic(the mass leaving the volume through it's surface):
+
+$$ - \frac{\partial}{\partial t} \iiint_\mathcal{V} \rho d\mathcal{V} = \iint_S \rho \mathbf{V} \cdot d\mathbf{S}$$
+
+#note Question: What does the sign of the dot product $\rho \mathbf{V} \cdot d\mathbf{S}$ tell about outflow/inflow at that local surface?
+
+This is called the #bold(continuity equation), and expressed in integral form it's very powerful. It's not concerned with exactly what's happening in the flow, but over a #italic(finite space). If a certain #italic(point) of the flow is of interest, then the differential formulation is more useful:
+
+$$\frac{ \partial \rho }{\partial t} + \nabla \cdot (\rho \mathbf{V}) = 0$$
+
+Remember how in electrodynamics the integral formulation of Maxwell's equation is more useful (when looking at circuits as a whole) and when the differential formulation is (when deriving electromagnetic waves at points in space).

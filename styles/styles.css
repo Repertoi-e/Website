@@ -644,12 +644,14 @@ a:hover {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   margin-inline: 2rem;
   margin-bottom: 2rem;
 }
 @media (min-width: 768px) {
   .about-me__social {
     flex-direction: column;
+    align-items: start;
     margin-inline: 0;
   }
   .about-me__social h3 {
@@ -1412,7 +1414,7 @@ main {
 @media (min-width: 576px) {
   main {
     grid-template-columns: 45vw 45vw;
-    grid-template-rows: 5rem auto auto auto auto;
+    grid-template-rows: 5rem 18.9rem auto auto auto;
     grid-template-areas: ". ." ". introduction" "arrow arrow" "hills-button hills-button" "social social";
   }
 }
@@ -2344,12 +2346,14 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   margin-inline: 2rem;
   margin-bottom: 2rem;
 }
 @media (min-width: 768px) {
   .about-me__social {
     flex-direction: column;
+    align-items: start;
     margin-inline: 0;
   }
   .about-me__social h3 {
@@ -4172,12 +4176,14 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   margin-inline: 2rem;
   margin-bottom: 2rem;
 }
 @media (min-width: 768px) {
   .about-me__social {
     flex-direction: column;
+    align-items: start;
     margin-inline: 0;
   }
   .about-me__social h3 {

@@ -1,0 +1,39 @@
+@v2
+
+@url thoughts_on_gravitation
+@title Thoughts on Gravitation [Draft]
+
+@tags physics 
+
+@lang en
+@desc Could a 4-potential gravitation theory with varible speed of light be an alternative to General Relativity?
+@keywords physics, gravity
+
+@extra_html_head
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ extensions: ["tex2jax.js"], jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true }, "HTML-CSS": { availableFonts: ["TeX"] } });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
+<script src="https://www.geogebra.org/apps/deployggb.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css">
+
+<script>
+    window.klipse_settings = {
+        selector_pyodide: '.language-klipse-pyodide', 
+        editor_type: 'html'
+    };
+</script>
+
+@end_meta
+
+We start by supposing that the speed of light is variable from place to place in the Universe. This is Einstein's original idea from his 1911 paper #italic(On the Influence of Gravitation on the Propagation of Light) which he later disregarded, because it predicted half the correct value for light rays bending around the Sun. A parallel between electric and gravitational interactions guided Einstein to develop a gravitational vector potential in his 1912 paper #italic(Is There a Gravitational Eﬀect which is Analogous to Electrodynamic Induction?) It was discovered that had he included both the scalar and a vector potential the correct value for the bending of light rays is obtained, as developed by Carver Mead's G4V Theory or #italic(Engineering View of Gravitation). Furthermore, G4V correctly predicts standard tests of General Relativity to first order beyond Newtonian, including for perihelion precession, Gravity Probe B, gravitational redshift, Shapiro delay, with the nice bonus of using wave units and matter waves instead of particles, an insight developed only after the advent of Quantum Mechanics.
+
+Thus it seems clear to me that a 4-potential gravitational theory could provide a simpler explanation of gravitational interactions without invoking curved space. Instead of curving space to keep $c$ constant, why not #italic("curve") $c$ to keep space flat? This begs the question, what exactly is the mechanism by which matter interacts to change the speed of light? Perhaps, Erik Verlinde's Entropic Gravity or an #note[Ether theory](In 1976 in <i>A Test Theory of Special Relativity: I. Simultaneity and Clock Synchronization</i> Mansouri and Sexl develop an Ether theory that maintains absolute simultaneity and is kinematically equivalent to special relativity. The null result of the Michelson-Morley experiment can be explained in such a theory, the result of which I think is quite profound - an Ether theory and Special Relativity coexist together to explain both the phenomenology and epistemological limits of the Universe - there might exist an Ether but it's undetectable to us by an experiment.) can fill this gap. It's worth mentioning that Einstein himself adviced against using General Relativity's geometric interpreation of curved space and gravity as a ficticious force for anything more than a mental aid, the theory provides no basis on what space actually is and the mechanism by which matter-energy curve it, it just kicks back the can, and still lacks a phenomenological explanation.
+
+Mead develops G4V on top of #note[Max Abraham's insights](Renn, J. Genesis of General Relativity. Springer, 2007, p. 353) that if $c$ is variable and assuming lengths are of degree $c^0$, then after examining the Lagrangian masses are concluded to be variable with degree $c^{-1}$. Lengths and the quantity $mc$ are thus #italic(gravitationally-invariant). There's another possibility if the meter instead be treated as gravitationally-dependent. To start let's revisit Abraham's original thought experiment that if an antenna of 1-m length is brought from a region of $c_1$ to a region of $c_2$ then it's length (supposedly) would remain constant and the #note[only way for the observer not to notice that he went through regions of different $c$](This is required by the assumption that a free falling observer is an inertial frame of reference, i.e. with no apriori knowledge of his surroundings. He can't do an experiment to test if he's falling or not.) is if the time periods change according to 
+$$\tau_2 : \tau_1 = c_1 : c_2$$
+If $c_2 < c_1$, i.e. the region with $c_2$ is closer to the massive object, then $\tau_2 > \tau_1$, or the period closer to the massive body got dilated by the inverse of the factor of which the speed of light changed, as measured from the outside. If $c_2 : c_1 = D$, then $\tau_2 = \tau_1 / D$. Since proper time is invariant, the local observer would see no change in the period of the clock. And outsider measuring his clock would see a longer period, conversely a local observer would measure his period as shorter compared to an outside clock.
+
