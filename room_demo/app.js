@@ -72,24 +72,48 @@ void main() {
 `;
 
 const fragmentShader = `
-uniform sampler2D panoramicTexture;
-uniform vec3 hotspotPosition;
+uniform sampler2D panoramicTexture; // Current texture
+uniform sampler2D targetPanoramicTexture; // Target texture
+uniform vec3 hotspotPosition; // Current hotspot position
+uniform vec3 targetHotspotPosition; // Target hotspot position
+uniform float blendFactor; // Blending factor between 0.0 and 1.0
+
 varying vec3 vWorldPosition;
 
 const float PI = 3.1415926535897932384626433832795;
 
 void main() {
-    vec3 direction = normalize(vWorldPosition - hotspotPosition); // Direction from fragment to hotspot
+    // Calculate direction vectors for current and target hotspots
+    vec3 directionCurrent = normalize(vWorldPosition - hotspotPosition);
+    vec3 directionTarget = normalize(vWorldPosition - targetHotspotPosition);
 
-    vec2 uv = vec2(
-      0.5 + atan(direction.x, direction.z) / (2.0 * PI),
-      1.0 - (0.5 - asin(direction.y) / PI) // Flip V coordinate
+    // Compute UV for the current panoramic texture
+    vec2 uvCurrent = vec2(
+        0.5 + atan(directionCurrent.x, directionCurrent.z) / (2.0 * PI),
+        1.0 - (0.5 - asin(directionCurrent.y) / PI) // Flip V coordinate
     );
 
-    gl_FragColor = texture2D(panoramicTexture, uv);
+    // Compute UV for the target panoramic texture
+    vec2 uvTarget = vec2(
+        0.5 + atan(directionTarget.x, directionTarget.z) / (2.0 * PI),
+        1.0 - (0.5 - asin(directionTarget.y) / PI) // Flip V coordinate
+    );
+
+    // Sample both textures
+    vec4 colorCurrent = texture2D(panoramicTexture, uvCurrent);
+    vec4 colorTarget = texture2D(targetPanoramicTexture, uvTarget);
+
+    // Blend between the two textures based on the blend factor
+    vec4 finalColor = mix(colorCurrent, colorTarget, blendFactor);
+
+    gl_FragColor = finalColor;
 }
 `;
 
+let startPosition = camera.position.clone();
+let startHotspot = hotspots[0];
+
+let targetHotspot = hotspots[0];
 let targetPosition = camera.position.clone();
 
 function findClosestHotspot() {
@@ -113,7 +137,10 @@ function setupMaterial() {
     material = new THREE.ShaderMaterial({
         uniforms: {
             panoramicTexture: { value: hotspots[0].panoramicTexture },
-            hotspotPosition: { value: hotspots[0].position.clone() }
+            targetPanoramicTexture: { value: hotspots[0].panoramicTexture }, 
+            hotspotPosition: { value: hotspots[0].position.clone() },
+            targetHotspotPosition: { value: hotspots[0].position.clone() },
+            blendFactor: { value: 0.0 }
         },
         vertexShader,
         fragmentShader,
@@ -150,7 +177,6 @@ document.addEventListener('mousedown', (event) => {
     isDragging = true;
     previousMousePosition = { x: event.clientX, y: event.clientY };
 });
-
 
 document.addEventListener('keydown', (event) => {
     let direction = null;
@@ -190,6 +216,10 @@ document.addEventListener('keydown', (event) => {
         });
 
         if (nextHotspot) {
+            startPosition.copy(camera.position);
+            startHotspot = findClosestHotspot();
+
+            targetHotspot = nextHotspot;
             targetPosition.copy(nextHotspot.position);
         }
     }
@@ -317,15 +347,26 @@ function render(time) {
     const deltaTime = (time - previousTime) / 1000;
     previousTime = time;
 
-    camera.position.lerp(targetPosition, 0.2);
+    camera.position.lerp(targetPosition, 0.1);
 
-    const activeHotspot = findClosestHotspot();
-    const activeHotspotIndex = hotspots.indexOf(activeHotspot);
-    if (activeHotspot && activeHotspotIndex !== currentHotspotIndex) {
-        material.uniforms.panoramicTexture.value = activeHotspot.panoramicTexture;
-        material.uniforms.hotspotPosition.value.copy(activeHotspot.position);
-        currentHotspotIndex = activeHotspotIndex;
+    if (startHotspot) {
+        material.uniforms.panoramicTexture.value = startHotspot.panoramicTexture;
+        material.uniforms.hotspotPosition.value.copy(startHotspot.position);
     }
+
+    if (targetHotspot) {
+        material.uniforms.targetPanoramicTexture.value = targetHotspot.panoramicTexture;
+        material.uniforms.targetHotspotPosition.value.copy(targetHotspot.position);
+    }
+
+    const distanceToTarget = camera.position.distanceTo(targetHotspot.position);
+    const totalDistance = startPosition.distanceTo(targetHotspot.position);
+
+    var blendFactor = 1.0 - Math.max(0, Math.min(1, distanceToTarget / totalDistance));
+    if (totalDistance < 0.01) {
+        blendFactor = 1.0;
+    }
+    material.uniforms.blendFactor.value = blendFactor;
     
     updateRaycast();
 
