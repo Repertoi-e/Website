@@ -153,6 +153,7 @@ function setupMaterial() {
         (object) => {
             scene.add(object);
             object.position.set(0, 0, 0);
+            object.scale.z = -1;
 
             // Assuming 'object' is your loaded mesh
             object.traverse(function (child) {
