@@ -1,8 +1,8 @@
 [
     {
         "order": 0,
-        "type": "img",
-        "src": "/resources/projects/new_space.mp4",
+        "type": "video",
+        "src": "/resources/projects/new_space_2.mp4",
         "photo_info": "Tool for S/C Link Budget Analysis",
         "subtitle": "Python/PyQt",
         "description": "A tool to calculate link budget for a spacecraft, based on a given set of TLARs: orbiting body, required uplink/downlink/payload data generation, communication frequency, antenna properties, ground station location.",
