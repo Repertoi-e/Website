@@ -45,7 +45,7 @@ def get_dimensions(file_path):
     else:
         raise ValueError(f"Unsupported file type: {file_ext}")
 
-def resize_to_max_dimension(width, height, max_dimension=1000):
+def resize_to_max_dimension(width, height, max_dimension=2000):
     if width > height:
         scale = max_dimension / float(width)
     else:
@@ -94,7 +94,19 @@ for item in data:
     block.append(content)
 
     photo_info = soup.new_tag('div', **{'class': 'photo-info'})
-    photo_info.append(BeautifulSoup(item.get('photo_info', ''), 'html.parser'))
+    
+    title = soup.new_tag('h3')
+    title.append(BeautifulSoup(item.get('photo_info', ''), 'html.parser'))
+    photo_info.append(title)
+    
+    subtitle = soup.new_tag('div', **{'class': 'subtitle'})
+    subtitle.append(BeautifulSoup(item.get('subtitle', ''), 'html.parser'))
+    photo_info.append(subtitle)
+
+    description = soup.new_tag('div', **{'class': 'description'})
+    description.append(BeautifulSoup(item.get('description', ''), 'html.parser'))
+    photo_info.append(description)
+    
     block.append(photo_info)
 
     new_blocks.append(block)

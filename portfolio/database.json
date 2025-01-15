@@ -1,0 +1,74 @@
+[
+    {
+        "order": 0,
+        "type": "img",
+        "src": "/resources/projects/new_space.mp4",
+        "photo_info": "Tool for S/C Link Budget Analysis",
+        "subtitle": "Python/PyQt",
+        "description": "A tool to calculate link budget for a spacecraft, based on a given set of TLARs: orbiting body, required uplink/downlink/payload data generation, communication frequency, antenna properties, ground station location.",
+        "lang": "en"
+    },
+    {
+        "order": 70,
+        "type": "img",
+        "src": "/resources/projects/Unity_game.png",
+        "photo_info": "Laser Chess",
+        "subtitle": "Unity/C#",
+        "description": "A chess game with lasers.",
+        "lang": "en"
+    },
+    {
+        "order": 100,
+        "type": "img",
+        "src": "/resources/projects/aircraft_tool_2.png",
+        "photo_info": "Aircraft Tool for Preliminary Design",
+        "subtitle": "Python/PyQt",
+        "description": "Follows methods described by Torenbeek and Roskam, doing Class I and Class II Weight and Drag Estimation, XFOIL integratio, estimate HLD requirements.",
+        "lang": "en"
+    },
+    {
+        "order": 190,
+        "type": "img",
+        "src": "/resources/projects/dungeon.png",
+        "photo_info": "Dungeon Explorer",
+        "subtitle": "Unity/C#",
+        "description": "A dungeon crawler with monster AI and time travel.",
+        "lang": "en"
+    },
+    {
+        "order": 200,
+        "type": "img",
+        "src": "/resources/projects/alien_world.png",
+        "photo_info": "Alien World",
+        "subtitle": "Java",
+        "description": "My first game, when I was 13 years old.",
+        "lang": "en"
+    },
+    {
+        "order": 10,
+        "type": "video",
+        "src": "/resources/projects/anki.mp4",
+        "photo_info": "Language Learning Platform",
+        "subtitle": "HTML/JavaScript",
+        "description": "A demo mobile-friendly website for language learning.",
+        "lang": "en"
+    },
+    {
+        "order": 60,
+        "type": "video",
+        "src": "/resources/projects/endurosat_spacedev.mp4",
+        "photo_info": "EnduroSat SpaceDev",
+        "subtitle": "Go/Electron",
+        "description": "Developed during tenure at EnduroSat, worked on initial stages of design, both frontend and backend.",
+        "lang": "en"
+    },
+    {
+        "order": 170,
+        "type": "img",
+        "src": "/resources/projects/orbits.png",
+        "photo_info": "Orbital Simulator",
+        "subtitle": "Python/Matplotlib",
+        "description": "Visualizing planetary orbits and gravitational dynamics.",
+        "lang": "en"
+    }
+]

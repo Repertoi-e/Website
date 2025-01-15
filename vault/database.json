@@ -8,7 +8,7 @@
 	{
 		"order": 6,
 		"type": "img",
-		"src": "/resources/about/vault/ladder.gif",
+		"src": "/resources/about/vault/ladder________.gif",
 		"lang": "en"
 	},
 	{
@@ -20,7 +20,7 @@
 	{
 		"order": 30,
 		"type": "img",
-		"src": "/resources/about/vault/bershka.gif",
+		"src": "/resources/about/vault/bershka_________.gif",
 		"lang": "en"
 	},
 	{
@@ -32,13 +32,13 @@
 	{
 		"order": 20,
 		"type": "img",
-		"src": "/resources/about/vault/dark_ladder.jpg",
+		"src": "/resources/about/vault/dark_ladder__________.jpg",
 		"lang": "en"
 	},
 	{
 		"order": 33,
 		"type": "img",
-		"src": "/resources/about/vault/david.jpg",
+		"src": "/resources/about/vault/david_________.jpg",
 		"lang": "en"
 	},
 	{
