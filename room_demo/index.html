@@ -1,22 +1,61 @@
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>Room Demo</title>
   <style>
-    body { margin: 0; }
-    canvas { width: 100%; height: 100% }
+    body {
+      margin: 0;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    #overlay {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      z-index: 10;
+      pointer-events: auto;
+    }
   </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+  <!-- Icons to support Material Design -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 </head>
+
 <body>
-    <script type="importmap">
+  <script type="importmap">
         {
             "imports": {
                 "three": "./three.module.js",
-                "three/addons/": "./jsm/"
+                "three/addons/": "./jsm/",
+                "react": "https://esm.sh/react@^18",
+                "react-dom": "https://esm.sh/react-dom@^18",
+                "react/jsx-runtime": "https://esm.sh/react@^18/jsx-runtime",
+                "@mui/material": "https://esm.sh/@mui/material@latest?external=react"
             }
         }
     </script>
 
-  <script type="module" src="app.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <div id="overlay"></div>
+
+  <script type="text/babel" data-type="module" src="ui.js">
+  </script>
 </body>
+
 </html>
