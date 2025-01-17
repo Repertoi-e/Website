@@ -45,7 +45,8 @@ function setupScene() {
 viewport.addEventListener("pointerdown", (event) => {
 });
 
-var hotspots;
+var hotspots = [];
+var cubemapVariants = {};
 
 var startPosition;
 var startHotspot;
@@ -53,14 +54,11 @@ var startHotspot;
 var targetHotspot;
 var targetPosition;
 
-var averageHotspotPosition;
+var averageHotspotPosition = new THREE.Vector3();
 
 var uniformBlends;
 
 function loadHotspots() {
-    hotspots = [];
-    averageHotspotPosition = new THREE.Vector3();
-
     let texturePromises = [];
     $.get('./Tour/Hotspots.txt', (data) => {
         let lines = data.split('\n');
@@ -84,19 +82,46 @@ function loadHotspots() {
 
             let hotspot = {
                 position,
-                texturePath: `./Tour/Panoramas/individual/Byt205_${id}.jpg`,
+                texturePath: `./Tour/Panoramas/individual/Byt205_${id}`,
             };
 
             let cubemapPromise = new Promise((resolve) => {
+                let variants = [hotspot.texturePath];
+                if (id == "01") {
+                    variants = ['', '_base_floor.png', '_darker_floor.png', '_lighter_floor.png', '_base_sofa.png', '_blue_sofa.png', '_pink_sofa.png'].map((x) => { return hotspot.texturePath + x; });
+                }
+                let variantsLoaded = 1;
                 hotspot.cubemap = cubeTextureLoader.load([
-                    hotspot.texturePath + '_pX.jpg',
-                    hotspot.texturePath + '_nX.jpg',
-                    hotspot.texturePath + '_pY.jpg',
-                    hotspot.texturePath + '_nY.jpg',
-                    hotspot.texturePath + '_pZ.jpg',
-                    hotspot.texturePath + '_nZ.jpg'
+                    variants[0] + '.jpg_pX.jpg',
+                    variants[0] + '.jpg_nX.jpg',
+                    variants[0] + '.jpg_pY.jpg',
+                    variants[0] + '.jpg_nY.jpg',
+                    variants[0] + '.jpg_pZ.jpg',
+                    variants[0] + '.jpg_nZ.jpg'
                 ], () => {
-                    resolve();
+                    if (variants.length == 1) { resolve(); return; }
+
+                    for (let i = 1; i < variants.length; i++) {
+                        if (!(id in cubemapVariants)) {
+                            cubemapVariants[id] = [];
+                        }
+                        cubemapVariants[id].push(
+                            cubeTextureLoader.load([
+                                variants[i] + '_pX.png',
+                                variants[i] + '_nX.png',
+                                variants[i] + '_pY.png',
+                                variants[i] + '_nY.png',
+                                variants[i] + '_pZ.png',
+                                variants[i] + '_nZ.png'
+                            ], () => {
+                                variantsLoaded += 1;
+                                if (variantsLoaded == variants.length) {
+                                    resolve();
+                                }
+                            }
+                            )
+                        );
+                    }
                 });
             });
             texturePromises.push(cubemapPromise);
@@ -104,6 +129,26 @@ function loadHotspots() {
             hotspots.push(hotspot);
         });
 
+        const urlParams = new URLSearchParams(window.location.search);
+
+        var initialQuaternion = null;
+
+        const quaternionString = urlParams.get("quaternion");
+        if (quaternionString) {
+            const quaternionArray = quaternionString.split(",").map(Number);
+            if (quaternionArray.length === 4) {
+                initialQuaternion = new THREE.Quaternion().fromArray(quaternionArray);
+                console.log("Loaded camera rotation from URL:", camera.quaternion);
+            }
+        }
+
+        var initialHotspot = 0;
+
+        const index = urlParams.get("index");
+        if (index !== null) {
+            console.log("Loaded index from URL:", index);
+            initialHotspot = parseInt(index);
+        }
 
         Promise.all(texturePromises).then(() => {
             if (hotspots.length > 0) {
@@ -116,12 +161,20 @@ function loadHotspots() {
                 pointLight.position.copy(averageHotspotPosition);
                 scene.add(pointLight);
 
-                camera.position.copy(hotspots[0].position);
+                camera.position.copy(hotspots[initialHotspot].position);
+
+                if (initialQuaternion) {
+                    camera.quaternion.copy(initialQuaternion);
+                }
+
+                const rotation = new THREE.Euler().setFromQuaternion(camera.quaternion.clone(), 'YXZ'); // Use 'YXZ' to avoid gimbal lock
+                pitch = Math.asin(Math.sin(rotation.x));
+                yaw = rotation.y;
 
                 startPosition = camera.position.clone();
-                startHotspot = hotspots[0];
+                startHotspot = hotspots[initialHotspot];
 
-                targetHotspot = hotspots[0];
+                targetHotspot = hotspots[initialHotspot];
                 targetPosition = camera.position.clone();
 
                 setupMaterial();
@@ -130,6 +183,45 @@ function loadHotspots() {
         });
     });
 }
+
+export function setSofaColor(color) {
+    if (color == "0") {
+        material.uniforms.variantTexture2.value = null;
+    } else {
+        material.uniforms.variantTexture2.value = cubemapVariants['01'][3 + parseInt(color)];
+    }
+}
+
+export function setFloorColor(color) {
+    if (color == "0") {
+        material.uniforms.variantTexture1.value = null;
+    } else {
+        material.uniforms.variantTexture1.value = cubemapVariants['01'][parseInt(color)];
+    }
+}
+
+export async function screenshot() {
+    if (!renderer || !scene || !camera) {
+        console.error("Three.js renderer, scene, or camera is missing!");
+        return;
+    }
+
+    renderer.render(scene, camera);
+
+    const canvas = renderer.domElement;
+    canvas.toBlob(async (blob) => {
+        if (blob) {
+            try {
+                await navigator.clipboard.write([
+                    new ClipboardItem({ "image/png": blob }),
+                ]);
+                console.log("Screenshot copied to clipboard!");
+            } catch (err) {
+                console.error("Failed to copy screenshot:", err);
+            }
+        }
+    }, "image/png");
+};
 
 function findClosestHotspot() {
     let closestHotspot = null;
@@ -160,9 +252,13 @@ function setupMaterial() {
     `;
 
     const fragmentShader = `
-    uniform samplerCube panoramicTextures[${hotspots.length}]; // Array of textures
-    uniform vec3 hotspotPositions[${hotspots.length}]; // Array of hotspot positions
-    uniform float blendFactors[${hotspots.length}]; // Array of blend factors
+    uniform samplerCube panoramicTextures[${hotspots.length}]; 
+
+    uniform samplerCube variantTexture1;
+    uniform samplerCube variantTexture2;
+
+    uniform vec3 hotspotPositions[${hotspots.length}]; 
+    uniform float blendFactors[${hotspots.length}];
 
     varying vec3 vWorldPosition;
 
@@ -174,40 +270,21 @@ function setupMaterial() {
         ${hotspots.map((_, i) => `
         {
             vec3 direction = normalize(vWorldPosition - hotspotPositions[${i}]);
-            direction = vec3(-direction.z, direction.y, direction.x); // map (x,y,z)→(−z,y,x)
+            direction = vec3(-direction.z, direction.y, direction.x);
             vec4 color = textureCube(panoramicTextures[${i}], direction);
+
+            vec4 variantColor1 = textureCube(variantTexture1, direction);
+            float alpha = variantColor1.a;
+            color = mix(color, variantColor1, alpha);
+
+            vec4 variantColor2 = textureCube(variantTexture2, direction);
+            alpha = variantColor2.a;
+            color = mix(color, variantColor2, alpha);
+
             finalColor += color * blendFactors[${i}];
         }
         `).join('')}
 
-        gl_FragColor = finalColor;
-    }
-    `;
-    const fragmentShaderDollHouse = `
-    uniform samplerCube panoramicTextures[${hotspots.length}]; // Array of textures
-    uniform vec3 hotspotPositions[${hotspots.length}]; // Array of hotspot positions
-
-    varying vec3 vWorldPosition;
-
-    const float PI = 3.1415926535897932384626433832795;
-
-    void main() {
-        vec4 finalColor = vec4(0.0);
-        float totalWeight = 0.0;
-
-        ${hotspots.map((_, i) => `
-        {
-            vec3 direction = normalize(vWorldPosition - hotspotPositions[${i}]);
-            direction = vec3(-direction.z, direction.y, direction.x); // map (x,y,z)→(−z,y,x)
-            float distance = length(vWorldPosition - hotspotPositions[${i}]);
-            float weight = 1.0 / max(distance, 0.01); // Avoid division by zero
-            totalWeight += weight;
-            vec4 color = textureCube(panoramicTextures[${i}], direction);
-            finalColor += color * weight;
-        }
-        `).join('')}
-
-        finalColor /= totalWeight; // Normalize by total weight
         gl_FragColor = finalColor;
     }
     `;
@@ -216,6 +293,8 @@ function setupMaterial() {
         uniforms: {
             panoramicTextures: { value: hotspots.map((hotspot) => hotspot.cubemap) },
             hotspotPositions: { value: hotspots.map((hotspot) => hotspot.position) },
+            variantTexture1: { value: null },
+            variantTexture2: { value: null },
             blendFactors: { value: hotspots.map(() => 0.0) },
         },
         vertexShader,
@@ -478,6 +557,20 @@ export function startMeasure() {
     console.log('Starting measure');
 }
 
+export function saveCameraAndIndexToURL() {
+    console.log("awgaw  ");
+    const index = hotspots.indexOf(targetHotspot);
+
+    const { x, y, z, w } = camera.quaternion;
+    const quaternionString = `${x.toFixed(6)},${y.toFixed(6)},${z.toFixed(6)},${w.toFixed(6)}`;
+    const newURL = `${window.location.origin}${window.location.pathname}?quaternion=${quaternionString}&index=${index}`;
+
+    window.history.replaceState(null, "", newURL);
+
+    console.log("Sharable URL:", newURL);
+    return newURL; // Optional: return for copying
+}
+
 var isInDollHouse = false;
 
 var houseBlendFactor = 0.0;
@@ -531,7 +624,7 @@ export function toggleDollhouseView() {
             ease: 'power2.out',
             onUpdate: () => {
                 let cameraQuaternion = camera.quaternion;
-                
+
                 const rotation = new THREE.Euler().setFromQuaternion(cameraQuaternion, 'YXZ'); // Use 'YXZ' to avoid gimbal lock
                 pitch = Math.asin(Math.sin(rotation.x));
                 yaw = rotation.y;

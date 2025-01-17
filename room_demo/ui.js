@@ -44,6 +44,7 @@ function App() {
     const [showSettings, setShowSettings] = useState(false);
     const [movementSpeed, setMovementSpeed] = useState(18);
     const [movementDelay, setMovementDelay] = useState(40);
+    const [showColorPicker, setShowColorPicker] = useState(false);
 
     return (
         <div style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
@@ -54,8 +55,8 @@ function App() {
             <AppBar position="absolute" sx={{ bottom: 0, top: "auto", background: "#11111133" }}>
                 <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
                     <Box sx={{ display: "flex", gap: "10px" }}>
-                        <Button variant="contained" onClick={() => threeModule?.goHome?.()}>
-                            <span className="material-icons">home</span>
+                        <Button variant="contained" onClick={() => setShowColorPicker(!showColorPicker)}>
+                            <span className="material-icons">color_lens</span>
                         </Button>
                         <Button variant="contained" onClick={() => threeModule?.toggleDayNight?.()}>
                             <span className="material-icons">wb_sunny</span>
@@ -68,15 +69,16 @@ function App() {
                         <Button variant="contained" onClick={() => threeModule?.toggleDollhouseView?.()}>
                             <span className="material-icons">fullscreen</span>
                         </Button>
-                        <Button variant="contained">
+                        <Button variant="contained" onClick={() => threeModule?.screenshot?.()}>
                             <span className="material-icons">photo_camera</span>
                         </Button>
-                        <Button variant="contained">
+                        <Button variant="contained" onClick={() => threeModule?.saveCameraAndIndexToURL?.()}>
                             <span className="material-icons">share</span>
                         </Button>
                         <Button variant="contained" onClick={() => setShowSettings(!showSettings)}>
                             <span className="material-icons">settings</span>
                         </Button>
+                        
                     </Box>
                 </Toolbar>
             </AppBar>
@@ -130,6 +132,42 @@ function App() {
                         </Box>
 
                         <Button variant="contained" onClick={() => setShowSettings(false)}>
+                            Close
+                        </Button>
+                    </Box>
+                </div>
+            )}
+
+            {/* Color Picker Dialog */}
+            {showColorPicker && (
+                <div
+                    style={{
+                        position: "absolute",
+                        bottom: 80,
+                        left: 10,
+                        background: "white",
+                        padding: 20,
+                        borderRadius: 5,
+                        boxShadow: "0 0 10px rgba(0,0,0,0.5)",
+                    }}
+                >
+                    <Typography variant="h6">Color Picker</Typography>
+                    <Box sx={{ display: "flex", flexDirection: "column", gap: "10px", marginTop: "10px" }}>
+                        <Typography>Floor</Typography>
+                        <select onChange={(e) => threeModule?.setFloorColor(e.target.value)}>
+                            <option value="0">Base</option>
+                            <option value="1">Darker</option>
+                            <option value="2">Lighter</option>
+                        </select>
+
+                        <Typography>Sofa</Typography>
+                        <select onChange={(e) => threeModule?.setSofaColor(e.target.value)}>
+                            <option value="0">Base</option>
+                            <option value="1">Blue</option>
+                            <option value="2">Pink</option>
+                        </select>
+
+                        <Button variant="contained" onClick={() => setShowColorPicker(false)}>
                             Close
                         </Button>
                     </Box>
