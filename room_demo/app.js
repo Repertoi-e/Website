@@ -30,20 +30,16 @@ function setupScene() {
 
     document.body.appendChild(renderer.domElement);
 
-    const pointLight = new THREE.PointLight(0xffffff, 15);
-    pointLight.position.set(0, 0, 15);
-
-    scene.add(pointLight);
-    scene.add(camera);
-
-    const ambientLight = new THREE.AmbientLight(0xffffff);
+    // add ambient light
+    const ambientLight = new THREE.AmbientLight(0xffffff, 150000);
     scene.add(ambientLight);
+
+    scene.add(camera);
 
     loadHotspots();
 }
 
-viewport.addEventListener("pointerdown", (event) => {
-});
+viewport.addEventListener("pointerdown", (event) => {});
 
 var hotspots = [];
 var cubemapVariants = {};
@@ -344,7 +340,7 @@ viewport.addEventListener('mousedown', (event) => {
 viewport.addEventListener('mouseup', () => {
     isDragging = false;
     if (draggingControlsEnabled) {
-        if (mouseDownFrames < 8) {
+        if (mouseDownFrames < 5) {
             moveInDirection(intersectionPoint.clone().sub(camera.position).normalize());
         }
     }

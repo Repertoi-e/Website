@@ -1,5 +1,7 @@
 @v2
 
+@hide
+
 @url sad
 @title Vibrations Summary
 

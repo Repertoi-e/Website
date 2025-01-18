@@ -49,7 +49,7 @@ function App() {
     return (
         <div style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
             <div style={{ width: "100%", height: "100%" }}>
-                <canvas id="viewport" ref={canvasRef} style={{ width: "100%", height: "100%" }}></canvas>
+                <canvas id="viewport" tabindex="0"  ref={canvasRef} style={{ width: "100%", height: "100%" }}></canvas>
             </div>
 
             <AppBar position="absolute" sx={{ bottom: 0, top: "auto", background: "#11111133" }}>

@@ -2,9 +2,31 @@ import os
 
 import re
 
+import sys
+
 from datetime import datetime
 
 def main(silent: bool = False):
+    if not silent:
+        if len(sys.argv) > 2:
+            print("Usage: generate_index.py [regen]")
+            return
+        
+        if len(sys.argv) == 2:
+            if sys.argv[1] != "regen":
+                print("Usage: generate_index.py [regen]")
+                return
+            else:
+                # get all .txt files in ./content/
+                for subdir, dirs, files in os.walk("./"):
+                    for f in files:
+                        if f.endswith(".txt"):
+                            p = os.path.join(subdir, f)
+                            if os.path.exists(os.path.join(p, "ignore")): continue
+                            os.system(f"python3 generate_article.py \"{p}\"")
+
+    print("--- Generating index.html")
+
     template_path = f"index_template.html"
     with open(template_path, "rt", encoding="utf-8") as template:
         content = template.read()

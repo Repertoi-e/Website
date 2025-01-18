@@ -214,7 +214,8 @@ def main():
 		return
 
 	today = date.today()
-	date_string = today.strftime("%d.%m.%Y" if lang_en else "%d.%m.%Y г.")
+	date_string = date.fromtimestamp(os.path.getmtime(file)).strftime("%d.%m.%Y" if lang_en else "%d.%m.%Y г.")
+
 	edit_date_string = None
 
 	target_path = f"{title_ident}/index.html"

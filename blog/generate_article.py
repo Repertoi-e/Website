@@ -9,6 +9,8 @@ import re
 import os
 import os.path
 
+import shutil
+
 from collections import OrderedDict
 
 line_number: int = 0
@@ -257,6 +259,7 @@ def try_parse_meta_directive() -> bool:
         "lang": lambda rest: languages_dict[rest.lower()],
         "url": lambda rest: rest,
         "title": lambda rest: rest,
+        "hide": lambda rest: rest,
         "index": lambda rest: rest,
         "desc": lambda rest: eat_lines_until_next_meta_directive(rest, "<br><br>"),
         "keywords": lambda rest: eat_lines_until_next_meta_directive(rest, ""),
@@ -625,12 +628,16 @@ def main():
         if not try_parse_next():
             break
 
-    today = date.today()
-    date_str = get_localized_date_str(today)
+    last_mod_time = date.fromtimestamp(os.path.getmtime(file))
+    date_str = get_localized_date_str(last_mod_time)
 
     ident = meta["url"]
     assert(len(ident) != 0)
 
+    if "hide" in meta:
+        shutil.rmtree(f"./{ident}/", ignore_errors=True)
+        return
+    
     edit_date_str = None
 
     target_path = f"{ident}/index.html"
