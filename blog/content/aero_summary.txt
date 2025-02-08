@@ -54,7 +54,7 @@ For most cases, #bold(continuum flow) is investigated, in which the scalars pres
 
 #bold(Inviscid flow) is an approximation that assumes no "transport" phenomena - no flow friction, no mass diffusion, and no thermal conduction. In reality, these effects exist for for #italic(all) flow, but for low viscosity fluids, like air, the effect is negligible, except for a thin region around a body - the #bold(boundary layer).
 
-Flow can also be approximated as #bold(incompressible) ($\rho = const$). Compressibility effects are less than 5% for Mach numbers of $M < 0.3$.
+Flow can also be approximated as #bold(incompressible) ($\rho = const$). Compressibility effects are less than 5\% for Mach numbers of $M < 0.3$.
 
 The local #bold(Mach number) describes whether the flow in that region is subsonic $M < 1$, sonic $M=1$ or supersonic $M > 1$. Flows with a mix of subsonic and supersonic flow are called #bold(transonic). In subsonic flow, a #note[disturbance propagates and can be felt in the entire flow field](For example: extending flaps.). In regions of supersonic flow, the disturbance can only go downstream. 
 
