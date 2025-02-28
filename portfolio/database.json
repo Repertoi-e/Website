@@ -1,6 +1,6 @@
 [
     {
-        "order": 0,
+        "order": 10,
         "type": "video",
         "src": "/resources/projects/new_space_2.mp4",
         "photo_info": "Tool for S/C Link Budget Analysis",
@@ -10,6 +10,15 @@
     },
     {
         "order": 70,
+        "type": "video",
+        "src": "/resources/projects/fancy_ships.mp4",
+        "photo_info": "Dogfight",
+        "subtitle": "Python/PyGame",
+        "description": "Best game ever, no cap.",
+        "lang": "en"
+    },
+    {
+        "order": 170,
         "type": "img",
         "src": "/resources/projects/Unity_game.png",
         "photo_info": "Laser Chess",
@@ -18,16 +27,16 @@
         "lang": "en"
     },
     {
-        "order": 100,
+        "order": 190,
         "type": "img",
         "src": "/resources/projects/aircraft_tool_2.png",
         "photo_info": "Aircraft Tool for Preliminary Design",
         "subtitle": "Python/PyQt",
-        "description": "Follows methods described by Torenbeek and Roskam, doing Class I and Class II Weight and Drag Estimation, XFOIL integratio, estimate HLD requirements.",
+        "description": "A tool to calculate aircraft preliminary design. Follows methods described by Torenbeek and Roskam, doing Class I and Class II Weight and Drag Estimation. The tool has XFOIL integration, and can also estimate HLD requirements.",
         "lang": "en"
     },
     {
-        "order": 190,
+        "order": 100,
         "type": "img",
         "src": "/resources/projects/dungeon.png",
         "photo_info": "Dungeon Explorer",
@@ -45,30 +54,12 @@
         "lang": "en"
     },
     {
-        "order": 10,
-        "type": "video",
-        "src": "/resources/projects/anki.mp4",
-        "photo_info": "Language Learning Platform",
-        "subtitle": "HTML/JavaScript",
-        "description": "A demo mobile-friendly website for language learning.",
-        "lang": "en"
-    },
-    {
-        "order": 60,
-        "type": "video",
-        "src": "/resources/projects/endurosat_spacedev.mp4",
-        "photo_info": "EnduroSat SpaceDev",
-        "subtitle": "Go/Electron",
-        "description": "Developed during tenure at EnduroSat, worked on initial stages of design, both frontend and backend.",
-        "lang": "en"
-    },
-    {
-        "order": 170,
+        "order": 0,
         "type": "img",
         "src": "/resources/projects/orbits.png",
         "photo_info": "Orbital Simulator",
         "subtitle": "Python/Matplotlib",
-        "description": "Visualizing planetary orbits and gravitational dynamics.",
+        "description": "Visualizing planetary orbits and gravitational dynamics. The tool can be used to simulate orbital burns and aerobraking sequences, based on a programmable satellite.",
         "lang": "en"
     }
 ]
