@@ -58,7 +58,7 @@
         "type": "img",
         "src": "/resources/projects/orbits.png",
         "photo_info": "Orbital Simulator",
-        "subtitle": "Python/Matplotlib",
+        "subtitle": "Python",
         "description": "Visualizing planetary orbits and gravitational dynamics. The tool can be used to simulate orbital burns and aerobraking sequences, based on a programmable satellite.",
         "lang": "en"
     }
